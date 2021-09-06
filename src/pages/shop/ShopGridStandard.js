@@ -71,6 +71,7 @@ const ShopGridStandard = ({ location, products }) => {
 			<BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>
 				Home
 			</BreadcrumbsItem>
+
 			<BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
 				Shop
 			</BreadcrumbsItem>

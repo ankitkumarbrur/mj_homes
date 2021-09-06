@@ -1815,6 +1815,11 @@
 }
 
 .header-hm-7 {
+	.clickable-menu {
+		button {
+			color: #282828;
+		}
+	}
 	.header-right-wrap {
 		@media #{$md-layout} {
 			margin-right: 0;
