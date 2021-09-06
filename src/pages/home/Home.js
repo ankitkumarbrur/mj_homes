@@ -35,27 +35,27 @@ const Home = () => {
 				{/* <BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" /> */}
 
 				{/* countdown */}
-				{/* <CountDownThree
+				<CountDownThree
 					spaceTopClass="pt-100"
 					spaceBottomClass="pb-100"
 					dateTime="November 13, 2021 12:12:00"
 					countDownImage="/assets/img/banner/deal-5.png"
-				/> */}
+				/>
 
 				{/* featured icon */}
 				{/* <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" /> */}
-				{/* <FeatureIconSeven spaceBottomClass="pb-70" /> */}
+				<FeatureIconSeven spaceBottomClass="pb-70" />
 
 				{/* tab product */}
-				{/* <TabProduct spaceBottomClass="pb-60" category="fashion" /> */}
+				<TabProduct spaceBottomClass="pb-60" category="fashion" />
 
-				{/* <VideoPopupTwo spaceBottomClass="pb-60" /> */}
+				<VideoPopupTwo spaceBottomClass="pb-60" />
 
 				{/* blog featured */}
-				{/* <BlogFeatured spaceBottomClass="pb-55" /> */}
+				<BlogFeatured spaceBottomClass="pb-55" />
 
 				{/* image slider */}
-				{/* <ImageSliderTwo /> */}
+				<ImageSliderTwo />
 			</LayoutSeven>
 			{/* </LayoutOne> */}
 		</Fragment>
