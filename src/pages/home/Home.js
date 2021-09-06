@@ -13,6 +13,7 @@ import BannerFifteen from "../../wrappers/banner/BannerFifteen";
 import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
+import Banner from "../../components/banner/Banner";
 
 const Home = () => {
 	return (
@@ -31,10 +32,13 @@ const Home = () => {
 			<LayoutSeven>
 				{/* hero slider */}
 				<HeroSliderTwentyNine />
-
+				<Banner />
 				{/* <BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" /> */}
 
 				{/* countdown */}
+
+
+
 				<CountDownThree
 					spaceTopClass="pt-100"
 					spaceBottomClass="pb-100"
