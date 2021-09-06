@@ -14,7 +14,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
 
 // product pages
-const Product = lazy(() => import("./pages/shop-product/ProductTabLeft"));
+const Product = lazy(() => import("./pages/shop-product/ProductSticky"));
 
 // other pages
 const About = lazy(() => import("./pages/other/About"));
