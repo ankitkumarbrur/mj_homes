@@ -25,11 +25,7 @@ const IconGroup = ({
 	};
 
 	return (
-		<div
-			className={`header-right-wrap ${
-				iconWhiteClass ? iconWhiteClass : ""
-			}`}
-		>
+		<div className={`header-right-wrap ${false ? iconWhiteClass : ""}`}>
 			<div className="same-style header-search d-none d-lg-block">
 				<button
 					className="search-active"
