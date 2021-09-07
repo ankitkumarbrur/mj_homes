@@ -649,11 +649,17 @@
 }
 
 .product-large-image-wrapper {
+	.product-sticky-image {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		@media #{$md-layout, $sm-layout,  $xxs-layout} {
+			grid-template-columns: repeat(1, 1fr);
+		}
+		.product-sticky-image__single {
+			margin-left: 10px;
+		}
+	}
 	position: relative;
-	// .product-sticky-image {
-	//   width: 100px;
-	//   height: 100px;
-	// }
 	.product-img-badges {
 		position: absolute;
 		z-index: 3;
