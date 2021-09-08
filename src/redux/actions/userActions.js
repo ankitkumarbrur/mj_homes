@@ -36,6 +36,7 @@ export const login = (email, password) => async (dispatch) => {
         });
 
         localStorage.setItem("userInfo", JSON.stringify(data));
+
     } catch (error) {
 
         dispatch({
@@ -48,6 +49,12 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 
+export const logout = () => (dispatch) => {
+    localStorage.removeItem("userLogin");
+    localStorage.removeItem("userInfo");
+
+    dispatch({ type: USER_LOGOUT });
+};
 
 
 
@@ -59,42 +66,52 @@ export const login = (email, password) => async (dispatch) => {
 //     dispatch({ type: USER_LIST_RESET });
 // };
 
-// export const register = (name, email, password) => async (dispatch) => {
-//     try {
-//         dispatch({
-//             type: USER_REGISTER_REQUEST,
-//         });
+export const register = (firstname, lastname, pass, passConfirm, tel, email, address) => async (dispatch) => {
+    try {
+        dispatch({
+            type: USER_REGISTER_REQUEST,
+        });
 
-//         const config = {
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//         };
+        const formData = new FormData();
+        formData.append("email", email);
+        formData.append("password1", pass);
+        formData.append("password2", passConfirm);
+        formData.append("fname", firstname);
+        formData.append("lname", lastname);
+        formData.append("address", address);
+        formData.append("contactNumber", tel);
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        };
 
-//         const { data } = await axios.post(
-//             "/api/users/register/",
-//             { name: name, email: email, password: password },
-//             config
-//         );
+        const { data } = await axios.post(
+            `${BASE_URL}/api/authenticate/signup/`,
+            formData,
+            config
+        );
 
-//         dispatch({
-//             type: USER_REGISTER_SUCCESS,
-//             payload: data,
-//         });
 
-//         dispatch({
-//             type: USER_LOGIN_SUCCESS,
-//             payload: data,
-//         });
+        dispatch({
+            type: USER_REGISTER_SUCCESS,
+            payload: data,
+        });
 
-//         localStorage.setItem("userInfo", JSON.stringify(data));
-//     } catch (error) {
-//         dispatch({
-//             type: USER_REGISTER_FAIL,
-//             payload:
-//                 error.response && error.response.data.detail
-//                     ? error.response.data.detail
-//                     : error.message,
-//         });
-//     }
-// };
+        dispatch({
+            type: USER_LOGIN_SUCCESS,
+            payload: data,
+        });
+        console.log("SUCESS");
+        // localStorage.setItem("userInfo", JSON.stringify(data));
+    } catch (error) {
+        console.log("Fail");
+        dispatch({
+            type: USER_REGISTER_FAIL,
+            payload:
+                error.response && error.response.data.detail
+                    ? error.response.data.detail
+                    : error.message,
+        });
+    }
+};

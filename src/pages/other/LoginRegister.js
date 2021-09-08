@@ -1,20 +1,27 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../redux/actions/userActions";
+import { login, logout, register } from "../../redux/actions/userActions";
 import axios from "axios";
 
 const LoginRegister = ({ location }) => {
   const { pathname } = location;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [pass, setPass] = useState("");
+  const [passConfirm, setPassConfirm] = useState("");
+  const [tel, setTel] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const [data, setdata] = useState("");
 
   const dispatch = useDispatch();
@@ -30,6 +37,22 @@ const LoginRegister = ({ location }) => {
     }
   };
 
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+
+  };
+
+  const registerHandler = (e, data) => {
+
+    e.preventDefault();
+
+    if (firstname != "" && lastname != "" && pass != "" && passConfirm != "" && tel != "" && email != "" && address != "") {
+      dispatch(register(firstname, lastname, pass, passConfirm, tel, email, address));
+
+    }
+  }
+
   useEffect(() => {
 
     if (
@@ -44,12 +67,17 @@ const LoginRegister = ({ location }) => {
   }, [userInfo, loading])
 
   if (loading) {
-    return <h1>Loading</h1>
+    return (
+      <div className="flone-preloader-wrapper">
+        <div className="flone-preloader">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    )
   }
 
-  if (userInfo != null) {
-    return <h1>Logged In</h1>
-  }
+
   if (error) {
     return <h1>Error</h1>
   }
@@ -92,55 +120,96 @@ const LoginRegister = ({ location }) => {
                     </Nav>
                     <Tab.Content>
                       <Tab.Pane eventKey="login">
-                        <div className="login-form-container">
-                          <div className="login-register-form">
-                            <form onSubmit={loginHandler}>
-                              <input
-                                type="text"
-                                name="user-name"
-                                placeholder="Username"
-                                onChange={(e) => setUsername(e.target.value)}
-                              />
-                              <input
-                                type="password"
-                                name="user-password"
-                                placeholder="Password"
-                                onChange={(e) => setPassword(e.target.value)}
-                              />
-                              <div className="button-box">
-                                <div className="login-toggle-btn">
-                                  <input type="checkbox" />
-                                  <label className="ml-10">Remember me</label>
-                                  <Link to={process.env.PUBLIC_URL + "/"}>
-                                    Forgot Password?
-                                  </Link>
+
+                        {(userInfo != null) ? (<div style={{ textAlign: "center" }}>< h1 style={{ textAlign: "center" }}>Already Logged In</h1>
+                          <button onClick={logoutHandler}>
+                            Log Out
+                          </button>
+                        </div>) : (
+
+                          <div className="login-form-container">
+                            <div className="login-register-form">
+                              <form onSubmit={loginHandler}>
+                                <input
+                                  type="text"
+                                  name="user-name"
+                                  placeholder="Username"
+                                  onChange={(e) => setUsername(e.target.value)}
+                                />
+                                <input
+                                  type="password"
+                                  name="user-password"
+                                  placeholder="Password"
+                                  onChange={(e) => setPassword(e.target.value)}
+                                />
+                                <div className="button-box">
+                                  <div className="login-toggle-btn">
+                                    <input type="checkbox" />
+                                    <label className="ml-10">Remember me</label>
+                                    <Link to={process.env.PUBLIC_URL + "/"}>
+                                      Forgot Password?
+                                    </Link>
+                                  </div>
+                                  <button type="submit" >
+                                    <span>Login</span>
+                                  </button>
                                 </div>
-                                <button type="submit" >
-                                  <span>Login</span>
-                                </button>
-                              </div>
-                            </form>
+                              </form>
+                            </div>
                           </div>
-                        </div>
+
+                        )
+
+                        }
+
                       </Tab.Pane>
                       <Tab.Pane eventKey="register">
                         <div className="login-form-container">
                           <div className="login-register-form">
-                            <form>
+                            <form onSubmit={registerHandler}>
                               <input
                                 type="text"
-                                name="user-name"
-                                placeholder="Username"
+                                name="first-name"
+                                placeholder="First Name"
+                                onChange={(e) => setFirstname(e.target.value)}
                               />
                               <input
-                                type="password"
-                                name="user-password"
-                                placeholder="Password"
+                                type="text"
+                                name="last-name"
+                                placeholder="Last Name"
+                                onChange={(e) => setLastname(e.target.value)}
+                              />
+                              <input
+                                name="user-phone"
+                                placeholder="Phone"
+                                type="tel"
+                                pattern="[0-9]{10}"
+                                onChange={(e) => setTel(e.target.value)}
                               />
                               <input
                                 name="user-email"
                                 placeholder="Email"
                                 type="email"
+                                onChange={(e) => setEmail(e.target.value)}
+
+                              />
+                              <input
+                                type="password"
+                                name="user-password"
+                                placeholder="Password"
+                                onChange={(e) => setPass(e.target.value)}
+                              />
+                              <input
+                                type="password"
+                                name="confirm-password"
+                                placeholder="Confirm Password"
+                                onChange={(e) => setPassConfirm(e.target.value)}
+                              />
+                              <input
+                                type="text"
+                                name="address"
+                                placeholder="Address"
+                                onChange={(e) => setAddress(e.target.value)}
                               />
                               <div className="button-box">
                                 <button type="submit">
@@ -159,7 +228,7 @@ const LoginRegister = ({ location }) => {
           </div>
         </div>
       </LayoutOne>
-    </Fragment>
+    </Fragment >
   );
 };
 
