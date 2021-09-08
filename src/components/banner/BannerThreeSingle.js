@@ -6,9 +6,8 @@ const BannerThreeSingle = ({ data, spaceBottomClass }) => {
   return (
     <div className="col-lg-6 col-md-6">
       <div
-        className={`single-banner-2 ${
-          spaceBottomClass ? spaceBottomClass : ""
-        }`}
+        className={`single-banner-2 ${spaceBottomClass ? spaceBottomClass : ""
+          }`}
       >
         <Link to={process.env.PUBLIC_URL + data.link}>
           <img src={process.env.PUBLIC_URL + data.image} alt="" />
