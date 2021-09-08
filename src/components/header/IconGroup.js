@@ -116,7 +116,7 @@ const IconGroup = ({
 					</span>
 				</Link>
 			</div>
-			<div className="same-style mobile-off-canvas d-block d-lg-none">
+			<div className="same-style mobile-off-canvas d-block">
 				<button
 					className="mobile-aside-button"
 					onClick={() => triggerMobileMenu()}

@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HeaderSocial from "./sub-components/HeaderSocial";
 import NavMenu from "./NavMenu";
+import MobileMenu from "../../components/header/MobileMenu";
 
 const OffcanvasMenu = ({ activeState, getActiveState }) => {
 	return (
@@ -25,6 +26,7 @@ const OffcanvasMenu = ({ activeState, getActiveState }) => {
 				</Link>
 			</div>
 			{/* nav menu*/}
+			{/* <MobileMenu /> */}
 			<NavMenu sidebarMenu={true} />
 
 			{/* header social */}

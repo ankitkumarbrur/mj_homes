@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
-// import LayoutOne from "../../layouts/LayoutOne";
+import LayoutOne from "../../layouts/LayoutOne";
 import LayoutSeven from "../../layouts/LayoutSeven";
 // import HeroSliderOne from "../../wrappers/hero-slider/HeroSliderOne";
 import HeroSliderTwentyNine from "../../wrappers/hero-slider/HeroSliderTwentyNine";
@@ -28,7 +28,12 @@ const Home = () => {
 				headerContainerClass="container-fluid"
 				headerPaddingClass="header-padding-1"
 			> */}
-			<LayoutSeven>
+			<LayoutOne
+				headerContainerClass="container-fluid"
+				headerPaddingClass="header-padding-1"
+				headerPositionClass="header-absolute"
+			>
+				{/* <LayoutSeven> */}
 				{/* hero slider */}
 				<HeroSliderTwentyNine />
 				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
@@ -56,8 +61,8 @@ const Home = () => {
 
 				{/* image slider */}
 				<ImageSliderTwo />
-			</LayoutSeven>
-			{/* </LayoutOne> */}
+				{/* </LayoutSeven> */}
+			</LayoutOne>
 		</Fragment>
 	);
 };
