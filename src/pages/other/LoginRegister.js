@@ -9,7 +9,7 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout, register } from "../../redux/actions/userActions";
-import axios from "axios";
+import { useToasts } from "react-toast-notifications";
 
 const LoginRegister = ({ location }) => {
   const { pathname } = location;
@@ -25,6 +25,7 @@ const LoginRegister = ({ location }) => {
   const [data, setdata] = useState("");
 
   const dispatch = useDispatch();
+  const { addToast } = useToasts();
 
   const { userInfo, error, loading } = useSelector(state => state.userLogin)
 
@@ -33,13 +34,13 @@ const LoginRegister = ({ location }) => {
   const loginHandler = (e) => {
     e.preventDefault();
     if (username != "" && password != "") {
-      dispatch(login(username, password));
+      dispatch(login(username, password, addToast));
     }
   };
 
   const logoutHandler = (e) => {
     e.preventDefault();
-    dispatch(logout());
+    dispatch(logout(addToast));
 
   };
 
@@ -48,7 +49,7 @@ const LoginRegister = ({ location }) => {
     e.preventDefault();
 
     if (firstname != "" && lastname != "" && pass != "" && passConfirm != "" && tel != "" && email != "" && address != "") {
-      dispatch(register(firstname, lastname, pass, passConfirm, tel, email, address));
+      dispatch(register(firstname, lastname, pass, passConfirm, tel, email, address, addToast));
 
     }
   }
@@ -76,12 +77,6 @@ const LoginRegister = ({ location }) => {
       </div>
     )
   }
-
-
-  if (error) {
-    return <h1>Error</h1>
-  }
-
 
   return (
     <Fragment>
@@ -120,10 +115,16 @@ const LoginRegister = ({ location }) => {
                     </Nav>
                     <Tab.Content>
                       <Tab.Pane eventKey="login">
-
+                        {/* <div>
+                          {
+                            (error) ? (<h1>Wrong Credentials !</h1>) : ("")
+                          }
+                        </div> */}
                         {(userInfo != null) ? (<div style={{ textAlign: "center" }}>< h1 style={{ textAlign: "center" }}>Already Logged In</h1>
-                          <button onClick={logoutHandler}>
+                          <button type="submit" onClick={logoutHandler} class="LogOut-btn">
+
                             Log Out
+
                           </button>
                         </div>) : (
 
@@ -144,8 +145,8 @@ const LoginRegister = ({ location }) => {
                                 />
                                 <div className="button-box">
                                   <div className="login-toggle-btn">
-                                    <input type="checkbox" />
-                                    <label className="ml-10">Remember me</label>
+                                    {/* <input type="checkbox" />
+                                    <label className="ml-10">Remember me</label> */}
                                     <Link to={process.env.PUBLIC_URL + "/"}>
                                       Forgot Password?
                                     </Link>
@@ -179,19 +180,20 @@ const LoginRegister = ({ location }) => {
                                 placeholder="Last Name"
                                 onChange={(e) => setLastname(e.target.value)}
                               />
-                              <input
-                                name="user-phone"
-                                placeholder="Phone"
-                                type="tel"
-                                pattern="[0-9]{10}"
-                                onChange={(e) => setTel(e.target.value)}
-                              />
+
                               <input
                                 name="user-email"
                                 placeholder="Email"
                                 type="email"
                                 onChange={(e) => setEmail(e.target.value)}
 
+                              />
+                              <input
+                                name="user-phone"
+                                placeholder="Phone"
+                                type="tel"
+                                pattern="[0-9]{10}"
+                                onChange={(e) => setTel(e.target.value)}
                               />
                               <input
                                 type="password"

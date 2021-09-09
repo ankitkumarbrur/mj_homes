@@ -10,7 +10,7 @@ export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
 
 const BASE_URL = "http://eswar007.pythonanywhere.com";
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (email, password, addToast) => async (dispatch) => {
     try {
         dispatch({
             type: USER_LOGIN_REQUEST,
@@ -34,11 +34,17 @@ export const login = (email, password) => async (dispatch) => {
             type: USER_LOGIN_SUCCESS,
             payload: data,
         });
-
+        addToast("Logged In", {
+            appearance: "success",
+            autoDismiss: true
+        });
         localStorage.setItem("userInfo", JSON.stringify(data));
 
     } catch (error) {
-
+        addToast("Wrong Credentials!", {
+            appearance: "error",
+            autoDismiss: true
+        });
         dispatch({
             type: USER_LOGIN_FAIL,
             payload:
@@ -49,10 +55,13 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 
-export const logout = () => (dispatch) => {
+export const logout = (addToast) => (dispatch) => {
     localStorage.removeItem("userLogin");
     localStorage.removeItem("userInfo");
-
+    addToast("Logged Out", {
+        appearance: "error",
+        autoDismiss: true
+    });
     dispatch({ type: USER_LOGOUT });
 };
 
@@ -66,7 +75,7 @@ export const logout = () => (dispatch) => {
 //     dispatch({ type: USER_LIST_RESET });
 // };
 
-export const register = (firstname, lastname, pass, passConfirm, tel, email, address) => async (dispatch) => {
+export const register = (firstname, lastname, pass, passConfirm, tel, email, address, addToast) => async (dispatch) => {
     try {
         dispatch({
             type: USER_REGISTER_REQUEST,
@@ -95,17 +104,24 @@ export const register = (firstname, lastname, pass, passConfirm, tel, email, add
 
         dispatch({
             type: USER_REGISTER_SUCCESS,
-            payload: data,
+            // payload: data,
         });
 
         dispatch({
             type: USER_LOGIN_SUCCESS,
-            payload: data,
+            // payload: data,
+        });
+        addToast("Registration Success !", {
+            appearance: "success",
+            autoDismiss: true
         });
         console.log("SUCESS");
         // localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
-        console.log("Fail");
+        addToast(error.message, {
+            appearance: "error",
+            autoDismiss: true
+        });
         dispatch({
             type: USER_REGISTER_FAIL,
             payload:
