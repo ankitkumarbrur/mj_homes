@@ -33,5 +33,12 @@
     "subtitle": "3 Products",
     "title": "Living Room",
     "link": "/shop-grid-standard"
+  },
+  {
+    "id": "6",
+    "image": "/assets/img/product/hm8-pro-2.jpg",
+    "subtitle": "3 Products",
+    "title": "Kitchen",
+    "link": "/shop-grid-standard"
   }
 ]
