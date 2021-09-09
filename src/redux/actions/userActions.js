@@ -111,7 +111,7 @@ export const register = (firstname, lastname, pass, passConfirm, tel, email, add
             type: USER_LOGIN_SUCCESS,
             // payload: data,
         });
-        addToast("Registration Success !", {
+        addToast(data.message, {
             appearance: "success",
             autoDismiss: true
         });
