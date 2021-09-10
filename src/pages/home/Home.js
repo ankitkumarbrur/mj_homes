@@ -31,11 +31,12 @@ const Home = () => {
 					content="MJ Homes is a furniture company based in Bahadurgarh, Haryana. We provide top class furniture on your doorstep. You can also order custom furniture by visiting our showroom facility."
 				/>
 			</MetaTags>
-			{/* <LayoutOne
+			<LayoutOne
 				headerContainerClass="container-fluid"
 				headerPaddingClass="header-padding-1"
-			> */}
-			<LayoutSeven>
+				headerPositionClass="header-absolute"
+			>
+				{/* <LayoutSeven> */}
 				{/* hero slider */}
 				<HeroSliderTwentyNine />
 				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
@@ -67,7 +68,7 @@ const Home = () => {
 				{/* <CategoryGrid /> */}
 				{/* <CategoryOneSlider spaceBottomClass="pb-55" /> */}
 				{/* <CategoryTwoSlider spaceBottomClass="pb-55" /> */}
-				<CategoryThreeSlider spaceBottomClass="pb-55" />
+				<CategoryThreeSlider spaceBottomClass="pb-70" />
 				{/* <CategoryFourSlider spaceBottomClass="pb-55" /> */}
 				{/* <CategoryFiveGrid spaceBottomClass="pb-55" /> */}
 
@@ -81,8 +82,8 @@ const Home = () => {
 
 				{/* image slider */}
 				<ImageSliderTwo />
-			</LayoutSeven>
-			{/* </LayoutOne> */}
+				{/* </LayoutSeven> */}
+			</LayoutOne>
 		</Fragment>
 	);
 };
