@@ -14,78 +14,67 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 
-import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
-import CategoryTwoSlider from "../../wrappers/category/CategoryTwoSlider";
 import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
-import CategoryFourSlider from "../../wrappers/category/CategoryFourSlider";
-import CategoryFiveGrid from "../../wrappers/category/CategoryFiveGrid";
-import CategoryGrid from "../../wrappers/category/CategoryGrid";
 
 const Home = () => {
-	return (
-		<Fragment>
-			<MetaTags>
-				<title>MJ Homes</title>
-				<meta
-					name="description"
-					content="MJ Homes is a furniture company based in Bahadurgarh, Haryana. We provide top class furniture on your doorstep. You can also order custom furniture by visiting our showroom facility."
-				/>
-			</MetaTags>
-			<LayoutOne
-				headerContainerClass="container-fluid"
-				headerPaddingClass="header-padding-1"
-				headerPositionClass="header-absolute"
-			>
-				{/* <LayoutSeven> */}
-				{/* hero slider */}
-				<HeroSliderTwentyNine />
-				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
+  return (
+    <Fragment>
+      <MetaTags>
+        <title>MJ Homes</title>
+        <meta
+          name="description"
+          content="MJ Homes is a furniture company based in Bahadurgarh, Haryana. We provide top class furniture on your doorstep. You can also order custom furniture by visiting our showroom facility."
+        />
+      </MetaTags>
+      <LayoutOne
+        headerContainerClass="container-fluid"
+        headerPaddingClass="header-padding-1"
+        headerPositionClass="header-absolute"
+      >
+        {/* <LayoutSeven> */}
+        {/* hero slider */}
+        <HeroSliderTwentyNine />
+        <BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
 
-				{/* countdown */}
+        {/* countdown */}
 
-				<CountDownThree
-					spaceTopClass="pt-100"
-					spaceBottomClass="pb-100"
-					dateTime="November 13, 2021 12:12:00"
-					countDownImage="/assets/img/banner/deal-5.png"
-				/>
-				{/* <LayoutOne
+        <CountDownThree
+          spaceTopClass="pt-100"
+          spaceBottomClass="pb-100"
+          dateTime="November 13, 2021 12:12:00"
+          countDownImage="/assets/img/banner/deal-5.png"
+        />
+        {/* <LayoutOne
 				headerContainerClass="container-fluid"
 				headerPaddingClass="header-padding-1"
 				headerPositionClass="header-absolute"
 			> */}
-				{/* <LayoutSeven> */}
-				{/* hero slider */}
-				<HeroSliderTwentyNine />
-				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
+        {/* <LayoutSeven> */}
+        {/* hero slider */}
+        <HeroSliderTwentyNine />
+        <BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
 
-				{/* featured icon */}
-				{/* <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" /> */}
-				<FeatureIconSeven spaceBottomClass="pb-70" />
+        {/* featured icon */}
+        {/* <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" /> */}
+        <FeatureIconSeven spaceBottomClass="pb-70" />
 
-				{/* category grid */}
+        {/* category grid */}
+        <CategoryThreeSlider spaceBottomClass="pb-70" />
 
-				{/* <CategoryGrid /> */}
-				{/* <CategoryOneSlider spaceBottomClass="pb-55" /> */}
-				{/* <CategoryTwoSlider spaceBottomClass="pb-55" /> */}
-				<CategoryThreeSlider spaceBottomClass="pb-70" />
-				{/* <CategoryFourSlider spaceBottomClass="pb-55" /> */}
-				{/* <CategoryFiveGrid spaceBottomClass="pb-55" /> */}
+        {/* tab product */}
+        <TabProduct spaceBottomClass="pb-60" category="fashion" />
 
-				{/* tab product */}
-				<TabProduct spaceBottomClass="pb-60" category="fashion" />
+        <VideoPopupTwo spaceBottomClass="pb-60" />
 
-				<VideoPopupTwo spaceBottomClass="pb-60" />
+        {/* blog featured */}
+        <BlogFeatured spaceBottomClass="pb-55" />
 
-				{/* blog featured */}
-				<BlogFeatured spaceBottomClass="pb-55" />
-
-				{/* image slider */}
-				<ImageSliderTwo />
-				{/* </LayoutSeven> */}
-			</LayoutOne>
-		</Fragment>
-	);
+        {/* image slider */}
+        <ImageSliderTwo />
+        {/* </LayoutSeven> */}
+      </LayoutOne>
+    </Fragment>
+  );
 };
 
 export default Home;

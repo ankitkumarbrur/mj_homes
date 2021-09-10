@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 const CategoryThreeSingle = ({ data, sliderClass }) => {
   return (
-    <div className={`collection-product ${sliderClass ? sliderClass : ""}`}>
+    <div
+      className={`collection-product mt-20 ${sliderClass ? sliderClass : ""}`}
+    >
       <div className="collection-img">
         <Link to={process.env.PUBLIC_URL + data.link}>
           <img src={process.env.PUBLIC_URL + data.image} alt="" />

@@ -3336,10 +3336,16 @@
 
 /* product home 9*/
 .collection-wrap {
-  padding: 0px 45px;
+  padding: 0 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 25px;
+  grid-gap: 30px;
+  @media #{$md-layout, $xs-layout, $sm-layout} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media #{$xxs-layout} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .collection-wrap-2 {
