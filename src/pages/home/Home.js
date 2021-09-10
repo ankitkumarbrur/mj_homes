@@ -14,6 +14,12 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 
+import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
+import CategoryTwoSlider from "../../wrappers/category/CategoryTwoSlider";
+import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
+import CategoryFourSlider from "../../wrappers/category/CategoryFourSlider";
+import CategoryFiveGrid from "../../wrappers/category/CategoryFiveGrid";
+import CategoryGrid from "../../wrappers/category/CategoryGrid";
 import Search from "../../components/search/Search";
 
 const Home = () => {
