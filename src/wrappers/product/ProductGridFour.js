@@ -21,7 +21,9 @@ const ProductGridFour = ({
 }) => {
   return (
     <Fragment>
+      {console.log("products", products)}
       {products.map(product => {
+        console.log("yes")
         return (
           <ProductGridSingleFour
             sliderClassName={sliderClassName}

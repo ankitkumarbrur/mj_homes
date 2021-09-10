@@ -1,10 +1,37 @@
-// get products
+// get products based on category
 export const getProducts = (products, category, type, limit) => {
 	const finalProducts = category
 		? products.filter(
-				(product) =>
-					product.category.filter((single) => single === category)[0],
-		  )
+			(product) =>
+				product.category.filter((single) => single === category)[0],
+		)
+		: products;
+
+	if (type && type === "new") {
+		const newProducts = finalProducts.filter((single) => single.new);
+		return newProducts.slice(0, limit ? limit : newProducts.length);
+	}
+	if (type && type === "bestSeller") {
+		const newProducts = finalProducts.filter((single) => single.new);
+		return newProducts.slice(0, limit ? limit : newProducts.length);
+	}
+	if (type && type === "saleItems") {
+		const saleItems = finalProducts.filter(
+			(single) => single.discount && single.discount > 0,
+		);
+		return saleItems.slice(0, limit ? limit : saleItems.length);
+	}
+	return finalProducts.slice(0, limit ? limit : finalProducts.length);
+};
+
+
+// get products based on tag
+export const getProductsByTag = (products, tag, type, limit) => {
+	const finalProducts = tag
+		? products.filter(
+			(product) =>
+				product.tag.filter((single) => single === tag)[0],
+		)
 		: products;
 
 	if (type && type === "new") {
@@ -68,8 +95,8 @@ export const getSortedProducts = (products, sortType, sortValue) => {
 			return products.filter((product) => {
 				return product.category
 					? product.category.filter(
-							(single) => single === sortValue,
-					  )[0]
+						(single) => single === sortValue,
+					)[0]
 					: false;
 			});
 		}

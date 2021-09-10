@@ -10,10 +10,11 @@
     "price": 26990.0,
     "priceWithGST": 0.0,
     "category": [
-      "Dining table"
+      "Dining table",
+      "123"
     ],
     "tag": [
-      "teakwood"
+      "dwqdqwteakwood1"
     ],
     "color": "Dark coffee",
     "material": "Sheesham wood",
@@ -42,6 +43,10 @@
     "category": [
       "Dining chair"
     ],
+    "tag": [
+      "dwqdqwteaasdkwood1"
+    ],
+    "new": "true",
     "color": "Dark coffee",
     "material": "Rexine",
     "manufacturer": "Mj Homes",
@@ -67,6 +72,9 @@
     "priceWithGST": 0.0,
     "category": [
       "Dining table"
+    ],
+    "tag": [
+      "dwqdqwteakwood1"
     ],
     "color": "Dark Brown",
     "material": "Sangwan",
@@ -94,6 +102,10 @@
     "category": [
       "Dining chair"
     ],
+    "new": "true",
+    "tag": [
+      "dwqdqwteakwood1"
+    ],
     "color": "Dark Brown",
     "material": "Rexine",
     "manufacturer": "Mj Homes",
@@ -119,6 +131,9 @@
     "priceWithGST": 0.0,
     "category": [
       "Chesterfield sofa"
+    ],
+    "tag": [
+      "dwqdqwteakwood1"
     ],
     "color": "Dark Brown",
     "material": "Rexine",
@@ -146,6 +161,9 @@
     "category": [
       "Dining table"
     ],
+    "tag": [
+      "dwqdqwteakwood1"
+    ],
     "color": "Dark Brown",
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
@@ -172,6 +190,9 @@
     "category": [
       "Dining chair"
     ],
+    "tag": [
+      "dwqdqwteakwood1"
+    ],
     "color": "Dark Brown",
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
@@ -197,6 +218,9 @@
     "priceWithGST": 0.0,
     "category": [
       "queensize bed"
+    ],
+    "tag": [
+      "dwqdqwteakwood1"
     ],
     "color": "White",
     "material": "Teakwood",

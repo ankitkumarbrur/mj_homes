@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
+import FrequentlyBoughtTogether from "../../wrappers/product/FrequentlyBoughtTogether";
+import OtherPeopleBought from "../../wrappers/product/OtherPeopleBought";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescriptionSticky from "../../wrappers/product/ProductImageDescriptionSticky";
 
@@ -46,11 +48,24 @@ const ProductSticky = ({ location, product }) => {
 					productFullDesc={product.fullDescription}
 				/>
 
+				{/* frequently bought together product slider */}
+				<FrequentlyBoughtTogether
+					spaceBottomClass="pb-95"
+					category={product.category ? product.category[0] : ""}
+				/>
+				{/* {console.log(product.category[0])} */}
 				{/* related product slider */}
 				<RelatedProductSlider
 					spaceBottomClass="pb-95"
+					tag={product.tag ? product.tag[0] : ""}
+				/>
+
+				{/* other people bought product slider */}
+				<OtherPeopleBought
+					spaceBottomClass="pb-95"
 					category={product.category[0]}
 				/>
+
 			</LayoutOne>
 		</Fragment>
 	);
