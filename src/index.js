@@ -15,9 +15,17 @@ import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+const initialState = {
+  userLogin: { userInfo: userInfoFromStorage },
+};
+
 const store = createStore(
   rootReducer,
-  load(),
+  initialState,
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
 
