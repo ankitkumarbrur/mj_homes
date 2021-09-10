@@ -1,0 +1,146 @@
+$color-header: #22313f;
+$color-button: red;
+$color-placeholder: #eee;
+$btn-material-size: 60px;
+
+.bod {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.search {
+	/* Search Active */
+	&.search-active {
+		.search-input {
+			opacity: 1;
+			display: block;
+			z-index: 999;
+			transform: none;
+			pointer-events: all;
+		}
+		.icon-close {
+			display: block;
+		}
+	}
+}
+.exp-head {
+	&.search-active {
+		.control {
+			cursor: default;
+			.btn-material {
+				opacity: 1;
+				z-index: 9811 !important;
+
+				transform: scale(100);
+			}
+			.icon-material-search {
+				opacity: 0;
+			}
+		}
+	}
+}
+
+/* Close Icon */
+
+.icon-close {
+	position: fixed;
+	z-index: 999;
+	top: 30px;
+	right: 30px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 70px;
+	// opacity: 0;
+	display: none;
+	transition: all 0.3s ease-in-out;
+	&:hover {
+		transform: rotate(90deg);
+	}
+}
+
+/* Search Input */
+
+.search-input {
+	height: 80px;
+	position: fixed;
+	top: 50%;
+	left: 50px;
+	margin-top: -40px;
+	pointer-events: none;
+	// opacity: 0;
+	display: none;
+	transform: translate(40px, 0);
+	transition: all 0.3s ease-in-out;
+	input {
+		color: #fff;
+		height: max-content;
+		font-size: 54px;
+		border: 0;
+		background: transparent;
+		-webkit-appearance: none;
+		box-sizing: border-box;
+		outline: 0;
+		font-weight: 200;
+	}
+	::-webkit-input-placeholder {
+		color: $color-placeholder;
+	}
+	:-moz-placeholder {
+		color: $color-placeholder;
+		opacity: 1;
+	}
+	::-moz-placeholder {
+		color: $color-placeholder;
+		opacity: 1;
+	}
+	:-ms-input-placeholder {
+		color: $color-placeholder;
+	}
+}
+
+/* search-container */
+
+/* Control btn */
+
+.control {
+	cursor: pointer;
+
+	.btn-material {
+		position: absolute;
+		// top: -$btn-material-size/2;
+		width: 30px;
+		height: 30px;
+		opacity: 0;
+		z-index: -1;
+		// right: $btn-material-size;
+		border-radius: 100%;
+		box-sizing: border-box;
+		background: $color-button;
+		// outline: 0;
+		// transform-origin: 50%;
+		// transform: translate(-10%, -10%);
+		// box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+		transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+		// &:hover {
+		// 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19),
+		// 		0 6px 6px rgba(0, 0, 0, 0.23);
+		// }
+	}
+	.icon-material-search {
+		color: #fff;
+		position: absolute;
+		top: -10px;
+		right: 48px + $btn-material-size/2;
+		transition: opacity 0.3s ease-in-out;
+	}
+}
+
+/* Utilities */
+
+/* Typo */
+
+// h1,
+// h2 {
+// 	font-weight: 300;
+// }
