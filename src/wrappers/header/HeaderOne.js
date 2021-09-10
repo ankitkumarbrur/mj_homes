@@ -49,7 +49,7 @@ const HeaderOne = ({
 					}
 				>
 					{/* header top */}
-					{/* <HeaderTop borderStyle={borderStyle} /> */}
+					<HeaderTop borderStyle={borderStyle} />
 				</div>
 			</div>
 
