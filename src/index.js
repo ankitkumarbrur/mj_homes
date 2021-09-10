@@ -12,7 +12,7 @@ import products from "./data/products.json";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
-
+// import axios from "axios";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -21,6 +21,7 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
+
 };
 
 const store = createStore(

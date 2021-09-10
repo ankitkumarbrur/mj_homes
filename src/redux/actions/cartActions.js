@@ -1,7 +1,12 @@
+import axios from "axios";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 export const DELETE_FROM_CART = "DELETE_FROM_CART";
 export const DELETE_ALL_FROM_CART = "DELETE_ALL_FROM_CART";
+
+
+
+const BASE_URL = "http://eswar007.pythonanywhere.com";
 
 //add to cart
 export const addToCart = (
@@ -12,9 +17,30 @@ export const addToCart = (
   selectedProductSize
 ) => {
   return dispatch => {
+    console.log(item);
+
+    // try {
+    //   const formData = new FormData();
+    //   formData.append("userId", 4);
+    //   formData.append("productId", item.id);
+    //   formData.append("quantity", quantityCount);
+    //   const config = {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //     },
+    //   };
+
+
+    //   const { data } = await axios.post(
+    //     `${BASE_URL}/api/order/addToCart/`,
+    //     formData,
+    //     config
+    //   );
+
     if (addToast) {
-      addToast("Added To Cart", { appearance: "success", autoDismiss: true });
+      addToast("data.message", { appearance: "success", autoDismiss: true });
     }
+
     dispatch({
       type: ADD_TO_CART,
       payload: {
@@ -23,16 +49,27 @@ export const addToCart = (
         selectedProductColor: selectedProductColor
           ? selectedProductColor
           : item.selectedProductColor
-          ? item.selectedProductColor
-          : null,
+            ? item.selectedProductColor
+            : null,
         selectedProductSize: selectedProductSize
           ? selectedProductSize
           : item.selectedProductSize
-          ? item.selectedProductSize
-          : null
+            ? item.selectedProductSize
+            : null
       }
     });
-  };
+
+  }
+  // catch (error) {
+  //   if (addToast) {
+  //     addToast(error.message, { appearance: "fail", autoDismiss: true });
+  //   }
+  // }
+
+
+
+
+  // };
 };
 //decrease from cart
 export const decreaseQuantity = (item, addToast) => {

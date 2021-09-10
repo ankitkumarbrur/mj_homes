@@ -9,7 +9,11 @@ import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout, register } from "../../redux/actions/userActions";
+import { addToCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
+import axios from "axios";
+const BASE_URL = "http://eswar007.pythonanywhere.com";
+
 
 const LoginRegister = ({ location }) => {
   const { pathname } = location;
@@ -22,13 +26,42 @@ const LoginRegister = ({ location }) => {
   const [tel, setTel] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const [data, setdata] = useState("");
+  const [data, setdata] = useState(true);
 
   const dispatch = useDispatch();
   const { addToast } = useToasts();
 
   const { userInfo, error, loading } = useSelector(state => state.userLogin)
+  const { products } = useSelector(state => state.productData)
 
+  const fetchData = async () => {
+
+    // const formData = new FormData();
+    // formData.append("userId", userInfo.id);
+
+    // const config = {
+    //   headers: {
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // };
+    // const { data } = await axios.post(
+    //   `${BASE_URL}/api/order/getCartProducts/`,
+    //   formData,
+    //   config
+    // );
+
+    // // console.log(data.cartList);
+    // // console.log(products);
+    // (data.cartList).forEach((product) => {
+    //   const cartItem = products.filter(item => item.id == product.productId)[0];
+    //   console.log(cartItem);
+    //   // const items = products.filter(item => item.id == product.productId);
+    //   // console.log(cartItem.id, items.length);
+    //   dispatch(addToCart(cartItem, addToast, 1, null, null));
+
+    // })
+
+  }
 
 
   const loginHandler = (e) => {
@@ -36,6 +69,7 @@ const LoginRegister = ({ location }) => {
     if (username != "" && password != "") {
       dispatch(login(username, password, addToast));
     }
+
   };
 
   const logoutHandler = (e) => {
@@ -64,7 +98,13 @@ const LoginRegister = ({ location }) => {
       console.log('Logged In')
       console.log(userInfo)
 
+
     }
+    if (userInfo && data) {
+      // fetchData();
+      setdata(false);
+    }
+
   }, [userInfo, loading])
 
   if (loading) {
@@ -115,11 +155,7 @@ const LoginRegister = ({ location }) => {
                     </Nav>
                     <Tab.Content>
                       <Tab.Pane eventKey="login">
-                        {/* <div>
-                          {
-                            (error) ? (<h1>Wrong Credentials !</h1>) : ("")
-                          }
-                        </div> */}
+
                         {(userInfo != null) ? (<div style={{ textAlign: "center" }}>< h1 style={{ textAlign: "center" }}>Already Logged In</h1>
                           <button type="submit" onClick={logoutHandler} class="LogOut-btn">
 
@@ -239,4 +275,5 @@ LoginRegister.propTypes = {
 };
 
 export default LoginRegister;
+
 
