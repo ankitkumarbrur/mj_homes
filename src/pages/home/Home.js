@@ -14,6 +14,8 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 
+import Search from "../../components/search/Search";
+
 const Home = () => {
 	return (
 		<Fragment>
@@ -33,6 +35,7 @@ const Home = () => {
 				headerPaddingClass="header-padding-1"
 				headerPositionClass="header-absolute"
 			>
+				<Search />
 				{/* <LayoutSeven> */}
 				{/* hero slider */}
 				<HeroSliderTwentyNine />
