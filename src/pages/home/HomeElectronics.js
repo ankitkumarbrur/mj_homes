@@ -11,48 +11,54 @@ import BrandLogoSliderOne from "../../wrappers/brand-logo/BrandLogoSliderOne";
 import BlogFeaturedTwo from "../../wrappers/blog-featured/BlogFeaturedTwo";
 
 const HomeElectronics = () => {
-  return (
-    <Fragment>
-      <MetaTags>
-        <title>Flone | Electronics Home</title>
-        <meta
-          name="description"
-          content="Electronics home of flone react minimalist eCommerce template."
-        />
-      </MetaTags>
-      <LayoutTwo>
-        {/* hero slider */}
-        <HeroSliderThree />
+	return (
+		<Fragment>
+			<MetaTags>
+				<title>MJ Homes | Electronics Home</title>
+				<meta
+					name="description"
+					content="Electronics home of flone react minimalist eCommerce template."
+				/>
+			</MetaTags>
+			<LayoutTwo>
+				{/* hero slider */}
+				<HeroSliderThree />
 
-        {/* category slider */}
-        <CategoryOneSlider spaceBottomClass="pb-95" />
+				{/* category slider */}
+				<CategoryOneSlider spaceBottomClass="pb-95" />
 
-        {/* section title with text */}
-        <SectionTitleWithText spaceBottomClass="pb-90" />
+				{/* section title with text */}
+				<SectionTitleWithText spaceBottomClass="pb-90" />
 
-        {/* tab product */}
-        <TabProductThree spaceBottomClass="pb-60" category="electronics" />
+				{/* tab product */}
+				<TabProductThree
+					spaceBottomClass="pb-60"
+					category="electronics"
+				/>
 
-        {/* banner */}
-        <BannerThree spaceBottomClass="pb-100" />
+				{/* banner */}
+				<BannerThree spaceBottomClass="pb-100" />
 
-        {/* testimonial */}
-        <TestimonialOne
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-95"
-          spaceLeftClass="ml-70"
-          spaceRightClass="mr-70"
-          bgColorClass="bg-gray-3"
-        />
+				{/* testimonial */}
+				<TestimonialOne
+					spaceTopClass="pt-100"
+					spaceBottomClass="pb-95"
+					spaceLeftClass="ml-70"
+					spaceRightClass="mr-70"
+					bgColorClass="bg-gray-3"
+				/>
 
-        {/* brand logo slider */}
-        <BrandLogoSliderOne spaceBottomClass="pb-95" spaceTopClass="pt-100" />
+				{/* brand logo slider */}
+				<BrandLogoSliderOne
+					spaceBottomClass="pb-95"
+					spaceTopClass="pt-100"
+				/>
 
-        {/* blog featured */}
-        <BlogFeaturedTwo spaceBottomClass="pb-55" />
-      </LayoutTwo>
-    </Fragment>
-  );
+				{/* blog featured */}
+				<BlogFeaturedTwo spaceBottomClass="pb-55" />
+			</LayoutTwo>
+		</Fragment>
+	);
 };
 
 export default HomeElectronics;

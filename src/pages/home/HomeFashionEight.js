@@ -11,43 +11,49 @@ import FeatureIconSix from "../../wrappers/feature-icon/FeatureIconSix";
 import HeroSliderTwentyEight from "../../wrappers/hero-slider/HeroSliderTwentyEight";
 
 const HomeFashionEight = () => {
-  return (
-    <Fragment>
-      <MetaTags>
-        <title>Flone | Fashion Home</title>
-        <meta
-          name="description"
-          content="Fashion home of flone react minimalist eCommerce template."
-        />
-      </MetaTags>
-      <LayoutOne
-        headerContainerClass="container-fluid"
-        headerPaddingClass="header-padding-1"
-      >
-        {/* hero slider */}
-        <HeroSliderTwentyEight />
-        {/* feature text */}
-        <FeatureIconSix spaceBottomClass="pb-100" spaceTopClass="pt-30" />
-        {/* video popup */}
-        <VideoPopup spaceBottomClass="pb-100" />
-        {/* product slider */}
-        <ProductSliderFour category="fashion" />
-        {/* banner */}
-        <BannerThirty spaceTopClass="pt-100" spaceBottomClass="pb-70" />
-        {/* product slider */}
-        <ProductSliderThree category="fashion" />
-        {/* brand logo slider */}
-        <BrandLogoSliderThree spaceBottomClass="pb-95" spaceTopClass="pt-100" />
-        {/* newsletter */}
-        <NewsletterFour
-          spaceTopClass="pt-100"
-          spaceBottomClass="pb-100"
-          subscribeBtnClass="hover-red"
-          bgColorClass="bg-gray-7"
-        />
-      </LayoutOne>
-    </Fragment>
-  );
+	return (
+		<Fragment>
+			<MetaTags>
+				<title>MJ Homes | Fashion Home</title>
+				<meta
+					name="description"
+					content="Fashion home of flone react minimalist eCommerce template."
+				/>
+			</MetaTags>
+			<LayoutOne
+				headerContainerClass="container-fluid"
+				headerPaddingClass="header-padding-1"
+			>
+				{/* hero slider */}
+				<HeroSliderTwentyEight />
+				{/* feature text */}
+				<FeatureIconSix
+					spaceBottomClass="pb-100"
+					spaceTopClass="pt-30"
+				/>
+				{/* video popup */}
+				<VideoPopup spaceBottomClass="pb-100" />
+				{/* product slider */}
+				<ProductSliderFour category="fashion" />
+				{/* banner */}
+				<BannerThirty spaceTopClass="pt-100" spaceBottomClass="pb-70" />
+				{/* product slider */}
+				<ProductSliderThree category="fashion" />
+				{/* brand logo slider */}
+				<BrandLogoSliderThree
+					spaceBottomClass="pb-95"
+					spaceTopClass="pt-100"
+				/>
+				{/* newsletter */}
+				<NewsletterFour
+					spaceTopClass="pt-100"
+					spaceBottomClass="pb-100"
+					subscribeBtnClass="hover-red"
+					bgColorClass="bg-gray-7"
+				/>
+			</LayoutOne>
+		</Fragment>
+	);
 };
 
 export default HomeFashionEight;
