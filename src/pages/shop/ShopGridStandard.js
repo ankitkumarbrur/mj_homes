@@ -4,14 +4,14 @@ import MetaTags from "react-meta-tags";
 import Paginator from "react-hooks-paginator";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
-import { getSortedProducts } from "../../helpers/product";
+import { searchProducts, getSortedProducts } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 
-const ShopGridStandard = ({ location, products }) => {
+const ShopGridStandard = ({ location, products, cb }) => {
 	const [layout, setLayout] = useState("grid three-column");
 	const [sortType, setSortType] = useState("");
 	const [sortValue, setSortValue] = useState("");
@@ -21,6 +21,8 @@ const ShopGridStandard = ({ location, products }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [currentData, setCurrentData] = useState([]);
 	const [sortedProducts, setSortedProducts] = useState([]);
+	const [loading, setLoading] = useState(cb === undefined ? false : true);
+	const [data, setData] = useState(cb);
 
 	const pageLimit = 15;
 	const { pathname } = location;
@@ -40,15 +42,33 @@ const ShopGridStandard = ({ location, products }) => {
 	};
 
 	useEffect(() => {
-		let sortedProducts = getSortedProducts(products, sortType, sortValue);
-		const filterSortedProducts = getSortedProducts(
-			sortedProducts,
-			filterSortType,
-			filterSortValue,
-		);
-		sortedProducts = filterSortedProducts;
-		setSortedProducts(sortedProducts);
-		setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+		if (loading) {
+			Promise.resolve(cb)
+				.then((res) => {
+					setLoading(false);
+					setData(res.data);
+					// UNCOMMENT THIS AFTER CORRECTION IN API
+					// products = data;
+				})
+				.catch((err) => {
+					alert("Unable to complete search request");
+					setLoading(false);
+				});
+		} else {
+			let sortedProducts = getSortedProducts(
+				products,
+				sortType,
+				sortValue,
+			);
+			const filterSortedProducts = getSortedProducts(
+				sortedProducts,
+				filterSortType,
+				filterSortValue,
+			);
+			sortedProducts = filterSortedProducts;
+			setSortedProducts(sortedProducts);
+			setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+		}
 	}, [
 		offset,
 		products,
@@ -56,10 +76,24 @@ const ShopGridStandard = ({ location, products }) => {
 		sortValue,
 		filterSortType,
 		filterSortValue,
+		loading,
 	]);
+
+	//loader screen
+	if (loading) {
+		return (
+			<div className="flone-preloader-wrapper">
+				<div className="flone-preloader">
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<Fragment>
+			{console.log(data)}
 			<MetaTags>
 				<title>MJ Homes | Shop</title>
 				<meta
@@ -133,11 +167,18 @@ ShopGridStandard.propTypes = {
 	location: PropTypes.object,
 	products: PropTypes.array,
 };
-
-const mapStateToProps = (state) => {
-	return {
-		products: state.productData.products,
-	};
+const mapStateToProps = (state, props) => {
+	const searchText = new URLSearchParams(props.location.search).get("q");
+	if (searchText !== null) {
+		return {
+			products: state.productData.products,
+			cb: searchProducts(searchText),
+		};
+	} else {
+		return {
+			products: state.productData.products,
+		};
+	}
 };
 
 export default connect(mapStateToProps)(ShopGridStandard);

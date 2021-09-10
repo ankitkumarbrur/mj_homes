@@ -13,11 +13,12 @@ $btn-material-size: 60px;
 	/* Search Active */
 	&.search-active {
 		.search-input {
+			// z-index: 99 !important;
 			display: flex;
 			justify-content: space-between;
 			width: 77%;
 			opacity: 1;
-			z-index: 999;
+
 			transform: none;
 			pointer-events: all;
 		}
@@ -47,7 +48,7 @@ $btn-material-size: 60px;
 
 .icon-close {
 	position: fixed;
-	z-index: 999;
+	z-index: 9811 !important;
 	top: 30px;
 	right: 30px;
 	color: #fff;
@@ -71,7 +72,8 @@ $btn-material-size: 60px;
 	margin-top: -40px;
 	pointer-events: none;
 	opacity: 0;
-	z-index: -9;
+	z-index: 9811 !important;
+	// z-index: -9;
 	// display: none;
 	transform: translate(40px, 0);
 	transition: all 1s ease-in-out;

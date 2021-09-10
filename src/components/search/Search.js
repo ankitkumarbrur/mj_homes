@@ -1,29 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 
-// const formData = new FormData();
-//         formData.append("username", email);
-//         formData.append("password", password);
-//         const config = {
-//             headers: {
-//                 "Content-Type": "multipart/form-data",
-//             },
-//         };
-
-//         const { data } = await axios.post(
-//             `${BASE_URL}/api/authenticate/login/`,
-//             formData,
-//             config
-//         );
-
-//         dispatch({
-//             type: USER_LOGIN_SUCCESS,
-//             payload: data,
-//         });
-//         addToast("Logged In", {
-//             appearance: "success",
-//             autoDismiss: true
-//         });
-//         localStorage.setItem("userInfo", JSON.stringify(data));
 export default () => {
 	useEffect(() => {
 		document
@@ -56,10 +32,15 @@ export default () => {
 	return (
 		<div className="search">
 			<i className="icon-close pe-7s-close"></i>
-			<form className="search-input">
+			<form
+				className="search-input"
+				action="/shop-grid-standard"
+				method="get"
+			>
 				<input
 					className="input-search"
 					placeholder="Start Typing"
+					name="q"
 					type="text"
 				/>
 
