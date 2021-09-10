@@ -76,7 +76,7 @@ const ShopGridStandard = ({ location, products }) => {
 				Shop
 			</BreadcrumbsItem>
 
-			<LayoutOne headerTop="visible">
+			<LayoutOne>
 				{/* breadcrumb */}
 				<Breadcrumb />
 

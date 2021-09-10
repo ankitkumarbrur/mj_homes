@@ -11,16 +11,16 @@ const CategoryThreeSingle = ({ data, sliderClass }) => {
         </Link>
       </div>
       <div className="collection-content text-center">
-        <span>{data.subtitle}</span>
+        {/* <span>{data.subtitle}</span> */}
         <h4>
           <Link to={process.env.PUBLIC_URL + data.link}>{data.title}</Link>
         </h4>
-        <Link
+        {/* <Link
           to={process.env.PUBLIC_URL + data.link}
           className="collection-btn"
         >
           SHOP NOW
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
@@ -28,7 +28,7 @@ const CategoryThreeSingle = ({ data, sliderClass }) => {
 
 CategoryThreeSingle.propTypes = {
   data: PropTypes.object,
-  sliderClass: PropTypes.string
+  sliderClass: PropTypes.string,
 };
 
 export default CategoryThreeSingle;

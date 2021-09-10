@@ -9,7 +9,7 @@ const TabProduct = ({
   spaceTopClass,
   spaceBottomClass,
   bgColorClass,
-  category
+  category,
 }) => {
   return (
     <div
@@ -82,7 +82,7 @@ TabProduct.propTypes = {
   bgColorClass: PropTypes.string,
   category: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
 export default TabProduct;

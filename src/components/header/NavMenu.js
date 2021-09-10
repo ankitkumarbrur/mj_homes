@@ -29,7 +29,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
 							onClick={() => {
 								document
 									.querySelector("#offcanvas-mobile-menu")
-									.classList.toggle("active");
+									.classList.add("active");
 								document
 									.querySelector("#products")
 									.classList.toggle("active");
@@ -43,7 +43,7 @@ const NavMenu = ({ strings, menuWhiteClass, sidebarMenu }) => {
 							onClick={() => {
 								document
 									.querySelector("#offcanvas-mobile-menu")
-									.classList.toggle("active");
+									.classList.add("active");
 								document
 									.querySelector("#rooms")
 									.classList.toggle("active");

@@ -14,6 +14,13 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 
+import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
+import CategoryTwoSlider from "../../wrappers/category/CategoryTwoSlider";
+import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
+import CategoryFourSlider from "../../wrappers/category/CategoryFourSlider";
+import CategoryFiveGrid from "../../wrappers/category/CategoryFiveGrid";
+import CategoryGrid from "../../wrappers/category/CategoryGrid";
+
 const Home = () => {
 	return (
 		<Fragment>
@@ -24,10 +31,6 @@ const Home = () => {
 					content="MJ Homes is a furniture company based in Bahadurgarh, Haryana. We provide top class furniture on your doorstep. You can also order custom furniture by visiting our showroom facility."
 				/>
 			</MetaTags>
-			{/* <LayoutOne
-				headerContainerClass="container-fluid"
-				headerPaddingClass="header-padding-1"
-			> */}
 			<LayoutOne
 				headerContainerClass="container-fluid"
 				headerPaddingClass="header-padding-1"
@@ -46,10 +49,28 @@ const Home = () => {
 					dateTime="November 13, 2021 12:12:00"
 					countDownImage="/assets/img/banner/deal-5.png"
 				/>
+				{/* <LayoutOne
+				headerContainerClass="container-fluid"
+				headerPaddingClass="header-padding-1"
+				headerPositionClass="header-absolute"
+			> */}
+				{/* <LayoutSeven> */}
+				{/* hero slider */}
+				<HeroSliderTwentyNine />
+				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
 
 				{/* featured icon */}
 				{/* <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" /> */}
 				<FeatureIconSeven spaceBottomClass="pb-70" />
+
+				{/* category grid */}
+
+				{/* <CategoryGrid /> */}
+				{/* <CategoryOneSlider spaceBottomClass="pb-55" /> */}
+				{/* <CategoryTwoSlider spaceBottomClass="pb-55" /> */}
+				<CategoryThreeSlider spaceBottomClass="pb-70" />
+				{/* <CategoryFourSlider spaceBottomClass="pb-55" /> */}
+				{/* <CategoryFiveGrid spaceBottomClass="pb-55" /> */}
 
 				{/* tab product */}
 				<TabProduct spaceBottomClass="pb-60" category="fashion" />
