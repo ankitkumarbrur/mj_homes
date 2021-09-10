@@ -14,8 +14,6 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 
-import CategoryOneSlider from "../../wrappers/category/CategoryOneSlider";
-import CategoryTwoSlider from "../../wrappers/category/CategoryTwoSlider";
 import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
 import CategoryFourSlider from "../../wrappers/category/CategoryFourSlider";
 import CategoryFiveGrid from "../../wrappers/category/CategoryFiveGrid";
@@ -66,13 +64,7 @@ const Home = () => {
 				<FeatureIconSeven spaceBottomClass="pb-70" />
 
 				{/* category grid */}
-
-				{/* <CategoryGrid /> */}
-				{/* <CategoryOneSlider spaceBottomClass="pb-55" /> */}
-				{/* <CategoryTwoSlider spaceBottomClass="pb-55" /> */}
 				<CategoryThreeSlider spaceBottomClass="pb-70" />
-				{/* <CategoryFourSlider spaceBottomClass="pb-55" /> */}
-				{/* <CategoryFiveGrid spaceBottomClass="pb-55" /> */}
 
 				{/* tab product */}
 				<TabProduct spaceBottomClass="pb-60" category="fashion" />
