@@ -658,7 +658,13 @@
 		.product-sticky-image__single {
 			margin-left: 10px;
 		}
+		.product-sticky-image__single-3d {
+			margin-left: 10px;
+			grid-column: 1/3;
+			aspect-ratio: 5/3;
+		}
 	}
+
 	position: relative;
 	.product-img-badges {
 		position: absolute;

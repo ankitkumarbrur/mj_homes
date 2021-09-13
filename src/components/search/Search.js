@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect } from "react";
+import { useToasts } from "react-toast-notifications";
 
 export default () => {
+	const { addToast } = useToasts();
 	useEffect(() => {
 		document
 			.getElementsByClassName("control")[0]
@@ -36,12 +38,25 @@ export default () => {
 				className="search-input"
 				action="/shop-grid-standard"
 				method="get"
+				onSubmit={(e) => {
+					if (document.getElementsByName("q")[1].value === "") {
+						e.preventDefault();
+						console.log("hello");
+						addToast("Enter a keyword to search for products", {
+							appearance: "warning",
+							autoDismiss: true,
+						});
+					} else {
+						console.log("no hello");
+					}
+				}}
 			>
 				<input
 					className="input-search"
 					placeholder="Start Typing"
 					name="q"
 					type="text"
+					formNoValidate
 				/>
 
 				<button type="submit" className="input-search-icon">

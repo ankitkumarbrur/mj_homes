@@ -10,8 +10,17 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
+import { useToasts } from "react-toast-notifications";
+// import { useGLTF } from "@react-three/drei";
+// import { useHistory } from "react-router-dom";
 
 const ShopGridStandard = ({ location, products, cb }) => {
+	// let history = useHistory();
+	// console.log(history);
+
+	// const { nodes } = useGLTF("./shoe-draco.glb");
+	// console.log(nodes);
+
 	const [layout, setLayout] = useState("grid three-column");
 	const [sortType, setSortType] = useState("");
 	const [sortValue, setSortValue] = useState("");
@@ -23,6 +32,7 @@ const ShopGridStandard = ({ location, products, cb }) => {
 	const [sortedProducts, setSortedProducts] = useState([]);
 	const [loading, setLoading] = useState(cb === undefined ? false : true);
 	const [data, setData] = useState(cb);
+	const { addToast } = useToasts();
 
 	const pageLimit = 15;
 	const { pathname } = location;
@@ -51,7 +61,10 @@ const ShopGridStandard = ({ location, products, cb }) => {
 					// products = data;
 				})
 				.catch((err) => {
-					alert("Unable to complete search request");
+					addToast("Unable to complete search request, try again", {
+						appearance: "error",
+						autoDismiss: true,
+					});
 					setLoading(false);
 				});
 		} else {

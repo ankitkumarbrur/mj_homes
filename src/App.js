@@ -63,7 +63,6 @@ const App = (props) => {
 									path={process.env.PUBLIC_URL + "/"}
 									component={Home}
 								/>
-
 								{/* Shop pages */}
 								<Route
 									path={
@@ -72,7 +71,6 @@ const App = (props) => {
 									}
 									component={ShopGridStandard}
 								/>
-
 								{/* Shop product pages */}
 								<Route
 									path={
@@ -85,7 +83,15 @@ const App = (props) => {
 										/>
 									)}
 								/>
-
+								{/* <Route
+									path={process.env.PUBLIC_URL + "/product"}
+									render={(routeProps) => (
+										<Product
+											{...routeProps}
+											// key={routeProps.match.params.id}
+										/>
+									)}
+								/> */}
 								{/* Other pages */}
 								<Route
 									path={process.env.PUBLIC_URL + "/about"}
@@ -108,7 +114,6 @@ const App = (props) => {
 									}
 									component={LoginRegister}
 								/>
-
 								<Route
 									path={process.env.PUBLIC_URL + "/cart"}
 									component={Cart}
@@ -125,12 +130,10 @@ const App = (props) => {
 									path={process.env.PUBLIC_URL + "/checkout"}
 									component={Checkout}
 								/>
-
 								<Route
 									path={process.env.PUBLIC_URL + "/not-found"}
 									component={NotFound}
 								/>
-
 								<Route exact component={NotFound} />
 							</Switch>
 						</Suspense>
