@@ -35,7 +35,6 @@ const Home = () => {
 				headerPaddingClass="header-padding-1"
 				headerPositionClass="header-absolute"
 			>
-				<Search />
 				{/* <LayoutSeven> */}
 				{/* hero slider */}
 				<HeroSliderTwentyNine />

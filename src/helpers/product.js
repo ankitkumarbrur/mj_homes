@@ -1,4 +1,21 @@
-// get products based on category
+import axios from "axios";
+
+//get searched products
+export const searchProducts = async (searchText) => {
+	const BASE_URL = "http://eswar007.pythonanywhere.com";
+
+	const formData = new FormData();
+	formData.append("searchText", searchText);
+	const config = {
+		headers: {
+			"Content-Type": "multipart/form-data",
+		},
+	};
+
+	return await axios.post(`${BASE_URL}/api/search/`, formData, config);
+};
+
+// get products
 export const getProducts = (products, category, type, limit) => {
 	const finalProducts = category
 		? products.filter(
