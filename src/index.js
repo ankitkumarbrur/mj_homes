@@ -12,7 +12,7 @@ import products from "./data/products.json";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
-// import axios from "axios";
+import axios from "axios";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
@@ -29,7 +29,28 @@ const store = createStore(
   initialState,
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
+const BASE_URL = "http://eswar007.pythonanywhere.com";
 
+const fetch_data = async () => {
+  try {
+    const config = {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+
+      },
+    };
+    const data = await axios.get(
+      `${BASE_URL}/api/getcategory`,
+      config
+    );
+    console.log(data)
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+fetch_data();
 // fetch products from json file
 store.dispatch(fetchProducts(products));
 
