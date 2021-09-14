@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getProducts } from "../../helpers/product";
-import ProductGridSingleTen from "../../components/product/ProductGridSingleTen";
+import ProductGridSingleFour from "../../components/product/ProductGridSingleFour";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 
-const ProductGridTen = ({
+const ProductGridFour = ({
   products,
   currency,
   addToCart,
@@ -17,35 +17,33 @@ const ProductGridTen = ({
   wishlistItems,
   compareItems,
   sliderClassName,
-  spaceBottomClass,
-  colorClass,
-  productGridStyleClass
+  spaceBottomClass
 }) => {
   return (
     <Fragment>
-      {products.map((product) => {
+      {console.log("products", products)}
+      {products.map(product => {
+        console.log("yes")
         return (
-          <ProductGridSingleTen
+          <ProductGridSingleFour
             sliderClassName={sliderClassName}
             spaceBottomClass={spaceBottomClass}
-            colorClass={colorClass}
-            productGridStyleClass={productGridStyleClass}
             product={product}
             currency={currency}
             addToCart={addToCart}
             addToWishlist={addToWishlist}
             addToCompare={addToCompare}
             cartItem={
-              cartItems.filter((cartItem) => cartItem.id === product.id)[0]
+              cartItems.filter(cartItem => cartItem.id === product.id)[0]
             }
             wishlistItem={
               wishlistItems.filter(
-                (wishlistItem) => wishlistItem.id === product.id
+                wishlistItem => wishlistItem.id === product.id
               )[0]
             }
             compareItem={
               compareItems.filter(
-                (compareItem) => compareItem.id === product.id
+                compareItem => compareItem.id === product.id
               )[0]
             }
             key={product.id}
@@ -56,7 +54,7 @@ const ProductGridTen = ({
   );
 };
 
-ProductGridTen.propTypes = {
+ProductGridFour.propTypes = {
   addToCart: PropTypes.func,
   addToCompare: PropTypes.func,
   addToWishlist: PropTypes.func,
@@ -66,8 +64,6 @@ ProductGridTen.propTypes = {
   products: PropTypes.array,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  colorClass: PropTypes.string,
-  productGridStyleClass: PropTypes.string,
   wishlistItems: PropTypes.array
 };
 
@@ -86,7 +82,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     addToCart: (
       item,
@@ -114,4 +110,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductGridTen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductGridFour);
