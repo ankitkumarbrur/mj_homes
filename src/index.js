@@ -29,28 +29,20 @@ const store = createStore(
   initialState,
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
-const BASE_URL = "http://eswar007.pythonanywhere.com";
+// const BASE_URL = "http://eswar007.pythonanywhere.com";
 
-const fetch_data = async () => {
-  try {
-    const config = {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+// const fetch_data = async () => {
+//   try {
+//     const data = await axios.get(
+//       `${BASE_URL}/api/getcategory/`,
+//     );
+//     console.log(data)
 
-      },
-    };
-    const data = await axios.get(
-      `${BASE_URL}/api/getcategory`,
-      config
-    );
-    console.log(data)
-
-  } catch (error) {
-    console.log(error)
-  }
-}
-fetch_data();
+//   } catch (error) {
+//     console.log("error")
+//   }
+// }
+// fetch_data();
 // fetch products from json file
 store.dispatch(fetchProducts(products));
 

@@ -33,6 +33,39 @@ const LoginRegister = ({ location }) => {
 
   const { userInfo, error, loading } = useSelector(state => state.userLogin)
   const { products } = useSelector(state => state.productData)
+  const BASE_URL = "http://eswar007.pythonanywhere.com";
+
+  const fetch_data = async () => {
+    try {
+      const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000/",
+        },
+      };
+
+      const { products } = await axios.get(
+        "https://eswar007.pythonanywhere.com/api/products/"
+      )
+      var url = "https://eswar007.pythonanywhere.com/api/products/";
+
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          console.log(xhr.status);
+          console.log(xhr.responseText);
+        }
+      };
+
+      xhr.send();
+      // console.log(data.products)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   const fetchData = async () => {
 
@@ -100,6 +133,7 @@ const LoginRegister = ({ location }) => {
 
 
     }
+    fetch_data();
     if (userInfo && data) {
       // fetchData();
       setdata(false);
