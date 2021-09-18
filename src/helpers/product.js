@@ -2,7 +2,7 @@ import axios from "axios";
 
 //get searched products
 export const searchProducts = async (searchText) => {
-	const BASE_URL = "http://eswar007.pythonanywhere.com";
+	const BASE_URL = "http://localhost:8000";
 
 	const formData = new FormData();
 	formData.append("searchText", searchText);
@@ -19,9 +19,11 @@ export const searchProducts = async (searchText) => {
 export const getProducts = (products, subcategory, type, limit) => {
 	const finalProducts = subcategory
 		? products.filter(
-			(product) =>
-				product.subcategory.filter((single) => single == subcategory)[0],
-		)
+				(product) =>
+					product.subcategory.filter(
+						(single) => single == subcategory,
+					)[0],
+		  )
 		: products;
 
 	if (type && type == "new") {
@@ -41,14 +43,12 @@ export const getProducts = (products, subcategory, type, limit) => {
 	return finalProducts.slice(0, limit ? limit : finalProducts.length);
 };
 
-
 // get products based on tag
 export const getProductsByTag = (products, tag, type, limit) => {
 	const finalProducts = tag
 		? products.filter(
-			(product) =>
-				product.tag.filter((single) => single == tag)[0],
-		)
+				(product) => product.tag.filter((single) => single == tag)[0],
+		  )
 		: products;
 
 	if (type && type == "new") {
@@ -112,8 +112,8 @@ export const getSortedProducts = (products, sortType, sortValue) => {
 			return products.filter((product) => {
 				return product.subcategory
 					? product.subcategory.filter(
-						(single) => single == sortValue,
-					)[0]
+							(single) => single == sortValue,
+					  )[0]
 					: false;
 			});
 		}
