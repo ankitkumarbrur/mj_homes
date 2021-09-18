@@ -6,12 +6,20 @@ import { connect } from "react-redux";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
+import FrequentlyBoughtTogether from "../../wrappers/product/FrequentlyBoughtTogether";
+import OtherPeopleBought from "../../wrappers/product/OtherPeopleBought";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescriptionSticky from "../../wrappers/product/ProductImageDescriptionSticky";
+// import { useGLTF } from "@react-three/drei";
+// import { useHistory } from "react-router-dom";
 
 const ProductSticky = ({ location, product }) => {
+	{ console.log("productSticky.js", product) }
+	// let history = useHistory();
+	// console.log(history);
+	// const { nodes } = useGLTF("http://localhost:3000/shoe-draco.glb");
+	// console.log(nodes);
 	const { pathname } = location;
-
 	return (
 		<Fragment>
 			<MetaTags>
@@ -29,7 +37,7 @@ const ProductSticky = ({ location, product }) => {
 				Shop Product
 			</BreadcrumbsItem>
 
-			<LayoutOne headerTop="visible">
+			<LayoutOne>
 				{/* breadcrumb */}
 				<Breadcrumb />
 
@@ -39,18 +47,31 @@ const ProductSticky = ({ location, product }) => {
 					spaceBottomClass="mb-100"
 					product={product}
 				/>
-
+				{/*  */}
 				{/* product description tab */}
 				<ProductDescriptionTab
 					spaceBottomClass="pb-90"
-					productFullDesc={product.fullDescription}
+					productFullDesc={product.description}
 				/>
 
+				{/* frequently bought together product slider */}
+				<FrequentlyBoughtTogether
+					spaceBottomClass="pb-95"
+					category={product.subcategory ? product.subcategory[0] : ""}
+				/>
+				{/* {console.log(product.category[0])} */}
 				{/* related product slider */}
 				<RelatedProductSlider
 					spaceBottomClass="pb-95"
-					category={product.category[0]}
+					tag={product.tag ? product.tag[0] : ""}
 				/>
+
+				{/* other people bought product slider */}
+				<OtherPeopleBought
+					spaceBottomClass="pb-95"
+					category={product.subcategory[0]}
+				/>
+
 			</LayoutOne>
 		</Fragment>
 	);
@@ -62,10 +83,11 @@ ProductSticky.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-	const itemId = ownProps.match.params.id;
+	// const itemId = ownProps.match.params.id;
+	const itemId = "1";
 	return {
 		product: state.productData.products.filter(
-			(single) => single.id === itemId,
+			(single) => single.id == itemId,
 		)[0],
 	};
 };

@@ -34,16 +34,16 @@ const CustomForm = ({ status, message, onValidated }) => {
         </div>
       </div>
 
-      {status === "sending" && (
+      {status == "sending" && (
         <div style={{ color: "#3498db", fontSize: "12px" }}>sending...</div>
       )}
-      {status === "error" && (
+      {status == "error" && (
         <div
           style={{ color: "#e74c3c", fontSize: "12px" }}
           dangerouslySetInnerHTML={{ __html: message }}
         />
       )}
-      {status === "success" && (
+      {status == "success" && (
         <div
           style={{ color: "#2ecc71", fontSize: "12px" }}
           dangerouslySetInnerHTML={{ __html: message }}

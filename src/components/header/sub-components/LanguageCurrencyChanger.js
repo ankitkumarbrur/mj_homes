@@ -22,13 +22,13 @@ const LanguageCurrencyChanger = ({
     <div className="language-currency-wrap">
       <div className="same-language-currency language-style">
         <span>
-          {currentLanguageCode === "en"
+          {currentLanguageCode == "en"
             ? "English"
-            : currentLanguageCode === "fn"
-            ? "French"
-            : currentLanguageCode === "de"
-            ? "Germany"
-            : ""}{" "}
+            : currentLanguageCode == "fn"
+              ? "French"
+              : currentLanguageCode == "de"
+                ? "Germany"
+                : ""}{" "}
           <i className="fa fa-angle-down" />
         </span>
         <div className="lang-car-dropdown">

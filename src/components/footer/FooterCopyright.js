@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
   return (
     <div
-      className={`copyright ${spaceBottomClass ? spaceBottomClass : ""} ${
-        colorClass ? colorClass : ""
-      }`}
+      className={`copyright ${spaceBottomClass ? spaceBottomClass : ""} ${colorClass ? colorClass : ""
+        }`}
     >
       <div className="footer-logo">
         <Link to={process.env.PUBLIC_URL + "/"}>
@@ -16,14 +15,11 @@ const FooterCopyright = ({ footerLogo, spaceBottomClass, colorClass }) => {
       </div>
       <p>
         &copy; {new Date().getFullYear()}{" "}
-        <a
-          href="https://hasthemes.com"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Flone
-        </a>
-        .<br /> All Rights Reserved
+
+
+        MJ HOMES
+
+        <br /> All Rights Reserved
       </p>
     </div>
   );

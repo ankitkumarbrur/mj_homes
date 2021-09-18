@@ -108,6 +108,14 @@ span {
   transition: all 0.3s ease 0s;
 }
 
+img {
+	float: left;
+	object-fit: cover;
+}
+.react-toast-notifications__container {
+	z-index: 9999 !important;
+}
+
 *:focus {
   outline: none !important;
 }

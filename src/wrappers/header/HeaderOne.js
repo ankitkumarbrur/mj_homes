@@ -5,6 +5,7 @@ import NavMenu from "../../components/header/NavMenu";
 import IconGroup from "../../components/header/IconGroup";
 import MobileMenu from "../../components/header/MobileMenu";
 import HeaderTop from "../../components/header/HeaderTop";
+import Search from "../../components/search/Search";
 
 const HeaderOne = ({
 	layout,
@@ -32,20 +33,17 @@ const HeaderOne = ({
 
 	return (
 		<header
-			className={`header-area clearfix ${
-				headerBgClass ? headerBgClass : ""
-			} ${headerPositionClass ? headerPositionClass : ""}`}
+			className={`header-area clearfix ${headerBgClass ? headerBgClass : ""
+				} ${headerPositionClass ? headerPositionClass : ""}`}
 		>
 			<div
-				className={`${headerPaddingClass ? headerPaddingClass : ""} ${
-					top === "visible" ? "d-none d-lg-block" : "d-none"
-				} header-top-area ${
-					borderStyle === "fluid-border" ? "border-none" : ""
-				}`}
+				className={`${headerPaddingClass ? headerPaddingClass : ""} ${top == "visible" ? "d-none d-lg-block" : "d-none"
+					} header-top-area ${borderStyle == "fluid-border" ? "border-none" : ""
+					}`}
 			>
 				<div
 					className={
-						layout === "container-fluid" ? layout : "container"
+						layout == "container-fluid" ? layout : "container"
 					}
 				>
 					{/* header top */}
@@ -54,15 +52,13 @@ const HeaderOne = ({
 			</div>
 
 			<div
-				className={` ${
-					headerPaddingClass ? headerPaddingClass : ""
-				} sticky-bar header-res-padding clearfix ${
-					scroll > headerTop ? "stick" : ""
-				}`}
+				className={` ${headerPaddingClass ? headerPaddingClass : ""
+					} sticky-bar header-res-padding clearfix ${scroll > headerTop ? "stick" : ""
+					}`}
 			>
 				<div
 					className={
-						layout === "container-fluid" ? layout : "container"
+						layout == "container-fluid" ? layout : "container"
 					}
 				>
 					<div className="row">
@@ -85,6 +81,7 @@ const HeaderOne = ({
 				</div>
 				{/* mobile menu */}
 				<MobileMenu />
+				<Search />
 			</div>
 		</header>
 	);

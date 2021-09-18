@@ -29,14 +29,12 @@ const HeaderSix = ({ layout, headerPaddingClass, headerBgClass }) => {
 
 	return (
 		<header
-			className={`header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7 ${
-				headerBgClass ? headerBgClass : ""
-			} ${headerPaddingClass ? headerPaddingClass : ""} ${
-				scroll > headerTop ? "stick" : ""
-			}`}
+			className={`header-area sticky-bar header-padding-3 header-res-padding clearfix transparent-bar header-hm-7 ${headerBgClass ? headerBgClass : ""
+				} ${headerPaddingClass ? headerPaddingClass : ""} ${scroll > headerTop ? "stick" : ""
+				}`}
 		>
 			<div
-				className={layout === "container-fluid" ? layout : "container"}
+				className={layout == "container-fluid" ? layout : "container"}
 			>
 				<div className="row">
 					<div className="col-xl-5 col-lg-6 d-none d-lg-block">

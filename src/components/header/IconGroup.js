@@ -26,7 +26,7 @@ const IconGroup = ({
 
 	return (
 		<div className={`header-right-wrap ${false ? iconWhiteClass : ""}`}>
-			<div className="same-style header-search d-none d-lg-block">
+			{/* <div className="same-style header-search d-none d-lg-block">
 				<button
 					className="search-active"
 					onClick={(e) => handleClick(e)}
@@ -41,6 +41,15 @@ const IconGroup = ({
 						</button>
 					</form>
 				</div>
+			</div> */}
+			<div className="same-style exp-head header-search d-none d-lg-block">
+				<button
+					className="control"
+					// onClick={(e) => handleClick(e)}
+				>
+					<div class="btn-material"></div>
+					<i className="pe-7s-search" />
+				</button>
 			</div>
 			<div className="same-style account-setting d-none d-lg-block">
 				<button
