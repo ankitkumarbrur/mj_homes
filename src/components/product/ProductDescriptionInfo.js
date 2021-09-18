@@ -84,7 +84,7 @@ const ProductDescriptionInfo = ({
                       value={single.color}
                       name="product-color"
                       checked={
-                        single.color === selectedProductColor ? "checked" : ""
+                        single.color == selectedProductColor ? "checked" : ""
                       }
                       onChange={() => {
                         setSelectedProductColor(single.color);
@@ -104,31 +104,31 @@ const ProductDescriptionInfo = ({
             <div className="pro-details-size-content">
               {product.variation &&
                 product.variation.map(single => {
-                  return single.color === selectedProductColor
+                  return single.color == selectedProductColor
                     ? single.size.map((singleSize, key) => {
-                        return (
-                          <label
-                            className={`pro-details-size-content--single`}
-                            key={key}
-                          >
-                            <input
-                              type="radio"
-                              value={singleSize.name}
-                              checked={
-                                singleSize.name === selectedProductSize
-                                  ? "checked"
-                                  : ""
-                              }
-                              onChange={() => {
-                                setSelectedProductSize(singleSize.name);
-                                setProductStock(singleSize.stock);
-                                setQuantityCount(1);
-                              }}
-                            />
-                            <span className="size-name">{singleSize.name}</span>
-                          </label>
-                        );
-                      })
+                      return (
+                        <label
+                          className={`pro-details-size-content--single`}
+                          key={key}
+                        >
+                          <input
+                            type="radio"
+                            value={singleSize.name}
+                            checked={
+                              singleSize.name == selectedProductSize
+                                ? "checked"
+                                : ""
+                            }
+                            onChange={() => {
+                              setSelectedProductSize(singleSize.name);
+                              setProductStock(singleSize.stock);
+                              setQuantityCount(1);
+                            }}
+                          />
+                          <span className="size-name">{singleSize.name}</span>
+                        </label>
+                      );
+                    })
                     : "";
                 })}
             </div>
@@ -230,11 +230,11 @@ const ProductDescriptionInfo = ({
           </div>
         </div>
       )}
-      {product.category ? (
+      {product.subcategory ? (
         <div className="pro-details-meta">
           <span>Categories :</span>
           <ul>
-            {product.category.map((single, key) => {
+            {product.subcategory.map((single, key) => {
               return (
                 <li key={key}>
                   <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>

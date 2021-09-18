@@ -1,238 +1,594 @@
 [
   {
-    "id": "1",
-    "name": "Sheesham 4 seater dining",
-    "description": "This is a product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Dining table, dining table set, dining room sets, kitchen table, marble dining table, dining set, glass dining table, modern dining table, dining table 4 seater, dining table chairs, dining table price, square dining table for 4,  wood tables, dinner room, dining table, dining set, dining chair,",
-    "size": "30*48*30",
-    "weight": "50",
-    "price": 26990.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Dining table",
-      "123"
-    ],
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "Dark coffee",
-    "material": "Sheesham wood",
-    "manufacturer": "Mj Homes",
-    "stock": 5,
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/15ytrO9KQC_n3b8s4ZcerfqGkcz5wu2XH/view?usp=sharing"
-  },
-  {
-    "id": "2",
-    "name": "Sheesham 4 seater dining",
-    "description": "This is product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Dining table, dining table set, dining room sets, kitchen table, marble dining table, dining set, glass dining table, modern dining table, dining table 6 seater, dining table chairs, dining table price, square dining table for 6,  wood tables, dinner room, dining table, dining set, dining chair,",
-    "size": "18*20*27",
-    "weight": "20",
-    "price": 26990.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Dining chair"
-    ],
-    "tag": [
-      "dwqdqwteaasdkwood1"
-    ],
-    "new": "true",
-    "color": "Dark coffee",
-    "material": "Rexine",
-    "manufacturer": "Mj Homes",
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/167tlidP-2BzJHskXi_N-5TiIO3KuY-K9/view?usp=sharing"
-  },
-  {
-    "id": "3",
-    "name": "Sangwan 6 seater dining s",
-    "description": "This is a product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Dining table, dining table set, dining room sets, kitchen table, marble dining table, dining set, glass dining table, modern dining table, dining table 6 seater, dining table chairs, dining table price, square dining table for 6,  wood tables, dinner room, dining table, dining set, dining chair,",
-    "size": "36*60*30",
-    "weight": "50",
-    "price": 0.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Dining table"
-    ],
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "Dark Brown",
-    "material": "Sangwan",
-    "manufacturer": "Mj Homes",
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/167tlidP-2BzJHskXi_N-5TiIO3KuY-K9/view?usp=sharing"
-  },
-  {
-    "id": "4",
-    "name": "Sangwan 6 seater dining s",
-    "description": "This is product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Dining table, dining table set, dining room sets, kitchen table, marble dining table, dining set, glass dining table, modern dining table, dining table 6 seater, dining table chairs, dining table price, square dining table for 6,  wood tables, dinner room, dining table, dining set, dining chair,",
-    "size": "18*20*27",
-    "weight": "20",
-    "price": 34990.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Dining chair"
-    ],
-    "new": "true",
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "Dark Brown",
-    "material": "Rexine",
-    "manufacturer": "Mj Homes",
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/167tlidP-2BzJHskXi_N-5TiIO3KuY-K9/view?usp=sharing"
-  },
-  {
-    "id": "5",
-    "name": "Luxury 3 seater chester s",
-    "description": "This is product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Sofa, couch, sofa bed, sofa set, corner sofa, couch for sale, chesterfield sofa, sofa table, sofa set price, wooden sofa, cheap couches, modern sofa, sofa without arms, kids sofa, sofa couch, low price, sofa price, living room sofa, black sofa, living room furniture, living room designs, modern living room, living room décor, living room furniture sets, leather sofa set, living room table, drawing room design, living room interior design, living room interior, hall interior design, living room table sets, lounge room, sofa set for living room, modern living room furniture, sofa design 2020.",
-    "size": "30*75*44",
-    "weight": "50",
-    "price": 33099.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Chesterfield sofa"
-    ],
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "Dark Brown",
-    "material": "Rexine",
-    "manufacturer": "Mj Homes",
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ft6wQ__91m1V-Pbh4vCbFQqg5k1AOY9k/view?usp=sharing"
-  },
-  {
-    "id": "6",
-    "name": "Teakwood 6 seater dining",
-    "description": "This is product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Dining table, dining table set, dining room sets, kitchen table, marble dining table, dining set, glass dining table, modern dining table, dining table 6 seater, dining table chairs, dining table price, square dining table for 6,  wood tables, dinner room, dining table, dining set, dining chair,",
-    "size": "36*60*30",
-    "weight": "50",
-    "price": 29990.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Dining table"
-    ],
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "Dark Brown",
-    "material": "Teakwood",
-    "manufacturer": "Mj Homes",
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1w2Jl273VK4EEawpHr7dqCL4P4pI8OO8N/view?usp=sharing"
-  },
-  {
-    "id": "7",
-    "name": "Teakwood 6 seater dining",
-    "description": "This is product Description",
-    "care": "This is product care instuctoin",
-    "keyword": "Dining table, dining table set, dining room sets, kitchen table, marble dining table, dining set, glass dining table, modern dining table, dining table 6 seater, dining table chairs, dining table price, square dining table for 6,  wood tables, dinner room, dining table, dining set, dining chair,",
-    "size": "18*20*41",
-    "weight": "20",
-    "price": 0.0,
-    "priceWithGST": 0.0,
-    "category": [
-      "Dining chair"
-    ],
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "Dark Brown",
-    "material": "Teakwood",
-    "manufacturer": "Mj Homes",
-    "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
-    ],
-    "featured": false,
-    "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1w2Jl273VK4EEawpHr7dqCL4P4pI8OO8N/view?usp=sharing"
-  },
-  {
-    "id": "8",
+    "id": 1,
     "name": "chess lightning bed",
     "description": "This is product Description",
+    "shortDescription": "short description",
+    "new": true,
+    "bestSeller": true,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 2500,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/electronics/1.jpg",
+      "/assets/img/product/electronics/2.jpg",
+      "/assets/img/product/electronics/3.jpg",
+      "/assets/img/product/electronics/4.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 50,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2021 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "chess lightning bed",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
     "size": "15*15*54",
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "category": [
-      "queensize bed"
+    "subcategory": [
+      "kingsize bed"
     ],
-    "tag": [
-      "dwqdqwteakwood1"
-    ],
-    "color": "White",
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "/assets/img/product/fashion/8.jpg",
-      "/assets/img/product/fashion/6.jpg",
-      "/assets/img/product/fashion/3.jpg",
-      "/assets/img/product/fashion/1.jpg"
+      "https://source.unsplash.com/random",
+      "/assets/img/product/electronics/1.jpg",
+      "/assets/img/product/electronics/2.jpg",
+      "/assets/img/product/electronics/3.jpg",
+      "/assets/img/product/electronics/4.jpg"
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing"
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Queen Bed",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 0.0,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/electronics/1.jpg",
+      "/assets/img/product/electronics/2.jpg",
+      "/assets/img/product/electronics/3.jpg",
+      "/assets/img/product/electronics/4.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 4,
+    "name": "Stool",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 0.0,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/electronics/1.jpg",
+      "/assets/img/product/electronics/2.jpg",
+      "/assets/img/product/electronics/3.jpg",
+      "/assets/img/product/electronics/4.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 5,
+    "name": "Table",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 0.0,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/furnitures/2.jpg",
+      "/assets/img/product/furnitures/3.jpg",
+      "/assets/img/product/furnitures/4.jpg",
+      "/assets/img/product/furnitures/5.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 6,
+    "name": "Chair",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 0.0,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/furnitures/2.jpg",
+      "/assets/img/product/furnitures/3.jpg",
+      "/assets/img/product/furnitures/4.jpg",
+      "/assets/img/product/furnitures/5.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 7,
+    "name": "Sofa",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 0.0,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/plants/3.jpg",
+      "/assets/img/product/plants/4.jpg",
+      "/assets/img/product/plants/5.jpg",
+      "/assets/img/product/plants/6.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
+  },
+  {
+    "id": 8,
+    "name": "chess lightning bed",
+    "description": "This is product Description",
+    "shortDescription": "short description",
+    "newProduct": false,
+    "bestSeller": false,
+    "care": "This is product care instuctoin",
+    "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
+    "size": "15*15*54",
+    "weight": "50976",
+    "price": 0.0,
+    "priceWithGST": 0.0,
+    "subcategory": [
+      "kingsize bed"
+    ],
+    "material": "Teakwood",
+    "manufacturer": "Mj Homes",
+    "image": [
+      "https://source.unsplash.com/random",
+      "/assets/img/product/plants/3.jpg",
+      "/assets/img/product/plants/4.jpg",
+      "/assets/img/product/plants/5.jpg",
+      "/assets/img/product/plants/6.jpg"
+    ],
+    "featured": false,
+    "dateAdded": "2021-08-05",
+    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "discount": 0,
+    "variation": [
+      {
+        "color": "white",
+        "image": "/assets/img/product/fashion/1.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 3
+          },
+          {
+            "name": "m",
+            "stock": 2
+          },
+          {
+            "name": "xl",
+            "stock": 5
+          }
+        ]
+      },
+      {
+        "color": "black",
+        "image": "/assets/img/product/fashion/8.jpg",
+        "size": [
+          {
+            "name": "x",
+            "stock": 4
+          },
+          {
+            "name": "m",
+            "stock": 7
+          },
+          {
+            "name": "xl",
+            "stock": 9
+          },
+          {
+            "name": "xxl",
+            "stock": 1
+          }
+        ]
+      }
+    ],
+    "offerEnd": "October 18, 2020 12:11:00",
+    "rating": 5
   }
 ]

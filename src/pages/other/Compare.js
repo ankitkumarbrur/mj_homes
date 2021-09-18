@@ -64,7 +64,7 @@ const Compare = ({
 																		(
 																			item,
 																		) =>
-																			item.id ===
+																			item.id ==
 																			compareItem.id,
 																	)[0];
 																return (
@@ -137,10 +137,10 @@ const Compare = ({
 																					now{" "}
 																				</a>
 																			) : compareItem.variation &&
-																			  compareItem
+																				compareItem
 																					.variation
 																					.length >=
-																					1 ? (
+																				1 ? (
 																				<Link
 																					to={`${process.env.PUBLIC_URL}/product/${compareItem.id}`}
 																				>
@@ -148,8 +148,8 @@ const Compare = ({
 																					Option
 																				</Link>
 																			) : compareItem.stock &&
-																			  compareItem.stock >
-																					0 ? (
+																				compareItem.stock >
+																				0 ? (
 																				<button
 																					onClick={() =>
 																						addToCart(
@@ -160,27 +160,27 @@ const Compare = ({
 																					className={
 																						cartItem !==
 																							undefined &&
-																						cartItem.quantity >
+																							cartItem.quantity >
 																							0
 																							? "active"
 																							: ""
 																					}
 																					disabled={
 																						cartItem !==
-																							undefined &&
+																						undefined &&
 																						cartItem.quantity >
-																							0
+																						0
 																					}
 																					title={
 																						compareItem !==
-																						undefined
+																							undefined
 																							? "Added to cart"
 																							: "Add to cart"
 																					}
 																				>
 																					{cartItem !==
 																						undefined &&
-																					cartItem.quantity >
+																						cartItem.quantity >
 																						0
 																						? "Added"
 																						: "Add to cart"}
@@ -237,7 +237,7 @@ const Compare = ({
 																		}
 																	>
 																		{discountedPrice !==
-																		null ? (
+																			null ? (
 																			<Fragment>
 																				<span className="amount old">
 																					{currency.currencySymbol +

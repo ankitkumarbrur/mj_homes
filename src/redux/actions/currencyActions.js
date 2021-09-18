@@ -11,7 +11,7 @@ export const setCurrency = (currencyName) => {
         const rates = response.data.rates;
         let currencyRate = 0;
         for (const rate in rates) {
-          if (rate === currencyName) {
+          if (rate == currencyName) {
             currencyRate = rates[rate];
           }
         }

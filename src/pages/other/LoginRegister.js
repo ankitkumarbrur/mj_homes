@@ -33,68 +33,37 @@ const LoginRegister = ({ location }) => {
 
   const { userInfo, error, loading } = useSelector(state => state.userLogin)
   const { products } = useSelector(state => state.productData)
-  const BASE_URL = "http://eswar007.pythonanywhere.com";
-
-  const fetch_data = async () => {
-    try {
-      const config = {
-        headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000/",
-        },
-      };
-
-      const { products } = await axios.get(
-        "https://eswar007.pythonanywhere.com/api/products/"
-      )
-      var url = "https://eswar007.pythonanywhere.com/api/products/";
-
-      var xhr = new XMLHttpRequest();
-      xhr.open("GET", url);
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          console.log(xhr.status);
-          console.log(xhr.responseText);
-        }
-      };
-
-      xhr.send();
-      // console.log(data.products)
-
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
 
-  const fetchData = async () => {
 
-    // const formData = new FormData();
-    // formData.append("userId", userInfo.id);
+  // const fetchData = async () => {
 
-    // const config = {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //   },
-    // };
-    // const { data } = await axios.post(
-    //   `${BASE_URL}/api/order/getCartProducts/`,
-    //   formData,
-    //   config
-    // );
+  // const formData = new FormData();
+  // formData.append("userId", userInfo.id);
 
-    // // console.log(data.cartList);
-    // // console.log(products);
-    // (data.cartList).forEach((product) => {
-    //   const cartItem = products.filter(item => item.id == product.productId)[0];
-    //   console.log(cartItem);
-    //   // const items = products.filter(item => item.id == product.productId);
-    //   // console.log(cartItem.id, items.length);
-    //   dispatch(addToCart(cartItem, addToast, 1, null, null));
+  // const config = {
+  //   headers: {
+  //     "Content-Type": "multipart/form-data",
+  //   },
+  // };
+  // const { data } = await axios.post(
+  //   `${BASE_URL}/api/order/getCartProducts/`,
+  //   formData,
+  //   config
+  // );
 
-    // })
+  // // console.log(data.cartList);
+  // // console.log(products);
+  // (data.cartList).forEach((product) => {
+  //   const cartItem = products.filter(item => item.id == product.productId)[0];
+  //   console.log(cartItem);
+  //   // const items = products.filter(item => item.id == product.productId);
+  //   // console.log(cartItem.id, items.length);
+  //   dispatch(addToCart(cartItem, addToast, 1, null, null));
 
-  }
+  // })
+
+  // }
 
 
   const loginHandler = (e) => {
@@ -133,7 +102,7 @@ const LoginRegister = ({ location }) => {
 
 
     }
-    fetch_data();
+    // fetch_data();
     if (userInfo && data) {
       // fetchData();
       setdata(false);

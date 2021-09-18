@@ -14,6 +14,7 @@ import ProductImageDescriptionSticky from "../../wrappers/product/ProductImageDe
 // import { useHistory } from "react-router-dom";
 
 const ProductSticky = ({ location, product }) => {
+	{ console.log("productSticky.js", product) }
 	// let history = useHistory();
 	// console.log(history);
 	// const { nodes } = useGLTF("http://localhost:3000/shoe-draco.glb");
@@ -50,13 +51,13 @@ const ProductSticky = ({ location, product }) => {
 				{/* product description tab */}
 				<ProductDescriptionTab
 					spaceBottomClass="pb-90"
-					productFullDesc={product.fullDescription}
+					productFullDesc={product.description}
 				/>
 
 				{/* frequently bought together product slider */}
 				<FrequentlyBoughtTogether
 					spaceBottomClass="pb-95"
-					category={product.category ? product.category[0] : ""}
+					category={product.subcategory ? product.subcategory[0] : ""}
 				/>
 				{/* {console.log(product.category[0])} */}
 				{/* related product slider */}
@@ -68,7 +69,7 @@ const ProductSticky = ({ location, product }) => {
 				{/* other people bought product slider */}
 				<OtherPeopleBought
 					spaceBottomClass="pb-95"
-					category={product.category[0]}
+					category={product.subcategory[0]}
 				/>
 
 			</LayoutOne>
@@ -86,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
 	const itemId = "1";
 	return {
 		product: state.productData.products.filter(
-			(single) => single.id === itemId,
+			(single) => single.id == itemId,
 		)[0],
 	};
 };

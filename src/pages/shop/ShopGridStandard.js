@@ -30,7 +30,7 @@ const ShopGridStandard = ({ location, products, cb }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [currentData, setCurrentData] = useState([]);
 	const [sortedProducts, setSortedProducts] = useState([]);
-	const [loading, setLoading] = useState(cb === undefined ? false : true);
+	const [loading, setLoading] = useState(cb == undefined ? false : true);
 	const [data, setData] = useState(cb);
 	const { addToast } = useToasts();
 

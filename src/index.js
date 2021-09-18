@@ -27,6 +27,7 @@ const initialState = {
 const store = createStore(
   rootReducer,
   initialState,
+  // applyMiddleware(thunk),
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
 // const BASE_URL = "http://eswar007.pythonanywhere.com";
@@ -44,8 +45,8 @@ const store = createStore(
 // }
 // fetch_data();
 // fetch products from json file
-store.dispatch(fetchProducts(products));
-
+store.dispatch(fetchProducts());
+console.log(store.products);
 ReactDOM.render(
   <Provider store={store}>
     <App />

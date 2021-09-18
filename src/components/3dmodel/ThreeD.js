@@ -26,7 +26,7 @@ function addGroups(node) {
 	return (
 		<>
 			{node.map((child) =>
-				child.type === "Group" ? (
+				child.type == "Group" ? (
 					<group
 						position={child.position}
 						rotation={child.rotation}

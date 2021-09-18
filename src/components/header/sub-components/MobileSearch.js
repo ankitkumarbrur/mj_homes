@@ -9,7 +9,7 @@ const MobileSearch = () => {
 				action="/shop-grid-standard"
 				method="get"
 				onSubmit={(e) => {
-					if (document.getElementsByName("q")[1].value === "") {
+					if (document.getElementsByName("q")[1].value == "") {
 						e.preventDefault();
 						addToast("Enter a keyword to search for products", {
 							appearance: "warning",

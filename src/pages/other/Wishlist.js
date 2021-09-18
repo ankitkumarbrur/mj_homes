@@ -88,7 +88,7 @@ const Wishlist = ({
 															const cartItem =
 																cartItems.filter(
 																	(item) =>
-																		item.id ===
+																		item.id ==
 																		wishlistItem.id,
 																)[0];
 															return (
@@ -135,7 +135,7 @@ const Wishlist = ({
 
 																	<td className="product-price-cart">
 																		{discountedPrice !==
-																		null ? (
+																			null ? (
 																			<Fragment>
 																				<span className="amount old">
 																					{currency.currencySymbol +
@@ -168,10 +168,10 @@ const Wishlist = ({
 																				now{" "}
 																			</a>
 																		) : wishlistItem.variation &&
-																		  wishlistItem
+																			wishlistItem
 																				.variation
 																				.length >=
-																				1 ? (
+																			1 ? (
 																			<Link
 																				to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
 																			>
@@ -179,8 +179,8 @@ const Wishlist = ({
 																				option
 																			</Link>
 																		) : wishlistItem.stock &&
-																		  wishlistItem.stock >
-																				0 ? (
+																			wishlistItem.stock >
+																			0 ? (
 																			<button
 																				onClick={() =>
 																					addToCart(
@@ -191,27 +191,27 @@ const Wishlist = ({
 																				className={
 																					cartItem !==
 																						undefined &&
-																					cartItem.quantity >
+																						cartItem.quantity >
 																						0
 																						? "active"
 																						: ""
 																				}
 																				disabled={
 																					cartItem !==
-																						undefined &&
+																					undefined &&
 																					cartItem.quantity >
-																						0
+																					0
 																				}
 																				title={
 																					wishlistItem !==
-																					undefined
+																						undefined
 																						? "Added to cart"
 																						: "Add to cart"
 																				}
 																			>
 																				{cartItem !==
 																					undefined &&
-																				cartItem.quantity >
+																					cartItem.quantity >
 																					0
 																					? "Added"
 																					: "Add to cart"}
