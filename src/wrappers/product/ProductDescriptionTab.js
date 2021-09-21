@@ -3,7 +3,14 @@ import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 
-const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
+const ProductDescriptionTab = ({
+  spaceBottomClass,
+  productFullDesc,
+  productSize,
+  productWeight,
+  productMaterial,
+  productManufacturer,
+}) => {
   return (
     <div className={`description-review-area ${spaceBottomClass}`}>
       <div className="container">
@@ -46,17 +53,20 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
                 <div className="product-anotherInfo-wrapper">
                   <ul>
                     <li>
-                      <span>Weight</span> 400 g
+                      <span>Manufacturer</span>
+                      {productManufacturer}
                     </li>
                     <li>
-                      <span>Dimensions</span>10 x 10 x 15 cm{" "}
+                      <span>Weight</span>
+                      {productWeight}
                     </li>
                     <li>
-                      <span>Materials</span> 60% cotton, 40% polyester
+                      <span>Dimensions</span>
+                      {productSize}
                     </li>
                     <li>
-                      <span>Other Info</span> American heirloom jean shorts pug
-                      seitan letterpress
+                      <span>Materials</span>
+                      {productMaterial}
                     </li>
                   </ul>
                 </div>
@@ -410,6 +420,10 @@ const ProductDescriptionTab = ({ spaceBottomClass, productFullDesc }) => {
 ProductDescriptionTab.propTypes = {
   productFullDesc: PropTypes.string,
   spaceBottomClass: PropTypes.string,
+  productSize: PropTypes.string,
+  productWeight: PropTypes.string,
+  productMaterial: PropTypes.string,
+  productManufacturer: PropTypes.string,
 };
 
 export default ProductDescriptionTab;
