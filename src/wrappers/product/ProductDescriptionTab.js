@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
-
+import ReviewRating from "../../components/product/sub-components/ReviewRating";
+import AddReviewRating from "../../components/product/sub-components/AddReviewRating";
+import axios from "axios";
 const ProductDescriptionTab = ({
   spaceBottomClass,
   productFullDesc,
@@ -10,15 +12,48 @@ const ProductDescriptionTab = ({
   productWeight,
   productMaterial,
   productManufacturer,
+  productReview,
 }) => {
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (user && email && comment && rating) {
+      const review = {
+        user,
+        email,
+        comment,
+        rating,
+      };
+      setUser("");
+      setEmail("");
+      setComment("");
+      setRating(null);
+      console.log(review);
+      // axios
+      //   .post(url, review)
+      //   .then((response) => console.log(response))
+      //   .catch((error) => console.log(error));
+    }
+  };
+
   return (
     <div className={`description-review-area ${spaceBottomClass}`}>
       <div className="container">
         <div className="description-review-wrapper">
-          <Tab.Container defaultActiveKey="productDescription">
+          <Tab.Container defaultActiveKey="additionalInfo">
             <Nav variant="pills" className="description-review-topbar">
               <Nav.Item>
                 <Nav.Link eventKey="additionalInfo">Overview</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="productDescription">Description</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="productReviews">Reviews</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="careInstructions">
@@ -40,12 +75,6 @@ const ProductDescriptionTab = ({
                 <Nav.Link eventKey="customerRedressal">
                   Customer Redressal
                 </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="productDescription">Description</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="productReviews">Reviews(2)</Nav.Link>
               </Nav.Item>
             </Nav>
             <Tab.Content className="description-review-bottom">
@@ -288,108 +317,67 @@ const ProductDescriptionTab = ({
                 <div className="row">
                   <div className="col-lg-7">
                     <div className="review-wrapper">
-                      <div className="single-review">
-                        <div className="review-img">
-                          <img
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/assets/img/testimonial/1.jpg"
-                            }
-                            alt=""
-                          />
-                        </div>
-                        <div className="review-content">
-                          <div className="review-top-wrap">
-                            <div className="review-left">
-                              <div className="review-name">
-                                <h4>White Lewis</h4>
+                      {/* REVIEW SECTION */}
+                      {productReview.map((review, index) => {
+                        return (
+                          <div key={index} className="single-review">
+                            <div className="review-content">
+                              <div className="review-top-wrap">
+                                <div className="review-left">
+                                  <div className="review-name">
+                                    <h4>{review.user}</h4>
+                                  </div>
+                                  <div className="review-rating">
+                                    <ReviewRating
+                                      reviewRating={review.rating}
+                                    />
+                                  </div>
+                                </div>
                               </div>
-                              <div className="review-rating">
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
+                              <div className="review-bottom">
+                                <p>{review.comment}</p>
                               </div>
                             </div>
-                            <div className="review-left">
-                              <button>Reply</button>
-                            </div>
                           </div>
-                          <div className="review-bottom">
-                            <p>
-                              Vestibulum ante ipsum primis aucibus orci
-                              luctustrices posuere cubilia Curae Suspendisse
-                              viverra ed viverra. Mauris ullarper euismod
-                              vehicula. Phasellus quam nisi, congue id nulla.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="single-review child-review">
-                        <div className="review-img">
-                          <img
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/assets/img/testimonial/2.jpg"
-                            }
-                            alt=""
-                          />
-                        </div>
-                        <div className="review-content">
-                          <div className="review-top-wrap">
-                            <div className="review-left">
-                              <div className="review-name">
-                                <h4>White Lewis</h4>
-                              </div>
-                              <div className="review-rating">
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                                <i className="fa fa-star" />
-                              </div>
-                            </div>
-                            <div className="review-left">
-                              <button>Reply</button>
-                            </div>
-                          </div>
-                          <div className="review-bottom">
-                            <p>
-                              Vestibulum ante ipsum primis aucibus orci
-                              luctustrices posuere cubilia Curae Suspendisse
-                              viverra ed viverra. Mauris ullarper euismod
-                              vehicula. Phasellus quam nisi, congue id nulla.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
+                        );
+                      })}
                     </div>
                   </div>
+
+                  {/* ADD A REVIEW */}
                   <div className="col-lg-5">
                     <div className="ratting-form-wrapper pl-50">
                       <h3>Add a Review</h3>
                       <div className="ratting-form">
-                        <form action="#">
+                        <form action="#" onSubmit={handleSubmit}>
                           <div className="star-box">
                             <span>Your rating:</span>
-                            <div className="ratting-star">
-                              <i className="fa fa-star" />
-                              <i className="fa fa-star" />
-                              <i className="fa fa-star" />
-                              <i className="fa fa-star" />
-                              <i className="fa fa-star" />
-                            </div>
+                            <AddReviewRating
+                              rating={rating}
+                              setRating={setRating}
+                            />
                           </div>
                           <div className="row">
                             <div className="col-md-6">
                               <div className="rating-form-style mb-10">
-                                <input placeholder="Name" type="text" />
+                                <input
+                                  placeholder="Name"
+                                  type="text"
+                                  value={user}
+                                  required
+                                  onChange={(e) => setUser(e.target.value)}
+                                />
                               </div>
                             </div>
                             <div className="col-md-6">
                               <div className="rating-form-style mb-10">
-                                <input placeholder="Email" type="email" />
+                                <input
+                                  placeholder="Email"
+                                  type="email"
+                                  value={email}
+                                  required
+                                  onChange={(e) => setEmail(e.target.value)}
+                                />
                               </div>
                             </div>
                             <div className="col-md-12">
@@ -397,7 +385,9 @@ const ProductDescriptionTab = ({
                                 <textarea
                                   name="Your Review"
                                   placeholder="Message"
-                                  defaultValue={""}
+                                  value={comment}
+                                  required
+                                  onChange={(e) => setComment(e.target.value)}
                                 />
                                 <input type="submit" defaultValue="Submit" />
                               </div>
@@ -424,6 +414,7 @@ ProductDescriptionTab.propTypes = {
   productWeight: PropTypes.string,
   productMaterial: PropTypes.string,
   productManufacturer: PropTypes.string,
+  productReview: PropTypes.array,
 };
 
 export default ProductDescriptionTab;

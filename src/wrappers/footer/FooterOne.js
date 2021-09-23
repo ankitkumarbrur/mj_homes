@@ -203,10 +203,10 @@ const FooterOne = ({
         <i className="fa fa-angle-double-up"></i>
       </button>
       <button className="whats-app">
-        <i className="fa fa-angle-double-up"></i>
+        <i className="fa fa-whatsapp"></i>
       </button>
       <button className="google-form">
-        <i className="fa fa-angle-double-up"></i>
+        <i className="fa fa-phone"></i>
       </button>
     </footer>
   );

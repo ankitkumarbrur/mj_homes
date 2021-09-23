@@ -7,7 +7,6 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
-import PinCode from "./sub-components/Pincode";
 
 const ProductDescriptionInfo = ({
   product,
@@ -17,9 +16,11 @@ const ProductDescriptionInfo = ({
   finalProductPrice,
   cartItems,
   wishlistItem,
+  compareItem,
   addToast,
   addToCart,
   addToWishlist,
+  addToCompare,
 }) => {
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -43,15 +44,16 @@ const ProductDescriptionInfo = ({
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
       <div className="product-details-price">
-        <Fragment>
-          <span>{currency.currencySymbol + product.price}</span>
-          <span className="gst-price">
-            Price With GST :
-            <span className="price">
-              {currency.currencySymbol + product.priceWithGST}
+        {discountedPrice !== null ? (
+          <Fragment>
+            <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+            <span className="old">
+              {currency.currencySymbol + finalProductPrice}
             </span>
-          </span>
-        </Fragment>
+          </Fragment>
+        ) : (
+          <span>{currency.currencySymbol + finalProductPrice} </span>
+        )}
       </div>
       {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
@@ -212,12 +214,24 @@ const ProductDescriptionInfo = ({
               <i className="pe-7s-like" />
             </button>
           </div>
+          {/* <div className="pro-details-compare">
+						<button
+							className={
+								compareItem !== undefined ? "active" : ""
+							}
+							disabled={compareItem !== undefined}
+							title={
+								compareItem !== undefined
+									? "Added to compare"
+									: "Add to compare"
+							}
+							onClick={() => addToCompare(product, addToast)}
+						>
+							<i className="pe-7s-shuffle" />
+						</button>
+					</div> */}
         </div>
       )}
-
-      {/* Pincode */}
-      <PinCode />
-
       {product.subcategory ? (
         <div className="pro-details-meta">
           <span>Categories :</span>
@@ -236,7 +250,7 @@ const ProductDescriptionInfo = ({
       ) : (
         ""
       )}
-      {/* {product.tag ? (
+      {product.tag ? (
         <div className="pro-details-meta">
           <span>Tags :</span>
           <ul>
@@ -253,7 +267,37 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )} */}
+      )}
+
+      {/* <div className="pro-details-social">
+        <ul>
+          <li>
+            <a href="//facebook.com">
+              <i className="fa fa-facebook" />
+            </a>
+          </li>
+          <li>
+            <a href="//dribbble.com">
+              <i className="fa fa-dribbble" />
+            </a>
+          </li>
+          <li>
+            <a href="//pinterest.com">
+              <i className="fa fa-pinterest-p" />
+            </a>
+          </li>
+          <li>
+            <a href="//twitter.com">
+              <i className="fa fa-twitter" />
+            </a>
+          </li>
+          <li>
+            <a href="//linkedin.com">
+              <i className="fa fa-linkedin" />
+            </a>
+          </li>
+        </ul>
+      </div> */}
     </div>
   );
 };
