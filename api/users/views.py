@@ -1,13 +1,21 @@
+from rest_framework.permissions import BasePermission, IsAdminUser
+
+from django.db.models import query
 from django.shortcuts import render
 
 from .models import User, Address
 from rest_framework.generics import GenericAPIView
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.mixins import ListModelMixin
 from rest_framework import permissions, status
 
 from .serializers import UserSerializer, AddressSerializer
 from rest_framework.mixins import ListModelMixin, CreateModelMixin, UpdateModelMixin
+
+from authentication.permissions import IsOwner, IsAdmin
+
+from mixins.Mixins import QuerysetMixin
 
 
 # Create your views here.
@@ -32,23 +40,19 @@ class User_view(GenericAPIView, ListModelMixin, ):
 
 
 
-class Address_view(GenericAPIView, CreateModelMixin, ListModelMixin, UpdateModelMixin):
+class Address_view(viewsets.ModelViewSet, QuerysetMixin):
     serializer_class = AddressSerializer
+    # queryset = Address.objects.all()
+    # action_based_permission_classes = {
+    #     'list' : [IsOwner,]
+    # }
+    permission_classes = (IsOwner,)
     
     def get_queryset(self, *args, **kwargs):
-        if 'user' in self.request.data:
-            user = User.objects.get(id = self.request.data['user'])
-            queryset = Address.objects.filter(user = user)
-            return queryset
+        return self.owner_queryset(MODEL=Address)
+    #     if 'user' in self.request.data:
+    #         user = User.objects.get(id = self.request.data['user'])
+    #         queryset = Address.objects.filter(user = user)
+    #         return queryset
 
-        return Address.objects.none()
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        # self.kwargs['pk'] = 
-        return self.update(request, *args, **kwargs)
+    #     return Address.objects.none()

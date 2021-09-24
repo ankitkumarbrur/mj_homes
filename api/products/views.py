@@ -47,6 +47,7 @@ class Product_view(GenericAPIView, CreateModelMixin, ListModelMixin):
     parser_classes = (parsers.JSONParser, MultipartJsonParser)
 
     def get(self, request, *args, **kwargs):
+        print(request.session.get('decoded_user', None))
         print(request.COOKIES)
         return self.list(request, *args, **kwargs)
     
