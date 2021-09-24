@@ -17,13 +17,22 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from carts.views import CartView,WishListView
+from orders.views import OrderView
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
 
+router.register('cart', CartView, basename = "cart")
+router.register('wishlist', WishListView, basename = "wishlist")
+router.register('order', OrderView, basename= 'order')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/',include('products.urls')),
     path('users/', include('users.urls')),
     path('', include('authentication.urls')),
-    path('', include('carts.urls'))
+    # path('', include('carts.urls')),
+    # path('', include('orders.urls'))
+    path('', include(router.urls)),
     # path('cart/',include('carts.urls')),
     # path('orders/',include('orders.urls')),
     # path('users/',include('users.urls')),

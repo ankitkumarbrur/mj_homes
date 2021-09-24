@@ -12,12 +12,8 @@ class CartView(viewsets.ModelViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
 
-class WishListView(GenericAPIView, ListModelMixin):
+class WishListView(viewsets.ModelViewSet):
+    queryset = WishList.objects.all()
     serializer_class = CartSerializer
 
-    def get_queryset(self):
-        return WishList.objects.all()
     
-    def get(self, request, *args, **kwargs):
-        print(request)
-        return self.list(request, *args, **kwargs)
