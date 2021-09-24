@@ -35,9 +35,11 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(ReviewSerializer, self).to_representation(instance)
+
         data['user'] = User.objects.get(id = data['user']).first_name
         data.pop('id', None)
         data.pop('product', None)
+        
         return data
 
     def create(self, validated_data, *args, **kwargs):
@@ -58,11 +60,13 @@ class ProductSerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         data = super(ProductSerializer, self).to_representation(instance)
-        return data 
+        data['subcategory'] = list(str(data['subcategory']).split(','))
+        return data
         
     def create(self, validated_data, *args, **kwargs):
         variations = validated_data.pop('variations', [])
         images = validated_data.pop('image', [])
+        
         product = Product.objects.create(**validated_data)
 
         for variation in variations:

@@ -22,10 +22,8 @@ class ProductManager(models.Manager):
 		return qs
 
 def model_upload(instance, filename):
-    print(instance.id)
-    name = instance.name
-    slug = slugify(name)
-    basename, file_extension = filename.split(".")
+    slug = slugify(instance.name)
+    _, file_extension = filename.split(".")
     new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
     return "models/%s/%s" %(slug, new_filename)
 
@@ -59,11 +57,11 @@ class Product(models.Model):
 class ProductVariation(models.Model):
     product = models.ForeignKey(Product, related_name="variations" , on_delete=models.CASCADE,null=False)
     
+    color = models.CharField(max_length = 100, null = True)
+    material = models.CharField(max_length = 100, null = True)
     price = models.FloatField(null = False, blank = False)
     size = models.CharField(max_length = 100, null = True)
     weight = models.FloatField(null = True)
-    color = models.CharField(max_length = 100, null = True)
-    material = models.CharField(max_length = 100, null = True)
 
     def __unicode__(self):
         return (self.item_name)

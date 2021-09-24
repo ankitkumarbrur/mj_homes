@@ -4,10 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-
-
 # Create your models here.
-
 class AccountManager(BaseUserManager):
 
     def create_superuser(self, email, user_name, first_name, password, **kwargs):

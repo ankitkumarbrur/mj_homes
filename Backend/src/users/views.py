@@ -7,12 +7,12 @@ from rest_framework.mixins import ListModelMixin
 from rest_framework import permissions, status
 from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer, AddressSerializer
-from rest_framework.mixins import ListModelMixin, CreateModelMixin
+from rest_framework.mixins import ListModelMixin, CreateModelMixin, UpdateModelMixin
 
 
 # Create your views here.
 
-class User_view(GenericAPIView, ListModelMixin):
+class User_view(GenericAPIView, ListModelMixin, ):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]
@@ -42,15 +42,16 @@ class BlacklistTokenView(GenericAPIView):
         except Exception as e:
             return Response(status = status.HTTP_400_BAD_REQUEST)
 
-            
-class Address_view(GenericAPIView, CreateModelMixin, ListModelMixin):
+
+class Address_view(GenericAPIView, CreateModelMixin, ListModelMixin, UpdateModelMixin):
     serializer_class = AddressSerializer
     
     def get_queryset(self, *args, **kwargs):
-        if 'user' in self.request.GET:
-            user = User.objects.get(id = self.request.GET['user'])
+        if 'user' in self.request.data:
+            user = User.objects.get(id = self.request.data['user'])
             queryset = Address.objects.filter(user = user)
             return queryset
+
         return Address.objects.none()
 
     def get(self, request, *args, **kwargs):
@@ -58,3 +59,7 @@ class Address_view(GenericAPIView, CreateModelMixin, ListModelMixin):
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        # self.kwargs['pk'] = 
+        return self.update(request, *args, **kwargs)
