@@ -1,11 +1,13 @@
 from rest_framework import serializers
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
-        print(attrs)
         data = super().validate(attrs)
-        token = self.get_token(self.user)
-        # token["email"] = self.user.email
-        print(data)
         return data
+# class MyTokenRefreshSerializer(TokenRefreshSerializer):
+#     def validate(self, attrs):
+#         # if 'refresh' not in attrs:
+#         print(attrs)
+#         data = super().validate(attrs)
+#         return data
