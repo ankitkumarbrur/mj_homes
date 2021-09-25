@@ -31,15 +31,15 @@
         "image": "/assets/img/product/fashion/1.jpg",
         "size": [
           {
-            "name": "x",
+            "name": "Taekwood",
             "stock": 3
           },
           {
-            "name": "m",
+            "name": "Beakwood",
             "stock": 2
           },
           {
-            "name": "xl",
+            "name": "Seekwood",
             "stock": 5
           }
         ]
@@ -49,19 +49,19 @@
         "image": "/assets/img/product/fashion/8.jpg",
         "size": [
           {
-            "name": "x",
+            "name": "xWood",
             "stock": 4
           },
           {
-            "name": "m",
+            "name": "mWood",
             "stock": 7
           },
           {
-            "name": "xl",
+            "name": "xlWood",
             "stock": 9
           },
           {
-            "name": "xxl",
+            "name": "xxlWood",
             "stock": 1
           }
         ]
