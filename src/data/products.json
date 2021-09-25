@@ -11,14 +11,13 @@
     "size": "15*15*54",
     "weight": "50976",
     "price": 2500,
-    "priceWithGST": 0.0,
+    "priceWithGST": 20000,
     "subcategory": [
       "kingsize bed"
     ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/electronics/1.jpg",
       "/assets/img/product/electronics/2.jpg",
       "/assets/img/product/electronics/3.jpg",
@@ -26,6 +25,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 50,
     "variation": [
       {
@@ -70,7 +70,24 @@
       }
     ],
     "offerEnd": "October 18, 2021 12:11:00",
-    "rating": 5
+    "rating": 4,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "X",
+        "rating": 2,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 2,
@@ -78,7 +95,7 @@
     "description": "This is product Description",
     "shortDescription": "short description",
     "newProduct": false,
-    "bestSeller": false,
+    "bestSeller": true,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
     "size": "15*15*54",
@@ -91,7 +108,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/electronics/1.jpg",
       "/assets/img/product/electronics/2.jpg",
       "/assets/img/product/electronics/3.jpg",
@@ -99,7 +115,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -144,7 +160,19 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 3,
@@ -165,7 +193,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/electronics/1.jpg",
       "/assets/img/product/electronics/2.jpg",
       "/assets/img/product/electronics/3.jpg",
@@ -173,7 +200,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -218,7 +245,14 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 4,
@@ -239,7 +273,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/electronics/1.jpg",
       "/assets/img/product/electronics/2.jpg",
       "/assets/img/product/electronics/3.jpg",
@@ -247,7 +280,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -292,7 +325,24 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "X",
+        "rating": 2,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 5,
@@ -313,7 +363,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/furnitures/2.jpg",
       "/assets/img/product/furnitures/3.jpg",
       "/assets/img/product/furnitures/4.jpg",
@@ -321,7 +370,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -366,7 +415,19 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 6,
@@ -387,7 +448,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/furnitures/2.jpg",
       "/assets/img/product/furnitures/3.jpg",
       "/assets/img/product/furnitures/4.jpg",
@@ -395,7 +455,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -440,7 +500,34 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "X",
+        "rating": 2,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "X",
+        "rating": 2,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 7,
@@ -448,7 +535,7 @@
     "description": "This is product Description",
     "shortDescription": "short description",
     "newProduct": false,
-    "bestSeller": false,
+    "bestSeller": true,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
     "size": "15*15*54",
@@ -461,7 +548,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/plants/3.jpg",
       "/assets/img/product/plants/4.jpg",
       "/assets/img/product/plants/5.jpg",
@@ -469,7 +555,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -514,7 +600,19 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   },
   {
     "id": 8,
@@ -535,7 +633,6 @@
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
-      "https://source.unsplash.com/random",
       "/assets/img/product/plants/3.jpg",
       "/assets/img/product/plants/4.jpg",
       "/assets/img/product/plants/5.jpg",
@@ -543,7 +640,7 @@
     ],
     "featured": false,
     "dateAdded": "2021-08-05",
-    "3dmodel": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
+    "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
     "discount": 0,
     "variation": [
       {
@@ -588,6 +685,23 @@
       }
     ],
     "offerEnd": "October 18, 2020 12:11:00",
-    "rating": 5
+    "rating": 5,
+    "reviews": [
+      {
+        "user": "Mr",
+        "rating": 3,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "Mrs",
+        "rating": 4,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      },
+      {
+        "user": "X",
+        "rating": 2,
+        "comment": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+      }
+    ]
   }
 ]

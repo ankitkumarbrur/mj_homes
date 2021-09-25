@@ -18,21 +18,18 @@ const productImageGallerySticky = ({ product }) => {
 				""
 			)}
 			<div className="product-sticky-image mb--10">
-				{
-					product.model3D &&
+				{product["model3d"] && (
 					<div className="product-sticky-image__single-3d mb-10">
 						{/* Uncomment after correction in Api and delete hardcoded model */}
 						<ThreeD name="shoe-draco.glb" />
 						{/* <ThreeD name={product["3dModel"]}/> */}
 					</div>
-				}
+				)}
+
 				{product.image &&
 					product.image.map((single, key) => {
 						return (
-							<div
-								className="product-sticky-image__single mb-10"
-								key={key}
-							>
+							<div className="product-sticky-image__single mb-10" key={key}>
 								<img
 									src={process.env.PUBLIC_URL + single}
 									alt=""

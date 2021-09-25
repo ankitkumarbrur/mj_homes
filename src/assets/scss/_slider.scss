@@ -2570,7 +2570,7 @@
     color: #313131;
 
     span {
-      color: #bca487;
+      color: #ff9f00;
     }
   }
   h3 {
@@ -2584,7 +2584,7 @@
 
     color: #313131;
     span {
-      color: #bca487;
+      color: #ff9f00;
     }
     @media #{$lg-layout} {
       font-size: 52px;
@@ -2620,7 +2620,7 @@
 
     color: #fff;
     border: 1px solid transparent;
-    background-color: #bca487;
+    background-color: #ff9f00;
     @media #{$xs-layout} {
       font-size: 16px;
 
@@ -2796,8 +2796,8 @@
       border-radius: 2px;
       &:hover {
         color: #fff;
-        border-color: #bca487;
-        background-color: #bca487;
+        border-color: #ff9f00;
+        background-color: #ff9f00;
       }
     }
   }

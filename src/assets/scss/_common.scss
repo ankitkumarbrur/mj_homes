@@ -109,11 +109,11 @@ span {
 }
 
 img {
-	float: left;
-	object-fit: cover;
+  float: left;
+  object-fit: cover;
 }
 .react-toast-notifications__container {
-	z-index: 9999 !important;
+  z-index: 9999 !important;
 }
 
 *:focus {
@@ -1600,7 +1600,9 @@ textarea:focus {
     Scroll Up 
 -----------------------------------------*/
 
-.scroll-top {
+.scroll-top,
+.whats-app,
+.google-form {
   position: fixed;
   z-index: 9811 !important;
   right: 20px;
@@ -1648,6 +1650,15 @@ textarea:focus {
       animation-fill-mode: both;
     }
   }
+}
+.whats-app,
+.google-form {
+  left: 20px;
+  visibility: visible;
+  opacity: 1;
+}
+.google-form {
+  bottom: 120px;
 }
 
 .height-100 {

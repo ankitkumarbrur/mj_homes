@@ -51,8 +51,8 @@ const Home = () => {
 			> */}
 				{/* <LayoutSeven> */}
 				{/* hero slider */}
-				<HeroSliderTwentyNine />
-				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" />
+				{/* <HeroSliderTwentyNine />
+				<BannerFifteen spaceTopClass="pt-10" spaceBottomClass="pb-85" /> */}
 
 				{/* featured icon */}
 				{/* <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" /> */}

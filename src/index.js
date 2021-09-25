@@ -21,7 +21,6 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 
 const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
-
 };
 
 const store = createStore(
@@ -46,7 +45,6 @@ const store = createStore(
 // fetch_data();
 // fetch products from json file
 store.dispatch(fetchProducts(products));
-console.log(store.products);
 ReactDOM.render(
   <Provider store={store}>
     <App />
