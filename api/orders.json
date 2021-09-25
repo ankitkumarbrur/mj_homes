@@ -1,0 +1,57 @@
+{
+	"cart_item": {
+		"id": 12,
+		"cart": "cartforeignkey",
+		"product": "productid",
+		"quantity": 2
+	},
+
+	"cart": [
+		{
+			"id": 123,
+			"user": 12,
+			"cart_item": ["cartitemid1", "cartitemid2"]
+		},
+		{
+			"id": 12,
+			"user": 42,
+			"cart_item": ["cartitemid1", "cartitemid2"]
+		}
+	],
+
+	"wishlist_item": {
+		"id": 12,
+		"wishlist": "cartforeignkey",
+		"product": "productid"
+	},
+
+	"wishlist": [
+		{
+			"id": 123,
+			"user": 12,
+			"wishlist_item": ["cartitemid1", "cartitemid2"]
+		},
+		{
+			"id": 12,
+			"user": 42,
+			"wishlist_item": ["cartitemid1", "cartitemid2"]
+		}
+	],
+
+	"orders": [
+		{
+			"id": 12,
+			"user": "uid",
+			"cart": "cartid",
+			"paid": false,
+			"delivered": false,
+			"dateoforder": "date"
+		}
+	],
+
+	"payment": [
+		{
+			"payU": "structure"
+		}
+	]
+}

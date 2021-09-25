@@ -1,0 +1,12 @@
+{
+	"models": [""],
+	"anonymous": {
+		"create": [],
+		"retrieve": ["products"],
+		"update": [],
+		"delete": []
+	},
+	"user": {},
+	"admin": {},
+	"SuperUser": "HIDDEN"
+}
