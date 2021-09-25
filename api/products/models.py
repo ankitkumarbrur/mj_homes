@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User
+# from users.models import User
 from django.utils.text import slugify
 import uuid
 
@@ -80,12 +80,12 @@ class Image(models.Model):
     def __unicode__(self):
         return (self.item_name)
 
-class Review(models.Model):
-    product = models.ForeignKey(Product, related_name="review", on_delete = models.CASCADE, null = False, blank = False)
-    user = models.ForeignKey(User, on_delete = models.CASCADE, null = False, blank = False)
+# class Review(models.Model):
+#     product = models.ForeignKey(Product, related_name="review", on_delete = models.CASCADE, null = False, blank = False)
+#     user = models.ForeignKey(User, on_delete = models.CASCADE, null = False, blank = False)
 
-    reviewStar = models.FloatField(null = False, blank = False)
-    reviewText = models.TextField(null = True, blank = True)
+#     reviewStar = models.FloatField(null = False, blank = False)
+#     reviewText = models.TextField(null = True, blank = True)
 
-    def __unicode__(self):
-        return (self.item_name)
+#     def __unicode__(self):
+#         return (self.item_name)

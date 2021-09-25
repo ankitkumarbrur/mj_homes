@@ -1,4 +1,3 @@
-from django.db.models.base import Model
 from users.models import User
 
 class ViewsetActionPermissionMixin:
@@ -11,11 +10,10 @@ class ViewsetActionPermissionMixin:
             else:
                 return []
 
-class QuerysetMixin:
-    def owner_queryset(self, MODEL):
-        print("queryset")
-        user = self.request.session.get('decoded_user', None)
-        if user:
-            return MODEL.objects.filter(user = User.objects.get(id = user))
+class PreprocessMixin:
+    def preprocess(self, *args, **kwargs):
+        self.user =  User.objects.get(id = self.user) if self.request.session.get('decoded_user', None) else None
+        if self.actions == 'list':
+            return self.MODEL.objects.filter(user = self.user) if self.user else self.MODEL.objects.none()
         else:
-            return MODEL.objects.none()
+            return self.MODEL.objects.all()

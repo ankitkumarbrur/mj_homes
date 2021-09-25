@@ -16,7 +16,12 @@ class BlacklistTokenView(GenericAPIView):
 
     def post(self, request):
         try:
-            refresh_token = request.data["refresh_token"]
+            if 'refresh' not in request.data:
+                if 'refresh' in request.COOKIES:
+                    request.data['refresh'] = request.COOKIES.get('refresh', None)
+            else:
+                refresh_token = request.data["refresh_token"]
+                
             token = RefreshToken(refresh_token)
             token.blacklist()
         except Exception as e:

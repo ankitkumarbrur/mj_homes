@@ -12,7 +12,11 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'user_name', 'password')
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            'password': {'write_only': True},
+            'wishlist': {'read_only':True},
+            'active_cart': {'read_only':True},
+        }
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)

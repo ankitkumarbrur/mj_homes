@@ -28,29 +28,29 @@ class VariationSerializer(serializers.ModelSerializer):
         data['gstPrice'] = data['price'] * 0.18 + data['price']
         return data
 
-class ReviewSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Review
-        fields = '__all__'
+# class ReviewSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Review
+#         fields = '__all__'
 
-    def to_representation(self, instance):
-        data = super(ReviewSerializer, self).to_representation(instance)
+#     def to_representation(self, instance):
+#         data = super(ReviewSerializer, self).to_representation(instance)
 
-        data['user'] = User.objects.get(id = data['user']).first_name
-        data.pop('id', None)
-        data.pop('product', None)
+#         data['user'] = User.objects.get(id = data['user']).first_name
+#         data.pop('id', None)
+#         data.pop('product', None)
         
-        return data
+#         return data
 
-    def create(self, validated_data, *args, **kwargs):
-        try:
-            review = Review.objects.create( **validated_data)
-        except ValidationError as ex:
-            raise serializers.ValidationError({"detail": "input is not valid"})
-        return review
+#     def create(self, validated_data, *args, **kwargs):
+#         try:
+#             review = Review.objects.create( **validated_data)
+#         except ValidationError as ex:
+#             raise serializers.ValidationError({"detail": "input is not valid"})
+#         return review
 
 class ProductSerializer(serializers.ModelSerializer):
-    review = ReviewSerializer(many = True, read_only = True)
+    # review = ReviewSerializer(many = True, read_only = True)
     variations = VariationSerializer(many = True, read_only = True)
     image = ImageSerializer(many = True, read_only = True)
 
