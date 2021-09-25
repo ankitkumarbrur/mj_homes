@@ -137,17 +137,21 @@
     }
     &.funfact-btn-red {
       a {
-        background-color: #c61a32;
+        background-color: #ff9f00;
         &:hover {
-          border: 1px solid $theme-color;
+          border: 1px solid $theme-color
+         
+
         }
       }
+      
     }
     &.funfact-btn-red-2 {
       a {
-        background-color: #c61a32;
+        background-color: #ff9f00;
         &:hover {
-          border: 1px solid $theme-color;
+          border: 1px solid #313131;
+          background-color: #313131;
         }
       }
     }
@@ -175,7 +179,7 @@
         border: 2px solid #000;
         background-color: transparent;
         &:after {
-          background-color: #bca487;
+          background-color: #ff9f00;
         }
       }
     }

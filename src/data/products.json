@@ -12,7 +12,9 @@
     "weight": "50976",
     "price": 2500,
     "priceWithGST": 20000,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -27,7 +29,7 @@
     "discount": 50,
     "variation": [
       {
-        "color": "white",
+        "color": "purple",
         "image": "/assets/img/product/fashion/1.jpg",
         "size": [
           {
@@ -100,7 +102,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -183,7 +187,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -261,7 +267,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -349,7 +357,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -432,7 +442,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -530,7 +542,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -613,7 +627,9 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": ["kingsize bed"],
+    "subcategory": [
+      "kingsize bed"
+    ],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
