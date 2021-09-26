@@ -56,7 +56,7 @@ class Product(models.Model):
         return (self.name)
 
 class ProductVariation(models.Model):
-    product = models.ForeignKey(Product, related_name="variations", on_delete = models.CASCADE,null=False)
+    product = models.ForeignKey(Product, related_name = "variations", on_delete = models.CASCADE,null=False)
     
     color = models.CharField(max_length = 100, null = True)
     material = models.CharField(max_length = 100, null = True)

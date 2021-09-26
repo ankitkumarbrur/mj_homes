@@ -21,8 +21,6 @@ class VariationSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(VariationSerializer, self).to_representation(instance)        
-        data.pop('id',None)
-        data.pop('product',None)
         data['gstPrice'] = data['price'] * 0.18 + data['price']
         return data
 
@@ -37,7 +35,6 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(ReviewSerializer, self).to_representation(instance)
-
         data['user'] = User.objects.get(id = data['user']).first_name
         data.pop('product', None)
         
@@ -67,7 +64,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         data = super(ProductSerializer, self).to_representation(instance)
-        data['subcategory'] = list(str(data['subcategory']).split(',')) # TODO: Check for "None"
+        data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data
         
     def create(self, validated_data, *args, **kwargs):

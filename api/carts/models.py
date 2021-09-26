@@ -7,8 +7,8 @@ from users.models import User
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
 
-    def __unicode__(self):
-        return self.user.first_name
+    def __str__(self):
+        return self.user.user_name
 
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, related_name = "cartitems", on_delete = models.CASCADE)
@@ -19,8 +19,8 @@ class CartItem(models.Model):
 class WishList(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def __unicode__(self):
-        return self.user.first_name
+    def __str__(self):
+        return self.user.user_name
 
 class WishListItem(models.Model):
     product = models.ForeignKey(Product, on_delete = models.CASCADE)
