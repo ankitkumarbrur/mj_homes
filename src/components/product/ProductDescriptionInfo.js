@@ -8,6 +8,7 @@ import { addToWishlist } from "../../redux/actions/wishlistActions";
 import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
 import PinCode from "./sub-components/Pincode";
+import ProductGridFour from "../../wrappers/product/ProductGridFour";
 
 const ProductDescriptionInfo = ({
   product,
@@ -39,6 +40,12 @@ const ProductDescriptionInfo = ({
     selectedProductSize
   );
 
+  const priceWithGST = () => {
+    const gstPrice = (product.price * 28) / 100;
+    const totalPrice = product.price + gstPrice;
+    return totalPrice;
+  };
+
   return (
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
@@ -54,7 +61,7 @@ const ProductDescriptionInfo = ({
             <span className="gst-price">
               Price With GST :
               <span className="price">
-                {currency.currencySymbol + product.priceWithGST}
+                {currency.currencySymbol + priceWithGST()}
               </span>
             </span>
           </Fragment>

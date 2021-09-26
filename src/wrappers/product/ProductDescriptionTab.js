@@ -1,10 +1,18 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
+import { useToasts } from "react-toast-notifications";
+
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+
 import ReviewRating from "../../components/product/sub-components/ReviewRating";
 import AddReviewRating from "../../components/product/sub-components/AddReviewRating";
 import axios from "axios";
+
+const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
+const ACCESS_TOKEN =
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc0MjEzLCJqdGkiOiJmYjMzYzIyMDdiZmY0MzllOTI3MTU5M2U2ZWZjODJmYSIsInVzZXJfaWQiOjEwfQ.gSnRIHTr8cI5ADzzgPPtDpPZC-mQYaoysWVWwRpsPVE";
+
 const ProductDescriptionTab = ({
   spaceBottomClass,
   productFullDesc,
@@ -18,25 +26,66 @@ const ProductDescriptionTab = ({
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(null);
+  const { addToast } = useToasts();
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (user && email && comment && rating) {
+  //     const review = {
+  //       user,
+  //       email,
+  //       comment,
+  //       rating,
+  //     };
+  //     const config = {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //         Authorization: `${ACCESS_TOKEN}`,
+  //       },
+  //     };
+  //     const { data } = axios.post(`${BASE_URL}/products/`, review, config);
+  //     addToast("Review Added", {
+  //       appearance: "success",
+  //       autoDismiss: true,
+  //     });
+  //     setUser("");
+  //     setEmail("");
+  //     setComment("");
+  //     setRating(null);
+  //     console.log(data);
+  //   }
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (user && email && comment && rating) {
-      const review = {
-        user,
-        email,
-        comment,
-        rating,
+    try {
+      const formData = new FormData();
+      formData.append("user", user);
+      formData.append("reviewStar", rating);
+      formData.append("reviewText", comment);
+
+      const config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "multipart/form-data",
+          Authorization: `${ACCESS_TOKEN}`,
+        },
       };
+      const { data } = await axios.post(`${BASE_URL}/review`, formData, config);
+      addToast("Review Added", {
+        appearance: "success",
+        autoDismiss: true,
+      });
       setUser("");
       setEmail("");
       setComment("");
       setRating(null);
-      console.log(review);
-      // axios
-      //   .post(url, review)
-      //   .then((response) => console.log(response))
-      //   .catch((error) => console.log(error));
+    } catch (error) {
+      addToast("Review Not Added", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+      console.log("error");
     }
   };
 

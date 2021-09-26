@@ -98,7 +98,7 @@
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
     "size": "15*15*54",
     "weight": "50976",
-    "price": 0.0,
+    "price": 2750,
     "priceWithGST": 0.0,
     "subcategory": ["kingsize bed"],
     "material": "Teakwood",
@@ -112,7 +112,7 @@
     "featured": false,
     "dateAdded": "2021-08-05",
     "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
-    "discount": 0,
+    "discount": 10,
     "variation": [
       {
         "color": "white",
