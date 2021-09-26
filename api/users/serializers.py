@@ -33,6 +33,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         try:
             instance.save()
+            
             Cart.objects.create(user = instance)
             WishList.objects.create(user = instance)
         except IntegrityError:
