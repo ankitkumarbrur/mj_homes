@@ -9,8 +9,8 @@ import ReviewRating from "../../components/product/sub-components/ReviewRating";
 import AddReviewRating from "../../components/product/sub-components/AddReviewRating";
 import axios from "axios";
 
-// const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
-const BASE_URL = "http://localhost:8000/";
+const BASE_URL = "http://ankitbrur.pythonanywhere.com/";
+// const BASE_URL = "http://localhost:8000/";
 const ACCESS_TOKEN =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc4NzkzLCJqdGkiOiJmNWQyZGQzNWU0M2Y0YWYxOTY3YzNlNGE1N2QxZjE3ZiIsInVzZXJfaWQiOjF9.kehcJyF2VzIj4XPDwjUeqP8GS4MVj6WlQ_956nWe_1Y";
 
@@ -69,7 +69,7 @@ const ProductDescriptionTab = ({
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization:
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc5MDQ5LCJqdGkiOiI2NjkyZDczNGM0YmM0NzQyODVhNDc4MWFmMGYwNGEwYSIsInVzZXJfaWQiOjF9.YtsbF2-HcJAce47wE23Sgcrp6MGuHWpy7xNd9yVUtv4",
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjg1MDE4LCJqdGkiOiIyYzgwMmRhMWFmNDA0ZDVlYjg0M2ExZjFlMDI4YjdmYyIsInVzZXJfaWQiOjl9.8PT88C69Zpqx5z79s69oGTbBzifvBRy0X7SUCeiGwzk",
         },
       };
       const { data } = await axios.post(
