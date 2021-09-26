@@ -1,10 +1,11 @@
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin
-from rest_framework import parsers
+from rest_framework import parsers, permissions
 from rest_framework import viewsets
 from mixins.CustomMixins import PreprocessMixin
 from authentication.permissions import IsAdmin, IsOwner
 from django.http import QueryDict
+# from rest_condition import Or
 
 import json
 from django.http.multipartparser import MultiPartParser
@@ -63,10 +64,8 @@ class Product_view(GenericAPIView, CreateModelMixin, ListModelMixin):
 #         return self.create(request, *args, **kwargs)
 class Review_view(PreprocessMixin, viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
-    # action_based_permission_classes = {
-        # 'list' : (IsAdmin, ),
-    # }
-    permission_classes = (IsOwner,)
+    permission_classes = (permissions.IsAuthenticated, IsOwner, permissions.AllowAny)
+    # permission_classes = (IsOwner,)
     MODEL = Review
 
     def get_queryset(self):

@@ -12,21 +12,21 @@ class ProductManager(models.Manager):
 	def get_queryset(self):
 		return ProductQuerySet(self.model, using=self._db)
 
-
 	def all(self, *args, **kwargs):
 		return self.get_queryset().active()
 
-	# def get_related(self, instance):
-	# 	products_one = self.get_queryset().filter(categories__in=instance.categories.all())
-	# 	products_two = self.get_queryset().filter(default=instance.default)
-	# 	qs = (products_one | products_two).exclude(id=instance.id).distinct()
-	# 	return qs
 
 def model_upload(instance, filename):
-    slug = slugify(instance.name)
-    _, file_extension = filename.split(".")
-    new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
-    return "models/%s/%s" %(slug, new_filename)
+	slug = slugify(instance.name)
+	_, file_extension = filename.split(".")
+	new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
+	return "products/%s/%s" %(slug, new_filename)
+
+def image_upload(instance, filename):
+	slug = slugify(instance.product.name)
+	_, file_extension = filename.split(".")
+	new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
+	return "products/%s/%s" %(slug, new_filename)
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -52,10 +52,11 @@ class Product(models.Model):
 
     objects = ProductManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return (self.name)
 
 class ProductVariation(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     product = models.ForeignKey(Product, related_name = "variations", on_delete = models.CASCADE,null=False)
     
     color = models.CharField(max_length = 100, null = True)
@@ -63,16 +64,11 @@ class ProductVariation(models.Model):
     price = models.FloatField(null = False, blank = False)
     size = models.CharField(max_length = 100, null = True)
     weight = models.FloatField(null = True)
+    image = models.ImageField(upload_to = image_upload, null = True, blank = True)
+
 
     def __unicode__(self):
         return (self.item_name)
-
-def image_upload(instance, filename):
-	name = instance.name
-	slug = slugify(name)
-	basename, file_extension = filename.split(".")
-	new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
-	return "products/%s/%s" %(slug, new_filename)
 
 class Image(models.Model):
     image = models.ImageField(upload_to = image_upload, null = True, blank = True)
@@ -89,5 +85,5 @@ class Review(models.Model):
     reviewText = models.TextField(null = True, blank = True)
     dateAdded = models.DateField(auto_now_add = True)
 
-    def __unicode__(self):
-        return (self.item_name)
+    def __str__(self):
+        return (self.product.name)
