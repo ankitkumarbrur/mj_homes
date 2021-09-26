@@ -142,11 +142,19 @@ function ProductModal(props) {
                 <div className="product-details-price">
                   {discountedprice !== null ? (
                     <Fragment>
-                      <span>
-                        {currency.currencySymbol + finaldiscountedprice}
-                      </span>{" "}
-                      <span className="old">
-                        {currency.currencySymbol + finalproductprice}
+                      <div>
+                        <span>
+                          {currency.currencySymbol + finaldiscountedprice}
+                        </span>{" "}
+                        <span className="old">
+                          {currency.currencySymbol + finalproductprice}
+                        </span>
+                      </div>
+                      <span className="gst-price">
+                        Price With GST :
+                        <span className="price">
+                          {currency.currencySymbol + product.priceWithGST}
+                        </span>
                       </span>
                     </Fragment>
                   ) : (
@@ -200,7 +208,7 @@ function ProductModal(props) {
                       </div>
                     </div>
                     <div className="pro-details-size">
-                      <span>Size</span>
+                      <span>Material</span>
                       <div className="pro-details-size-content">
                         {product.variation &&
                           product.variation.map((single) => {
@@ -318,20 +326,6 @@ function ProductModal(props) {
                         onClick={() => addToWishlist(product, addToast)}
                       >
                         <i className="pe-7s-like" />
-                      </button>
-                    </div>
-                    <div className="pro-details-compare">
-                      <button
-                        className={compareItem !== undefined ? "active" : ""}
-                        disabled={compareItem !== undefined}
-                        title={
-                          compareItem !== undefined
-                            ? "Added to compare"
-                            : "Add to compare"
-                        }
-                        onClick={() => addToCompare(product, addToast)}
-                      >
-                        <i className="pe-7s-shuffle" />
                       </button>
                     </div>
                   </div>

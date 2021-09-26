@@ -9,18 +9,18 @@ const ImageSliderTwo = () => {
     grabCursor: true,
     breakpoints: {
       1024: {
-        slidesPerView: 8
+        slidesPerView: 6,
       },
       768: {
-        slidesPerView: 4
+        slidesPerView: 4,
       },
       640: {
-        slidesPerView: 3
+        slidesPerView: 3,
       },
       320: {
-        slidesPerView: 2
-      }
-    }
+        slidesPerView: 2,
+      },
+    },
   };
 
   return (

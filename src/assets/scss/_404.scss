@@ -42,22 +42,10 @@
   border-radius: 0;
   background-color: #ff9f00;
   display: inline-block;
-  &:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: -6px;
-    height: 3px;
-    width: 100%;
-    background-color: #ff9f00;
-    transition: all 0.3s;
-  }
+
   &:hover {
     background-color: #111111;
     color: #fff;
-    &:after {
-      background-color: #111111;
-    }
   }
 }
 

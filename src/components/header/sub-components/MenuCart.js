@@ -58,7 +58,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                     single.selectedProductSize ? (
                       <div className="cart-item-variation">
                         <span>Color: {single.selectedProductColor}</span>
-                        <span>Size: {single.selectedProductSize}</span>
+                        <span>Material: {single.selectedProductSize}</span>
                       </div>
                     ) : (
                       ""
@@ -103,7 +103,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
 MenuCart.propTypes = {
   cartData: PropTypes.array,
   currency: PropTypes.object,
-  deleteFromCart: PropTypes.func
+  deleteFromCart: PropTypes.func,
 };
 
 export default MenuCart;

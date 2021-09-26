@@ -203,7 +203,9 @@ const FooterOne = ({
         <i className="fa fa-angle-double-up"></i>
       </button>
       <button className="whats-app">
-        <i className="fa fa-whatsapp"></i>
+        <a href="https://web.whatsapp.com/" target="_blank">
+          <i className="fa fa-whatsapp"></i>
+        </a>
       </button>
       <button className="google-form">
         <i className="fa fa-phone"></i>

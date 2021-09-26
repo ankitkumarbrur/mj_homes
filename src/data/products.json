@@ -12,9 +12,7 @@
     "weight": "50976",
     "price": 2500,
     "priceWithGST": 20000,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -26,7 +24,7 @@
     "featured": false,
     "dateAdded": "2021-08-05",
     "model3d": "https://drive.google.com/file/d/1ik42wDBM48C9DM41EfQfSTubM_CAisGZ/view?usp=sharing",
-    "discount": 50,
+    "discount": 30,
     "variation": [
       {
         "color": "purple",
@@ -94,7 +92,7 @@
     "name": "chess lightning bed",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": true,
     "bestSeller": true,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -102,9 +100,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -179,7 +175,7 @@
     "name": "Queen Bed",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": true,
     "bestSeller": false,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -187,9 +183,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -259,7 +253,7 @@
     "name": "Stool",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": false,
     "bestSeller": false,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -267,9 +261,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -349,7 +341,7 @@
     "name": "Table",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": false,
     "bestSeller": false,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -357,9 +349,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -434,7 +424,7 @@
     "name": "Chair",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": false,
     "bestSeller": false,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -442,9 +432,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -534,7 +522,7 @@
     "name": "Sofa",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": false,
     "bestSeller": true,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -542,9 +530,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [
@@ -619,7 +605,7 @@
     "name": "chess lightning bed",
     "description": "This is product Description",
     "shortDescription": "short description",
-    "newProduct": false,
+    "new": false,
     "bestSeller": false,
     "care": "This is product care instuctoin",
     "keyword": "Beds, bedroom furniture, kids room, bedroom designs, kingsize bed set, double bed with mattress, bedroom interior, bed furniture, king size bed, double bed, beds for sale, storage bed, wooden bed, bed price, double bed price, modern bed, kids bedroom, bed online, cool beds, luxury beds, bed furniture, big bed, bed with mattress, box bed, bed price, white bed, brown bed, kids bed, nightstand, bed table, white bedside table, brown bedside table, wooden bedside tables, modern bed, modern bedside table",
@@ -627,9 +613,7 @@
     "weight": "50976",
     "price": 0.0,
     "priceWithGST": 0.0,
-    "subcategory": [
-      "kingsize bed"
-    ],
+    "subcategory": ["kingsize bed"],
     "material": "Teakwood",
     "manufacturer": "Mj Homes",
     "image": [

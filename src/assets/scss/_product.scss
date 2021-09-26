@@ -525,8 +525,13 @@
         color: grey;
         .price {
           margin-left: 5px;
-          font-size : 20px;
+          font-size: 20px;
         }
+      }
+      &.old {
+        margin-left: 5px;
+        text-decoration: line-through;
+        color: #8e8e8e;
       }
     }
   }

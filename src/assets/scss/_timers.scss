@@ -139,12 +139,9 @@
       a {
         background-color: #ff9f00;
         &:hover {
-          border: 1px solid $theme-color
-         
-
+          border: 1px solid $theme-color;
         }
       }
-      
     }
     &.funfact-btn-red-2 {
       a {
@@ -165,7 +162,7 @@
     }
     &.funfact-btn-green {
       a {
-        background-color: #6eab49;
+        background-color: #343538;
         &:hover {
           border: 1px solid $theme-color;
         }

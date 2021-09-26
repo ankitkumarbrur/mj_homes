@@ -43,15 +43,24 @@ const ProductDescriptionInfo = ({
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
       <div className="product-details-price">
-        <Fragment>
-          <span>{currency.currencySymbol + product.price}</span>
-          <span className="gst-price">
-            Price With GST :
-            <span className="price">
-              {currency.currencySymbol + product.priceWithGST}
+        {discountedPrice !== null ? (
+          <Fragment>
+            <div>
+              <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+              <span className="old">
+                {currency.currencySymbol + finalProductPrice}
+              </span>
+            </div>
+            <span className="gst-price">
+              Price With GST :
+              <span className="price">
+                {currency.currencySymbol + product.priceWithGST}
+              </span>
             </span>
-          </span>
-        </Fragment>
+          </Fragment>
+        ) : (
+          <span>{currency.currencySymbol + finalProductPrice} </span>
+        )}
       </div>
       {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
@@ -98,7 +107,7 @@ const ProductDescriptionInfo = ({
             </div>
           </div>
           <div className="pro-details-size">
-            <span>Size</span>
+            <span>Material</span>
             <div className="pro-details-size-content">
               {product.variation &&
                 product.variation.map((single) => {

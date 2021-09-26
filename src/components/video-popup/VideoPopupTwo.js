@@ -13,12 +13,12 @@ const VideoPopupTwo = ({ spaceBottomClass }) => {
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL + "/assets/img/bg/bg-7.jpg"
-          })`
+          })`,
         }}
       >
         <div className="video-popup-2__content">
           <h2 className="title mb-30">
-            Furniture 2020 <br /> Collections
+            Furniture 2021 <br /> Collections
           </h2>
           <p className="text mb-30">
             Lorem ipsum dolor sit amet consectetur adipisici elit sed do eiusm.
@@ -47,7 +47,7 @@ const VideoPopupTwo = ({ spaceBottomClass }) => {
         style={{
           backgroundImage: `url(${
             process.env.PUBLIC_URL + "/assets/img/bg/bg-8.jpg"
-          })`
+          })`,
         }}
       ></div>
     </div>
