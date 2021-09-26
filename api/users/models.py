@@ -7,7 +7,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class AccountManager(BaseUserManager):
 
-    def create_superuser(self, email, user_name, first_name, password, **kwargs):
+    def create_superuser(self, email, first_name, password, **kwargs):
         kwargs.setdefault('is_staff', True)
         kwargs.setdefault('is_superuser', True)
         kwargs.setdefault('is_active', True)
@@ -18,17 +18,15 @@ class AccountManager(BaseUserManager):
         if kwargs.get('is_superuser') is not True:
             raise ValueError('Super User must be assigned is_superuser = True')
 
-        self.create_user(self, email, user_name, first_name, password, **kwargs)
-
-    def create_user(self, instance, email, user_name, first_name, password, *args, **kwargs):
         if not email:
             raise ValueError(_("You must provide an email"))
 
         email = self.normalize_email(email)
-        user = self.model(email = email, user_name = user_name, first_name = first_name, **kwargs)
+        user = self.model(email = email, first_name = first_name, **kwargs)
 
         user.set_password(password)
         user.save()
+
         return user
 
 class User(AbstractBaseUser, PermissionsMixin):
@@ -39,15 +37,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     start_date = models.DateTimeField(default = timezone.now)
     is_staff = models.BooleanField(default = False)
     is_active = models.BooleanField(default = True)
-
+    
     objects = AccountManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['user_name', 'first_name']
+    REQUIRED_FIELDS = ['first_name']
 
     def __unicode__(self):
-        return self.user_name
-
+        return self.first_name
 
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null = False, blank = False)
@@ -57,6 +54,7 @@ class Address(models.Model):
     district = models.CharField(max_length = 100, null = False, blank = False)
     state = models.CharField(max_length = 100, null = False, blank = False)
     pin = models.IntegerField(default = 0, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
+    phone = models.CharField(default = '+91 ----------', max_length=20)
 
     def __unicode__(self):
         return (self.item_name)

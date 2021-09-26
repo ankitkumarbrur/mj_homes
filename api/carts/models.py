@@ -5,17 +5,23 @@ from users.models import User
 
 # Create your models here.
 class Cart(models.Model):
-    userId = models.ForeignKey(User, on_delete = models.CASCADE)
-    total_amount = models.FloatField(blank=True, null=True)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return self.user.user_name
 
 class CartItem(models.Model):
-    productId = models.ForeignKey(Product, on_delete = models.CASCADE)
-    cartID = models.ForeignKey(Cart, on_delete = models.CASCADE)
+    cart = models.ForeignKey(Cart, related_name = "cartitems", on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+
     quantity = models.IntegerField(null = False, blank = False)
 
 class WishList(models.Model):
-    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.user_name
 
 class WishListItem(models.Model):
-    productId = models.ForeignKey(Product, on_delete = models.CASCADE)
-    WishListID = models.ForeignKey(WishList, on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+    wishlist = models.ForeignKey(WishList, related_name = "wishlistitems", on_delete = models.CASCADE)

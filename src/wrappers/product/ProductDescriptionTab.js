@@ -9,9 +9,10 @@ import ReviewRating from "../../components/product/sub-components/ReviewRating";
 import AddReviewRating from "../../components/product/sub-components/AddReviewRating";
 import axios from "axios";
 
-const BASE_URL = "https://ankitbrur.pythonanywhere.com";
+// const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
+const BASE_URL = "http://localhost:8000/";
 const ACCESS_TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc0MjEzLCJqdGkiOiJmYjMzYzIyMDdiZmY0MzllOTI3MTU5M2U2ZWZjODJmYSIsInVzZXJfaWQiOjEwfQ.gSnRIHTr8cI5ADzzgPPtDpPZC-mQYaoysWVWwRpsPVE";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc4NzkzLCJqdGkiOiJmNWQyZGQzNWU0M2Y0YWYxOTY3YzNlNGE1N2QxZjE3ZiIsInVzZXJfaWQiOjF9.kehcJyF2VzIj4XPDwjUeqP8GS4MVj6WlQ_956nWe_1Y";
 
 const ProductDescriptionTab = ({
   spaceBottomClass,
@@ -22,8 +23,8 @@ const ProductDescriptionTab = ({
   productManufacturer,
   productReview,
 }) => {
-  // const [user, setUser] = useState("");
-  // const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(null);
   const { addToast } = useToasts();
@@ -62,15 +63,17 @@ const ProductDescriptionTab = ({
       const formData = new FormData();
       formData.append("reviewStar", rating);
       formData.append("reviewText", comment);
+      formData.append("product", "319175b1-cd5d-430e-91d4-47597feefcce");
 
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `JWT ${ACCESS_TOKEN}`,
+          Authorization:
+            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc5MDQ5LCJqdGkiOiI2NjkyZDczNGM0YmM0NzQyODVhNDc4MWFmMGYwNGEwYSIsInVzZXJfaWQiOjF9.YtsbF2-HcJAce47wE23Sgcrp6MGuHWpy7xNd9yVUtv4",
         },
       };
       const { data } = await axios.post(
-        `${BASE_URL}/review/`,
+        "http://localhost:8000/review/",
         formData,
         config
       );
@@ -78,6 +81,8 @@ const ProductDescriptionTab = ({
         appearance: "success",
         autoDismiss: true,
       });
+      setUser("");
+      setEmail("");
       setComment("");
       setRating(null);
     } catch (error) {

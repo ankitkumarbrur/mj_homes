@@ -6,4 +6,4 @@ from .serializers import CartSerializer
 
 class OrderView(viewsets.ModelViewSet):
     queryset = Order.objects.all()
-    serializer_class = CartSerializer   
+    serializer_class = CartSerializer
