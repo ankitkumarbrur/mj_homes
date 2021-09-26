@@ -9,7 +9,7 @@ import ReviewRating from "../../components/product/sub-components/ReviewRating";
 import AddReviewRating from "../../components/product/sub-components/AddReviewRating";
 import axios from "axios";
 
-const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
+const BASE_URL = "https://ankitbrur.pythonanywhere.com";
 const ACCESS_TOKEN =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc0MjEzLCJqdGkiOiJmYjMzYzIyMDdiZmY0MzllOTI3MTU5M2U2ZWZjODJmYSIsInVzZXJfaWQiOjEwfQ.gSnRIHTr8cI5ADzzgPPtDpPZC-mQYaoysWVWwRpsPVE";
 
@@ -22,8 +22,8 @@ const ProductDescriptionTab = ({
   productManufacturer,
   productReview,
 }) => {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
+  // const [user, setUser] = useState("");
+  // const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(null);
   const { addToast } = useToasts();
@@ -60,24 +60,24 @@ const ProductDescriptionTab = ({
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("user", user);
       formData.append("reviewStar", rating);
       formData.append("reviewText", comment);
 
       const config = {
         headers: {
-          "Access-Control-Allow-Origin": "*",
           "Content-Type": "multipart/form-data",
-          Authorization: `${ACCESS_TOKEN}`,
+          Authorization: `JWT ${ACCESS_TOKEN}`,
         },
       };
-      const { data } = await axios.post(`${BASE_URL}/review`, formData, config);
+      const { data } = await axios.post(
+        `${BASE_URL}/review/`,
+        formData,
+        config
+      );
       addToast("Review Added", {
         appearance: "success",
         autoDismiss: true,
       });
-      setUser("");
-      setEmail("");
       setComment("");
       setRating(null);
     } catch (error) {
@@ -407,7 +407,7 @@ const ProductDescriptionTab = ({
                             />
                           </div>
                           <div className="row">
-                            <div className="col-md-6">
+                            {/* <div className="col-md-6">
                               <div className="rating-form-style mb-10">
                                 <input
                                   placeholder="Name"
@@ -417,8 +417,8 @@ const ProductDescriptionTab = ({
                                   onChange={(e) => setUser(e.target.value)}
                                 />
                               </div>
-                            </div>
-                            <div className="col-md-6">
+                            </div> */}
+                            {/* <div className="col-md-6">
                               <div className="rating-form-style mb-10">
                                 <input
                                   placeholder="Email"
@@ -428,7 +428,7 @@ const ProductDescriptionTab = ({
                                   onChange={(e) => setEmail(e.target.value)}
                                 />
                               </div>
-                            </div>
+                            </div> */}
                             <div className="col-md-12">
                               <div className="rating-form-style form-submit">
                                 <textarea
