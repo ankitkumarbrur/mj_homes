@@ -64,8 +64,8 @@ class Product_view(GenericAPIView, CreateModelMixin, ListModelMixin):
 #         return self.create(request, *args, **kwargs)
 class Review_view(PreprocessMixin, viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
-    permission_classes = (permissions.IsAuthenticated, IsOwner, permissions.AllowAny)
-    # permission_classes = (IsOwner,)
+    # permission_classes = (permissions.IsAuthenticated, IsOwner, permissions.AllowAny)
+    permission_classes = (permissions.IsAuthenticated,)
     MODEL = Review
 
     def get_queryset(self):
