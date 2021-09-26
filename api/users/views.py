@@ -1,54 +1,24 @@
-from django.shortcuts import render
-
+from rest_framework import viewsets
 from .models import User, Address
-from rest_framework.generics import GenericAPIView
-from rest_framework.response import Response
-from rest_framework.mixins import ListModelMixin
-from rest_framework import permissions, status
-
 from .serializers import UserSerializer, AddressSerializer
-from rest_framework.mixins import ListModelMixin, CreateModelMixin, UpdateModelMixin
+from rest_framework.permissions import AllowAny
 
+from authentication.permissions import IsOwner, IsAdmin
+from mixins.CustomMixins import PreprocessMixin, ViewsetActionPermissionMixin
 
-# Create your views here.
-
-class User_view(GenericAPIView, ListModelMixin, ):
+class User_view(ViewsetActionPermissionMixin, PreprocessMixin, viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.AllowAny]
-    # parser_classes = (parsers.JSONParser, MultipartJsonParser)
+    action_based_permission_classes = {
+        'list' : (IsAdmin,),
+        'create' : (AllowAny,),
+    }
+    permission_classes = (IsAdmin, IsOwner, )
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-    
-    def post(self, request, *args, **kwargs):
-        serializer = self.serializer_class(data = request.data)
-        if serializer.is_valid():
-            User = serializer.save()
-            if User:
-                return Response(status = status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
-
-
-
-class Address_view(GenericAPIView, CreateModelMixin, ListModelMixin, UpdateModelMixin):
+class Address_view(viewsets.ModelViewSet, PreprocessMixin):
     serializer_class = AddressSerializer
-    
-    def get_queryset(self, *args, **kwargs):
-        if 'user' in self.request.data:
-            user = User.objects.get(id = self.request.data['user'])
-            queryset = Address.objects.filter(user = user)
-            return queryset
+    permission_classes = (IsOwner, IsAdmin)
+    MODEL = Address
 
-        return Address.objects.none()
-
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        # self.kwargs['pk'] = 
-        return self.update(request, *args, **kwargs)
+    def get_queryset(self):
+        return self.preprocess()

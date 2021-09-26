@@ -1,11 +1,11 @@
-from django.db.models.query import QuerySet
-from django.shortcuts import render
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 from rest_framework.mixins import ListModelMixin, CreateModelMixin
-from rest_framework import parsers
+from rest_framework import parsers, permissions
 from rest_framework import viewsets
+from mixins.CustomMixins import PreprocessMixin
+from authentication.permissions import IsAdmin, IsOwner
+from django.http import QueryDict
+# from rest_condition import Or
 
 import json
 from django.http.multipartparser import MultiPartParser
@@ -14,6 +14,7 @@ from .serializers import ProductSerializer, ReviewSerializer
 
 from .models import Product, Review
 from django.http import QueryDict
+from users.models import User
 # Create your views here.
 
 # Parser Class
@@ -47,18 +48,34 @@ class Product_view(GenericAPIView, CreateModelMixin, ListModelMixin):
     parser_classes = (parsers.JSONParser, MultipartJsonParser)
 
     def get(self, request, *args, **kwargs):
-        print(request.COOKIES)
         return self.list(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-class Review_view(GenericAPIView, CreateModelMixin, ListModelMixin):
-    queryset = Review.objects.all()
+# class Review_view(GenericAPIView, CreateModelMixin, ListModelMixin):
+#     queryset = Review.objects.all()
+#     serializer_class = ReviewSerializer
+
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
+
+#     def post(self, request, *args, **kwargs):
+#         return self.create(request, *args, **kwargs)
+class Review_view(PreprocessMixin, viewsets.ModelViewSet):
     serializer_class = ReviewSerializer
+    permission_classes = (permissions.IsAuthenticated, IsOwner, permissions.AllowAny)
+    # permission_classes = (IsOwner,)
+    MODEL = Review
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+    def get_queryset(self):
+        return self.preprocess()
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+    # def create(self, request, *args, **kwargs):
+    #     # user = User.objects.get(id = request.session.get('decoded_user', None))
+    #     request.data._mutable = True
+    #     request.data.update({'user' : request.session.get('decoded_user', None)})
+    #     serializer = self.serializer_class(data = request.data)
+    #     serializer.is_valid(raise_exception = True)
+
+    #     serializer.save()
