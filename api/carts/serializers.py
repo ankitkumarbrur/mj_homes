@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cart, CartItem, WishList, WishListItem
+from .models import Cart, CartItem , WishList, WishListItem
 
 class CartItemSerializer(serializers.ModelSerializer):
     class Meta:
@@ -7,7 +7,7 @@ class CartItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CartSerializer(serializers.ModelSerializer):
-    cart_items = CartItemSerializer(read_only = False)
+    cartitems = CartItemSerializer(read_only = False, many=True)
     class Meta:
         model = Cart
         fields = '__all__'
@@ -16,8 +16,12 @@ class WishlistItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = WishListItem
         fields = '__all__'
+
 class WishlistSerializer(serializers.ModelSerializer):
-    wishlist_items = CartItemSerializer(read_only = False)
+    wishlistitems = WishlistItemSerializer(read_only = True, many=True)
     class Meta:
         model = WishList
         fields = '__all__'
+    
+    # def create(self, validated_data, *args, **kwargs):
+    #     print(validated_data)

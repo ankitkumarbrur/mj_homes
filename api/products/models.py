@@ -1,5 +1,5 @@
 from django.db import models
-# from users.models import User
+from users.models import User
 from django.utils.text import slugify
 import uuid
 
@@ -12,14 +12,15 @@ class ProductManager(models.Manager):
 	def get_queryset(self):
 		return ProductQuerySet(self.model, using=self._db)
 
+
 	def all(self, *args, **kwargs):
 		return self.get_queryset().active()
 
-	def get_related(self, instance):
-		products_one = self.get_queryset().filter(categories__in=instance.categories.all())
-		products_two = self.get_queryset().filter(default=instance.default)
-		qs = (products_one | products_two).exclude(id=instance.id).distinct()
-		return qs
+	# def get_related(self, instance):
+	# 	products_one = self.get_queryset().filter(categories__in=instance.categories.all())
+	# 	products_two = self.get_queryset().filter(default=instance.default)
+	# 	qs = (products_one | products_two).exclude(id=instance.id).distinct()
+	# 	return qs
 
 def model_upload(instance, filename):
     slug = slugify(instance.name)
@@ -55,7 +56,7 @@ class Product(models.Model):
         return (self.name)
 
 class ProductVariation(models.Model):
-    product = models.ForeignKey(Product, related_name="variations" , on_delete=models.CASCADE,null=False)
+    product = models.ForeignKey(Product, related_name="variations", on_delete = models.CASCADE,null=False)
     
     color = models.CharField(max_length = 100, null = True)
     material = models.CharField(max_length = 100, null = True)
@@ -80,12 +81,13 @@ class Image(models.Model):
     def __unicode__(self):
         return (self.item_name)
 
-# class Review(models.Model):
-#     product = models.ForeignKey(Product, related_name="review", on_delete = models.CASCADE, null = False, blank = False)
-#     user = models.ForeignKey(User, on_delete = models.CASCADE, null = False, blank = False)
+class Review(models.Model):
+    product = models.ForeignKey(Product, related_name="review", on_delete = models.CASCADE, null = False, blank = False)
+    user = models.ForeignKey(User, related_name="review", on_delete = models.CASCADE, null = False, blank = False)
 
-#     reviewStar = models.FloatField(null = False, blank = False)
-#     reviewText = models.TextField(null = True, blank = True)
+    reviewStar = models.FloatField(null = False, blank = False)
+    reviewText = models.TextField(null = True, blank = True)
+    dateAdded = models.DateField(auto_now_add = True)
 
-#     def __unicode__(self):
-#         return (self.item_name)
+    def __unicode__(self):
+        return (self.item_name)
