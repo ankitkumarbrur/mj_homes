@@ -3,7 +3,7 @@ from rest_framework.mixins import ListModelMixin, CreateModelMixin
 from rest_framework import parsers, permissions
 from rest_framework import viewsets
 from mixins.CustomMixins import PreprocessMixin
-from authentication.permissions import IsAdmin, IsOwner
+from authentication.permissions import IsOwnerOrAdmin
 from django.http import QueryDict
 # from rest_condition import Or
 

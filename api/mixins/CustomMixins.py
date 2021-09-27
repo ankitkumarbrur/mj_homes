@@ -1,6 +1,5 @@
 from users.models import User
 
-
 # THIS MIXIN PROVIDES ACTION BASED ACCESS TO PERMISSION CLASSES
 class ViewsetActionPermissionMixin:
     def get_permissions(self):
@@ -33,4 +32,4 @@ class PreprocessMixin:
             else:
                 return self.MODEL.objects.all()
         else:
-            return self.MODEL.objects.none()
+            return self.MODEL.objects.none()   

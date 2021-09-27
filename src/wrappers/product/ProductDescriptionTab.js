@@ -73,7 +73,7 @@ const ProductDescriptionTab = ({
 				},
 			};
 			const { data } = await axios.post(
-				"http://localhost:8000/review/",
+				"http://ankitbrur.pythonanywhere.com/review/",
 				formData,
 				config,
 			);

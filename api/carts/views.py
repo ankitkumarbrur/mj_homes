@@ -7,7 +7,7 @@ from .serializers import CartSerializer , WishList, WishlistSerializer
 from .models import Cart, CartItem , WishList, WishListItem
 
 from mixins.CustomMixins import PreprocessMixin
-from authentication.permissions import IsAdmin, IsOwner
+from authentication.permissions import IsOwnerOrAdmin
 # Create your views here.
 
 class CartView(viewsets.ModelViewSet, PreprocessMixin):
