@@ -64,3 +64,10 @@ class ProductSerializer(serializers.ModelSerializer):
         # data['image'] = [img['image'] for img in data['image']]
         data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data
+
+    # def create(self, validated_data, *args, **kwargs):
+
+    #     print(self.context['request'].data)
+    #     print(validated_data)
+    
+    #     product = Product.objects.create( **validated_data)

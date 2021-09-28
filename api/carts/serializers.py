@@ -33,12 +33,20 @@ class CartSerializer(serializers.ModelSerializer):
         try:
             validated_data['user'] = self.context['request'].user
 
+            print(self.request)
             cart = Cart.objects.create( **validated_data)
         except ValidationError:
             raise serializers.ValidationError({"detail": "input is not valid"})
 
         return cart
 
+    # def perform_create(self, serializer):
+    #     product = Cart.objects.filter(user = self.request.user, product = serializer.validated_data['product'])
+    #     if len(product):
+    #         product[0].quantity += serializer.validated_data.get('quantity', 1)
+    #         product[0].save()
+    #     else:
+    #         serializer.save()
 class WishlistSerializer(serializers.ModelSerializer):
     class Meta:
         model = WishList

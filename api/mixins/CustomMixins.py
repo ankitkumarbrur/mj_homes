@@ -11,7 +11,7 @@ class ViewsetActionPermissionMixin:
     }
     """
     def get_permissions(self):
-        print('CREATE IN ACTION CLASSES')
+        # print('CREATE IN ACTION CLASSES')
         if self.action in self.action_based_permission_classes:
             return [permission() for permission in self.action_based_permission_classes[self.action]]
         elif self.permission_classes:

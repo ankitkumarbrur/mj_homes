@@ -71,7 +71,7 @@ class MyTokenRefreshView(TokenRefreshView):
     serializer_class = TokenRefreshSerializer
 
     def post(self, request, *args, **kwargs):
-        print(request.user)
+        # print(request.user)
         if 'refresh' not in request.data:
             if 'refresh' in request.COOKIES:
                 request.data['refresh'] = request.COOKIES.get('refresh', None)
