@@ -56,7 +56,7 @@ def fetch_and_set_tokens(self, request):
     if 'access' in serializer.validated_data and 'refresh' in serializer.validated_data:
         response = Response({"access": serializer.validated_data.get("access", None)}, status = 200)
         # response.set_cookie('access', serializer.validated_data.get("access", None), httponly = True)
-        response.set_cookie('refresh', serializer.validated_data.get("refresh", None), httponly = True) #TODO: path='/refresh/'
+        response.set_cookie('refresh', serializer.validated_data.get("refresh", None)) #TODO: path='/refresh/'
         return response
 
     return Response({ "Error": "Something went wrong"}, status = 400)
