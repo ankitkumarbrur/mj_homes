@@ -60,6 +60,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     def to_representation(self, instance):
         data = super(ProductSerializer, self).to_representation(instance)
-        data['image'] = [img['image'] for img in data['image']]
+        # print(data)
+        # data['image'] = [img['image'] for img in data['image']]
         data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data

@@ -20,6 +20,13 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
         # 'destroy' : (permission_classes)
     }
 
+    def perform_create(self, serializer):
+        obj = serializer.save()
+        
+        if 'image' in self.request.data:    
+            for img in self.request.data.getlist('image', []):
+                Image.objects.create(product = obj, image = img)
+
 class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Review
     serializer_class = ReviewSerializer

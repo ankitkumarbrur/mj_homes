@@ -26,8 +26,6 @@ def image_upload(instance, filename):
     slug = slugify(instance.product.name)
     file_extension = filename.split(".")[-1]
     new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
-    print("products/%s/%s" %(slug, new_filename)) 
-    print("HERE")
     return "products/%s/%s" %(slug, new_filename)
 
 class Product(models.Model):
@@ -67,7 +65,6 @@ class ProductVariation(models.Model):
     size = models.CharField(max_length = 100, null = True)
     weight = models.FloatField(null = True)
     image = models.ImageField(upload_to = image_upload, null = True, blank = True)
-
 
     def __str__(self):
         return  "%s - %s" %(self.product.name, self.id)
