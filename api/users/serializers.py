@@ -37,10 +37,22 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"Error":"Account with same email id exists"})
         return instance
 
+    # def update(self, instance, validated_data):
+    #     if
+    #         instance.name = validated_data.get('name', instance.name)
+    #         instance.password = validated_data.get('created', instance.password)
+
+    #     return instance
+
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = '__all__'
+        extra_kwargs = {
+            'user' : {
+                'read_only' : True
+            }
+        }
 
     def to_representation(self, instance):
         data = super(AddressSerializer, self).to_representation(instance)
@@ -48,6 +60,8 @@ class AddressSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         try:
+            validated_data['user'] = self.context['request'].user
+
             address = Address.objects.create( **validated_data)
         except ValidationError as ex:
             raise serializers.ValidationError({"detail": "input is not valid"})
