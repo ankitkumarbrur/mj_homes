@@ -9,7 +9,8 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, Toke
 
 # Create your views here.
 class BlacklistTokenView(GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny,]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         try:
@@ -29,7 +30,8 @@ class BlacklistTokenView(GenericAPIView):
             return Response(status = status.HTTP_400_BAD_REQUEST)
 
 class Force_Logout_View(GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny,]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         try:
