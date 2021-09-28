@@ -51,7 +51,7 @@ class VariationSerializer(serializers.ModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
     review = ReviewSerializer(many = True, read_only = True)
-    variations = VariationSerializer(many = True, read_only = True)
+    variation = VariationSerializer(many = True, read_only = True)
     image = ImageSerializer(many = True, read_only = True)
 
     class Meta:
