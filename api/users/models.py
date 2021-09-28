@@ -46,20 +46,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __unicode__(self):
         return self.first_name
 
-
-# class AddressQuerySet(models.query.QuerySet):
-# 	def active(self):
-# 		return self.filter(active=True)
-class AddressManager(models.Manager):
-    # def get_queryset(self):
-    #     print(self)
-    #     return AddressQuerySet(self.model, using=self._db)
-
-    def all(self, *args, **kwargs):
-        # print(dir(self.model))
-        print(self.model.user_id)
-        return self.get_queryset()
-
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null = False, blank = False)
 
@@ -69,9 +55,6 @@ class Address(models.Model):
     state = models.CharField(max_length = 100, null = False, blank = False)
     pin = models.IntegerField(default = 0, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
     phone = models.CharField(default = '+91 ----------', max_length=20)
-
-
-    objects = AddressManager()
 
     def __unicode__(self):
         return (self.item_name)

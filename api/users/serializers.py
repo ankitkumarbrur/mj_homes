@@ -2,7 +2,6 @@ from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
 from .models import User, Address
 from rest_framework import serializers
-from carts.models import Cart, WishList
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -34,8 +33,6 @@ class UserSerializer(serializers.ModelSerializer):
         try:
             instance.save()
             
-            Cart.objects.create(user = instance)
-            WishList.objects.create(user = instance)
         except IntegrityError:
             raise serializers.ValidationError({"Error":"Account with same email id exists"})
         return instance
@@ -51,7 +48,6 @@ class AddressSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         try:
-            print(validated_data)
             address = Address.objects.create( **validated_data)
         except ValidationError as ex:
             raise serializers.ValidationError({"detail": "input is not valid"})
