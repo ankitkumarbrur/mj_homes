@@ -6,6 +6,7 @@ from rest_framework_simplejwt.exceptions import TokenError
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
+from .serializers import CustomTokenObtainPairSerializer
 
 # Create your views here.
 class BlacklistTokenView(GenericAPIView):
@@ -54,7 +55,9 @@ def fetch_and_set_tokens(self, request):
     serializer.is_valid(raise_exception = True)
 
     if 'access' in serializer.validated_data and 'refresh' in serializer.validated_data:
-        response = Response({"access": serializer.validated_data.get("access", None)}, status = 200)
+        data = serializer.validated_data
+        data.pop('refresh', None)
+        response = Response(data, status = 200)
         # response.set_cookie('access', serializer.validated_data.get("access", None), httponly = True)
         response.set_cookie('refresh', serializer.validated_data.get("refresh", None)) #TODO: path='/refresh/'
         return response
@@ -63,7 +66,7 @@ def fetch_and_set_tokens(self, request):
 
 class MyTokenObtainPairView(TokenObtainPairView):
     permission_classes = [permissions.AllowAny,]
-    serializer_class = TokenObtainPairSerializer
+    serializer_class = CustomTokenObtainPairSerializer
 
     def post(self, request, *args, **kwargs):
         return fetch_and_set_tokens(self, request)

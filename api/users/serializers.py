@@ -37,12 +37,13 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"Error":"Account with same email id exists"})
         return instance
 
-    # def update(self, instance, validated_data):
-    #     if
-    #         instance.name = validated_data.get('name', instance.name)
-    #         instance.password = validated_data.get('created', instance.password)
+    def update(self, instance, validated_data):
+        print(dir(instance))
+        print(instance.get_password())
+        instance.name = validated_data.get('name', instance.name)
+        # instance.set_password(validated_data.get('password', instance.password))
 
-    #     return instance
+        return instance
 
 class AddressSerializer(serializers.ModelSerializer):
     class Meta:

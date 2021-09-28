@@ -1,4 +1,4 @@
-from rest_framework.permissions import BasePermission, IsAdminUser, AllowAny
+from rest_framework.permissions import BasePermission, IsAdminUser, AllowAny, IsAuthenticated
 from users.models import User
 class IsOwnerOrAdmin(BasePermission):
     message = "Accessing foreign items is restricted to owner only"
