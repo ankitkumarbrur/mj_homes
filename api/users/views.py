@@ -34,6 +34,15 @@ class User_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
         else:
             return Response({"Message": "Incorrect Password"}, status = 401)
 
+    @action(detail = False, methods = ['put','patch'])
+    def changeInfo(self, request, pk = None, *args, **kwargs):
+        instance = request.user
+        request.data.pop('password', None)
+        serializer = self.serializer_class(instance, data = request.data, partial = True)
+        serializer.is_valid(raise_exception = True)
+        serializer.save()
+        return Response(serializer.data)
+
 class Address_view(QuerysetMixin, viewsets.ModelViewSet):
     serializer_class = AddressSerializer
     permission_classes = (IsOwnerOrAdmin,)
