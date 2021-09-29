@@ -18,7 +18,7 @@ class User_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
         'create' : (AllowAny,),
         # 'retrieve': (permission_classes),
         # 'update' : (permission_classes),
-        # 'partial_update' : (permission_classes),
+        'partial_update' : (IsOwnerOrAdmin,),
         # 'destroy' : (permission_classes)
     }
     permission_classes = [IsOwnerOrAdmin]

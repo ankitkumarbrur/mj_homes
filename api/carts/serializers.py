@@ -33,7 +33,6 @@ class CartSerializer(serializers.ModelSerializer):
         try:
             validated_data['user'] = self.context['request'].user
 
-            print(self.request)
             cart = Cart.objects.create( **validated_data)
         except ValidationError:
             raise serializers.ValidationError({"detail": "input is not valid"})
