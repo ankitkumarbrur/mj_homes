@@ -38,11 +38,14 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
 
     def update(self, instance, validated_data):
-        print(dir(instance))
-        print(instance.get_password())
-        instance.name = validated_data.get('name', instance.name)
-        # instance.set_password(validated_data.get('password', instance.password))
-
+        print(validated_data)
+        instance.first_name = validated_data.get('first_name', instance.first_name)
+        if 'password' in validated_data:
+            print("here")
+            instance.set_password(validated_data.get('password'))
+        
+        print(instance.check_password(validated_data.get('password')))
+        instance.save()
         return instance
 
 class AddressSerializer(serializers.ModelSerializer):
