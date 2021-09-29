@@ -37,8 +37,12 @@ class User_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     @action(detail = False, methods = ['put','patch'])
     def changeInfo(self, request, pk = None, *args, **kwargs):
         instance = request.user
-        request.data.pop('password', None)
-        serializer = self.serializer_class(instance, data = request.data, partial = True)
+
+        data = {}
+        if 'first_name' in request.data:
+            data = {"first_name" : request.data.get('first_name', None)}
+
+        serializer = self.serializer_class(instance, data = data, partial = True)
         serializer.is_valid(raise_exception = True)
         serializer.save()
         return Response(serializer.data)
