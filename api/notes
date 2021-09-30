@@ -1,1 +1,2 @@
 add custom modelAdmin in users/admin.py
+delete cart on quantity 0

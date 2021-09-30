@@ -20,7 +20,7 @@ class CartSerializer(serializers.ModelSerializer):
         product = Product.objects.get(id = variation['product'])
         product = ProductSerializer(instance = product).data
         product.pop('review', None)
-        product.pop('variations', None)
+        product.pop('variation', None)
         product.pop('id', None)
         product.pop('model3d', None)
         product.pop('image', None)
@@ -32,20 +32,31 @@ class CartSerializer(serializers.ModelSerializer):
     def create(self, validated_data, *args, **kwargs):
         try:
             validated_data['user'] = self.context['request'].user
+            product = Cart.objects.filter(user = validated_data['user'], product = validated_data['product'])
 
-            cart = Cart.objects.create( **validated_data)
+            if len(product):
+                return product[0]
+            else:
+                validated_data['quantity'] = validated_data.get('quantity', 1)
+
+                if validated_data['quantity'] <= 0:
+                    raise serializers.ValidationError({"detail": "Quantity can't be negative or zero"})
+
+                cart = Cart.objects.create( **validated_data)
+                return cart
+
         except ValidationError:
             raise serializers.ValidationError({"detail": "input is not valid"})
 
-        return cart
+    def update(self, instance, validated_data):
+        quantity = validated_data.get('quantity', 1)
 
-    # def perform_create(self, serializer):
-    #     product = Cart.objects.filter(user = self.request.user, product = serializer.validated_data['product'])
-    #     if len(product):
-    #         product[0].quantity += serializer.validated_data.get('quantity', 1)
-    #         product[0].save()
-    #     else:
-    #         serializer.save()
+        if quantity <= 0:
+            raise serializers.ValidationError({"detail": "Quantity can't be negative or zero"})
+
+        instance.quantity = quantity
+        return instance
+
 class WishlistSerializer(serializers.ModelSerializer):
     class Meta:
         model = WishList
@@ -62,7 +73,7 @@ class WishlistSerializer(serializers.ModelSerializer):
         product = Product.objects.get(id = variation['product'])
         product = ProductSerializer(instance = product).data
         product.pop('review', None)
-        product.pop('variations', None)
+        product.pop('variation', None)
         product.pop('id', None)
         product.pop('model3d', None)
         product.pop('image', None)
@@ -73,9 +84,14 @@ class WishlistSerializer(serializers.ModelSerializer):
     def create(self, validated_data, *args, **kwargs):
         try:
             validated_data['user'] = self.context['request'].user
+            product = WishList.objects.filter(user = validated_data['user'], product = validated_data['product'])
 
-            wishlist = WishList.objects.create( **validated_data)
+            if len(product) == 0:
+                wishlist = WishList.objects.create( **validated_data)
+                return wishlist
+
         except ValidationError:
             raise serializers.ValidationError({"detail": "input is not valid"})
 
-        return wishlist
+    def update(self, instance, validated_data):
+        return instance
