@@ -25,13 +25,14 @@ function Loading() {
 function addGroups(node) {
   return (
     <>
-      {node.map((child) =>
+      {node.map((child, index) =>
         child.type == "Group" ? (
           <group
             position={child.position}
             rotation={child.rotation}
             geometry={child.geometry}
             material={child.material}
+            key={index}
           >
             {addGroups(child.children)}
           </group>
@@ -41,6 +42,7 @@ function addGroups(node) {
             castShadow
             geometry={child.geometry}
             material={child.material}
+            key={index}
           >
             {addGroups(child.children)}
           </mesh>
@@ -55,7 +57,6 @@ function Model(props) {
   // UNCOMMENT THIS AND DELETE HARD CODED LINE
   const { nodes } = useGLTF(`${process.env.PUBLIC_URL}/${props.name}`);
   // const { nodes } = useGLTF(props.name);
-  console.log(nodes);
 
   // // Animate model
   useFrame((state) => {

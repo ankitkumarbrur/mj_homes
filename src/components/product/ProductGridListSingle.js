@@ -26,7 +26,6 @@ const ProductGridListSingle = ({
   const finalDiscountedPrice = +(
     discountedPrice * currency.currencyRate
   ).toFixed(2);
-
   return (
     <Fragment>
       <div
@@ -142,7 +141,7 @@ const ProductGridListSingle = ({
               ""
             )}
             <div className="product-price">
-              {discountedPrice !== null ? (
+              {/* {discountedPrice !== null ? (
                 <Fragment>
                   <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                   <span className="old">
@@ -151,7 +150,17 @@ const ProductGridListSingle = ({
                 </Fragment>
               ) : (
                 <span>{currency.currencySymbol + finalProductPrice} </span>
-              )}
+              )} */}
+
+              <Fragment>
+                <span>
+                  {currency.currencySymbol +
+                    product.variation[0].discounted_price}
+                </span>{" "}
+                <span className="old">
+                  {currency.currencySymbol + product.variation[0].price}
+                </span>
+              </Fragment>
             </div>
           </div>
         </div>
@@ -199,7 +208,7 @@ const ProductGridListSingle = ({
                   </Link>
                 </h3>
                 <div className="product-list-price">
-                  {discountedPrice !== null ? (
+                  {/* {discountedPrice !== null ? (
                     <Fragment>
                       <span>
                         {currency.currencySymbol + finalDiscountedPrice}
@@ -210,7 +219,16 @@ const ProductGridListSingle = ({
                     </Fragment>
                   ) : (
                     <span>{currency.currencySymbol + finalProductPrice} </span>
-                  )}
+                  )} */}
+                  <Fragment>
+                    <span>
+                      {currency.currencySymbol +
+                        product.variation[0].discounted_price}
+                    </span>{" "}
+                    <span className="old">
+                      {currency.currencySymbol + product.variation[0].price}
+                    </span>
+                  </Fragment>
                 </div>
                 {product.rating && product.rating > 0 ? (
                   <div className="rating-review">
@@ -288,7 +306,7 @@ const ProductGridListSingle = ({
                       <i className="pe-7s-like" />
                     </button>
                   </div>
-                  <div className="shop-list-compare ml-10">
+                  {/* <div className="shop-list-compare ml-10">
                     <button
                       className={compareItem !== undefined ? "active" : ""}
                       disabled={compareItem !== undefined}
@@ -301,7 +319,7 @@ const ProductGridListSingle = ({
                     >
                       <i className="pe-7s-shuffle" />
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

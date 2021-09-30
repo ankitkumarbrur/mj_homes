@@ -3,16 +3,14 @@ import React from "react";
 import Swiper from "react-id-swiper";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import ProductGrid from "./ProductGrid";
-import { getProductsByTag } from "../../helpers/product"
+import { getProductsByTag } from "../../helpers/product";
 import ProductGridFour from "./ProductGridFour";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 
 const RelatedProductSlider = ({ spaceBottomClass, tag }) => {
-
   const { productData } = useSelector((state) => state);
 
   const data = getProductsByTag(productData.products, tag, null, 4);
-
 
   const settings = {
     loop: false,
@@ -20,24 +18,25 @@ const RelatedProductSlider = ({ spaceBottomClass, tag }) => {
     grabCursor: true,
     breakpoints: {
       1024: {
-        slidesPerView: 4
+        slidesPerView: 4,
       },
       768: {
-        slidesPerView: 3
+        slidesPerView: 3,
       },
       640: {
-        slidesPerView: 2
+        slidesPerView: 2,
       },
       320: {
-        slidesPerView: 1
-      }
-    }
+        slidesPerView: 1,
+      },
+    },
   };
 
   return (
     <div
-      className={`related-product-area ${spaceBottomClass ? spaceBottomClass : ""
-        }`}
+      className={`related-product-area ${
+        spaceBottomClass ? spaceBottomClass : ""
+      }`}
     >
       <div className="container">
         <SectionTitle
@@ -62,7 +61,7 @@ const RelatedProductSlider = ({ spaceBottomClass, tag }) => {
 
 RelatedProductSlider.propTypes = {
   category: PropTypes.string,
-  spaceBottomClass: PropTypes.string
+  spaceBottomClass: PropTypes.string,
 };
 
 export default RelatedProductSlider;
