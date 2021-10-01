@@ -71,21 +71,21 @@ const FooterOne = ({
                   <li>
                     <Link to={process.env.PUBLIC_URL + "/about"}>About us</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to={process.env.PUBLIC_URL + "#/"}>
                       Store location
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link to={process.env.PUBLIC_URL + "/contact"}>
                       Contact
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link to={process.env.PUBLIC_URL + "#/"}>
                       Orders tracking
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -108,19 +108,23 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>Returns</Link>
-                  </li>
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>
-                      Support Policy
+                    <Link to={process.env.PUBLIC_URL + "/return-policy"}>
+                      Returns Policy
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>Size guide</Link>
+                    <Link to={process.env.PUBLIC_URL + "/privacy-policy"}>
+                      Privacy and Policy
+                    </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "#/"}>FAQs</Link>
+                    <Link to={process.env.PUBLIC_URL + "/terms-and-conditions"}>
+                      Terms and Conditions
+                    </Link>
                   </li>
+                  {/* <li>
+                    <Link to={process.env.PUBLIC_URL + "#/"}>FAQs</Link>
+                  </li> */}
                 </ul>
               </div>
             </div>

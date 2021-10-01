@@ -1,0 +1,56 @@
+.terms-conditions-content {
+  h1 {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin: 8px 0 30px;
+    color: #433f3f;
+    position: relative;
+    display: inline-block;
+    padding: 0 0 23px;
+    line-height: 1;
+    &:before {
+      position: absolute;
+      background-color: #070508;
+      height: 3px;
+      width: 70px;
+      content: "";
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 0 auto;
+    }
+  }
+  p {
+    text-align: justify;
+    font-size: 16px;
+    color: #4b4b4b;
+    line-height: 30px;
+    width: 66%;
+    margin: 0 auto;
+    @media #{$lg-layout} {
+      width: 80%;
+    }
+    @media #{$md-layout} {
+      width: 95%;
+    }
+    @media #{$xs-layout} {
+      width: 100%;
+      font-size: 15px;
+    }
+  }
+  .bullets-points {
+    ul {
+      width: 66%;
+      margin: 10px auto;
+      text-align: left;
+      list-style-type: disc;
+      li {
+        margin-top: 5px;
+        ul {
+          width: 85%;
+        }
+      }
+    }
+  }
+}

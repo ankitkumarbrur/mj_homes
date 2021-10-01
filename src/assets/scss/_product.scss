@@ -515,21 +515,22 @@
     align-items: flex-start;
 
     margin: 15px 0 26px;
+    .gst-price {
+      font-size: 15px;
+      margin-top: 10px;
+      color: grey;
+      .price {
+        margin-left: 5px;
+        font-size: 20px;
+      }
+    }
     span {
       font-size: 24px;
 
       color: #fe5252;
-      &.gst-price {
-        font-size: 15px;
-        margin-top: 5px;
-        color: grey;
-        .price {
-          margin-left: 5px;
-          font-size: 20px;
-        }
-      }
+
       &.old {
-        margin-left: 5px;
+        margin-left: 7.5px;
         text-decoration: line-through;
         color: #8e8e8e;
       }

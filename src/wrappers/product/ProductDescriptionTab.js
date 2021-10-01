@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 
 import Tab from "react-bootstrap/Tab";
@@ -10,9 +10,12 @@ import AddReviewRating from "../../components/product/sub-components/AddReviewRa
 import axios from "axios";
 
 const BASE_URL = "http://ankitbrur.pythonanywhere.com/";
+<<<<<<< HEAD
 // const BASE_URL = "http://localhost:8000/";
+=======
+>>>>>>> 3efc341e70dc8a7152893f477e9095f7a3a7c986
 const ACCESS_TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjc4NzkzLCJqdGkiOiJmNWQyZGQzNWU0M2Y0YWYxOTY3YzNlNGE1N2QxZjE3ZiIsInVzZXJfaWQiOjF9.kehcJyF2VzIj4XPDwjUeqP8GS4MVj6WlQ_956nWe_1Y";
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyODU2MjE2LCJqdGkiOiI2N2FkMDQ5NjhmYzY0NWEyYWZjYjNmYWE5ODdlNGVhYiIsInVzZXJfaWQiOjJ9.2Rhul0Mb-IbCcHnYUte39LVaN7TOFM1RnOsu8BbbElA";
 
 const ProductDescriptionTab = ({
   spaceBottomClass,
@@ -23,39 +26,9 @@ const ProductDescriptionTab = ({
   productManufacturer,
   productReview,
 }) => {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(null);
   const { addToast } = useToasts();
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (user && email && comment && rating) {
-  //     const review = {
-  //       user,
-  //       email,
-  //       comment,
-  //       rating,
-  //     };
-  //     const config = {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //         Authorization: `${ACCESS_TOKEN}`,
-  //       },
-  //     };
-  //     const { data } = axios.post(`${BASE_URL}/products/`, review, config);
-  //     addToast("Review Added", {
-  //       appearance: "success",
-  //       autoDismiss: true,
-  //     });
-  //     setUser("");
-  //     setEmail("");
-  //     setComment("");
-  //     setRating(null);
-  //     console.log(data);
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,11 +36,16 @@ const ProductDescriptionTab = ({
       const formData = new FormData();
       formData.append("reviewStar", rating);
       formData.append("reviewText", comment);
+<<<<<<< HEAD
       formData.append("product", `d5dbf262-172c-4834-b153-deb998cfa15b`);
+=======
+      formData.append("product", "d5dbf262-172c-4834-b153-deb998cfa15b");
+>>>>>>> 3efc341e70dc8a7152893f477e9095f7a3a7c986
 
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
+<<<<<<< HEAD
           "Authorization":
             `JWT ${localStorage.getItem("userInfo")}`,
         },
@@ -77,12 +55,16 @@ const ProductDescriptionTab = ({
         formData,
         config,
       );
+=======
+          Authorization: `JWT ${ACCESS_TOKEN}`,
+        },
+      };
+      const { data } = await axios.post(`${BASE_URL}review/`, formData, config);
+>>>>>>> 3efc341e70dc8a7152893f477e9095f7a3a7c986
       addToast("Review Added", {
         appearance: "success",
         autoDismiss: true,
       });
-      setUser("");
-      setEmail("");
       setComment("");
       setRating(null);
     } catch (error) {
@@ -90,7 +72,7 @@ const ProductDescriptionTab = ({
         appearance: "error",
         autoDismiss: true,
       });
-      console.log("error");
+      console.log(error);
     }
   };
 
@@ -149,7 +131,16 @@ const ProductDescriptionTab = ({
                     </li>
                     <li>
                       <span>Materials</span>
-                      {productMaterial}
+                      {productMaterial.map((single, key) => {
+                        return (
+                          <i
+                            key={key}
+                            style={{ fontStyle: "normal", marginRight: "5px" }}
+                          >
+                            {single}
+                          </i>
+                        );
+                      })}
                     </li>
                   </ul>
                 </div>
@@ -383,13 +374,13 @@ const ProductDescriptionTab = ({
                                   </div>
                                   <div className="review-rating">
                                     <ReviewRating
-                                      reviewRating={review.rating}
+                                      reviewRating={review.reviewStar}
                                     />
                                   </div>
                                 </div>
                               </div>
                               <div className="review-bottom">
-                                <p>{review.comment}</p>
+                                <p>{review.reviewText}</p>
                               </div>
                             </div>
                           </div>
@@ -465,8 +456,8 @@ ProductDescriptionTab.propTypes = {
   productFullDesc: PropTypes.string,
   spaceBottomClass: PropTypes.string,
   productSize: PropTypes.string,
-  productWeight: PropTypes.string,
-  productMaterial: PropTypes.string,
+  productWeight: PropTypes.number,
+  productMaterial: PropTypes.array,
   productManufacturer: PropTypes.string,
   productReview: PropTypes.array,
 };
