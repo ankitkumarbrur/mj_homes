@@ -63,19 +63,19 @@ const ProductDescriptionTab = ({
       const formData = new FormData();
       formData.append("reviewStar", rating);
       formData.append("reviewText", comment);
-      formData.append("product", "319175b1-cd5d-430e-91d4-47597feefcce");
+      formData.append("product", `d5dbf262-172c-4834-b153-deb998cfa15b`);
 
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization:
-            "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyNjg1MDE4LCJqdGkiOiIyYzgwMmRhMWFmNDA0ZDVlYjg0M2ExZjFlMDI4YjdmYyIsInVzZXJfaWQiOjl9.8PT88C69Zpqx5z79s69oGTbBzifvBRy0X7SUCeiGwzk",
+          "Authorization":
+            `JWT ${localStorage.getItem("userInfo")}`,
         },
       };
       const { data } = await axios.post(
-        "http://localhost:8000/review/",
+        "http://ankitbrur.pythonanywhere.com/review/",
         formData,
-        config
+        config,
       );
       addToast("Review Added", {
         appearance: "success",

@@ -8,7 +8,7 @@ export const USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST";
 export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
 export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
 
-const BASE_URL = "http://ankitbrur.pythonanywhere.com";
+const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
 
 export const login = (email, password, addToast) => async (dispatch) => {
 	try {
@@ -25,7 +25,7 @@ export const login = (email, password, addToast) => async (dispatch) => {
 		};
 
 		const { data } = await axios.post(
-			`${BASE_URL}/login/`,
+			`${BASE_URL}login/`,
 			formData,
 			config
 		);
@@ -38,6 +38,8 @@ export const login = (email, password, addToast) => async (dispatch) => {
 			appearance: "success",
 			autoDismiss: true
 		});
+		localStorage.setItem("userName", data.name)
+		localStorage.setItem("userEmail", data.email)
 		localStorage.setItem("userInfo", data.access);
 
 	} catch (error) {
@@ -56,13 +58,41 @@ export const login = (email, password, addToast) => async (dispatch) => {
 };
 
 export const logout = (addToast) => (dispatch) => {
-	localStorage.removeItem("userLogin");
-	localStorage.removeItem("userInfo");
-	addToast("Logged Out", {
-		appearance: "error",
-		autoDismiss: true
-	});
-	dispatch({ type: USER_LOGOUT });
+
+	try {
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("userInfo")}`,
+			},
+		};
+		console.log(localStorage.getItem("userInfo"))
+		// const { data } = await axios.post(
+		// 	`${BASE_URL}logout/`,
+		// 	config,
+		// 	{ withCredentials: true, }
+		// );
+
+		localStorage.removeItem("userLogin");
+		localStorage.removeItem("userInfo");
+		localStorage.removeItem("userName");
+		localStorage.removeItem("userEmail");
+
+		addToast("Logged Out", {
+			appearance: "success",
+			autoDismiss: true
+		});
+
+		dispatch({ type: USER_LOGOUT });
+	} catch (error) {
+		addToast("Not Logged Out", {
+			appearance: "error",
+			autoDismiss: true
+		});
+
+
+	}
+
 };
 
 
@@ -75,7 +105,7 @@ export const logout = (addToast) => (dispatch) => {
 //     dispatch({ type: USER_LIST_RESET });
 // };
 
-export const register = (firstname, lastname, pass, passConfirm, tel, email, address, addToast) => async (dispatch) => {
+export const register = (firstname, lastname, pass, email, addToast) => async (dispatch) => {
 	try {
 		dispatch({
 			type: USER_REGISTER_REQUEST,
@@ -83,12 +113,10 @@ export const register = (firstname, lastname, pass, passConfirm, tel, email, add
 
 		const formData = new FormData();
 		formData.append("email", email);
-		formData.append("password1", pass);
-		formData.append("password2", passConfirm);
-		formData.append("fname", firstname);
-		formData.append("lname", lastname);
-		formData.append("address", address);
-		formData.append("contactNumber", tel);
+		formData.append("password", pass);
+
+		formData.append("first_name", firstname + " " + lastname);
+
 		const config = {
 			headers: {
 				"Content-Type": "multipart/form-data",
@@ -96,38 +124,30 @@ export const register = (firstname, lastname, pass, passConfirm, tel, email, add
 		};
 
 		const { data } = await axios.post(
-			`${BASE_URL}/api/authenticate/signup/`,
+			`${BASE_URL}register/`,
 			formData,
 			config
 		);
 
-
-		dispatch({
-			type: USER_REGISTER_SUCCESS,
-			// payload: data,
-		});
-
-		dispatch({
-			type: USER_LOGIN_SUCCESS,
-			// payload: data,
-		});
 		addToast(data.message, {
 			appearance: "success",
 			autoDismiss: true
 		});
-		console.log("SUCESS");
-		// localStorage.setItem("userInfo", JSON.stringify(data));
+
+
 	} catch (error) {
-		addToast(error.message, {
+
+		var message = "";
+
+		//Validation of form from API
+		if (error.response.data.password != undefined) message = error.response.data.password;
+		else if (error.response.data.Error) message = error.response.data.Error;
+		else if (error.response.data.email) message = error.response.data.email;
+
+		addToast((message), {
 			appearance: "error",
 			autoDismiss: true
 		});
-		dispatch({
-			type: USER_REGISTER_FAIL,
-			payload:
-				error.response && error.response.data.detail
-					? error.response.data.detail
-					: error.message,
-		});
+
 	}
 };
