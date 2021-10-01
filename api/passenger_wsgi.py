@@ -1,7 +1,7 @@
 import sys, os
-ApplicationDirectory = '/var/www/vhosts/luxurymjhomes.com/api.luxurymjhomes.com/api'
+ApplicationDirectory = 'api'
 ApplicationName = 'backend'
-VirtualEnvDirectory = '/var/www/vhosts/luxurymjhomes.com/api.luxurymjhomes.com/sal'
+VirtualEnvDirectory = 'venv'
 VirtualEnv = os.path.join(os.getcwd(), VirtualEnvDirectory, 'bin', 'python')
 if sys.executable != VirtualEnv: os.execl(VirtualEnv, VirtualEnv, *sys.argv)
 sys.path.insert(0, os.path.join(os.getcwd(), ApplicationDirectory))
