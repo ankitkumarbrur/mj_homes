@@ -5,6 +5,10 @@ from authentication.permissions import *
 from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer
 
 from .models import Product, Review, ProductVariation, Image
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django.db.models import Q
+
 # Create your views here.
 class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     queryset = Product.objects.all()
@@ -27,6 +31,18 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
             for img in self.request.data.getlist('image', []):
                 Image.objects.create(product = obj, image = img)
 
+    @action(detail = False, methods = ['get'], permission_classes = [AllowAny])
+    def search(self, request, *args, **kwargs):
+        query = request.data.get('search', None)
+        if query:
+            data = Product.objects.filter(active = False).filter(Q(keyword__icontains = query))
+            serializer = self.serializer_class(data, many=True)
+            # serializer.is_valid(raise_exception = True)
+            
+            return Response(serializer.data, status = 200)
+        else:
+            return Response({"Message": "send search string in body"}, status = 204)
+
 class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Review
     serializer_class = ReviewSerializer
@@ -40,6 +56,7 @@ class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelVie
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     }
+
 class Variation_view(viewsets.ModelViewSet):
     queryset = ProductVariation.objects.all()
     serializer_class = VariationSerializer
