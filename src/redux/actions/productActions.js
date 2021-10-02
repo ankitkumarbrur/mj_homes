@@ -15,8 +15,8 @@ export const fetchProducts = (products) => {
     };
   }
   return (dispatch) => {
-    const BASE_URL = process.env.BASE_URL;
-    Axios.get(`${BASE_URL}/product/`).then((res) => {
+    const BASE_URL = "http://ankitbrur.pythonanywhere.com/";
+    Axios.get(`${BASE_URL}product/`).then((res) => {
       dispatch(fetchProductsSuccess(res.data));
       console.log(res.data);
     });

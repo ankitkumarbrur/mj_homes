@@ -43,7 +43,7 @@ const store = createStore(
 // };
 // fetch_data();
 // fetch products from json file
-store.dispatch(fetchProducts(products));
+store.dispatch(fetchProducts());
 ReactDOM.render(
   <Provider store={store}>
     <App />
