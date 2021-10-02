@@ -8,22 +8,30 @@ import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
 import { fetchProducts } from "./redux/actions/productActions";
 import rootReducer from "./redux/reducers/rootReducer";
-import products from "./data/products.json";
+// import products from "./data/products.json";
+import products from "./data/products _1.json";
+
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
-
+// import axios from "axios";
 import { composeWithDevTools } from "redux-devtools-extension";
+
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? localStorage.getItem("userInfo")
+  : null;
+
+const initialState = {
+  userLogin: { userInfo: userInfoFromStorage },
+};
 
 const store = createStore(
   rootReducer,
-  load(),
+  initialState,
+  // applyMiddleware(thunk),
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
-
-// fetch products from json file
 store.dispatch(fetchProducts(products));
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

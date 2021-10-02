@@ -511,21 +511,28 @@
   }
   .product-details-price {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
 
     margin: 15px 0 26px;
+    .gst-price {
+      font-size: 15px;
+      margin-top: 10px;
+      color: grey;
+      .price {
+        margin-left: 5px;
+        font-size: 20px;
+      }
+    }
     span {
       font-size: 24px;
 
       color: #fe5252;
+
       &.old {
-        font-size: 18px;
-
-        margin-left: 20px;
-
+        margin-left: 7.5px;
         text-decoration: line-through;
-
-        color: #333;
+        color: #8e8e8e;
       }
     }
   }
@@ -979,6 +986,7 @@
         }
       }
     }
+
     .pro-details-compare {
       a,
       button {
@@ -999,6 +1007,59 @@
       }
     }
   }
+  .pro-details-pincode {
+    display: flex;
+    margin-bottom: 15px;
+    label {
+      margin-top: 8px;
+      .pincode-input {
+        width: 74px;
+        height: 35px;
+        border: none;
+        margin: 0 10px;
+        border-bottom: 2px solid;
+        background: none;
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+    }
+
+    button {
+      font-weight: bold;
+      line-height: 1;
+
+      z-index: 99;
+
+      padding: 10px 20px 10px;
+
+      text-transform: uppercase;
+
+      color: #fff;
+      border: none;
+      background: none;
+      background-color: #343538;
+      @media #{$xs-layout} {
+        padding: 9px 18px 9px;
+      }
+      @media #{$md-layout} {
+        padding: 10px 20px 10px;
+      }
+      &:hover {
+        border: none;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        &:before,
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
   .pro-details-meta {
     display: flex;
 
@@ -1121,7 +1182,6 @@
     opacity: 1;
   }
 }
-
 
 /*  prodduct 2     */
 
@@ -1361,14 +1421,14 @@
     border-radius: 50px;
     background: #dbdbdb none repeat scroll 0 0;
     span {
-      transition: all 0.0s ease 0s;
+      transition: all 0s ease 0s;
     }
     .ui-slider-range {
       position: absolute;
 
       display: block;
 
-      transition: all 0.0s ease 0s;
+      transition: all 0s ease 0s;
 
       border: none;
       background: #fa6bff none repeat scroll 0 0;
@@ -1703,7 +1763,6 @@
   }
 }
 
-
 /* product hm3 */
 
 .section-padding-1 .container-fluid {
@@ -1721,7 +1780,6 @@
     padding: 0 15px;
   }
 }
-
 
 /* product hm4 */
 
@@ -1794,7 +1852,7 @@
 
       color: #fff;
       border-radius: 34px 34px 34px 34px;
-      background-color: #c61a32;
+      background-color: #ff9f00;
 
       &:hover {
         background-color: $theme-color;
@@ -1802,7 +1860,6 @@
     }
   }
 }
-
 
 /* product hm5 */
 
@@ -1963,7 +2020,7 @@
           border: none;
           border-radius: 50px;
           background: none;
-          background-color: #a749ff;
+          background-color: #ff9f00;
           &:hover,
           &.active {
             background-color: #fa6bff;
@@ -1983,9 +2040,6 @@
     opacity: 1;
   }
 }
-
-
-
 
 /* product hm6 */
 
@@ -2331,7 +2385,7 @@
     text-align: center;
 
     opacity: 1;
-    background: none repeat scroll 0 0 #a749ff;
+    background: none repeat scroll 0 0 #ff9f00;
     .pro-same-action {
       margin: 0 2px;
       a,
@@ -2443,7 +2497,6 @@
       }
     }
   }
-
 
   .product-content {
     flex-basis: calc(100% - 200px);
@@ -2774,7 +2827,6 @@
     }
   }
 
-
   .product-content {
     flex-basis: calc(100% - 200px);
     h3 {
@@ -2875,14 +2927,14 @@
   &--brown {
     .product-img {
       span {
-        background-color: #bca487;
+        background-color: #ff9f00;
       }
     }
     .product-content {
       h3 {
         a {
           &:hover {
-            color: #bca487;
+            color: #ff9f00;
           }
         }
       }
@@ -2890,7 +2942,7 @@
       .product-price {
         span {
           &.old {
-            color: #bca487;
+            color: #ff9f00;
           }
         }
       }
@@ -2901,7 +2953,7 @@
           a {
             &:hover,
             &.active {
-              background-color: #bca487;
+              background-color: #ff9f00;
             }
           }
         }
@@ -3103,7 +3155,6 @@
   }
 }
 
-
 .product-wrap-10 {
   position: relative;
 
@@ -3169,7 +3220,7 @@
         border: none;
         border-radius: 50px;
         background: none;
-        background-color: #bca487;
+        background-color: #ff9f00;
         &:hover,
         &.active {
           background-color: #000;
@@ -3193,7 +3244,7 @@
         margin-bottom: 10px;
         padding: 3px 11px;
 
-        color: #bca487;
+        color: #ff9f00;
         border-radius: 3px;
 
         &:last-child {
@@ -3218,7 +3269,7 @@
 
           color: #000000;
           &:hover {
-            color: #bca487;
+            color: #ff9f00;
           }
         }
       }
@@ -3292,7 +3343,6 @@
     transform: translateX(0);
   }
 
-
   &--style2 {
     .product-img {
       .product-action-2 {
@@ -3302,7 +3352,7 @@
           background-color: transparent;
           &:hover,
           &.active {
-            color: #bca487;
+            color: #ff9f00;
             background-color: transparent;
           }
         }
@@ -3346,6 +3396,18 @@
 }
 
 /* product home 9*/
+.collection-wrap {
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  @media #{$md-layout, $xs-layout, $sm-layout} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media #{$xxs-layout} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 
 .collection-wrap-2 {
   margin-top: -175px;
@@ -3395,8 +3457,6 @@
     transform: scale(1.1);
   }
 }
-
-
 
 /* product hm9 */
 
@@ -3488,7 +3548,6 @@
     max-width: 50%;
   }
 }
-
 
 /*------- home 14 ----------*/
 
@@ -3583,7 +3642,6 @@
   }
 }
 
-
 .product-tab-list-6 {
   @media #{$xs-layout} {
     margin: 0 0 10px;
@@ -3631,7 +3689,7 @@
     }
     &.active {
       h4 {
-        color: #bca487;
+        color: #ff9f00;
       }
     }
   }
@@ -3751,7 +3809,6 @@
   }
 }
 
-
 .pro-view-more {
   margin-top: 30px;
   @media #{$xs-layout} {
@@ -3779,7 +3836,6 @@
     }
   }
 }
-
 
 .bg-png-1 {
   position: absolute;
@@ -3866,7 +3922,7 @@
       color: #000;
       background-color: #fff;
       &:hover {
-        background-color: #bca487;
+        background-color: #ff9f00;
       }
     }
   }

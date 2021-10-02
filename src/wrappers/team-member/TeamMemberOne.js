@@ -15,7 +15,6 @@ const TeamMemberOne = ({ spaceTopClass, spaceBottomClass }) => {
         {/* section title */}
         <SectionTitleTwo
           titleText="Team Members"
-          subTitleText="Lorem ipsum dolor sit amet conse ctetu."
           positionClass="text-center"
           spaceClass="mb-60"
         />
@@ -39,7 +38,7 @@ const TeamMemberOne = ({ spaceTopClass, spaceBottomClass }) => {
 
 TeamMemberOne.propTypes = {
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
 export default TeamMemberOne;

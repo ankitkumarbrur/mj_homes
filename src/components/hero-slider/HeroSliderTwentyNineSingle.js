@@ -13,7 +13,7 @@ const HeroSliderTwentyNineSingle = ({ data, sliderClass }) => {
       <div className="container">
         <div className="row">
           <div className="col-xl-6 col-lg-7 col-md-8 col-12">
-            <div className="slider-content-brown slider-content-2 slider-content-2--white slider-animated-1">
+            <div className="slider-content-green slider-content-2 slider-content-2--white slider-animated-1">
               <h3
                 className="animated no-style"
                 dangerouslySetInnerHTML={{ __html: data.title }}
@@ -22,7 +22,7 @@ const HeroSliderTwentyNineSingle = ({ data, sliderClass }) => {
                 className="animated"
                 dangerouslySetInnerHTML={{ __html: data.subtitle }}
               />
-              <div className="slider-btn-brown btn-hover">
+              <div className="slider-btn-green btn-hover">
                 <Link
                   className="animated"
                   to={process.env.PUBLIC_URL + data.url}
@@ -40,7 +40,7 @@ const HeroSliderTwentyNineSingle = ({ data, sliderClass }) => {
 
 HeroSliderTwentyNineSingle.propTypes = {
   data: PropTypes.object,
-  sliderClass: PropTypes.string
+  sliderClass: PropTypes.string,
 };
 
 export default HeroSliderTwentyNineSingle;

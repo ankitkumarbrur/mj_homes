@@ -11,9 +11,9 @@ const IconGroup = ({
   wishlistData,
   compareData,
   deleteFromCart,
-  iconWhiteClass
+  iconWhiteClass,
 }) => {
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
 
@@ -25,26 +25,36 @@ const IconGroup = ({
   };
 
   return (
-    <div
-      className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
-    >
-      <div className="same-style header-search d-none d-lg-block">
-        <button className="search-active" onClick={e => handleClick(e)}>
+    <div className={`header-right-wrap ${false ? iconWhiteClass : ""}`}>
+      {/* <div className="same-style header-search d-none d-lg-block">
+				<button
+					className="search-active"
+					onClick={(e) => handleClick(e)}
+				>
+					<i className="pe-7s-search" />
+				</button>
+				<div className="search-content">
+					<form action="#">
+						<input type="text" placeholder="Search" />
+						<button className="button-search">
+							<i className="pe-7s-search" />
+						</button>
+					</form>
+				</div>
+			</div> */}
+      <div className="same-style exp-head header-search d-none d-lg-block">
+        <button
+          className="control"
+          // onClick={(e) => handleClick(e)}
+        >
+          <div className="btn-material"></div>
           <i className="pe-7s-search" />
         </button>
-        <div className="search-content">
-          <form action="#">
-            <input type="text" placeholder="Search" />
-            <button className="button-search">
-              <i className="pe-7s-search" />
-            </button>
-          </form>
-        </div>
       </div>
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
-          onClick={e => handleClick(e)}
+          onClick={(e) => handleClick(e)}
         >
           <i className="pe-7s-user-female" />
         </button>
@@ -66,14 +76,14 @@ const IconGroup = ({
           </ul>
         </div>
       </div>
-      <div className="same-style header-compare">
+      {/* <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
           <span className="count-style">
             {compareData && compareData.length ? compareData.length : 0}
           </span>
         </Link>
-      </div>
+      </div> */}
       <div className="same-style header-wishlist">
         <Link to={process.env.PUBLIC_URL + "/wishlist"}>
           <i className="pe-7s-like" />
@@ -83,7 +93,7 @@ const IconGroup = ({
         </Link>
       </div>
       <div className="same-style cart-wrap d-none d-lg-block">
-        <button className="icon-cart" onClick={e => handleClick(e)}>
+        <button className="icon-cart" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
             {cartData && cartData.length ? cartData.length : 0}
@@ -104,7 +114,7 @@ const IconGroup = ({
           </span>
         </Link>
       </div>
-      <div className="same-style mobile-off-canvas d-block d-lg-none">
+      <div className="same-style mobile-off-canvas d-block">
         <button
           className="mobile-aside-button"
           onClick={() => triggerMobileMenu()}
@@ -122,23 +132,23 @@ IconGroup.propTypes = {
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
   deleteFromCart: PropTypes.func,
-  wishlistData: PropTypes.array
+  wishlistData: PropTypes.array,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     currency: state.currencyData,
     cartData: state.cartData,
     wishlistData: state.wishlistData,
-    compareData: state.compareData
+    compareData: state.compareData,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     deleteFromCart: (item, addToast) => {
       dispatch(deleteFromCart(item, addToast));
-    }
+    },
   };
 };
 

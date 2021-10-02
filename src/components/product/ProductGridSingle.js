@@ -16,7 +16,7 @@ const ProductGridSingle = ({
   wishlistItem,
   compareItem,
   sliderClassName,
-  spaceBottomClass
+  spaceBottomClass,
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
@@ -142,7 +142,7 @@ const ProductGridSingle = ({
               ""
             )}
             <div className="product-price">
-              {discountedPrice !== null ? (
+              {/* {discountedPrice !== null ? (
                 <Fragment>
                   <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
                   <span className="old">
@@ -151,7 +151,16 @@ const ProductGridSingle = ({
                 </Fragment>
               ) : (
                 <span>{currency.currencySymbol + finalProductPrice} </span>
-              )}
+              )} */}
+              <Fragment>
+                <span>
+                  {currency.currencySymbol +
+                    product.variation[0].discounted_price}
+                </span>{" "}
+                <span className="old">
+                  {currency.currencySymbol + product.variation[0].price}
+                </span>
+              </Fragment>
             </div>
           </div>
         </div>
@@ -187,7 +196,7 @@ ProductGridSingle.propTypes = {
   product: PropTypes.object,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
-  wishlistItem: PropTypes.object
+  wishlistItem: PropTypes.object,
 };
 
 export default ProductGridSingle;

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import ThreeD from "../3dmodel/ThreeD";
 
 const productImageGallerySticky = ({ product }) => {
   return (
@@ -17,10 +18,18 @@ const productImageGallerySticky = ({ product }) => {
         ""
       )}
       <div className="product-sticky-image mb--10">
+        {product["model3d"] && (
+          <div className="product-sticky-image__single-3d mb-10">
+            {/* Uncomment after correction in Api and delete hardcoded model */}
+            <ThreeD name="shoe-draco.glb" />
+            {/* <ThreeD name={product["model3d"]} /> */}
+          </div>
+        )}
+
         {product.image &&
-          product.image.map((single, key) => {
+          product.image.map((single, id) => {
             return (
-              <div className="product-sticky-image__single mb-10" key={key}>
+              <div className="product-sticky-image__single mb-10" key={id}>
                 <img
                   src={process.env.PUBLIC_URL + single}
                   alt=""
@@ -35,7 +44,7 @@ const productImageGallerySticky = ({ product }) => {
 };
 
 productImageGallerySticky.propTypes = {
-  product: PropTypes.object
+  product: PropTypes.object,
 };
 
 export default productImageGallerySticky;

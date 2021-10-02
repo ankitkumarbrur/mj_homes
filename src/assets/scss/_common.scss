@@ -108,6 +108,14 @@ span {
   transition: all 0.3s ease 0s;
 }
 
+img {
+  float: left;
+  object-fit: cover;
+}
+.react-toast-notifications__container {
+  z-index: 9999 !important;
+}
+
 *:focus {
   outline: none !important;
 }
@@ -132,7 +140,10 @@ ul {
   margin: 0;
   padding: 0;
 
-  list-style: outside none none;
+  list-style: inside none none;
+}
+li {
+  list-style-position: outside;
 }
 
 /*-- 
@@ -1592,7 +1603,9 @@ textarea:focus {
     Scroll Up 
 -----------------------------------------*/
 
-.scroll-top {
+.scroll-top,
+.whats-app,
+.google-form {
   position: fixed;
   z-index: 9811 !important;
   right: 20px;
@@ -1640,6 +1653,18 @@ textarea:focus {
       animation-fill-mode: both;
     }
   }
+}
+.whats-app,
+.google-form {
+  left: 20px;
+  visibility: visible;
+  opacity: 1;
+  a {
+    color: white;
+  }
+}
+.google-form {
+  bottom: 120px;
 }
 
 .height-100 {

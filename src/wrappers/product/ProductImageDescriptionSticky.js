@@ -14,13 +14,13 @@ const ProductImageDescriptionSticky = ({
   currency,
   cartItems,
   wishlistItems,
-  compareItems
+  compareItems,
 }) => {
   const wishlistItem = wishlistItems.filter(
-    wishlistItem => wishlistItem.id === product.id
+    (wishlistItem) => wishlistItem.id == product.id
   )[0];
   const compareItem = compareItems.filter(
-    compareItem => compareItem.id === product.id
+    (compareItem) => compareItem.id == product.id
   )[0];
   const { addToast } = useToasts();
 
@@ -50,10 +50,11 @@ const ProductImageDescriptionSticky = ({
               {/* product description info */}
               <ProductDescriptionInfo
                 product={product}
-                discountedPrice={discountedPrice}
+                discountedPrice={product.variation[0].discounted_price}
                 currency={currency}
                 finalDiscountedPrice={finalDiscountedPrice}
-                finalProductPrice={finalProductPrice}
+                finalProductPrice={product.variation[0].price}
+                gstPrice={product.variation[0].gstPrice}
                 cartItems={cartItems}
                 wishlistItem={wishlistItem}
                 compareItem={compareItem}
@@ -74,15 +75,15 @@ ProductImageDescriptionSticky.propTypes = {
   product: PropTypes.object,
   spaceBottomClass: PropTypes.string,
   spaceTopClass: PropTypes.string,
-  wishlistItems: PropTypes.array
+  wishlistItems: PropTypes.array,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     currency: state.currencyData,
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,
-    compareItems: state.compareData
+    compareItems: state.compareData,
   };
 };
 

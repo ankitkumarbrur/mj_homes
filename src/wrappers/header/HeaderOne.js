@@ -5,6 +5,7 @@ import NavMenu from "../../components/header/NavMenu";
 import IconGroup from "../../components/header/IconGroup";
 import MobileMenu from "../../components/header/MobileMenu";
 import HeaderTop from "../../components/header/HeaderTop";
+import Search from "../../components/search/Search";
 
 const HeaderOne = ({
   layout,
@@ -12,7 +13,7 @@ const HeaderOne = ({
   borderStyle,
   headerPaddingClass,
   headerPositionClass,
-  headerBgClass
+  headerBgClass,
 }) => {
   const [scroll, setScroll] = useState(0);
   const [headerTop, setHeaderTop] = useState(0);
@@ -38,14 +39,14 @@ const HeaderOne = ({
     >
       <div
         className={`${headerPaddingClass ? headerPaddingClass : ""} ${
-          top === "visible" ? "d-none d-lg-block" : "d-none"
+          top == "visible" ? "d-none d-lg-block" : "d-none"
         } header-top-area ${
-          borderStyle === "fluid-border" ? "border-none" : ""
+          borderStyle == "fluid-border" ? "border-none" : ""
         }`}
       >
-        <div className={layout === "container-fluid" ? layout : "container"}>
+        <div className={layout == "container-fluid" ? layout : "container"}>
           {/* header top */}
-          <HeaderTop borderStyle={borderStyle} />
+          {/* <HeaderTop borderStyle={borderStyle} /> */}
         </div>
       </div>
 
@@ -56,7 +57,7 @@ const HeaderOne = ({
           scroll > headerTop ? "stick" : ""
         }`}
       >
-        <div className={layout === "container-fluid" ? layout : "container"}>
+        <div className={layout == "container-fluid" ? layout : "container"}>
           <div className="row">
             <div className="col-xl-2 col-lg-2 col-md-6 col-4">
               {/* header logo */}
@@ -74,6 +75,7 @@ const HeaderOne = ({
         </div>
         {/* mobile menu */}
         <MobileMenu />
+        <Search />
       </div>
     </header>
   );
@@ -84,7 +86,7 @@ HeaderOne.propTypes = {
   headerPaddingClass: PropTypes.string,
   headerPositionClass: PropTypes.string,
   layout: PropTypes.string,
-  top: PropTypes.string
+  top: PropTypes.string,
 };
 
 export default HeaderOne;
