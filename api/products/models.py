@@ -6,7 +6,7 @@ import uuid
 # Create your models here.
 class ProductQuerySet(models.query.QuerySet):
 	def active(self):
-		return self.filter(active=True)
+		return self.filter(active = True)
 
 class ProductManager(models.Manager):
 	def get_queryset(self):
@@ -23,14 +23,14 @@ def model_upload(instance, filename):
 	return "products/%s/%s" %(slug, new_filename)
 
 def image_upload(instance, filename):
-	slug = slugify(instance.product.name)
-	_, file_extension = filename.split(".")
-	new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
-	return "products/%s/%s" %(slug, new_filename)
+    slug = slugify(instance.product.name)
+    file_extension = filename.split(".")[-1]
+    new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
+    return "products/%s/%s" %(slug, new_filename)
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length = 25, null = False, blank = False)
+    name = models.CharField(max_length = 150, null = False, blank = False)
 
     active = models.BooleanField(default = True)
     new = models.BooleanField(default = True)
@@ -42,7 +42,7 @@ class Product(models.Model):
 
     subcategory = models.CharField(max_length = 100, null = True)
     keyword = models.TextField(null = True)
-    manufacturer = models.CharField(max_length = 100, null = True)
+    manufacturer = models.CharField(max_length = 100)
 
     discount = models.IntegerField(default = 0)
 
@@ -50,32 +50,32 @@ class Product(models.Model):
 
     addedDate = models.DateField(auto_now_add = True)
 
-    objects = ProductManager()
+    # objects = ProductManager()
 
     def __str__(self):
         return (self.name)
 
 class ProductVariation(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    product = models.ForeignKey(Product, related_name = "variations", on_delete = models.CASCADE,null=False)
+    product = models.ForeignKey(Product, related_name = "variation", on_delete = models.CASCADE, null = False)
     
-    color = models.CharField(max_length = 100, null = True)
-    material = models.CharField(max_length = 100, null = True)
+    color = models.CharField(max_length = 100)
+    material = models.CharField(max_length = 100)
     price = models.FloatField(null = False, blank = False)
     size = models.CharField(max_length = 100, null = True)
     weight = models.FloatField(null = True)
     image = models.ImageField(upload_to = image_upload, null = True, blank = True)
 
-
-    def __unicode__(self):
-        return (self.item_name)
+    def __str__(self):
+        return  "%s - %s" %(self.product.name, self.id)
 
 class Image(models.Model):
-    image = models.ImageField(upload_to = image_upload, null = True, blank = True)
-    product = models.ForeignKey(Product,  related_name="image", on_delete=models.CASCADE,null=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    image = models.ImageField(upload_to = image_upload)
+    product = models.ForeignKey(Product, related_name="image", on_delete = models.CASCADE, null = False, blank = False)
 
     def __unicode__(self):
-        return (self.item_name)
+        return "%s - %s" %(self.product.name, self.id)
 
 class Review(models.Model):
     product = models.ForeignKey(Product, related_name="review", on_delete = models.CASCADE, null = False, blank = False)

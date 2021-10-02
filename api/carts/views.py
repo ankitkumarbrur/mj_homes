@@ -1,29 +1,33 @@
-from rest_framework import viewsets, permissions
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
+from rest_framework import viewsets
+from .serializers import CartSerializer, WishlistSerializer
+from .models import Cart , WishList
 
-
-from .serializers import CartSerializer , WishList, WishlistSerializer
-from .models import Cart, CartItem , WishList, WishListItem
-
-from mixins.CustomMixins import PreprocessMixin
-from authentication.permissions import IsAdmin, IsOwner
+from mixins.CustomMixins import ViewsetActionPermissionMixin, QuerysetMixin
+from authentication.permissions import IsOwnerOrAdmin, IsAdmin, AllowAny
 # Create your views here.
-
-class CartView(viewsets.ModelViewSet, PreprocessMixin):
-    serializer_class = CartSerializer
-    # permission_classes = [permissions.IsAuthenticated & (IsOwner | IsAdmin)]
-    permission_classes = [permissions.AllowAny]
+class CartView(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Cart
+    serializer_class = CartSerializer
+    permission_classes = (IsOwnerOrAdmin,)
+    action_based_permission_classes = {
+        # 'list' : (IsOwnerOrAdmin,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
 
-    def get_queryset(self):
-        return self.preprocess()
 
-class WishListView(viewsets.ModelViewSet, PreprocessMixin):
-    serializer_class = WishlistSerializer
-    permission_classes = (permissions.AllowAny,)
-    # permission_classes = (IsOwner, IsAdmin)
+class WishListView(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = WishList
-
-    def get_queryset(self):
-        return self.preprocess()
+    serializer_class = WishlistSerializer
+    permission_classes = (IsOwnerOrAdmin,)
+    action_based_permission_classes = {
+        # 'list' : (IsOwnerOrAdmin,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        'update' : (IsAdmin),
+        'partial_update' : (IsAdmin),
+        # 'destroy' : (permission_classes)
+    }

@@ -5,11 +5,13 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import TokenError
 
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+from .serializers import CustomTokenObtainPairSerializer
 
 # Create your views here.
 class BlacklistTokenView(GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny,]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         try:
@@ -29,7 +31,8 @@ class BlacklistTokenView(GenericAPIView):
             return Response(status = status.HTTP_400_BAD_REQUEST)
 
 class Force_Logout_View(GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny,]
+    # permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         try:
@@ -52,16 +55,18 @@ def fetch_and_set_tokens(self, request):
     serializer.is_valid(raise_exception = True)
 
     if 'access' in serializer.validated_data and 'refresh' in serializer.validated_data:
-        response = Response({"access": serializer.validated_data.get("access", None)}, status = 200)
+        data = serializer.validated_data
+        refresh_token = data.pop('refresh', None)
+        response = Response(data, status = 200)
+        response.set_cookie('refresh', refresh_token, path='/') #TODO: path='/refresh/'
         # response.set_cookie('access', serializer.validated_data.get("access", None), httponly = True)
-        response.set_cookie('refresh', serializer.validated_data.get("refresh", None), httponly = True) #TODO: path='/refresh/'
         return response
 
     return Response({ "Error": "Something went wrong"}, status = 400)
 
 class MyTokenObtainPairView(TokenObtainPairView):
     permission_classes = [permissions.AllowAny,]
-    serializer_class = TokenObtainPairSerializer
+    serializer_class = CustomTokenObtainPairSerializer
 
     def post(self, request, *args, **kwargs):
         return fetch_and_set_tokens(self, request)
@@ -71,7 +76,7 @@ class MyTokenRefreshView(TokenRefreshView):
     serializer_class = TokenRefreshSerializer
 
     def post(self, request, *args, **kwargs):
-        print(request.user)
+        # print(request.user)
         if 'refresh' not in request.data:
             if 'refresh' in request.COOKIES:
                 request.data['refresh'] = request.COOKIES.get('refresh', None)

@@ -1,81 +1,85 @@
-from rest_framework.generics import GenericAPIView
-from rest_framework.mixins import ListModelMixin, CreateModelMixin
-from rest_framework import parsers, permissions
 from rest_framework import viewsets
-from mixins.CustomMixins import PreprocessMixin
-from authentication.permissions import IsAdmin, IsOwner
-from django.http import QueryDict
-# from rest_condition import Or
+from mixins.CustomMixins import QuerysetMixin, ViewsetActionPermissionMixin
+from authentication.permissions import *
 
-import json
-from django.http.multipartparser import MultiPartParser
+from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer
 
-from .serializers import ProductSerializer, ReviewSerializer
+from .models import Product, Review, ProductVariation, Image
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from django.db.models import Q
 
-from .models import Product, Review
-from django.http import QueryDict
-from users.models import User
 # Create your views here.
-
-# Parser Class
-class MultipartJsonParser(parsers.MultiPartParser):
-    def parse(self, stream, media_type=None, parser_context=None, *args, **kwargs):
-        result = super().parse(
-            stream,
-            media_type = media_type,
-            parser_context = parser_context
-        )
-        data = QueryDict('', mutable=True)
-
-        for key, value in result.data.items():
-
-            if type(value) != str:
-                data[key] = value
-                continue
-            if "[" in value:
-                try:
-                    data[key] = json.loads(value)
-                except ValueError:
-                    data[key] = value
-            else:
-                data[key] = value
-
-        return parsers.DataAndFiles(data, result.files)
-
-class Product_view(GenericAPIView, CreateModelMixin, ListModelMixin):
+class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    parser_classes = (parsers.JSONParser, MultipartJsonParser)
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
-    
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+    permission_classes = (IsAdmin,)
+    action_based_permission_classes = {
+        'list' : (AllowAny,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
 
-# class Review_view(GenericAPIView, CreateModelMixin, ListModelMixin):
-#     queryset = Review.objects.all()
-#     serializer_class = ReviewSerializer
+    def perform_create(self, serializer):
+        obj = serializer.save()
+        
+        if 'image' in self.request.data:    
+            for img in self.request.data.getlist('image', []):
+                Image.objects.create(product = obj, image = img)
 
-#     def get(self, request, *args, **kwargs):
-#         return self.list(request, *args, **kwargs)
+    @action(detail = False, methods = ['get'], permission_classes = [AllowAny])
+    def search(self, request, *args, **kwargs):
+        query = request.data.get('search', None)
+        if query:
+            data = Product.objects.filter(active = False).filter(Q(keyword__icontains = query))
+            serializer = self.serializer_class(data, many=True)
+            # serializer.is_valid(raise_exception = True)
+            
+            return Response(serializer.data, status = 200)
+        else:
+            return Response({"Message": "send search string in body"}, status = 204)
 
-#     def post(self, request, *args, **kwargs):
-#         return self.create(request, *args, **kwargs)
-class Review_view(PreprocessMixin, viewsets.ModelViewSet):
-    serializer_class = ReviewSerializer
-    # permission_classes = (permissions.IsAuthenticated, IsOwner, permissions.AllowAny)
-    permission_classes = (permissions.IsAuthenticated,)
+class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Review
+    serializer_class = ReviewSerializer
+    
+    permission_classes = (IsOwnerOrAdmin,)
+    action_based_permission_classes = {
+        'list' : (AllowAny,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
 
-    def get_queryset(self):
-        return self.preprocess()
-
-    # def create(self, request, *args, **kwargs):
-    #     # user = User.objects.get(id = request.session.get('decoded_user', None))
-    #     request.data._mutable = True
-    #     request.data.update({'user' : request.session.get('decoded_user', None)})
-    #     serializer = self.serializer_class(data = request.data)
-    #     serializer.is_valid(raise_exception = True)
-
-    #     serializer.save()
+class Variation_view(viewsets.ModelViewSet):
+    queryset = ProductVariation.objects.all()
+    serializer_class = VariationSerializer
+    
+    permission_classes = (IsAdmin,)
+    # action_based_permission_classes = {
+        # 'list' : (permission_classes,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    # }
+class Image_view(viewsets.ModelViewSet):
+    queryset = Image.objects.all()
+    serializer_class = ImageSerializer
+    
+    permission_classes = (IsAdmin,)
+    # action_based_permission_classes = {
+        # 'list' : (permission_classes,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    # }

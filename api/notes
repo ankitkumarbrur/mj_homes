@@ -1,10 +1,2 @@
 add custom modelAdmin in users/admin.py
-
-
-Add blacklist token in logout
-
-Add automatic user pick in review
-
-LATER:
-    - ADD ordering in Review
-
+delete cart on quantity 0
