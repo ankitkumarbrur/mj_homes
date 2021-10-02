@@ -18,7 +18,7 @@ import axios from "axios";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("userInfo"))
+  ? localStorage.getItem("userInfo")
   : null;
 
 const initialState = {
@@ -31,19 +31,7 @@ const store = createStore(
   // applyMiddleware(thunk),
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
-// const BASE_URL = "http://ankitbrur.pythonanywhere.com";
-
-// const fetch_data = async () => {
-//   try {
-//     const { data } = await axios.get(`${BASE_URL}/product/`);
-//     console.log(data);
-//   } catch (error) {
-//     console.log("error");
-//   }
-// };
-// fetch_data();
-// fetch products from json file
-store.dispatch(fetchProducts());
+store.dispatch(fetchProducts(products));
 ReactDOM.render(
   <Provider store={store}>
     <App />
