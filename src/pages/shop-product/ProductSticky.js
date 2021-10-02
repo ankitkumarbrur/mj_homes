@@ -49,11 +49,11 @@ const ProductSticky = ({ location, product }) => {
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
           productFullDesc={product.description}
-          productSize={product.size}
-          productWeight={product.weight}
-          productMaterial={product.material}
+          productSize={product.variation[0].size}
+          productWeight={product.variation[0].weight}
+          productMaterial={product.variation[0].material}
           productManufacturer={product.manufacturer}
-          productReview={product.reviews}
+          productReview={product.review}
         />
 
         {/* frequently bought together product slider */}

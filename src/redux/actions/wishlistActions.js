@@ -1,18 +1,63 @@
+import axios from "axios";
+
 export const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
 export const DELETE_FROM_WISHLIST = "DELETE_FROM_WISHLIST";
 export const DELETE_ALL_FROM_WISHLIST = "DELETE_ALL_FROM_WISHLIST";
 
+const BASE_URL = "https://ankitbrur.pythonanywhere.com/"
+
+// Fetch Wishlist Products
+
 // add to wishlist
-export const addToWishlist = (item, addToast) => {
-  return dispatch => {
-    if (addToast) {
-      addToast("Added To Wishlist", {
-        appearance: "success",
-        autoDismiss: true
-      });
-    }
+export const addToWishlist = (item, addToast) => async (dispatch) => {
+
+
+
+  try {
+    const formData = new FormData();
+    formData.append("product", "5b217e65-1695-470a-a89b-9d2fa7d98aff");
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `JWT ${localStorage.getItem("userInfo")}`,
+      },
+    };
+
+    const { data } = await axios.post(
+      `${BASE_URL}wishlist/`,
+      formData,
+      config
+    );
+    console.log("ITEM", item);
+    console.log("Data", data)
+
+
+    addToast("Added To Wishlist", {
+      appearance: "success",
+      autoDismiss: true
+    });
+
     dispatch({ type: ADD_TO_WISHLIST, payload: item });
-  };
+
+  }
+  catch (error) {
+    // var message = "";
+
+    // if (error.response.data.password != undefined) message = error.response.data.password;
+    // else if (error.response.data.Error) message = error.response.data.Error;
+    // else if (error.response.data.Message) message = error.response.data.Message;
+
+    addToast("Failed To Add", {
+      appearance: "error",
+      autoDismiss: true
+    });
+
+  }
+
+
+
+
 };
 
 // delete from wishlist

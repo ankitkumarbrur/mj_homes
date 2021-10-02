@@ -18,12 +18,14 @@ function ProductModal(props) {
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
-  const [selectedProductSize, setSelectedProductSize] = useState(
-    product.variation ? product.variation[0].size[0].name : ""
+  const [selectedProductMaterial, setSelectedProductMaterial] = useState(
+    product.variation ? product.variation[0].material[0] : ""
   );
-  const [productStock, setProductStock] = useState(
-    product.variation ? product.variation[0].size[0].stock : product.stock
-  );
+  // const [productStock, setProductStock] = useState(
+  //   product.variation ? product.variation[0].size[0].stock : product.stock
+  // );
+  const [productStock, setProductStock] = useState(1);
+
   const [quantityCount, setQuantityCount] = useState(1);
 
   const wishlistItem = props.wishlistitem;
@@ -40,7 +42,7 @@ function ProductModal(props) {
     cartItems,
     product,
     selectedProductColor,
-    selectedProductSize
+    selectedProductMaterial
   );
 
   useEffect(() => {
@@ -140,28 +142,32 @@ function ProductModal(props) {
               <div className="product-details-content quickview-content">
                 <h2>{product.name}</h2>
                 <div className="product-details-price">
-                  {discountedprice !== null ? (
-                    <Fragment>
-                      <div>
-                        <span>
-                          {currency.currencySymbol + finaldiscountedprice}
-                        </span>{" "}
-                        <span className="old">
-                          {currency.currencySymbol + finalproductprice}
-                        </span>
-                      </div>
-                      <span className="gst-price">
-                        Price With GST :
-                        <span className="price">
-                          {currency.currencySymbol + product.priceWithGST}
-                        </span>
-                      </span>
-                    </Fragment>
-                  ) : (
-                    <span>{currency.currencySymbol + finalproductprice} </span>
-                  )}
+                  <Fragment>
+                    {product.variation &&
+                      product.variation.map((single, key) => {
+                        return (
+                          single.color === selectedProductColor && (
+                            <div key={key}>
+                              <span>
+                                {currency.currencySymbol +
+                                  single.discounted_price}
+                              </span>
+                              <span className="old">
+                                {currency.currencySymbol + single.price}
+                              </span>
+                              <div className="gst-price">
+                                Price With GST :
+                                <span className="price">
+                                  {currency.currencySymbol + single.gstPrice}
+                                </span>
+                              </div>
+                            </div>
+                          )
+                        );
+                      })}
+                  </Fragment>
                 </div>
-                {product.rating && product.rating > 0 ? (
+                {/* {product.rating && product.rating > 0 ? (
                   <div className="pro-details-rating-wrap">
                     <div className="pro-details-rating">
                       <Rating ratingValue={product.rating} />
@@ -169,7 +175,7 @@ function ProductModal(props) {
                   </div>
                 ) : (
                   ""
-                )}
+                )} */}
                 <div className="pro-details-list">
                   <p>{product.shortDescription}</p>
                 </div>
@@ -182,12 +188,12 @@ function ProductModal(props) {
                         {product.variation.map((single, key) => {
                           return (
                             <label
-                              className={`pro-details-color-content--single ${single.color}`}
+                              className={`pro-details-color-content--single ${single.color.toLowerCase()}`}
                               key={key}
                             >
                               <input
                                 type="radio"
-                                value={single.color}
+                                value={single.color.toLowerCase()}
                                 name="product-color"
                                 checked={
                                   single.color == selectedProductColor
@@ -196,8 +202,8 @@ function ProductModal(props) {
                                 }
                                 onChange={() => {
                                   setSelectedProductColor(single.color);
-                                  setSelectedProductSize(single.size[0].name);
-                                  setProductStock(single.size[0].stock);
+                                  setSelectedProductMaterial(single.material);
+                                  // setProductStock(single.size[0].stock);
                                   setQuantityCount(1);
                                 }}
                               />
@@ -212,36 +218,38 @@ function ProductModal(props) {
                       <div className="pro-details-size-content">
                         {product.variation &&
                           product.variation.map((single) => {
-                            return single.color == selectedProductColor
-                              ? single.size.map((singleSize, key) => {
-                                  return (
-                                    <label
-                                      className={`pro-details-size-content--single`}
-                                      key={key}
-                                    >
-                                      <input
-                                        type="radio"
-                                        value={singleSize.name}
-                                        checked={
-                                          singleSize.name == selectedProductSize
-                                            ? "checked"
-                                            : ""
-                                        }
-                                        onChange={() => {
-                                          setSelectedProductSize(
-                                            singleSize.name
-                                          );
-                                          setProductStock(singleSize.stock);
-                                          setQuantityCount(1);
-                                        }}
-                                      />
-                                      <span className="size-name">
-                                        {singleSize.name}
-                                      </span>
-                                    </label>
-                                  );
-                                })
-                              : "";
+                            return (
+                              single.color === selectedProductColor &&
+                              single.material.map((singleMaterial, key) => {
+                                return (
+                                  <label
+                                    className={`pro-details-size-content--single`}
+                                    key={key}
+                                  >
+                                    <input
+                                      type="radio"
+                                      value={singleMaterial}
+                                      checked={
+                                        singleMaterial ===
+                                        selectedProductMaterial
+                                          ? "checked"
+                                          : ""
+                                      }
+                                      onChange={() => {
+                                        setSelectedProductMaterial(
+                                          singleMaterial
+                                        );
+                                        // setProductStock(singleSize.stock);
+                                        setQuantityCount(1);
+                                      }}
+                                    />
+                                    <span className="size-name">
+                                      {singleMaterial}
+                                    </span>
+                                  </label>
+                                );
+                              })
+                            );
                           })}
                       </div>
                     </div>
@@ -302,7 +310,7 @@ function ProductModal(props) {
                               addToast,
                               quantityCount,
                               selectedProductColor,
-                              selectedProductSize
+                              selectedProductMaterial
                             )
                           }
                           disabled={productCartQty >= productStock}

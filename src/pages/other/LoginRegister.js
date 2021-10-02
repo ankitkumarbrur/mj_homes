@@ -12,7 +12,7 @@ import { login, logout, register } from "../../redux/actions/userActions";
 import { addToCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
-const BASE_URL = "http://localhost:8000";
+
 
 const LoginRegister = ({ location }) => {
 	const { pathname } = location;
@@ -84,19 +84,15 @@ const LoginRegister = ({ location }) => {
 			lastname != "" &&
 			pass != "" &&
 			passConfirm != "" &&
-			tel != "" &&
-			email != "" &&
-			address != ""
+			email != ""
+
 		) {
 			dispatch(
 				register(
 					firstname,
 					lastname,
 					pass,
-					passConfirm,
-					tel,
 					email,
-					address,
 					addToast,
 				),
 			);
@@ -183,7 +179,12 @@ const LoginRegister = ({ location }) => {
 																	"center",
 															}}
 														>
-															Already Logged In
+															Hey,&nbsp;
+															<div style={{ display: "inline-block", color: "#fd7e14" }}>
+																{localStorage.getItem("userName")}
+															</div>
+
+
 														</h1>
 														<button
 															type="submit"
@@ -300,7 +301,7 @@ const LoginRegister = ({ location }) => {
 																	)
 																}
 															/>
-															<input
+															{/* <input
 																name="user-phone"
 																placeholder="Phone"
 																type="tel"
@@ -311,7 +312,7 @@ const LoginRegister = ({ location }) => {
 																			.value,
 																	)
 																}
-															/>
+															/> */}
 															<input
 																type="password"
 																name="user-password"
@@ -334,17 +335,7 @@ const LoginRegister = ({ location }) => {
 																	)
 																}
 															/>
-															<input
-																type="text"
-																name="address"
-																placeholder="Address"
-																onChange={(e) =>
-																	setAddress(
-																		e.target
-																			.value,
-																	)
-																}
-															/>
+
 															<div className="button-box">
 																<button type="submit">
 																	<span>
@@ -363,8 +354,8 @@ const LoginRegister = ({ location }) => {
 						</div>
 					</div>
 				</div>
-			</LayoutOne>
-		</Fragment>
+			</LayoutOne >
+		</Fragment >
 	);
 };
 

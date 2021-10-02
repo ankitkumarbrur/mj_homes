@@ -41,7 +41,7 @@ const Home = () => {
         <CountDownThree
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
-          dateTime="September 30, 2021 12:12:00"
+          dateTime="December 30, 2021 12:12:00"
           countDownImage="/assets/img/banner/deal-5.png"
         />
         {/* <LayoutOne

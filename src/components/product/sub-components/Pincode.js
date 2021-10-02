@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const PinCode = () => {
   const [pinCode, setPinCode] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [del, setDel] = useState(false);
 
   const checkAvailability = (e) => {
     e.preventDefault();
     if (pinCode === "124001") {
-      console.log(pinCode);
-      setPinCode("");
       setIsChecked(true);
+      setDel(true);
+      setPinCode("");
+    } else {
+      setIsChecked(true);
+      setDel(false);
     }
   };
-
   return (
     <>
       <form
@@ -32,7 +35,12 @@ const PinCode = () => {
         </label>
         <button type="submit">Check</button>
       </form>
-      {isChecked ? <p>Del</p> : ""}
+      {isChecked &&
+        (del ? (
+          <p>Deliverable</p>
+        ) : (
+          <p>We are currently not delivering in your area.</p>
+        ))}
     </>
   );
 };

@@ -16,6 +16,7 @@ const ProductDescriptionInfo = ({
   currency,
   finalDiscountedPrice,
   finalProductPrice,
+  gstPrice,
   cartItems,
   wishlistItem,
   addToast,
@@ -25,27 +26,21 @@ const ProductDescriptionInfo = ({
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
-  const [selectedProductSize, setSelectedProductSize] = useState(
-    product.variation ? product.variation[0].size[0].name : ""
+  const [selectedProductMaterial, setSelectedProductMaterial] = useState(
+    product.variation ? product.variation[0].material[0] : ""
   );
-  const [productStock, setProductStock] = useState(
-    product.variation ? product.variation[0].size[0].stock : product.stock
-  );
+  // const [productStock, setProductStock] = useState(
+  //   product.variation ? product.variation[0].size[0].stock : product.stock
+  // );
+  const [productStock, setProductStock] = useState(1);
   const [quantityCount, setQuantityCount] = useState(1);
 
   const productCartQty = getProductCartQuantity(
     cartItems,
     product,
     selectedProductColor,
-    selectedProductSize
+    selectedProductMaterial
   );
-
-  const priceWithGST = () => {
-    const gstPrice = (product.price * 28) / 100;
-    const totalPrice = product.price + gstPrice;
-    return totalPrice;
-  };
-
   return (
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
@@ -53,23 +48,34 @@ const ProductDescriptionInfo = ({
         {discountedPrice !== null ? (
           <Fragment>
             <div>
-              <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
-              <span className="old">
-                {currency.currencySymbol + finalProductPrice}
-              </span>
+              {product.variation &&
+                product.variation.map((single, key) => {
+                  return (
+                    single.color === selectedProductColor && (
+                      <div key={key}>
+                        <span>
+                          {currency.currencySymbol + single.discounted_price}
+                        </span>
+                        <span className="old">
+                          {currency.currencySymbol + single.price}
+                        </span>
+                        <div className="gst-price">
+                          Price With GST :
+                          <span className="price">
+                            {currency.currencySymbol + single.gstPrice}
+                          </span>
+                        </div>
+                      </div>
+                    )
+                  );
+                })}
             </div>
-            <span className="gst-price">
-              Price With GST :
-              <span className="price">
-                {currency.currencySymbol + priceWithGST()}
-              </span>
-            </span>
           </Fragment>
         ) : (
           <span>{currency.currencySymbol + finalProductPrice} </span>
         )}
       </div>
-      {product.rating && product.rating > 0 ? (
+      {/* {product.rating && product.rating > 0 ? (
         <div className="pro-details-rating-wrap">
           <div className="pro-details-rating">
             <Rating ratingValue={product.rating} />
@@ -77,7 +83,7 @@ const ProductDescriptionInfo = ({
         </div>
       ) : (
         ""
-      )}
+      )} */}
       <div className="pro-details-list">
         <p>{product.shortDescription}</p>
       </div>
@@ -90,20 +96,20 @@ const ProductDescriptionInfo = ({
               {product.variation.map((single, key) => {
                 return (
                   <label
-                    className={`pro-details-color-content--single ${single.color}`}
+                    className={`pro-details-color-content--single ${single.color.toLowerCase()}`}
                     key={key}
                   >
                     <input
                       type="radio"
-                      value={single.color}
+                      value={single.color.toLowerCase()}
                       name="product-color"
                       checked={
                         single.color === selectedProductColor ? "checked" : ""
                       }
                       onChange={() => {
                         setSelectedProductColor(single.color);
-                        setSelectedProductSize(single.size[0].name);
-                        setProductStock(single.size[0].stock);
+                        setSelectedProductMaterial(single.material);
+                        // setProductStock(single.size[0].stock);
                         setQuantityCount(1);
                       }}
                     />
@@ -118,32 +124,33 @@ const ProductDescriptionInfo = ({
             <div className="pro-details-size-content">
               {product.variation &&
                 product.variation.map((single) => {
-                  return single.color === selectedProductColor
-                    ? single.size.map((singleSize, key) => {
-                        return (
-                          <label
-                            className={`pro-details-size-content--single`}
-                            key={key}
-                          >
-                            <input
-                              type="radio"
-                              value={singleSize.name}
-                              checked={
-                                singleSize.name === selectedProductSize
-                                  ? "checked"
-                                  : ""
-                              }
-                              onChange={() => {
-                                setSelectedProductSize(singleSize.name);
-                                setProductStock(singleSize.stock);
-                                setQuantityCount(1);
-                              }}
-                            />
-                            <span className="size-name">{singleSize.name}</span>
-                          </label>
-                        );
-                      })
-                    : "";
+                  return (
+                    single.color === selectedProductColor &&
+                    single.material.map((singleMaterial, key) => {
+                      return (
+                        <label
+                          className={`pro-details-size-content--single`}
+                          key={key}
+                        >
+                          <input
+                            type="radio"
+                            value={singleMaterial.material}
+                            checked={
+                              singleMaterial === selectedProductMaterial
+                                ? "checked"
+                                : ""
+                            }
+                            onChange={() => {
+                              setSelectedProductMaterial(singleMaterial);
+                              // setProductStock(singleSize.stock);
+                              setQuantityCount(1);
+                            }}
+                          />
+                          <span className="size-name">{singleMaterial}</span>
+                        </label>
+                      );
+                    })
+                  );
                 })}
             </div>
           </div>
@@ -202,7 +209,7 @@ const ProductDescriptionInfo = ({
                     addToast,
                     quantityCount,
                     selectedProductColor,
-                    selectedProductSize
+                    selectedProductMaterial
                   )
                 }
                 disabled={productCartQty >= productStock}
@@ -213,6 +220,20 @@ const ProductDescriptionInfo = ({
             ) : (
               <button disabled>Out of Stock</button>
             )}
+            {/* <button
+              onClick={() =>
+                addToCart(
+                  product,
+                  addToast,
+                  quantityCount,
+                  selectedProductColor,
+                  selectedProductMaterial
+                )
+              }
+            >
+              {" "}
+              Add To Cart{" "}
+            </button> */}
           </div>
           <div className="pro-details-wishlist">
             <button
