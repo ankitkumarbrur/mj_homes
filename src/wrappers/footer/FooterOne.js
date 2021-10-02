@@ -57,7 +57,7 @@ const FooterOne = ({
               spaceBottomClass="mb-30"
             />
           </div>
-          <div
+          {/* <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
             }`}
@@ -69,27 +69,20 @@ const FooterOne = ({
               <div className="footer-list">
                 <ul>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/about"}>About us</Link>
-                  </li>
-                  {/* <li>
                     <Link to={process.env.PUBLIC_URL + "#/"}>
                       Store location
                     </Link>
-                  </li> */}
-                  <li>
-                    <Link to={process.env.PUBLIC_URL + "/contact"}>
-                      Contact
-                    </Link>
                   </li>
-                  {/* <li>
+
+                  <li>
                     <Link to={process.env.PUBLIC_URL + "#/"}>
                       Orders tracking
                     </Link>
-                  </li> */}
+                  </li>
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
           <div
             className={`${
               sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
@@ -107,6 +100,14 @@ const FooterOne = ({
               </div>
               <div className="footer-list">
                 <ul>
+                  {/* <li>
+                    <Link to={process.env.PUBLIC_URL + "/about"}>About us</Link>
+                  </li>
+                  <li>
+                    <Link to={process.env.PUBLIC_URL + "/contact"}>
+                      Contact
+                    </Link>
+                  </li> */}
                   <li>
                     <Link to={process.env.PUBLIC_URL + "/return-policy"}>
                       Returns Policy
@@ -211,7 +212,7 @@ const FooterOne = ({
           <i className="fa fa-whatsapp"></i>
         </a>
       </button>
-      <button className="google-form">
+      <button className="phone">
         <i className="fa fa-phone"></i>
       </button>
     </footer>

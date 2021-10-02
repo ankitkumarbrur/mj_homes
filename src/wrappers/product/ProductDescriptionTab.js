@@ -111,7 +111,7 @@ const ProductDescriptionTab = ({
                     </li>
                     <li>
                       <span>Materials</span>
-                      {productMaterial.map((single, key) => {
+                      {/* {productMaterial.map((single, key) => {
                         return (
                           <i
                             key={key}
@@ -120,7 +120,16 @@ const ProductDescriptionTab = ({
                             {single}
                           </i>
                         );
-                      })}
+                      })} */}
+                      {productMaterial.map((single, i) => [
+                        i > 0 && ", ",
+                        <i
+                          key={i}
+                          style={{ fontStyle: "normal", marginRight: "5px" }}
+                        >
+                          {single}
+                        </i>,
+                      ])}
                     </li>
                   </ul>
                 </div>
@@ -206,7 +215,7 @@ const ProductDescriptionTab = ({
                   <p>
                     Installation: Your product may or may not require
                     installation help upon arrival, depending on the delivery
-                    condition. Delivery condition:
+                    condition. <br /> Delivery condition:
                   </p>
                   <ul>
                     <li>
@@ -270,36 +279,37 @@ const ProductDescriptionTab = ({
                 <div className="product-returnCancellations-wrapper">
                   <ul>
                     <li>
-                      Time Frame - 7 days. If you change your mind after placing
-                      an order, you may cancel it (or a portion of it) within 07
-                      (seven) days after receiving the order confirmation or
-                      before it is dispatched, whichever comes first. Fee While
-                      processing the refund, a 2.5 percent cancellation fee will
-                      be added to the amount you paid. Prior to the
-                      cancellation, any cashback received on the order will be
-                      withdrawn from MJ Homes credits. The cashback amount will
-                      be deducted from the refund amount of the cancelled
-                      product if the same cashback has been used to place
-                      another order in full or in part.
-                    </li>
-                    <li>
-                      Time frame - 7 to 10 days. While processing the refund, a
-                      25 percent cancellation fee will be added to the amount
-                      you paid. Prior to the cancellation, any cashback received
-                      on the order will be withdrawn from MJ Homes credits. The
-                      cashback amount will be deducted from the refund amount of
-                      the cancelled product if the same cashback has been used
-                      to place another order in full or in part. Time Frame -
-                      Post 10 days
-                    </li>
-                    <li>
-                      Time Frame - Post 10 days No refund will be initiated, if
-                      the cancellation occurs after the product is delivered.
+                      Time Frame - 7 days. <br /> If you change your mind after
+                      placing an order, you may cancel it (or a portion of it)
+                      within 07 (seven) days after receiving the order
+                      confirmation or before it is dispatched, whichever comes
+                      first. Fee While processing the refund, a 2.5 percent
+                      cancellation fee will be added to the amount you paid.
                       Prior to the cancellation, any cashback received on the
                       order will be withdrawn from MJ Homes credits. The
                       cashback amount will be deducted from the refund amount of
                       the cancelled product if the same cashback has been used
                       to place another order in full or in part.
+                    </li>
+                    <li>
+                      Time frame - 7 to 10 days. <br /> While processing the
+                      refund, a 25 percent cancellation fee will be added to the
+                      amount you paid. Prior to the cancellation, any cashback
+                      received on the order will be withdrawn from MJ Homes
+                      credits. The cashback amount will be deducted from the
+                      refund amount of the cancelled product if the same
+                      cashback has been used to place another order in full or
+                      in part. Time Frame - Post 10 days
+                    </li>
+                    <li>
+                      Time Frame - Post 10 days. <br /> No refund will be
+                      initiated, if the cancellation occurs after the product is
+                      delivered. Prior to the cancellation, any cashback
+                      received on the order will be withdrawn from MJ Homes
+                      credits. The cashback amount will be deducted from the
+                      refund amount of the cancelled product if the same
+                      cashback has been used to place another order in full or
+                      in part.
                     </li>
                   </ul>
                 </div>

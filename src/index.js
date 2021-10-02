@@ -31,7 +31,7 @@ const store = createStore(
   // applyMiddleware(thunk),
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
-store.dispatch(fetchProducts(products));
+store.dispatch(fetchProducts());
 ReactDOM.render(
   <Provider store={store}>
     <App />
