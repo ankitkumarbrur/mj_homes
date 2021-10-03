@@ -28,6 +28,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"detail": "input is not valid"})
 
         return review
+        
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Image

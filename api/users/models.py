@@ -43,7 +43,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']
 
-    def __unicode__(self):
+    def __str__(self):
         return self.first_name
 
 class Address(models.Model):
@@ -56,5 +56,9 @@ class Address(models.Model):
     pin = models.IntegerField(default = 0, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
     phone = models.CharField(default = '+91 ----------', max_length=20)
 
-    def __unicode__(self):
+    def __str__(self):
         return (self.item_name)
+class Subscribe(models.Model):
+    email = models.EmailField(_('email address'), unique = True)
+    def __str__(self):
+        return (self.email)
