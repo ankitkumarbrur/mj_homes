@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
-from .models import User, Address
+from .models import User, Address, Subscribe
 from rest_framework import serializers
 
 
@@ -67,3 +67,8 @@ class AddressSerializer(serializers.ModelSerializer):
         except ValidationError as ex:
             raise serializers.ValidationError({"detail": "input is not valid"})
         return address
+
+class SubscribeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subscribe
+        fields = '__all__'

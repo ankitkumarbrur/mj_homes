@@ -31,6 +31,12 @@ const HeaderOne = ({
     setScroll(window.scrollY);
   };
 
+  const triggerMobileMenu = () => {
+    const offcanvasMobileMenu = document.querySelector(
+      "#offcanvas-mobile-menu"
+    );
+    offcanvasMobileMenu.classList.add("active");
+  };
   return (
     <header
       className={`header-area clearfix ${headerBgClass ? headerBgClass : ""} ${
@@ -59,10 +65,27 @@ const HeaderOne = ({
       >
         <div className={layout == "container-fluid" ? layout : "container"}>
           <div className="row">
-            <div className="col-xl-2 col-lg-2 col-md-6 col-4">
+            <div className="col-xl-1 col-lg-1 col-md-1 col-2">
+              {/* header logo */}
+              <div className = "header-right-wrap">
+                <div className="same-style mobile-off-canvas d-block">
+                    <button
+                      className="mobile-aside-button"
+                      onClick={() => triggerMobileMenu()}
+                    >
+                      <i className="pe-7s-menu" />
+                    </button>
+                </div>
+              </div>
+            </div>
+            <div className="col-xl-1 col-lg-1 col-md-5 col-2">
               {/* header logo */}
               <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
             </div>
+            {/* header logo */}
+            {/* <div className="col-xl-2 col-lg-2 col-md-6 col-4">
+              <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
+            </div> */}
             <div className="col-xl-8 col-lg-8 d-none d-lg-block">
               {/* Nav menu */}
               <NavMenu />

@@ -16,35 +16,9 @@ const IconGroup = ({
   const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
-  // const searchHandle = (e) => {
-  //   document.getElementsByTagName("body")[0].classList.toggle("body-overflow");
-  // };
-
-  const triggerMobileMenu = () => {
-    const offcanvasMobileMenu = document.querySelector(
-      "#offcanvas-mobile-menu"
-    );
-    offcanvasMobileMenu.classList.add("active");
-  };
 
   return (
     <div className={`header-right-wrap ${false ? iconWhiteClass : ""}`}>
-      {/* <div className="same-style header-search d-none d-lg-block">
-				<button
-					className="search-active"
-					onClick={(e) => handleClick(e)}
-				>
-					<i className="pe-7s-search" />
-				</button>
-				<div className="search-content">
-					<form action="#">
-						<input type="text" placeholder="Search" />
-						<button className="button-search">
-							<i className="pe-7s-search" />
-						</button>
-					</form>
-				</div>
-			</div> */}
       <div className="same-style exp-head header-search d-none d-lg-block">
         <button
           className="control"
@@ -79,14 +53,6 @@ const IconGroup = ({
           </ul>
         </div>
       </div>
-      {/* <div className="same-style header-compare">
-        <Link to={process.env.PUBLIC_URL + "/compare"}>
-          <i className="pe-7s-shuffle" />
-          <span className="count-style">
-            {compareData && compareData.length ? compareData.length : 0}
-          </span>
-        </Link>
-      </div> */}
       <div className="same-style header-wishlist">
         <Link to={process.env.PUBLIC_URL + "/wishlist"}>
           <i className="pe-7s-like" />
@@ -95,7 +61,7 @@ const IconGroup = ({
           </span>
         </Link>
       </div>
-      <div className="same-style cart-wrap d-none d-lg-block">
+      <div className="same-style cart-wrap">
         <button className="icon-cart" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
@@ -104,26 +70,10 @@ const IconGroup = ({
         </button>
         {/* menu cart */}
         <MenuCart
-          cartData={cartData}
-          currency={currency}
-          deleteFromCart={deleteFromCart}
+          cartData = {cartData}
+          currency = {currency}
+          deleteFromCart = {deleteFromCart}
         />
-      </div>
-      <div className="same-style cart-wrap d-block d-lg-none">
-        <Link className="icon-cart" to={process.env.PUBLIC_URL + "/cart"}>
-          <i className="pe-7s-shopbag" />
-          <span className="count-style">
-            {cartData && cartData.length ? cartData.length : 0}
-          </span>
-        </Link>
-      </div>
-      <div className="same-style mobile-off-canvas d-block">
-        <button
-          className="mobile-aside-button"
-          onClick={() => triggerMobileMenu()}
-        >
-          <i className="pe-7s-menu" />
-        </button>
       </div>
     </div>
   );
