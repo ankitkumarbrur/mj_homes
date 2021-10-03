@@ -52,7 +52,6 @@ const ProductDescriptionTab = ({
         appearance: "error",
         autoDismiss: true,
       });
-      console.log(error);
     }
   };
 

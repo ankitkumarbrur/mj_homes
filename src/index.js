@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import { fetchProducts } from "./redux/actions/productActions";
 import rootReducer from "./redux/reducers/rootReducer";
 // import products from "./data/products.json";
-import products from "./data/products _1.json";
+import temp from "./data/products _1.json";
 
 import App from "./App";
 import "./assets/scss/style.scss";
