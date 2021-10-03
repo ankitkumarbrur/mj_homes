@@ -16,6 +16,9 @@ const IconGroup = ({
   const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
+  // const searchHandle = (e) => {
+  //   document.getElementsByTagName("body")[0].classList.toggle("body-overflow");
+  // };
 
   const triggerMobileMenu = () => {
     const offcanvasMobileMenu = document.querySelector(
@@ -45,7 +48,7 @@ const IconGroup = ({
       <div className="same-style exp-head header-search d-none d-lg-block">
         <button
           className="control"
-          // onClick={(e) => handleClick(e)}
+          // onClick={(e) => searchHandle(e)}
         >
           <div className="btn-material"></div>
           <i className="pe-7s-search" />

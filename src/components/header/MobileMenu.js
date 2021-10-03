@@ -72,6 +72,7 @@ const MobileMenu = () => {
 					<MobileWidgets />
 				</div>
 			</div>
+			
 		</div>
 	);
 };

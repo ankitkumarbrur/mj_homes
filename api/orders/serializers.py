@@ -1,9 +1,19 @@
+from django.db.models import fields
 from rest_framework import serializers
-from .models import Order
+from .models import Order, OrderItem
 
-class CartSerializer(serializers.ModelSerializer):
+class OrderItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = '__all__'
+
+class OrderSerializer(serializers.ModelSerializer):
+    items = OrderItemSerializer(read_only = True, many = True)
     class Meta:
         model = Order
         fields = '__all__'
-
-    
+        extra_kwargs = {
+            'user' : {
+                'read_only': True
+            }
+        }

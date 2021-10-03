@@ -1,5 +1,4 @@
 anv/
-# *.sqlite3
 *.DS_store*
 database.db
 database.sqlite
@@ -8,4 +7,5 @@ __pycache__
 Pipfile.lock
 .idea
 *pyc
-# db.sqlite3
+db.sqlite3
+*.sqlite3
