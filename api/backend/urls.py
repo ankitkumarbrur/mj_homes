@@ -22,7 +22,22 @@ from rest_framework.routers import DefaultRouter
 from orders.views import OrderView
 from carts.views import CartView, WishListView
 from users.views import Address_view, User_view
-from products.views import Review_view
+from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view
+
+
+"""
+Router HTTP Request mapping to methods
+
+    {prefix}/
+        - GET   -> list()
+        - POST  -> create()
+
+    {prefix}/<int:pk>/
+        - GET    -> list()
+        - PUT    -> update()
+        - PATCH  -> partial_update()
+        - DELETE -> destroy()
+"""
 
 router = DefaultRouter()
 
@@ -30,12 +45,14 @@ router.register('cart', CartView, basename = "cart")
 router.register('wishlist', WishListView, basename = "wishlist")
 router.register('order', OrderView, basename= 'order')
 router.register('address', Address_view, basename= 'address')
-router.register('users', User_view, basename= 'users')
+router.register('user', User_view, basename= 'user')
+router.register('product', Product_view, basename= 'product')
 router.register('review', Review_view, basename= 'review')
+router.register('variation', Variation_view, basename= 'variation')
+router.register('image', Image_view, basename= 'image')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/',include('products.urls')),
     path('', include('authentication.urls')),
     path('users/', include('users.urls')),
     path('', include(router.urls)),
