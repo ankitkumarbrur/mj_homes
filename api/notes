@@ -1,17 +1,19 @@
 Ankit
-    - Carousel API
-    - hamburger to the left
-    - banners below carousel
+    * hamburger to the left
+    * subscribe
+
     - Deal of the day API
-    - subscribe
+    
     - calendar
     - todo
+
+    - Carousel API
+    - banners below carousel
 
     - Product
         - new arrivals
         - best seller
         - sale items
-    
 
 
 - furniture video

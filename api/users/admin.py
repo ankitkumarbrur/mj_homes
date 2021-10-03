@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import User, Address
+from .models import User, Address, Subscribe
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea, CharField
 from django import forms
@@ -31,3 +31,4 @@ class UserAdminConfig(UserAdmin):
 
 admin.site.register(User, UserAdminConfig)
 admin.site.register(Address)
+admin.site.register(Subscribe)
