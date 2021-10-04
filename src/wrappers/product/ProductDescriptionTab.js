@@ -9,7 +9,7 @@ import ReviewRating from "../../components/product/sub-components/ReviewRating";
 import AddReviewRating from "../../components/product/sub-components/AddReviewRating";
 import axios from "axios";
 
-const BASE_URL = "http://ankitbrur.pythonanywhere.com/";
+const BASE_URL = "https://api.luxurymjhomes.com/";
 const ACCESS_TOKEN =
   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyODU2MjE2LCJqdGkiOiI2N2FkMDQ5NjhmYzY0NWEyYWZjYjNmYWE5ODdlNGVhYiIsInVzZXJfaWQiOjJ9.2Rhul0Mb-IbCcHnYUte39LVaN7TOFM1RnOsu8BbbElA";
 
@@ -22,16 +22,16 @@ const ProductDescriptionTab = ({
   productManufacturer,
   productReview,
 }) => {
-  const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(null);
   const { addToast } = useToasts();
+  const [message, setMessage] = useState("");
+  const [rating, setRating] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const formData = new FormData();
       formData.append("reviewStar", rating);
-      formData.append("reviewText", comment);
+      formData.append("reviewText", message);
       formData.append("product", "d5dbf262-172c-4834-b153-deb998cfa15b");
 
       const config = {
@@ -45,7 +45,7 @@ const ProductDescriptionTab = ({
         appearance: "success",
         autoDismiss: true,
       });
-      setComment("");
+      setMessage("");
       setRating(null);
     } catch (error) {
       addToast("Review Not Added", {
@@ -418,10 +418,10 @@ const ProductDescriptionTab = ({
                               <div className="rating-form-style form-submit">
                                 <textarea
                                   name="Your Review"
-                                  placeholder="Message"
-                                  value={comment}
+                                  placeholder="Message..."
+                                  value={message}
                                   required
-                                  onChange={(e) => setComment(e.target.value)}
+                                  onChange={(e) => setMessage(e.target.value)}
                                 />
                                 <input type="submit" defaultValue="Submit" />
                               </div>
