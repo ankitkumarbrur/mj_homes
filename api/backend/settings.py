@@ -169,6 +169,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3001',
     'https://ankitbrur.pythonanywhere.com',
     'https://luxurymjhomes.com',
+    'https://www.luxurymjhomes.com',
     'https://api.luxurymjhomes.com'
 ]
 
