@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   ContactShadows,
@@ -6,6 +6,10 @@ import {
   useGLTF,
   OrbitControls,
 } from "@react-three/drei";
+
+import axios from "axios";
+
+
 
 function Loading() {
   return (
@@ -25,24 +29,36 @@ function Loading() {
 function addGroups(node) {
   return (
     <>
-      {node.map((child, index) =>
+      {node.map((child) =>
         child.type == "Group" ? (
           <group
             position={child.position}
             rotation={child.rotation}
             geometry={child.geometry}
             material={child.material}
-            key={index}
+            frustumCulled={child.frustumCulled}
+            layers={child.layers}
+            matrix={child.matrix}
+            quaternion={child.quaternion}
+            scale={child.scale}
+            up={child.up}
+            key={child.id}
           >
             {addGroups(child.children)}
           </group>
         ) : (
           <mesh
-            receiveShadow
-            castShadow
+            position={child.position}
+            rotation={child.rotation}
             geometry={child.geometry}
             material={child.material}
-            key={index}
+            frustumCulled={child.frustumCulled}
+            layers={child.layers}
+            matrix={child.matrix}
+            quaternion={child.quaternion}
+            scale={child.scale}
+            up={child.up}
+            key={child.id}
           >
             {addGroups(child.children)}
           </mesh>
@@ -55,21 +71,23 @@ function addGroups(node) {
 function Model(props) {
   const ref = useRef();
   // UNCOMMENT THIS AND DELETE HARD CODED LINE
-  const { nodes } = useGLTF(`${process.env.PUBLIC_URL}/${props.name}`);
-  // const { nodes } = useGLTF(props.name);
-
-  // // Animate model
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
     ref.current.rotation.x = Math.cos(t / 4) / 8;
     ref.current.rotation.y = Math.sin(t / 4) / 8;
     ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   });
+
+  const { nodes } = useGLTF(props.name);
+  
+  console.log(nodes);
+
   return (
     <scene dispose={null}>
       <group ref={ref}>{addGroups(nodes.Scene.children)}</group>
     </scene>
   );
+  
 }
 
 export default function ThreeD(props) {
