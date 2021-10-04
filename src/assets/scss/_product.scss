@@ -656,7 +656,7 @@
               border: 1px solid #736751;
               background-color: #736751;
             }
-            &.gray {
+            &.grey {
               border: 1px solid #c0c0c0;
               background-color: #c0c0c0;
             }
@@ -713,7 +713,7 @@
             border: 1px solid #736751;
             background-color: #736751;
           }
-          &.gray {
+          &.grey {
             border: 1px solid #c0c0c0;
             background-color: #c0c0c0;
           }
@@ -736,6 +736,10 @@
           &.brown {
             border: 1px solid brown;
             background-color: brown;
+          }
+          &.velvet {
+            border: 1px solid #7f2a3c;
+            background-color: #7f2a3c;
           }
           .checkmark {
             position: relative;

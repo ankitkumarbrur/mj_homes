@@ -1605,11 +1605,11 @@ textarea:focus {
 
 .scroll-top,
 .whats-app,
-.google-form {
+.phone {
   position: fixed;
   z-index: 9811 !important;
   right: 20px;
-  bottom: 60px;
+  bottom: 40px;
 
   visibility: hidden;
   overflow: hidden;
@@ -1655,16 +1655,18 @@ textarea:focus {
   }
 }
 .whats-app,
-.google-form {
-  left: 20px;
+.phone {
+  right: 21px;
+  bottom: 100px;
+
   visibility: visible;
   opacity: 1;
   a {
     color: white;
   }
 }
-.google-form {
-  bottom: 120px;
+.phone {
+  bottom: 160px;
 }
 
 .height-100 {

@@ -15,8 +15,6 @@ export const addToCart = (
   selectedProductSize
 ) => {
   return (dispatch) => {
-    console.log(item);
-
     // try {
     //   const formData = new FormData();
     //   formData.append("userId", 4);
