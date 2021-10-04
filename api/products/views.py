@@ -33,7 +33,7 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         query = request.GET.get('q', None)
-        product_objects = Product.product_objects.filter(active = False)
+        product_objects = Product.objects.filter(active = False)
         if query:
             data = product_objects.filter(Q(keyword__icontains = query))
             serializer = self.serializer_class(data, many=True)
