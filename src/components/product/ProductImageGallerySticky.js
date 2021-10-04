@@ -1,8 +1,13 @@
 import PropTypes from "prop-types";
 import React from "react";
 import ThreeD from "../3dmodel/ThreeD";
+import { useEffect } from "react";
+//get searched products
+
+
 
 const productImageGallerySticky = ({ product }) => {
+
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
       {product.discount || product.new ? (
@@ -21,8 +26,8 @@ const productImageGallerySticky = ({ product }) => {
         {product["model3d"] && (
           <div className="product-sticky-image__single-3d mb-10">
             {/* Uncomment after correction in Api and delete hardcoded model */}
-            <ThreeD name="shoe-draco.glb" />
-            {/* <ThreeD name={product["model3d"]} /> */}
+            {/* <ThreeD name="model (2).glb" /> */}
+            <ThreeD name={product["model3d"]} />
           </div>
         )}
 
