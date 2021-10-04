@@ -2,8 +2,8 @@
 
 .copyright {
   .footer-logo {
-    margin-top: 41px;
-    margin-bottom: 12px;
+    // margin-top: 41px;
+    margin-bottom: 2px;
     @media #{$xs-layout} {
       margin-top: 0;
     }
@@ -88,26 +88,24 @@
       .mc-news {
         display: none;
       }
-      .clear {
-        button {
-          font-size: 14px;
-          line-height: 1;
+      .subs-btn {
+        font-size: 14px;
+        line-height: 1;
 
-          width: auto;
-          height: auto;
-          margin: 13px 0 0;
-          padding: 0 0 1px;
+        width: auto;
+        height: auto;
+        margin: 13px 0 0;
+        padding: 0 0 1px;
 
-          text-transform: uppercase;
+        text-transform: uppercase;
 
-          color: #313131;
-          border: none;
-          border-bottom: 2px solid #9b9b9c;
-          background: none;
-          &:hover {
-            color: $theme-color;
-            border-bottom: 2px solid $theme-color;
-          }
+        color: #313131;
+        border: none;
+        border-bottom: 2px solid #9b9b9c;
+        background: none;
+        &:hover {
+          color: $theme-color;
+          border-bottom: 2px solid $theme-color;
         }
       }
     }

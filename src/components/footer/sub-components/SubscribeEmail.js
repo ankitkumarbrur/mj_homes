@@ -1,77 +1,67 @@
+import Axios from "axios";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { Fragment, useState } from "react";
+import { useToasts } from "react-toast-notifications";
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 
-const CustomForm = ({ status, message, onValidated }) => {
-  let email;
-  const submit = () => {
-    email &&
-      email.value.indexOf("@") > -1 &&
-      onValidated({
-        EMAIL: email.value
+const base_url = "https://api.luxurymjhomes.com/";
+
+const SubscribeEmail = () => {
+  const { addToast } = useToasts();
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const formData = new FormData();
+      formData.append("email", email);
+
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      const { data } = await Axios.post(
+        `${base_url}subscribe/`,
+        formData,
+        config
+      );
+      setEmail("");
+      addToast("Subscribed", {
+        appearance: "success",
+        autoDismiss: true,
       });
-
-    let emailInput = document.getElementById("mc-form-email");
-    emailInput.value = "";
+    } catch (error) {
+      addToast("Already Subscribed", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
   };
-
   return (
-    <div className="subscribe-form">
-      <div className="mc-form">
-        <div>
+    <Fragment>
+      <form className="subscribe-form" onSubmit={handleSubmit}>
+        <div className="mc-form">
           <input
             id="mc-form-email"
             className="email"
-            ref={node => (email = node)}
             type="email"
+            required
             placeholder="Enter your email address..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div className="clear">
-          <button className="button" onClick={submit}>
+          <button className="subs-btn" type="submit">
             SUBSCRIBE
           </button>
         </div>
-      </div>
-
-      {status == "sending" && (
-        <div style={{ color: "#3498db", fontSize: "12px" }}>sending...</div>
-      )}
-      {status == "error" && (
-        <div
-          style={{ color: "#e74c3c", fontSize: "12px" }}
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
-      )}
-      {status == "success" && (
-        <div
-          style={{ color: "#2ecc71", fontSize: "12px" }}
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
-      )}
-    </div>
-  );
-};
-
-const SubscribeEmail = ({ mailchimpUrl }) => {
-  return (
-    <div>
-      <MailchimpSubscribe
-        url={mailchimpUrl}
-        render={({ subscribe, status, message }) => (
-          <CustomForm
-            status={status}
-            message={message}
-            onValidated={formData => subscribe(formData)}
-          />
-        )}
-      />
-    </div>
+      </form>
+    </Fragment>
   );
 };
 
 SubscribeEmail.propTypes = {
-  mailchimpUrl: PropTypes.string
+  mailchimpUrl: PropTypes.string,
 };
 
 export default SubscribeEmail;
