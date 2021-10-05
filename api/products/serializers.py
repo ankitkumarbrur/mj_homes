@@ -34,6 +34,12 @@ class ImageSerializer(serializers.ModelSerializer):
         model = Image
         fields = '__all__'
 
+    def get_image(self, instance):
+        print("Inside GET IMAGE")
+        request = self.context.get('request')
+        image_url = instance.image.url
+        return request.build_absolute_uri(image_url)
+ 
     def to_representation(self, instance):
         data = super(ImageSerializer, self).to_representation(instance)
         return data
@@ -71,3 +77,14 @@ class ProductSerializer(serializers.ModelSerializer):
         data['image'] = [img['image'] for img in data['image']]
         data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data
+
+
+class SaleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sale
+        fields = '__all__'
+
+    # def to_representation(self, instance):
+    #     data = super(SaleSerializer, self).to_representation(instance)
+    #     data['product'] = Product.objects.get(id = data['product']).name
+    #     return data

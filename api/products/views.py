@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from mixins.CustomMixins import QuerysetMixin, ViewsetActionPermissionMixin
 from authentication.permissions import *
 
-from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer
+from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer, SaleSerializer
 
-from .models import Product, Review, ProductVariation, Image
+from .models import Product, Review, ProductVariation, Image, Sale
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q
@@ -30,6 +30,8 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
         if 'image' in self.request.data:    
             for img in self.request.data.getlist('image', []):
                 Image.objects.create(product = obj, image = img)
+
+    
 
     def list(self, request, *args, **kwargs):
         query = request.GET.get('q', None)
@@ -69,6 +71,7 @@ class Variation_view(viewsets.ModelViewSet):
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     # }
+    
 class Image_view(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
@@ -82,3 +85,7 @@ class Image_view(viewsets.ModelViewSet):
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     # }
+
+class Sale_view(viewsets.ModelViewSet):
+    queryset = Sale.objects.all()
+    serializer_class = SaleSerializer
