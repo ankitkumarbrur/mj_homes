@@ -6,6 +6,6 @@ api_database.sqlite
 __pycache__
 Pipfile.lock
 .idea
-*pyc
+*.pyc
 db.sqlite3
 *.sqlite3
