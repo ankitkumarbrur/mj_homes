@@ -31,19 +31,16 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
             for img in self.request.data.getlist('image', []):
                 Image.objects.create(product = obj, image = img)
 
-    
-
     def list(self, request, *args, **kwargs):
+        objs = Product.objects.filter(active = False)
         query = request.GET.get('q', None)
-        product_objects = Product.objects.filter(active = False)
         if query:
-            data = product_objects.filter(Q(keyword__icontains = query))
-            serializer = self.serializer_class(data, many=True)
-        else:
-            serializer = self.serializer_class(product_objects, many = True)
+            objs = product_objects.filter(Q(keyword__icontains = query))
 
+        queryset = self.filter_queryset(objs)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-
 class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Review
     serializer_class = ReviewSerializer
