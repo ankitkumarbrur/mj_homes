@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from mixins.CustomMixins import QuerysetMixin, ViewsetActionPermissionMixin
 from authentication.permissions import *
 
-from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer
+from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer, SaleSerializer
 
-from .models import Product, Review, ProductVariation, Image
+from .models import Product, Review, ProductVariation, Image, Sale
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q
@@ -32,16 +32,15 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
                 Image.objects.create(product = obj, image = img)
 
     def list(self, request, *args, **kwargs):
+        objs = Product.objects.filter(active = False)
         query = request.GET.get('q', None)
-        product_objects = Product.objects.filter(active = False)
         if query:
-            data = product_objects.filter(Q(keyword__icontains = query))
-            serializer = self.serializer_class(data, many=True)
-        else:
-            serializer = self.serializer_class(product_objects, many = True)
+            objs = product_objects.filter(Q(keyword__icontains = query))
 
+        queryset = self.filter_queryset(objs)
+
+        serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
-
 class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Review
     serializer_class = ReviewSerializer
@@ -69,6 +68,7 @@ class Variation_view(viewsets.ModelViewSet):
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     # }
+    
 class Image_view(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
@@ -82,3 +82,7 @@ class Image_view(viewsets.ModelViewSet):
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     # }
+
+class Sale_view(viewsets.ModelViewSet):
+    queryset = Sale.objects.all()
+    serializer_class = SaleSerializer

@@ -22,7 +22,7 @@ from rest_framework.routers import DefaultRouter
 from orders.views import OrderView
 from carts.views import CartView, WishListView
 from users.views import Address_view, User_view, Subscribe_view
-from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view
+from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view, Sale_view
 
 
 """
@@ -33,7 +33,7 @@ Router HTTP Request mapping to methods
         - POST  -> create()
 
     {prefix}/<int:pk>/
-        - GET    -> list()
+        - GET    -> retrieve()
         - PUT    -> update()
         - PATCH  -> partial_update()
         - DELETE -> destroy()
@@ -51,6 +51,7 @@ router.register('review', Review_view, basename= 'review')
 router.register('variation', Variation_view, basename= 'variation')
 router.register('image', Image_view, basename= 'image')
 router.register('subscribe', Subscribe_view, basename= 'suscribe')
+router.register('sale', Sale_view, basename= 'sale')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

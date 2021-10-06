@@ -15,7 +15,6 @@ class ProductManager(models.Manager):
 	def all(self, *args, **kwargs):
 		return self.get_queryset().active()
 
-
 def model_upload(instance, filename):
 	slug = slugify(instance.name)
 	_, file_extension = filename.split(".")
@@ -50,8 +49,6 @@ class Product(models.Model):
 
     addedDate = models.DateField(auto_now_add = True)
 
-    # objects = ProductManager()
-
     def __str__(self):
         return (self.name)
 
@@ -71,8 +68,8 @@ class ProductVariation(models.Model):
 
 class Image(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    image = models.ImageField(upload_to = image_upload)
     product = models.ForeignKey(Product, related_name="image", on_delete = models.CASCADE, null = False, blank = False)
+    image = models.ImageField(upload_to = image_upload)
 
     def __unicode__(self):
         return "%s - %s" %(self.product.name, self.id)
@@ -84,6 +81,14 @@ class Review(models.Model):
     reviewStar = models.FloatField(null = False, blank = False)
     reviewText = models.TextField(null = True, blank = True)
     dateAdded = models.DateField(auto_now_add = True)
+
+    def __str__(self):
+        return (self.product.name)
+
+    
+class Sale(models.Model):
+    product = models.ForeignKey(Product, related_name = "sale", on_delete = models.CASCADE, null = False, blank = False)
+    desc = models.TextField()
 
     def __str__(self):
         return (self.product.name)

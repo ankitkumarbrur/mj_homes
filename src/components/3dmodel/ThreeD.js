@@ -6,6 +6,7 @@ import {
   useGLTF,
   OrbitControls,
 } from "@react-three/drei";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import axios from "axios";
 
@@ -71,20 +72,38 @@ function addGroups(node) {
 function Model(props) {
   const ref = useRef();
   // UNCOMMENT THIS AND DELETE HARD CODED LINE
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    ref.current.rotation.x = Math.cos(t / 4) / 8;
-    ref.current.rotation.y = Math.sin(t / 4) / 8;
-    ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
-  });
+  // useFrame((state) => {
+  //   const t = state.clock.getElapsedTime();
+  //   ref.current.rotation.x = Math.cos(t / 4) / 8;
+  //   ref.current.rotation.y = Math.sin(t / 4) / 8;
+  //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
+  // });
 
-  const { nodes } = useGLTF(props.name);
+  console.log(props.name)
+//   const loader = new GLTFLoader();
+//   loader.load("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb", function ( gltf ) {
+
+//     console.log(gltf)
+
+    
+// },
+// function ( xhr ) {
+
+//     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+// },
+// function ( error ) {
+
+//     console.log( 'An error happened' );
+
+// })
+  // const { nodes } = useGLTF("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb");
   
-  console.log(nodes);
+  // console.log(nodes);
 
   return (
     <scene dispose={null}>
-      <group ref={ref}>{addGroups(nodes.Scene.children)}</group>
+      {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
     </scene>
   );
   
