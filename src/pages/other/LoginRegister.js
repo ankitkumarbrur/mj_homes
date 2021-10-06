@@ -117,8 +117,8 @@ const LoginRegister = ({ location }) => {
 
 	if (loading) {
 		return (
-			<div className="flone-preloader-wrapper">
-				<div className="flone-preloader">
+			<div className="MJHOMES-preloader-wrapper">
+				<div className="MJHOMES-preloader">
 					<span></span>
 					<span></span>
 				</div>
@@ -129,10 +129,10 @@ const LoginRegister = ({ location }) => {
 	return (
 		<Fragment>
 			<MetaTags>
-				<title>Flone | Login</title>
+				<title>MJHOMES | Login</title>
 				<meta
 					name="description"
-					content="Compare page of flone react minimalist eCommerce template."
+					content="Compare page of MJHOMES react minimalist eCommerce template."
 				/>
 			</MetaTags>
 			<BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>

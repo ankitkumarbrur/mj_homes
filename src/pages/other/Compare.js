@@ -29,7 +29,7 @@ const Compare = ({
 				<title>MJ Homes | Compare</title>
 				<meta
 					name="description"
-					content="Compare page of flone react minimalist eCommerce template."
+					content="Compare page of MJHOMES react minimalist eCommerce template."
 				/>
 			</MetaTags>
 			<BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>

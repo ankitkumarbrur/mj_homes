@@ -36,7 +36,7 @@ const Cart = ({
 				<title>MJ Homes | Cart</title>
 				<meta
 					name="description"
-					content="Cart page of flone react minimalist eCommerce template."
+					content="Cart page of MJHOMES react minimalist eCommerce template."
 				/>
 			</MetaTags>
 
@@ -91,13 +91,13 @@ const Cart = ({
 																).toFixed(2);
 
 															discountedPrice !=
-															null
+																null
 																? (cartTotalPrice +=
-																		finalDiscountedPrice *
-																		cartItem.quantity)
+																	finalDiscountedPrice *
+																	cartItem.quantity)
 																: (cartTotalPrice +=
-																		finalProductPrice *
-																		cartItem.quantity);
+																	finalProductPrice *
+																	cartItem.quantity);
 															return (
 																<tr key={key}>
 																	<td className="product-thumbnail">
@@ -139,7 +139,7 @@ const Cart = ({
 																			}
 																		</Link>
 																		{cartItem.selectedProductColor &&
-																		cartItem.selectedProductSize ? (
+																			cartItem.selectedProductSize ? (
 																			<div className="cart-item-variation">
 																				<span>
 																					Color:{" "}
@@ -161,7 +161,7 @@ const Cart = ({
 
 																	<td className="product-price-cart">
 																		{discountedPrice !==
-																		null ? (
+																			null ? (
 																			<Fragment>
 																				<span className="amount old">
 																					{currency.currencySymbol +
@@ -212,14 +212,14 @@ const Cart = ({
 																				}
 																				disabled={
 																					cartItem !==
-																						undefined &&
+																					undefined &&
 																					cartItem.quantity &&
 																					cartItem.quantity >=
-																						cartItemStock(
-																							cartItem,
-																							cartItem.selectedProductColor,
-																							cartItem.selectedProductSize,
-																						)
+																					cartItemStock(
+																						cartItem,
+																						cartItem.selectedProductColor,
+																						cartItem.selectedProductSize,
+																					)
 																				}
 																			>
 																				+
@@ -228,21 +228,21 @@ const Cart = ({
 																	</td>
 																	<td className="product-subtotal">
 																		{discountedPrice !==
-																		null
+																			null
 																			? currency.currencySymbol +
-																			  (
-																					finalDiscountedPrice *
-																					cartItem.quantity
-																			  ).toFixed(
-																					2,
-																			  )
+																			(
+																				finalDiscountedPrice *
+																				cartItem.quantity
+																			).toFixed(
+																				2,
+																			)
 																			: currency.currencySymbol +
-																			  (
-																					finalProductPrice *
-																					cartItem.quantity
-																			  ).toFixed(
-																					2,
-																			  )}
+																			(
+																				finalProductPrice *
+																				cartItem.quantity
+																			).toFixed(
+																				2,
+																			)}
 																	</td>
 
 																	<td className="product-remove">

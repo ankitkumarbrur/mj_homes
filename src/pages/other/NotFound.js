@@ -15,7 +15,7 @@ const NotFound = ({ location }) => {
 				<title>MJ Homes | Not Found</title>
 				<meta
 					name="description"
-					content="404 page of flone react minimalist eCommerce template."
+					content="404 page of MJHOMES react minimalist eCommerce template."
 				/>
 			</MetaTags>
 			<BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>

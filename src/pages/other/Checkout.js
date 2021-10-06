@@ -18,7 +18,7 @@ const Checkout = ({ location, cartItems, currency }) => {
 				<title>MJ Homes | Checkout</title>
 				<meta
 					name="description"
-					content="Checkout page of flone react minimalist eCommerce template."
+					content="Checkout page of MJHOMES react minimalist eCommerce template."
 				/>
 			</MetaTags>
 			<BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>
@@ -179,13 +179,13 @@ const Checkout = ({ location, cartItems, currency }) => {
 																	);
 
 																discountedPrice !=
-																null
+																	null
 																	? (cartTotalPrice +=
-																			finalDiscountedPrice *
-																			cartItem.quantity)
+																		finalDiscountedPrice *
+																		cartItem.quantity)
 																	: (cartTotalPrice +=
-																			finalProductPrice *
-																			cartItem.quantity);
+																		finalProductPrice *
+																		cartItem.quantity);
 																return (
 																	<li
 																		key={
@@ -203,21 +203,21 @@ const Checkout = ({ location, cartItems, currency }) => {
 																		</span>{" "}
 																		<span className="order-price">
 																			{discountedPrice !==
-																			null
+																				null
 																				? currency.currencySymbol +
-																				  (
-																						finalDiscountedPrice *
-																						cartItem.quantity
-																				  ).toFixed(
-																						2,
-																				  )
+																				(
+																					finalDiscountedPrice *
+																					cartItem.quantity
+																				).toFixed(
+																					2,
+																				)
 																				: currency.currencySymbol +
-																				  (
-																						finalProductPrice *
-																						cartItem.quantity
-																				  ).toFixed(
-																						2,
-																				  )}
+																				(
+																					finalProductPrice *
+																					cartItem.quantity
+																				).toFixed(
+																					2,
+																				)}
 																		</span>
 																	</li>
 																);

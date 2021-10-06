@@ -15,7 +15,7 @@ const Contact = ({ location }) => {
         <title>MJ Homes | Contact</title>
         <meta
           name="description"
-          content="Contact of flone react minimalist eCommerce template."
+          content="Contact of MJHOMES react minimalist eCommerce template."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
@@ -28,7 +28,7 @@ const Contact = ({ location }) => {
         <div className="contact-area pt-100 pb-100">
           <div className="container">
             <div className="contact-map mb-10">
-              <LocationMap latitude="47.444" longitude="-122.176" />
+              <LocationMap latitude="28.69325227676948" longitude="76.93092949317882" />
             </div>
             <div className="custom-row-2">
               <div className="col-lg-4 col-md-5">
@@ -38,8 +38,7 @@ const Contact = ({ location }) => {
                       <i className="fa fa-phone" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>+012 345 678 102</p>
-                      <p>+012 345 678 102</p>
+                      <p>+91 7027540171</p>
                     </div>
                   </div>
                   <div className="single-contact-info">
@@ -48,13 +47,13 @@ const Contact = ({ location }) => {
                     </div>
                     <div className="contact-info-dec">
                       <p>
-                        <a href="mailto:yourname@email.com">
-                          yourname@email.com
+                        <a href="mailto:buildmjhomes@gmail.com">
+                          buildmjhomes@gmail.com
                         </a>
                       </p>
                       <p>
-                        <a href="https://yourwebsitename.com">
-                          yourwebsitename.com
+                        <a href="https://www.luxurymjhomes.com/">
+                          luxurymjhomes.com
                         </a>
                       </p>
                     </div>
@@ -64,8 +63,9 @@ const Contact = ({ location }) => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Address goes here, </p>
-                      <p>street, Crossroad 123.</p>
+                      <p>Ward no 21,  </p>
+                      <p>Railway Station Rd, Basant Vihar</p>
+                      <p>Bahadurgarh, Haryana 124507</p>
                     </div>
                   </div>
                   <div className="contact-social text-center">

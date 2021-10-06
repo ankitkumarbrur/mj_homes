@@ -25,7 +25,7 @@ const ProductSticky = ({ location, product }) => {
         <title>MJ Homes | Product Page</title>
         <meta
           name="description"
-          content="Product page of flone react minimalist eCommerce template."
+          content="Product page of MJ HOMES"
         />
       </MetaTags>
 
