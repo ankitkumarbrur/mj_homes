@@ -80,25 +80,25 @@ function Model(props) {
   // });
 
   console.log(props.name)
-//   const loader = new GLTFLoader();
-//   loader.load("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb", function ( gltf ) {
+  const loader = new GLTFLoader();
+  loader.load("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb", function (gltf) {
 
-//     console.log(gltf)
+    console.log(gltf)
 
-    
-// },
-// function ( xhr ) {
 
-//     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  },
+    function (xhr) {
 
-// },
-// function ( error ) {
+      console.log((xhr.loaded / xhr.total * 100) + '% loaded');
 
-//     console.log( 'An error happened' );
+    },
+    function (error) {
 
-// })
+      console.log('An error happened');
+
+    })
   // const { nodes } = useGLTF("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb");
-  
+
   // console.log(nodes);
 
   return (
@@ -106,7 +106,7 @@ function Model(props) {
       {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
     </scene>
   );
-  
+
 }
 
 export default function ThreeD(props) {

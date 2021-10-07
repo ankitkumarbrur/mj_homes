@@ -1,4 +1,5 @@
 import axios from "axios";
+import { fetchWishlist, deleteAllFromWishlist } from "./wishlistActions";
 
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
@@ -34,6 +35,8 @@ export const login = (email, password, addToast) => async (dispatch) => {
 			type: USER_LOGIN_SUCCESS,
 			payload: data.access,
 		});
+		await fetchWishlist(addToast)
+		console.log("fetced")
 		addToast("Logged In", {
 			appearance: "success",
 			autoDismiss: true
@@ -82,6 +85,8 @@ export const logout = (addToast) => (dispatch) => {
 			appearance: "success",
 			autoDismiss: true
 		});
+		console.log("logout")
+		deleteAllFromWishlist(addToast)
 
 		dispatch({ type: USER_LOGOUT });
 	} catch (error) {

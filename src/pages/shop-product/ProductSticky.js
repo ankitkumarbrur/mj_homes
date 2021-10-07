@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
@@ -11,14 +11,15 @@ import OtherPeopleBought from "../../wrappers/product/OtherPeopleBought";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescriptionSticky from "../../wrappers/product/ProductImageDescriptionSticky";
 // import { useGLTF } from "@react-three/drei";
-// import { useHistory } from "react-router-dom";
-
+import { useHistory, useRouteMatch } from "react-router-dom";
+// const [id, setid] = useState();
 const ProductSticky = ({ location, product }) => {
   // let history = useHistory();
   // console.log(history);
   // const { nodes } = useGLTF("http://localhost:3000/shoe-draco.glb");
   // console.log(nodes);
   const { pathname } = location;
+  const match = useRouteMatch();
   return (
     <Fragment>
       <MetaTags>
@@ -84,7 +85,8 @@ ProductSticky.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const itemId = ownProps.match.params.id;
+  //FIX TO RELOADING ISSUE
+  const itemId = ownProps.match.params.id || window.href.substring(window.href.lastIndexOf('/') + 1);
   // console.log(state);
   return {
     product: state.productData.products.filter(

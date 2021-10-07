@@ -113,13 +113,26 @@ const Contact = ({ location }) => {
                       <div className="col-lg-6">
                         <input name="email" placeholder="Email*" type="email" />
                       </div>
+                      <div className="col-lg-6">
+                        <input name="city" placeholder="City*" type="text" />
+                      </div>
+                      <div className="col-lg-6">
+                        <input name="state" placeholder="State*" type="text" />
+                      </div>
                       <div className="col-lg-12">
+                        <input
+                          name="contact"
+                          placeholder="Contact*"
+                          type="text"
+                        />
+                      </div>
+                      {/* <div className="col-lg-12">
                         <input
                           name="subject"
                           placeholder="Subject*"
                           type="text"
                         />
-                      </div>
+                      </div> */}
                       <div className="col-lg-12">
                         <textarea
                           name="message"
