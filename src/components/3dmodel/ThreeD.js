@@ -6,11 +6,9 @@ import {
   useGLTF,
   OrbitControls,
 } from "@react-three/drei";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import axios from "axios";
-
-
 
 function Loading() {
   return (
@@ -70,6 +68,7 @@ function addGroups(node) {
 }
 
 function Model(props) {
+  // const loader = new GLTFLoader();
   const ref = useRef();
   // UNCOMMENT THIS AND DELETE HARD CODED LINE
   // useFrame((state) => {
@@ -106,7 +105,6 @@ function Model(props) {
       {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
     </scene>
   );
-
 }
 
 export default function ThreeD(props) {

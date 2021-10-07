@@ -10,8 +10,6 @@ import AddReviewRating from "../../components/product/sub-components/AddReviewRa
 import axios from "axios";
 
 const BASE_URL = "https://api.luxurymjhomes.com/";
-const ACCESS_TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyODU2MjE2LCJqdGkiOiI2N2FkMDQ5NjhmYzY0NWEyYWZjYjNmYWE5ODdlNGVhYiIsInVzZXJfaWQiOjJ9.2Rhul0Mb-IbCcHnYUte39LVaN7TOFM1RnOsu8BbbElA";
 
 const ProductDescriptionTab = ({
   spaceBottomClass,
@@ -37,7 +35,7 @@ const ProductDescriptionTab = ({
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `JWT ${ACCESS_TOKEN}`,
+          Authorization: `JWT ${localStorage.getItem("userName")}`,
         },
       };
       const { data } = await axios.post(`${BASE_URL}review/`, formData, config);

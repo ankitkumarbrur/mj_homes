@@ -4,7 +4,7 @@ export const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
 export const DELETE_FROM_WISHLIST = "DELETE_FROM_WISHLIST";
 export const DELETE_ALL_FROM_WISHLIST = "DELETE_ALL_FROM_WISHLIST";
 
-const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
+const BASE_URL = "https://api.luxurymjhomes.com/";
 
 // Fetch Wishlist Products
 export const fetchWishlist = (addToast) => async (dispatch) => {
@@ -43,9 +43,10 @@ export const fetchWishlist = (addToast) => async (dispatch) => {
 
 // add to wishlist
 export const addToWishlist = (item, addToast) => async (dispatch) => {
+  console.log(item.id);
   try {
     const formData = new FormData();
-    formData.append("product", "247198e7-3e61-4d88-bb9d-82e6f0cbcf8a");
+    formData.append("product", item.id);
 
     const config = {
       headers: {
@@ -63,6 +64,7 @@ export const addToWishlist = (item, addToast) => async (dispatch) => {
 
     dispatch({ type: ADD_TO_WISHLIST, payload: item });
   } catch (error) {
+    console.log(error);
     // var message = "";
 
     // if (error.response.data.password != undefined) message = error.response.data.password;
