@@ -4,6 +4,7 @@ import {
   DECREASE_QUANTITY,
   DELETE_FROM_CART,
   DELETE_ALL_FROM_CART,
+  FETCH_CART_DATA,
 } from "../actions/cartActions";
 
 const initState = [];
@@ -11,7 +12,14 @@ const initState = [];
 const cartReducer = (state = initState, action) => {
   const cartItems = state,
     product = action.payload;
-
+  // if (action.type = FETCH_CART_DATA) {
+  //   console.log(product)
+  //   return product;
+  // }
+  if (action.type == FETCH_CART_DATA) {
+    console.log("REDUX : ", action.payload)
+    return action.payload;
+  }
   if (action.type == ADD_TO_CART) {
     // for non variant products
     if (product.variation == undefined) {
@@ -29,11 +37,11 @@ const cartReducer = (state = initState, action) => {
         return cartItems.map((item) =>
           item.cartItemId == cartItem.cartItemId
             ? {
-                ...item,
-                quantity: product.quantity
-                  ? item.quantity + product.quantity
-                  : item.quantity + 1,
-              }
+              ...item,
+              quantity: product.quantity
+                ? item.quantity + product.quantity
+                : item.quantity + 1,
+            }
             : item
         );
       }
@@ -75,13 +83,13 @@ const cartReducer = (state = initState, action) => {
         return cartItems.map((item) =>
           item.cartItemId == cartItem.cartItemId
             ? {
-                ...item,
-                quantity: product.quantity
-                  ? item.quantity + product.quantity
-                  : item.quantity + 1,
-                selectedProductColor: product.selectedProductColor,
-                selectedProductSize: product.selectedProductSize,
-              }
+              ...item,
+              quantity: product.quantity
+                ? item.quantity + product.quantity
+                : item.quantity + 1,
+              selectedProductColor: product.selectedProductColor,
+              selectedProductSize: product.selectedProductSize,
+            }
             : item
         );
       }

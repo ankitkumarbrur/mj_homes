@@ -13,6 +13,7 @@ import { addToCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
 
+
 const LoginRegister = ({ location }) => {
   const { pathname } = location;
   const [username, setUsername] = useState("");
@@ -29,7 +30,9 @@ const LoginRegister = ({ location }) => {
   const dispatch = useDispatch();
   const { addToast } = useToasts();
 
-  const { userInfo, error, loading } = useSelector((state) => state.userLogin);
+  const { userInfo, error, loading } = useSelector(
+    (state) => state.userLogin,
+  );
   const { products } = useSelector((state) => state.productData);
 
   // const fetchData = async () => {
@@ -82,8 +85,17 @@ const LoginRegister = ({ location }) => {
       pass != "" &&
       passConfirm != "" &&
       email != ""
+
     ) {
-      dispatch(register(firstname, lastname, pass, email, addToast));
+      dispatch(
+        register(
+          firstname,
+          lastname,
+          pass,
+          email,
+          addToast,
+        ),
+      );
     }
   };
 
@@ -92,18 +104,22 @@ const LoginRegister = ({ location }) => {
       !loading &&
       localStorage.getItem("userInfo") !== null &&
       localStorage.getItem("userInfo") !== undefined
-    )
-      if (userInfo && data) {
-        // fetch_data();
-        // fetchData();
-        setdata(false);
-      }
+    ) {
+      console.log("Logged In");
+      console.log(userInfo);
+    }
+    // fetch_data();
+    if (userInfo && data) {
+      // fetchData();
+      setdata(false);
+    }
+    console.log("RE RENDERED")
   }, [userInfo, loading]);
 
   if (loading) {
     return (
-      <div className="flone-preloader-wrapper">
-        <div className="flone-preloader">
+      <div className="MJHOMES-preloader-wrapper">
+        <div className="MJHOMES-preloader">
           <span></span>
           <span></span>
         </div>
@@ -114,13 +130,15 @@ const LoginRegister = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>Flone | Login</title>
+        <title>MJHOMES | Login</title>
         <meta
           name="description"
-          content="Compare page of flone react minimalist eCommerce template."
+          content="Compare page of MJHOMES react minimalist eCommerce template."
         />
       </MetaTags>
-      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>
+        Home
+      </BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
         Login Register
       </BreadcrumbsItem>
@@ -133,7 +151,10 @@ const LoginRegister = ({ location }) => {
               <div className="col-lg-7 col-md-12 ml-auto mr-auto">
                 <div className="login-register-wrapper">
                   <Tab.Container defaultActiveKey="login">
-                    <Nav variant="pills" className="login-register-tab-list">
+                    <Nav
+                      variant="pills"
+                      className="login-register-tab-list"
+                    >
                       <Nav.Item>
                         <Nav.Link eventKey="login">
                           <h4>Login</h4>
@@ -147,7 +168,7 @@ const LoginRegister = ({ location }) => {
                     </Nav>
                     <Tab.Content>
                       <Tab.Pane eventKey="login">
-                        {userInfo != null ? (
+                        {localStorage.getItem("userInfo") != null ? (
                           <div
                             style={{
                               textAlign: "center",
@@ -155,23 +176,23 @@ const LoginRegister = ({ location }) => {
                           >
                             <h1
                               style={{
-                                textAlign: "center",
+                                textAlign:
+                                  "center",
                               }}
                             >
                               Hey,&nbsp;
-                              <div
-                                style={{
-                                  display: "inline-block",
-                                  color: "#fd7e14",
-                                }}
-                              >
+                              <div style={{ display: "inline-block", color: "#fd7e14" }}>
                                 {localStorage.getItem("userName")}
                               </div>
+
+
                             </h1>
                             <button
                               type="submit"
-                              onClick={logoutHandler}
-                              className="LogOut-btn"
+                              onClick={
+                                logoutHandler
+                              }
+                              class="LogOut-btn"
                             >
                               Log Out
                             </button>
@@ -179,29 +200,59 @@ const LoginRegister = ({ location }) => {
                         ) : (
                           <div className="login-form-container">
                             <div className="login-register-form">
-                              <form onSubmit={loginHandler}>
+                              <form
+                                onSubmit={
+                                  loginHandler
+                                }
+                              >
                                 <input
                                   type="text"
                                   name="user-name"
                                   placeholder="Username"
-                                  onChange={(e) => setUsername(e.target.value)}
+                                  onChange={(
+                                    e,
+                                  ) =>
+                                    setUsername(
+                                      e
+                                        .target
+                                        .value,
+                                    )
+                                  }
                                 />
                                 <input
                                   type="password"
                                   name="user-password"
                                   placeholder="Password"
-                                  onChange={(e) => setPassword(e.target.value)}
+                                  onChange={(
+                                    e,
+                                  ) =>
+                                    setPassword(
+                                      e
+                                        .target
+                                        .value,
+                                    )
+                                  }
                                 />
                                 <div className="button-box">
                                   <div className="login-toggle-btn">
                                     {/* <input type="checkbox" />
                                     <label className="ml-10">Remember me</label> */}
-                                    <Link to={process.env.PUBLIC_URL + "/"}>
-                                      Forgot Password?
+                                    <Link
+                                      to={
+                                        process
+                                          .env
+                                          .PUBLIC_URL +
+                                        "/"
+                                      }
+                                    >
+                                      Forgot
+                                      Password?
                                     </Link>
                                   </div>
                                   <button type="submit">
-                                    <span>Login</span>
+                                    <span>
+                                      Login
+                                    </span>
                                   </button>
                                 </div>
                               </form>
@@ -212,25 +263,44 @@ const LoginRegister = ({ location }) => {
                       <Tab.Pane eventKey="register">
                         <div className="login-form-container">
                           <div className="login-register-form">
-                            <form onSubmit={registerHandler}>
+                            <form
+                              onSubmit={
+                                registerHandler
+                              }
+                            >
                               <input
                                 type="text"
                                 name="first-name"
                                 placeholder="First Name"
-                                onChange={(e) => setFirstname(e.target.value)}
+                                onChange={(e) =>
+                                  setFirstname(
+                                    e.target
+                                      .value,
+                                  )
+                                }
                               />
                               <input
                                 type="text"
                                 name="last-name"
                                 placeholder="Last Name"
-                                onChange={(e) => setLastname(e.target.value)}
+                                onChange={(e) =>
+                                  setLastname(
+                                    e.target
+                                      .value,
+                                  )
+                                }
                               />
 
                               <input
                                 name="user-email"
                                 placeholder="Email"
                                 type="email"
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) =>
+                                  setEmail(
+                                    e.target
+                                      .value,
+                                  )
+                                }
                               />
                               {/* <input
 																name="user-phone"
@@ -248,18 +318,30 @@ const LoginRegister = ({ location }) => {
                                 type="password"
                                 name="user-password"
                                 placeholder="Password"
-                                onChange={(e) => setPass(e.target.value)}
+                                onChange={(e) =>
+                                  setPass(
+                                    e.target
+                                      .value,
+                                  )
+                                }
                               />
                               <input
                                 type="password"
                                 name="confirm-password"
                                 placeholder="Confirm Password"
-                                onChange={(e) => setPassConfirm(e.target.value)}
+                                onChange={(e) =>
+                                  setPassConfirm(
+                                    e.target
+                                      .value,
+                                  )
+                                }
                               />
 
                               <div className="button-box">
                                 <button type="submit">
-                                  <span>Register</span>
+                                  <span>
+                                    Register
+                                  </span>
                                 </button>
                               </div>
                             </form>
@@ -273,8 +355,8 @@ const LoginRegister = ({ location }) => {
             </div>
           </div>
         </div>
-      </LayoutOne>
-    </Fragment>
+      </LayoutOne >
+    </Fragment >
   );
 };
 

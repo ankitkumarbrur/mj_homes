@@ -74,7 +74,7 @@ const Cart = ({
                               cartItem.discount
                             );
                             const finalProductPrice = (
-                              cartItem.price * currency.currencyRate
+                              cartItem.variation.price * currency.currencyRate
                             ).toFixed(2);
                             const finalDiscountedPrice = (
                               discountedPrice * currency.currencyRate
@@ -103,11 +103,9 @@ const Cart = ({
                                     <img
                                       className="img-fluid"
                                       src={
-                                        process
-                                          .env
-                                          .PUBLIC_URL +
+                                        "https://api.luxurymjhomes.com" +
                                         cartItem
-                                          .image[0]
+                                          .variation.image
                                       }
                                       alt=""
                                     />
