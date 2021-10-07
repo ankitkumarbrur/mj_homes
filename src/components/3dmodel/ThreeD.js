@@ -79,35 +79,38 @@ function Model(props) {
   //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
   // });
 
-  console.log(props.name)
-//   const loader = new GLTFLoader();
-//   loader.load("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb", function ( gltf ) {
-
-//     console.log(gltf)
-
-    
-// },
-// function ( xhr ) {
-
-//     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-// },
-// function ( error ) {
-
-//     console.log( 'An error happened' );
-
-// })
-  // const { nodes } = useGLTF("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb");
-  
-  // console.log(nodes);
-
-  return (
-    <scene dispose={null}>
-      {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
-    </scene>
-  );
-  
-}
+  async function downloadEmployeeData() {
+    console.log("downloading data")
+      try {
+        const config = {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        };
+        // const { data2 } = await axios.get("http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-14115e6d-30c8-4c50-97c5-8725e3f7e370.jpg")
+        const { data } = await axios.get("http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb")
+        console.log(data)
+        const { data3 } = await axios.get("https://api.luxurymjhomes.com/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb")
+        console.log("yes")
+        // console.log(data.response)
+      } catch(error) {
+        console.log(error)
+      }
+      // then(response => {
+      //   response.blob().then(blob => {
+      //       let url = window.URL.createObjectURL(blob);
+      //       let a = document.createElement('a');
+      //       a.href = url;
+      //       a.download = 'employees.json';
+      //       a.click();
+    }
+    downloadEmployeeData();
+    return (
+      <scene dispose={null}>
+        {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
+      </scene>
+    );
+  }
 
 export default function ThreeD(props) {
   return (
