@@ -62,7 +62,7 @@ const Home = () => {
         <CategoryThreeSlider spaceBottomClass="pb-70" />
 
         {/* tab product */}
-        <TabProduct spaceBottomClass="pb-60" category="fashion" />
+        <TabProduct spaceBottomClass="pb-60" />
 
         <VideoPopupTwo spaceBottomClass="pb-60" />
 

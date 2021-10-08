@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+import { connect } from "react-redux";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import ProductGrid from "./ProductGrid";
 
@@ -9,7 +10,9 @@ const TabProduct = ({
   spaceTopClass,
   spaceBottomClass,
   bgColorClass,
-  category,
+  newArrival,
+  bestSellers,
+  saleItems,
 }) => {
   return (
     <div
@@ -44,7 +47,7 @@ const TabProduct = ({
             <Tab.Pane eventKey="newArrival">
               <div className="row">
                 <ProductGrid
-                  category={category}
+                  newArrival={newArrival}
                   type="new"
                   limit={8}
                   spaceBottomClass="mb-25"
@@ -54,7 +57,7 @@ const TabProduct = ({
             <Tab.Pane eventKey="bestSeller">
               <div className="row">
                 <ProductGrid
-                  category={category}
+                  bestSellers={bestSellers}
                   type="bestSeller"
                   limit={8}
                   spaceBottomClass="mb-25"
@@ -64,7 +67,7 @@ const TabProduct = ({
             <Tab.Pane eventKey="saleItems">
               <div className="row">
                 <ProductGrid
-                  category={category}
+                  saleItems={saleItems}
                   type="saleItems"
                   limit={8}
                   spaceBottomClass="mb-25"
@@ -84,5 +87,12 @@ TabProduct.propTypes = {
   spaceBottomClass: PropTypes.string,
   spaceTopClass: PropTypes.string,
 };
-
-export default TabProduct;
+const mapStateToProps = (state) => {
+  const allProducts = state.productData.products;
+  return {
+    newArrival: allProducts.filter((single) => single.new === true),
+    bestSellers: allProducts.filter((single) => single.bestSeller === true),
+    saleItems: allProducts.filter((single) => single.discount > 0),
+  };
+};
+export default connect(mapStateToProps)(TabProduct);

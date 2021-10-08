@@ -10,19 +10,19 @@ const PrivacyPolicy = ({ location }) => {
   return (
     <Fragment>
       <MetaTags>
-        <title>MJ Homes | Return Policy</title>
+        <title>MJ Homes | Refund Policy</title>
         <meta name="description" />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Return Policy
+        Refund Policy
       </BreadcrumbsItem>
       <LayoutOne>
         <Breadcrumb />
         <div className={`welcome-area pt-100 pb-95`}>
           <div className="container">
             <div className="return-content text-center">
-              <h1>Return Policy of MJ Homes</h1>
+              <h1>Refund Policy of MJ Homes</h1>
 
               <div className="mt-50">
                 <h2>Time Frame - 7 days</h2>
