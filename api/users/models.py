@@ -51,14 +51,26 @@ class Address(models.Model):
 
     street = models.CharField(max_length = 100, null = False, blank = False)
     city = models.CharField(max_length = 100, null = False, blank = False)
-    district = models.CharField(max_length = 100, null = False, blank = False)
     state = models.CharField(max_length = 100, null = False, blank = False)
+    district = models.CharField(max_length = 100, null = False, blank = False)
     pin = models.IntegerField(default = 0, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
     phone = models.CharField(default = '+91 ----------', max_length=20)
 
     def __str__(self):
         return (self.item_name)
+
 class Subscribe(models.Model):
     email = models.EmailField(_('email address'), unique = True)
     def __str__(self):
         return (self.email)
+
+class Query(models.Model):
+    name = models.CharField(max_length = 100, null = False, blank = False)
+    phone = models.CharField(default = '+91 ----------', max_length=20, blank = True, null = True)
+    email = models.EmailField(_('email address'), null = False, blank = False)
+    city = models.CharField(max_length = 100, null = True, blank = True)
+    state = models.CharField(max_length = 100, null = True, blank = True)
+    message = models.TextField(null = False)
+
+    def __str__(self):
+        return (self.item_name)

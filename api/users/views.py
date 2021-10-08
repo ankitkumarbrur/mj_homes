@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .models import User, Address
-from .serializers import UserSerializer, AddressSerializer, SubscribeSerializer
+from .serializers import UserSerializer, AddressSerializer, SubscribeSerializer, QuerySerializer
 from rest_framework.permissions import AllowAny
 
 from authentication.permissions import IsOwnerOrAdmin, IsAdmin, IsAuthenticated
@@ -62,6 +62,18 @@ class Address_view(QuerysetMixin, viewsets.ModelViewSet):
     
 class Subscribe_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     serializer_class = SubscribeSerializer
+    permission_classes = (IsAdmin,)
+    action_based_permission_classes = {
+        # 'list' : (permission_classes,),
+        'create' : (AllowAny,),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
+
+class Query_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
+    serializer_class = QuerySerializer
     permission_classes = (IsAdmin,)
     action_based_permission_classes = {
         # 'list' : (permission_classes,),
