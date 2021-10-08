@@ -64,11 +64,24 @@ const MobileNavMenu = ({ strings }) => {
             </li>
             <li className="menu-item-has-children">
               <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
-                Common Room
+                Drawing Room
+              </Link>
+            </li>
+            <li className="menu-item-has-children">
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                Dining Room
+              </Link>
+            </li>
+            <li className="menu-item-has-children">
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                Kitchen
               </Link>
             </li>
             <li className="menu-item-has-children">
               <Link to={process.env.PUBLIC_URL + "/product/1"}>Bedroom</Link>
+            </li>
+            <li className="menu-item-has-children">
+              <Link to={process.env.PUBLIC_URL + "/product/1"}>Outdoor</Link>
             </li>
           </ul>
         </li>

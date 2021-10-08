@@ -4,15 +4,12 @@ export const ADD_TO_WISHLIST = "ADD_TO_WISHLIST";
 export const DELETE_FROM_WISHLIST = "DELETE_FROM_WISHLIST";
 export const DELETE_ALL_FROM_WISHLIST = "DELETE_ALL_FROM_WISHLIST";
 
-const BASE_URL = "https://ankitbrur.pythonanywhere.com/"
+const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
 
 // Fetch Wishlist Products
 
 // add to wishlist
 export const addToWishlist = (item, addToast) => async (dispatch) => {
-
-
-
   try {
     const formData = new FormData();
     formData.append("product", "5b217e65-1695-470a-a89b-9d2fa7d98aff");
@@ -24,24 +21,15 @@ export const addToWishlist = (item, addToast) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(
-      `${BASE_URL}wishlist/`,
-      formData,
-      config
-    );
-    console.log("ITEM", item);
-    console.log("Data", data)
-
+    const { data } = await axios.post(`${BASE_URL}wishlist/`, formData, config);
 
     addToast("Added To Wishlist", {
       appearance: "success",
-      autoDismiss: true
+      autoDismiss: true,
     });
 
     dispatch({ type: ADD_TO_WISHLIST, payload: item });
-
-  }
-  catch (error) {
+  } catch (error) {
     // var message = "";
 
     // if (error.response.data.password != undefined) message = error.response.data.password;
@@ -50,23 +38,18 @@ export const addToWishlist = (item, addToast) => async (dispatch) => {
 
     addToast("Failed To Add", {
       appearance: "error",
-      autoDismiss: true
+      autoDismiss: true,
     });
-
   }
-
-
-
-
 };
 
 // delete from wishlist
 export const deleteFromWishlist = (item, addToast) => {
-  return dispatch => {
+  return (dispatch) => {
     if (addToast) {
       addToast("Removed From Wishlist", {
         appearance: "error",
-        autoDismiss: true
+        autoDismiss: true,
       });
     }
     dispatch({ type: DELETE_FROM_WISHLIST, payload: item });
@@ -74,12 +57,12 @@ export const deleteFromWishlist = (item, addToast) => {
 };
 
 //delete all from wishlist
-export const deleteAllFromWishlist = addToast => {
-  return dispatch => {
+export const deleteAllFromWishlist = (addToast) => {
+  return (dispatch) => {
     if (addToast) {
       addToast("Removed All From Wishlist", {
         appearance: "error",
-        autoDismiss: true
+        autoDismiss: true,
       });
     }
     dispatch({ type: DELETE_ALL_FROM_WISHLIST });

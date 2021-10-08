@@ -242,7 +242,6 @@ export const getIndividualSizes = (product) => {
         })
       );
     });
-  console.log(productSizes);
   const individualSizes = getIndividualItemArray(productSizes);
   return individualSizes;
 };

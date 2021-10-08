@@ -24,21 +24,21 @@
     "id": "4",
     "image": "/assets/img/product/hm8-pro-4.jpg",
     "subtitle": "5 Products",
-    "title": "Drawing Room",
+    "title": "Kitchen",
     "link": "/shop-grid-standard"
   },
   {
     "id": "5",
     "image": "/assets/img/product/hm8-pro-2.jpg",
     "subtitle": "3 Products",
-    "title": "Living Room",
+    "title": "Bedroom",
     "link": "/shop-grid-standard"
   },
   {
     "id": "6",
     "image": "/assets/img/product/hm8-pro-2.jpg",
     "subtitle": "3 Products",
-    "title": "Kitchen",
+    "title": "Outdoor",
     "link": "/shop-grid-standard"
   }
 ]

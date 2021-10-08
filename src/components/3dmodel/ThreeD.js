@@ -6,6 +6,7 @@ import {
   useGLTF,
   OrbitControls,
 } from "@react-three/drei";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 import axios from "axios";
 
@@ -69,26 +70,81 @@ function addGroups(node) {
 }
 
 function Model(props) {
+  const loader = new GLTFLoader()
   const ref = useRef();
   // UNCOMMENT THIS AND DELETE HARD CODED LINE
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    ref.current.rotation.x = Math.cos(t / 4) / 8;
-    ref.current.rotation.y = Math.sin(t / 4) / 8;
-    ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
-  });
+  // useFrame((state) => {
+  //   const t = state.clock.getElapsedTime();
+  //   ref.current.rotation.x = Math.cos(t / 4) / 8;
+  //   ref.current.rotation.y = Math.sin(t / 4) / 8;
+  //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
+  // });
 
-  const { nodes } = useGLTF(props.name);
-  
-  console.log(nodes);
-
-  return (
-    <scene dispose={null}>
-      <group ref={ref}>{addGroups(nodes.Scene.children)}</group>
-    </scene>
-  );
-  
-}
+  // async function downloadEmployeeData() {
+  //   console.log("downloading data")
+  //     try {
+  //       const config = {
+  //         headers: {
+  //           "Access-Control-Allow-Origin": "*",
+  //         },
+  //       };
+  //       // const { data2 } = await axios.get("http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-14115e6d-30c8-4c50-97c5-8725e3f7e370.jpg")
+  //       const { data } = await axios.get("http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb")
+  //       console.log(data)
+  //       const {nodes} = useGLTF(data)
+  //       // const { data3 } = await axios.get("https://api.luxurymjhomes.com/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb")
+  //       // console.log("yes")
+  //       // console.log(data.response)
+  //     } catch(error) {
+  //       console.log(error)
+  //     }
+  //     // then(response => {
+  //     //   response.blob().then(blob => {
+  //     //       let url = window.URL.createObjectURL(blob);
+  //     //       let a = document.createElement('a');
+  //     //       a.href = url;
+  //     //       a.download = 'employees.json';
+  //     //       a.click();
+  //   }
+    // downloadEmployeeData();
+    loader.load(
+      // resource URL
+      "https://api.luxurymjhomes.com/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb",
+      // called when the resource is loaded
+      function ( gltf ) {
+        console.log(gltf)
+      },
+      // called while loading is progressing
+      function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      },
+      // called when loading has errors
+      function ( error ) {
+        console.log( 'An error happened' );
+      }
+    );
+    loader.load(
+      // resource URL
+      "http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb",
+      // called when the resource is loaded
+      function ( gltf ) {
+        console.log(gltf)
+      },
+      // called while loading is progressing
+      function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      },
+      // called when loading has errors
+      function ( error ) {
+        console.log( 'An error happened' );
+      }
+    );
+    return (
+      <scene dispose={null}>
+        {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
+      </scene>
+    );
+  }
 
 export default function ThreeD(props) {
   return (

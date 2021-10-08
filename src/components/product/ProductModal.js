@@ -202,7 +202,9 @@ function ProductModal(props) {
                                 }
                                 onChange={() => {
                                   setSelectedProductColor(single.color);
-                                  setSelectedProductMaterial(single.material);
+                                  setSelectedProductMaterial(
+                                    single.material[0]
+                                  );
                                   // setProductStock(single.size[0].stock);
                                   setQuantityCount(1);
                                 }}
