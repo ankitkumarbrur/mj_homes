@@ -25,9 +25,7 @@ const productImageGallerySticky = ({ product }) => {
       <div className="product-sticky-image mb--10">
         {product["model3d"] && (
           <div className="product-sticky-image__single-3d mb-10">
-            {/* Uncomment after correction in Api and delete hardcoded model */}
-            {/* <ThreeD name="model (2).glb" /> */}
-            <ThreeD name={product["model3d"]} />
+            <ThreeD url={product["model3d"]} />
           </div>
         )}
 
