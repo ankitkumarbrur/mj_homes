@@ -5,13 +5,7 @@ import { connect } from "react-redux";
 import bannerData from "../../data/banner/banner-fifteen.json";
 import BannerFifteenSingle from "../../components/banner/BannerFifteenSingle.js";
 
-const BannerFifteen = ({
-  spaceTopClass,
-  spaceBottomClass,
-  newArrival,
-  featured,
-  bestSellers,
-}) => {
+const BannerFifteen = ({ spaceTopClass, spaceBottomClass }) => {
   return (
     <div
       className={`banner-area banner-area-2 ${

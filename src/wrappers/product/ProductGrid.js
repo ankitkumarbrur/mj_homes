@@ -72,7 +72,12 @@ const mapStateToProps = (state, ownProps) => {
   return {
     products: ownProps.products
       ? ownProps.products
-      : getProducts(state.productData.products),
+      : getProducts(
+          state.productData.products,
+          ownProps.subcategory,
+          ownProps.type,
+          ownProps.limit
+        ),
     currency: state.currencyData,
     cartItems: state.cartData,
     wishlistItems: state.wishlistData,

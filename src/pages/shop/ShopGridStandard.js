@@ -11,6 +11,7 @@ import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 import { useToasts } from "react-toast-notifications";
+import { getProducts } from "../../helpers/product";
 // import { useGLTF } from "@react-three/drei";
 // import { useHistory } from "react-router-dom";
 
@@ -168,10 +169,23 @@ ShopGridStandard.propTypes = {
   products: PropTypes.array,
 };
 const mapStateToProps = (state, props) => {
+  console.log(props);
   const searchText = new URLSearchParams(props.location.search).get("q");
   if (searchText !== null) {
     return {
-      products: state.productData.products,
+      products: getProducts(
+        state.productData.products,
+        props.subcategory,
+        props.type,
+        props.limit
+      )
+        ? getProducts(
+            state.productData.products,
+            props.subcategory,
+            props.type,
+            props.limit
+          )
+        : state.productData.products,
       cb: searchProducts(searchText),
     };
   } else {

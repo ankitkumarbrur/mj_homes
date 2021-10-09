@@ -14,7 +14,12 @@ const BannerFifteenSingle = ({ data, spaceBottomClass }) => {
         <div className="banner-content banner-content--style2">
           <h3>{data.title}</h3>
           <h4>{data.subtitle}</h4>
-          <Link to={process.env.PUBLIC_URL + data.link}>
+          <Link
+            to={{
+              pathname: process.env.PUBLIC_URL + data.link,
+              query: { type: data.type },
+            }}
+          >
             <i className="fa fa-long-arrow-right" />
           </Link>
         </div>
