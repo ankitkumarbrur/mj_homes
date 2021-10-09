@@ -9,7 +9,7 @@ const CategoryThreeSingle = ({ data, sliderClass }) => {
     >
       <div className="collection-img">
         <Link to={process.env.PUBLIC_URL + data.link}>
-          <img src={process.env.PUBLIC_URL + data.image} alt="" />
+          <img src={process.env.PUBLIC_URL + data.image} width="280" height="270" alt="" />
         </Link>
       </div>
       <div className="collection-content text-center">

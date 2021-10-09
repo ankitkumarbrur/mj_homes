@@ -110,7 +110,7 @@ const FooterOne = ({
                   </li> */}
                   <li>
                     <Link to={process.env.PUBLIC_URL + "/return-policy"}>
-                      Returns Policy
+                      Refund Policy
                     </Link>
                   </li>
                   <li>
@@ -149,7 +149,16 @@ const FooterOne = ({
                 <ul>
                   <li>
                     <a
-                      href="//www.facebook.com"
+                      href="https://www.youtube.com/channel/UC_3wnfw_UhUKJFcOnriYZPQ"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Youtube
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.facebook.com/luxurymjhomes"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -158,16 +167,7 @@ const FooterOne = ({
                   </li>
                   <li>
                     <a
-                      href="//www.twitter.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Twitter
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="//www.instagram.com"
+                      href="https://www.instagram.com/luxurymjhomes/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -176,11 +176,20 @@ const FooterOne = ({
                   </li>
                   <li>
                     <a
-                      href="//www.youtube.com"
+                      href="https://www.linkedin.com/in/mj-homes-756020205/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Youtube
+                      LinkedIn
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://in.pinterest.com/buildmjhomes/_saved/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Pinterest
                     </a>
                   </li>
                 </ul>

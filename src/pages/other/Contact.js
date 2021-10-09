@@ -26,7 +26,7 @@ const Contact = ({ location }) => {
   const submitHandler = async (e) => {
 
     e.preventDefault();
-    //Hello
+
     try {
 
       const formData = new FormData();
@@ -114,8 +114,8 @@ const Contact = ({ location }) => {
                         </a>
                       </p>
                       <p>
-                        <a href="https://www.luxurymjhomes.com/">
-                          luxurymjhomes.com
+                        <a href="https://www.luxurymjhomes.com">
+                          www.luxurymjhomes.com
                         </a>
                       </p>
                     </div>
@@ -134,28 +134,48 @@ const Contact = ({ location }) => {
                     <h3>Follow Us</h3>
                     <ul>
                       <li>
-                        <a href="//facebook.com">
+                        <a
+                          href="https://www.youtube.com/channel/UC_3wnfw_UhUKJFcOnriYZPQ"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className="fa fa-youtube" />
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.facebook.com/luxurymjhomes"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <i className="fa fa-facebook" />
                         </a>
                       </li>
                       <li>
-                        <a href="//pinterest.com">
-                          <i className="fa fa-pinterest-p" />
+                        <a
+                          href="https://www.instagram.com/luxurymjhomes/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className="fa fa-instagram" />
                         </a>
                       </li>
                       <li>
-                        <a href="//thumblr.com">
-                          <i className="fa fa-tumblr" />
+                        <a
+                          href="https://www.linkedin.com/in/mj-homes-756020205/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className="fa fa-linkedin" />
                         </a>
                       </li>
                       <li>
-                        <a href="//vimeo.com">
-                          <i className="fa fa-vimeo" />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="//twitter.com">
-                          <i className="fa fa-twitter" />
+                        <a
+                          href="https://in.pinterest.com/buildmjhomes/_saved/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <i className="fa fa-pinterest" />
                         </a>
                       </li>
                     </ul>
