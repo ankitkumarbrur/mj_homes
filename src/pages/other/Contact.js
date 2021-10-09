@@ -26,7 +26,7 @@ const Contact = ({ location }) => {
   const submitHandler = async (e) => {
 
     e.preventDefault();
-
+    //Hello
     try {
 
       const formData = new FormData();
