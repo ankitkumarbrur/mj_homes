@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
-from .models import User, Address, Subscribe
+from .models import User, Address, Subscribe, Query
 from rest_framework import serializers
 
 
@@ -71,4 +71,9 @@ class AddressSerializer(serializers.ModelSerializer):
 class SubscribeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscribe
+        fields = '__all__'
+
+class QuerySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Query
         fields = '__all__'

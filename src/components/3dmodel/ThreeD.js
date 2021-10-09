@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   ContactShadows,
@@ -8,23 +8,6 @@ import {
 } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-import axios from "axios";
-
-function Loading() {
-  return (
-    <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-      <meshStandardMaterial
-        attach="material"
-        color="white"
-        transparent
-        opacity={0.6}
-        roughness={1}
-        metalness={0}
-      />
-    </mesh>
-  );
-}
 function addGroups(node) {
   return (
     <>
@@ -67,47 +50,56 @@ function addGroups(node) {
   );
 }
 
-function Model(props) {
-  // const loader = new GLTFLoader();
+function Model({nodes}) {
   const ref = useRef();
-  // UNCOMMENT THIS AND DELETE HARD CODED LINE
-  // useFrame((state) => {
-  //   const t = state.clock.getElapsedTime();
-  //   ref.current.rotation.x = Math.cos(t / 4) / 8;
-  //   ref.current.rotation.y = Math.sin(t / 4) / 8;
-  //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
-  // });
-
-  console.log(props.name)
-  const loader = new GLTFLoader();
-  loader.load("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb", function (gltf) {
-
-    console.log(gltf)
-
-
-  },
-    function (xhr) {
-
-      console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-
-    },
-    function (error) {
-
-      console.log('An error happened');
-
-    })
-  // const { nodes } = useGLTF("https://api.luxurymjhomes.com/media/products/grey-cushion-double-bed/grey-cushion-double-bed-4b029e12-857e-4ab4-9d5e-076277a164dd.glb");
-
-  // console.log(nodes);
-
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    ref.current.rotation.x = Math.cos(t / 4) / 8;
+    ref.current.rotation.y = Math.sin(t / 4) / 8;
+    ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
+  });
+  
   return (
     <scene dispose={null}>
-      {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
+      <group ref={ref}> { addGroups(nodes.scene.children) } </group>
     </scene>
+  );
+  
+}
+
+function Loading() {
+  return (
+    <mesh loading = {true} visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
+      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
+      <meshStandardMaterial
+        attach="material"
+        color="white"
+        transparent
+        opacity={0.6}
+        roughness={1}
+        metalness={0}
+      />
+    </mesh>
   );
 }
 
 export default function ThreeD(props) {
+  const [content, setContent] = useState(<Loading />)
+
+  useEffect(()=>{
+    const loader = new GLTFLoader();
+    loader.load(props.url, function (nodes) {
+      console.log(nodes)
+      setContent(<Model nodes = {nodes}/>);
+    },
+      function (xhr) {
+        // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+      },
+      function (error) {
+        console.log('Error: Unable to load 3d Model, try refreshing page');
+      })
+  }, [])
+
   return (
     <>
       <Canvas
@@ -125,21 +117,17 @@ export default function ThreeD(props) {
           position={[10, 15, 10]}
           castShadow
         />
-
-        <Suspense fallback={<Loading />}>
-          <Model name={props.name} />
-          {/* <Environment preset="city" /> */}
-          <ContactShadows
-            rotation-x={Math.PI / 2}
-            position={[0, -0.8, 0]}
-            opacity={1}
-            width={20}
-            height={20}
-            blur={1.5}
-            far={0.8}
-          />
-        </Suspense>
-
+        {content}
+        <Environment preset="city" />
+        <ContactShadows
+          rotation-x={Math.PI / 2}
+          position={[0, -0.8, 0]}
+          opacity={1}
+          width={20}
+          height={20}
+          blur={1.5}
+          far={0.8}
+        />
         <OrbitControls enableZoom={true} enablePan={false} />
       </Canvas>
     </>

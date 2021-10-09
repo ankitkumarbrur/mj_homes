@@ -67,18 +67,13 @@ class WishlistSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(WishlistSerializer, self).to_representation(instance)
-        variation = ProductVariation.objects.get(id = data['product'])
-        variation = VariationSerializer(instance = variation).data
-        data['product'] = variation['product']
-        product = Product.objects.get(id = variation['product'])
+        product = Product.objects.get(id = data['product'])
         product = ProductSerializer(instance = product).data
         product.pop('review', None)
         product.pop('variation', None)
         product.pop('id', None)
         product.pop('model3d', None)
-        product.pop('image', None)
-        variation.update(product)
-        data['variation'] = variation
+        data.update(product)
         return data
 
     def create(self, validated_data, *args, **kwargs):
