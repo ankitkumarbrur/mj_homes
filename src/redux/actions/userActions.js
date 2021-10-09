@@ -120,9 +120,9 @@ export const register = (firstname, lastname, pass, email, addToast) => async (d
 		});
 
 		const formData = new FormData();
-		formData.append("email", email);
-		formData.append("password", pass);
-
+		formData.append("email", "email@c.com");
+		formData.append("password", "pass@123123");
+		formData.append("first_name", "asdsad");
 		formData.append("first_name", firstname + " " + lastname);
 
 		const config = {

@@ -1,13 +1,75 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import LocationMap from "../../components/contact/LocationMap";
+import axios from "axios";
+import { useToasts } from "react-toast-notifications";
+
+const BASE_URL = "https://api.luxurymjhomes.com/";
 
 const Contact = ({ location }) => {
   const { pathname } = location;
+  const { addToast } = useToasts();
+
+  const initialState = "";
+  const [name, setname] = useState(initialState);
+  const [email, setemail] = useState(initialState);
+  const [city, setcity] = useState(initialState)
+  const [state, setstate] = useState(initialState)
+  const [message, setmessage] = useState(initialState)
+  const [phone, setphone] = useState(initialState)
+
+
+  const submitHandler = async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("city", city);
+      formData.append("state", state);
+      formData.append("phone", phone);
+      formData.append("message", message);
+      formData.append("email", email);
+
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const { data } = await axios.post(
+        `${BASE_URL}query/`,
+        formData,
+        config
+      );
+
+      addToast("We will get back to you within 48 hours.", {
+        appearance: "success",
+        autoDismiss: true
+      });
+
+      setname(initialState)
+      setcity(initialState)
+      setemail(initialState)
+      setphone(initialState)
+      setmessage(initialState)
+      setstate(initialState)
+
+    } catch (error) {
+      addToast("Failed to Submit Query.", {
+        appearance: "error",
+        autoDismiss: true
+      });
+    }
+
+  }
+
 
   return (
     <Fragment>
@@ -108,22 +170,71 @@ const Contact = ({ location }) => {
                   <form className="contact-form-style">
                     <div className="row">
                       <div className="col-lg-6">
-                        <input name="name" placeholder="Name*" type="text" />
+                        <input name="name" placeholder="Name*" type="text"
+                          onChange={(
+                            e,
+                          ) =>
+                            setname(
+                              e
+                                .target
+                                .value,
+                            )
+                          }
+                        />
                       </div>
                       <div className="col-lg-6">
-                        <input name="email" placeholder="Email*" type="email" />
+                        <input name="email" placeholder="Email*" type="email"
+                          onChange={(
+                            e,
+                          ) =>
+                            setemail(
+                              e
+                                .target
+                                .value,
+                            )
+                          }
+                        />
                       </div>
                       <div className="col-lg-6">
-                        <input name="city" placeholder="City*" type="text" />
+                        <input name="city" placeholder="City*" type="text"
+                          onChange={(
+                            e,
+                          ) =>
+                            setcity(
+                              e
+                                .target
+                                .value,
+                            )
+                          }
+                        />
                       </div>
                       <div className="col-lg-6">
-                        <input name="state" placeholder="State*" type="text" />
+                        <input name="state" placeholder="State*" type="text"
+                          onChange={(
+                            e,
+                          ) =>
+                            setstate(
+                              e
+                                .target
+                                .value,
+                            )
+                          }
+                        />
                       </div>
                       <div className="col-lg-12">
                         <input
                           name="contact"
                           placeholder="Contact*"
                           type="text"
+                          onChange={(
+                            e,
+                          ) =>
+                            setphone(
+                              e
+                                .target
+                                .value,
+                            )
+                          }
                         />
                       </div>
                       {/* <div className="col-lg-12">
@@ -138,8 +249,19 @@ const Contact = ({ location }) => {
                           name="message"
                           placeholder="Your Message*"
                           defaultValue={""}
+                          onChange={(
+                            e,
+                          ) =>
+                            setmessage(
+                              e
+                                .target
+                                .value,
+                            )
+                          }
                         />
-                        <button className="submit" type="submit">
+                        <button className="submit" type="submit" onClick={(e) => {
+                          submitHandler(e)
+                        }}>
                           SEND
                         </button>
                       </div>
