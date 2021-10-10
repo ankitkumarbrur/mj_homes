@@ -86,9 +86,9 @@ class Review(models.Model):
         return (self.product.name)
 
     
-class Sale(models.Model):
-    product = models.ForeignKey(Product, related_name = "sale", on_delete = models.CASCADE, null = False, blank = False)
-    desc = models.TextField()
+class DOTD(models.Model):
+    product = models.ForeignKey(Product, related_name = "DOTD", on_delete = models.CASCADE, null = False, blank = False)
+    addedDate = models.DateField(auto_now_add = True)
 
     def __str__(self):
         return (self.product.name)

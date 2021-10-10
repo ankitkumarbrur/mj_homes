@@ -79,12 +79,12 @@ class ProductSerializer(serializers.ModelSerializer):
         return data
 
 
-class SaleSerializer(serializers.ModelSerializer):
+class DOTDSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Sale
+        model = DOTD
         fields = '__all__'
 
     # def to_representation(self, instance):
-    #     data = super(SaleSerializer, self).to_representation(instance)
-    #     data['product'] = Product.objects.get(id = data['product']).name
+    #     data = super(DOTDSerializer, self).to_representation(instance)
+    #     print(data)
     #     return data
