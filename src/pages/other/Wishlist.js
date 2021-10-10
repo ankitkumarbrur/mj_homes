@@ -230,11 +230,13 @@ const Wishlist = ({
 
 																	<td className="product-remove">
 																		<button
-																			onClick={() =>
+																			onClick={() => {
+
 																				deleteFromWishlist(
 																					wishlistItem,
 																					addToast,
 																				)
+																			}
 																			}
 																		>
 																			<i className="fa fa-times"></i>

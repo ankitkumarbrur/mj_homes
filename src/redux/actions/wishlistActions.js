@@ -6,7 +6,6 @@ export const DELETE_ALL_FROM_WISHLIST = "DELETE_ALL_FROM_WISHLIST";
 
 const BASE_URL = "https://api.luxurymjhomes.com/";
 
-// Fetch Wishlist Products
 export const fetchWishlist = (addToast) => async (dispatch) => {
 
   try {
@@ -20,10 +19,10 @@ export const fetchWishlist = (addToast) => async (dispatch) => {
 
     const { data } = await axios.get(`${BASE_URL}wishlist/`, config);
 
-    data.res.map((item) => {
+    data.map((item) => {
       dispatch({ type: ADD_TO_WISHLIST, payload: item });
     })
-    console.log("fetching")
+
     addToast("Wishlist Fetched", {
       appearance: "success",
       autoDismiss: true,
@@ -32,7 +31,7 @@ export const fetchWishlist = (addToast) => async (dispatch) => {
   } catch (error) {
 
     addToast("Error to fetch wishlist", {
-      appearance: "success",
+      appearance: "error",
       autoDismiss: true,
     });
 
@@ -62,9 +61,9 @@ export const addToWishlist = (item, addToast) => async (dispatch) => {
       autoDismiss: true,
     });
 
-    dispatch({ type: ADD_TO_WISHLIST, payload: item });
+    dispatch({ type: ADD_TO_WISHLIST, payload: data });
   } catch (error) {
-    console.log(error);
+
     // var message = "";
 
     // if (error.response.data.password != undefined) message = error.response.data.password;
@@ -90,7 +89,7 @@ export const deleteFromWishlist = (item, addToast) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.delete(`${BASE_URL}wishlist/7/`, config);
+    const { data } = await axios.delete(`${BASE_URL}wishlist/${item.id}/`, config);
 
     addToast("Removed From Wishlist", {
       appearance: "success",
@@ -100,6 +99,7 @@ export const deleteFromWishlist = (item, addToast) => async (dispatch) => {
     dispatch({ type: DELETE_FROM_WISHLIST, payload: item });
 
   } catch (error) {
+    console.log(error)
     addToast("Failed to Remove From Wishlist", {
       appearance: "error",
       autoDismiss: true,

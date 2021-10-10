@@ -36,8 +36,7 @@ export const login = (email, password, addToast) => async (dispatch) => {
 			payload: data.access,
 		});
 
-		// await fetchWishlist(addToast)
-		console.log("fetced")
+
 		addToast("Logged In", {
 			appearance: "success",
 			autoDismiss: true
@@ -45,7 +44,10 @@ export const login = (email, password, addToast) => async (dispatch) => {
 		localStorage.setItem("userName", data.name)
 		localStorage.setItem("userEmail", data.email)
 		localStorage.setItem("userInfo", data.access);
-		await fetchCart(addToast)
+
+		// await fetchCart(addToast)
+		dispatch(fetchWishlist(addToast))
+
 
 
 	} catch (error) {
@@ -120,9 +122,8 @@ export const register = (firstname, lastname, pass, email, addToast) => async (d
 		});
 
 		const formData = new FormData();
-		formData.append("email", "email@c.com");
-		formData.append("password", "pass@123123");
-		formData.append("first_name", "asdsad");
+		formData.append("email", email);
+		formData.append("password", pass);
 		formData.append("first_name", firstname + " " + lastname);
 
 		const config = {
