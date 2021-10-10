@@ -41,7 +41,6 @@ const Home = () => {
         <CountDownThree
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
-          // dateTime="October 11, 2021 02:12:00"
           dateTime="10/11/2021"
           countDownImage="https://images.pexels.com/photos/7018389/pexels-photo-7018389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         />
