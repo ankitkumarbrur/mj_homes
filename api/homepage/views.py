@@ -8,9 +8,9 @@ from .models import *
 # Create your views here.
 
 class Carousel_View(ViewsetActionPermissionMixin, ModelViewSet):
+    serializer_class = CarouselSerializer
     queryset = Carousel.objects.all()
     permission_classes = [IsAdmin]
-    serializer_Class = CarouselSerializer
     
     action_based_permission_classes = {
         'list' : (AllowAny,),
