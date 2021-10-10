@@ -43,7 +43,6 @@ export const fetchWishlist = (addToast) => async (dispatch) => {
 
 // add to wishlist
 export const addToWishlist = (item, addToast) => async (dispatch) => {
-  console.log(item.id);
   try {
     const formData = new FormData();
     formData.append("product", "c84db5ee-c585-42b9-8567-f125a359796a");

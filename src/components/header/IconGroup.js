@@ -28,7 +28,7 @@ const IconGroup = ({
           <i className="pe-7s-search" />
         </button>
       </div>
-      <div className="same-style account-setting d-none d-lg-block">
+      <div className="same-style account-setting">
         <button
           className="account-setting-active"
           onClick={(e) => handleClick(e)}
@@ -70,9 +70,9 @@ const IconGroup = ({
         </button>
         {/* menu cart */}
         <MenuCart
-          cartData = {cartData}
-          currency = {currency}
-          deleteFromCart = {deleteFromCart}
+          cartData={cartData}
+          currency={currency}
+          deleteFromCart={deleteFromCart}
         />
       </div>
     </div>

@@ -14,7 +14,7 @@ const MobileNavMenu = ({ strings }) => {
           <Link to={process.env.PUBLIC_URL + "/"}>Shop</Link>
         </li>
 
-        <li className="menu-item-has-children" id="products">
+        {/* <li className="menu-item-has-children" id="products">
           <Link>Products</Link>
           <ul className="sub-menu">
             <li className="menu-item-has-children">
@@ -53,7 +53,8 @@ const MobileNavMenu = ({ strings }) => {
               </ul>
             </li>
           </ul>
-        </li>
+        </li> */}
+
         <li className="menu-item-has-children" id="rooms">
           <Link>Rooms</Link>
           <ul className="sub-menu">
@@ -85,14 +86,16 @@ const MobileNavMenu = ({ strings }) => {
             </li>
           </ul>
         </li>
-        {/* <li>
-					<Link
-						target="_blank"
-						to={process.env.PUBLIC_URL + "/google_form"}
-					>
-						B2B
-					</Link>
-				</li> */}
+        <li>
+          <a target="_blank" href="https://forms.gle/cRAF28CvNyf4j9ED6">
+            B2B
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://forms.gle/wr3SCy3VKwgzUFPa9">
+            Customize
+          </a>
+        </li>
         <li>
           <Link target="_blank" to={process.env.PUBLIC_URL + "/about"}>
             About Us

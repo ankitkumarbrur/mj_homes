@@ -49,7 +49,7 @@ const MobileWidgets = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fa fa-linkedIn"></i>
+          <i className="fa fa-linkedin"></i>
         </a>
         <a
           href="https://in.pinterest.com/buildmjhomes/_saved/"
