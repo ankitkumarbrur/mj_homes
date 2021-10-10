@@ -18,9 +18,6 @@ const ProductGrid = ({
   compareItems,
   sliderClassName,
   spaceBottomClass,
-  newArrival,
-  bestSellers,
-  saleItems,
 }) => {
   return (
     <Fragment>

@@ -10,7 +10,6 @@ const BASE_URL = "https://api.luxurymjhomes.com/";
 
 // add to wishlist
 export const addToWishlist = (item, addToast) => async (dispatch) => {
-  console.log(item.id);
   try {
     const formData = new FormData();
     formData.append("product", item.id);
