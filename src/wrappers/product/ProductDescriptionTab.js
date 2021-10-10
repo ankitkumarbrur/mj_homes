@@ -19,6 +19,7 @@ const ProductDescriptionTab = ({
   productMaterial,
   productManufacturer,
   productReview,
+  productID,
 }) => {
   const { addToast } = useToasts();
   const [message, setMessage] = useState("");
@@ -30,12 +31,12 @@ const ProductDescriptionTab = ({
       const formData = new FormData();
       formData.append("reviewStar", rating);
       formData.append("reviewText", message);
-      formData.append("product", "d5dbf262-172c-4834-b153-deb998cfa15b");
+      formData.append("product", productID);
 
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `JWT ${localStorage.getItem("userName")}`,
+          Authorization: `JWT ${localStorage.getItem("userInfo")}`,
         },
       };
       const { data } = await axios.post(`${BASE_URL}review/`, formData, config);

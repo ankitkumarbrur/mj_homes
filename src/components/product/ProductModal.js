@@ -148,13 +148,21 @@ function ProductModal(props) {
                         return (
                           single.color === selectedProductColor && (
                             <div key={key}>
-                              <span>
-                                {currency.currencySymbol +
-                                  single.discounted_price}
-                              </span>
-                              <span className="old">
-                                {currency.currencySymbol + single.price}
-                              </span>
+                              {discountedprice !== undefined || null ? (
+                                <Fragment>
+                                  <span>
+                                    {currency.currencySymbol + discountedprice}
+                                  </span>{" "}
+                                  <span className="old">
+                                    {currency.currencySymbol +
+                                      finalproductprice}
+                                  </span>
+                                </Fragment>
+                              ) : (
+                                <span>
+                                  {currency.currencySymbol + finalproductprice}{" "}
+                                </span>
+                              )}
                               <div className="gst-price">
                                 Price With GST :
                                 <span className="price">

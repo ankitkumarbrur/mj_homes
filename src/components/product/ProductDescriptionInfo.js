@@ -48,7 +48,7 @@ const ProductDescriptionInfo = ({
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
       <div className="product-details-price">
-        {discountedPrice !== null ? (
+        {discountedPrice !== undefined || null ? (
           <Fragment>
             <div>
               {product.variation &&

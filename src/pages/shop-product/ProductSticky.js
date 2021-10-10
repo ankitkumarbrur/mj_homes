@@ -49,6 +49,7 @@ const ProductSticky = ({ location, product }) => {
         {/* product description tab */}
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
+          productID={product.id}
           productFullDesc={product.description}
           productSize={product.variation[0].size}
           productWeight={product.variation[0].weight}
