@@ -44,6 +44,11 @@ class ImageSerializer(serializers.ModelSerializer):
         data = super(ImageSerializer, self).to_representation(instance)
         return data
 
+class RoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Room
+        fields = '__all__'
+
 class VariationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductVariation    
@@ -51,8 +56,11 @@ class VariationSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(VariationSerializer, self).to_representation(instance)
-        discounted_price = (Product.objects.get(id = data['product']).discount/100) * data['price'] + data['price']
-        data['discounted_price'] = discounted_price
+        discount = Product.objects.get(id = data['product']).discount
+        if discount != 0:
+            discounted_price = (discount/100) * data['price'] + data['price']
+            data['discounted_price'] = discounted_price
+
         data['gstPrice'] = discounted_price * 0.18 + discounted_price
         data['material'] = [data['material']]
         return data
@@ -72,19 +80,11 @@ class ProductSerializer(serializers.ModelSerializer):
         totalRating = 0
         for r in data['review']:
             totalRating += r.get('reviewStar', 0)
+
+        if data['discount'] == 0: data.pop('discount')
         
         data['rating'] = totalRating/len(data['review']) if len(data['review']) else 0
+        data['room'] = [data['room']]
         data['image'] = [img['image'] for img in data['image']]
         data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data
-
-
-class DOTDSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = DOTD
-        fields = '__all__'
-
-    # def to_representation(self, instance):
-    #     data = super(DOTDSerializer, self).to_representation(instance)
-    #     print(data)
-    #     return data

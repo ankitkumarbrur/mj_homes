@@ -27,6 +27,13 @@ def image_upload(instance, filename):
     new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
     return "products/%s/%s" %(slug, new_filename)
 
+
+class Room(models.Model):
+    room = models.CharField(max_length = 50)
+
+    def __str__(self):
+        return self.room
+
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length = 150, null = False, blank = False)
@@ -40,6 +47,7 @@ class Product(models.Model):
     description = models.CharField(max_length = 5000)
 
     subcategory = models.CharField(max_length = 100, null = True)
+    room = models.ForeignKey(Room, related_name = "rooms", on_delete= models.CASCADE, null = False)
     keyword = models.TextField(null = True)
     manufacturer = models.CharField(max_length = 100)
 
@@ -81,14 +89,6 @@ class Review(models.Model):
     reviewStar = models.FloatField(null = False, blank = False)
     reviewText = models.TextField(null = True, blank = True)
     dateAdded = models.DateField(auto_now_add = True)
-
-    def __str__(self):
-        return (self.product.name)
-
-    
-class DOTD(models.Model):
-    product = models.ForeignKey(Product, related_name = "DOTD", on_delete = models.CASCADE, null = False, blank = False)
-    addedDate = models.DateField(auto_now_add = True)
 
     def __str__(self):
         return (self.product.name)

@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from mixins.CustomMixins import QuerysetMixin, ViewsetActionPermissionMixin
 from authentication.permissions import *
 
-from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer, DOTDSerializer
+from .serializers import *
 
-from .models import Product, Review, ProductVariation, Image, DOTD
+from .models import *
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q
@@ -83,18 +83,3 @@ class Image_view(viewsets.ModelViewSet):
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     # }
-
-class DOTD_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
-    queryset = DOTD.objects.all()
-    serializer_class = DOTDSerializer
-    permission_classes = (IsAdmin,)
-    http_method_names = ['get', 'patch', 'head', 'options', 'trace']
-
-    action_based_permission_classes = {
-        'list' : (AllowAny,),
-        # 'create': (permission_classes),
-        # 'retrieve': (permission_classes),
-        # 'update' : (permission_classes),
-        # 'partial_update' : (permission_classes),
-        # 'destroy' : (permission_classes)
-    }

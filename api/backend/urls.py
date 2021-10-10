@@ -22,8 +22,8 @@ from rest_framework.routers import DefaultRouter
 from orders.views import OrderView
 from carts.views import CartView, WishListView
 from users.views import Address_view, User_view, Subscribe_view, Query_view
-from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view, DOTD_view
-
+from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view
+from homepage.views import Carousel_View, DOTD_view
 
 """
 Router HTTP Request mapping to methods
@@ -53,6 +53,7 @@ router.register('image', Image_view, basename= 'image')
 router.register('subscribe', Subscribe_view, basename= 'suscribe')
 router.register('dotd', DOTD_view, basename= 'DOTD')
 router.register('query', Query_view, basename= 'query')
+router.register('carousel', Carousel_View, basename= 'carousel')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
