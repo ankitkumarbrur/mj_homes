@@ -12,9 +12,8 @@ const CountDownThree = ({
 }) => {
   return (
     <div
-      className={`funfact-area ${spaceTopClass ? spaceTopClass : ""} ${
-        spaceBottomClass ? spaceBottomClass : ""
-      }`}
+      className={`funfact-area ${spaceTopClass ? spaceTopClass : ""} ${spaceBottomClass ? spaceBottomClass : ""
+        }`}
     >
       <div className="container">
         <div className="row align-items-center">
@@ -35,7 +34,7 @@ const CountDownThree = ({
             <div className="funfact-image">
               <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
                 <img
-                  src={process.env.PUBLIC_URL + countDownImage}
+                  src={countDownImage}
                   alt=""
                   className="img-fluid"
                 />

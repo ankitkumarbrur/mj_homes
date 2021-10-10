@@ -1,42 +1,42 @@
 [
   {
     "id": "1",
-    "image": "/assets/img/product/hm8-pro-1.jpg",
+    "image": "https://images.pexels.com/photos/5178080/pexels-photo-5178080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "subtitle": "2 Products",
     "title": "Living Room",
     "link": "/shop-grid-standard"
   },
   {
     "id": "2",
-    "image": "/assets/img/product/hm8-pro-2.jpg",
+    "image": "https://images.pexels.com/photos/5178068/pexels-photo-5178068.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     "subtitle": "3 Products",
     "title": "Drawing Room",
     "link": "/shop-grid-standard"
   },
   {
     "id": "3",
-    "image": "/assets/img/product/hm8-pro-3.jpg",
+    "image": "https://dp5zphk8udxg9.cloudfront.net/wp-content/uploads/2016/04/shutterstock_704942713-e1553593369888.jpg",
     "subtitle": "6 Products",
     "title": "Dining Room",
     "link": "/shop-grid-standard"
   },
   {
     "id": "4",
-    "image": "/assets/img/product/hm8-pro-4.jpg",
+    "image": "https://images.pexels.com/photos/5824883/pexels-photo-5824883.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "subtitle": "5 Products",
     "title": "Kitchen",
     "link": "/shop-grid-standard"
   },
   {
     "id": "5",
-    "image": "/assets/img/product/hm8-pro-2.jpg",
+    "image": "https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     "subtitle": "3 Products",
     "title": "Bedroom",
     "link": "/shop-grid-standard"
   },
   {
     "id": "6",
-    "image": "/assets/img/product/hm8-pro-2.jpg",
+    "image": "http://cdn.home-designing.com/wp-content/uploads/2018/04/patio-design-ideas.jpg",
     "subtitle": "3 Products",
     "title": "Outdoor",
     "link": "/shop-grid-standard"

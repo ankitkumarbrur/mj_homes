@@ -21,6 +21,7 @@ const SubscribeEmail = () => {
           "Content-Type": "multipart/form-data",
         },
       };
+      console.log(email)
       const { data } = await Axios.post(
         `${base_url}subscribe/`,
         formData,

@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { connect } from "react-redux";
+
 import bannerData from "../../data/banner/banner-fifteen.json";
 import BannerFifteenSingle from "../../components/banner/BannerFifteenSingle.js";
 
@@ -30,7 +32,15 @@ const BannerFifteen = ({ spaceTopClass, spaceBottomClass }) => {
 
 BannerFifteen.propTypes = {
   spaceBottomClass: PropTypes.string,
-  spaceTopClass: PropTypes.string
+  spaceTopClass: PropTypes.string,
 };
 
-export default BannerFifteen;
+const mapStateToProps = (state) => {
+  const allProducts = state.productData.products;
+  return {
+    newArrival: allProducts.filter((single) => single.new === true),
+    featured: allProducts.filter((single) => single.featured === true),
+    bestSellers: allProducts.filter((single) => single.bestSeller === true),
+  };
+};
+export default connect(mapStateToProps)(BannerFifteen);
