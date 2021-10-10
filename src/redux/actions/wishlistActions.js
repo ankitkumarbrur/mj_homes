@@ -44,7 +44,7 @@ export const fetchWishlist = (addToast) => async (dispatch) => {
 export const addToWishlist = (item, addToast) => async (dispatch) => {
   try {
     const formData = new FormData();
-    formData.append("product", "c84db5ee-c585-42b9-8567-f125a359796a");
+    formData.append("product", item.id);
 
     const config = {
       headers: {
