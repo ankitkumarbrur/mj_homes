@@ -53,11 +53,8 @@ router.register('image', Image_view, basename= 'image')
 router.register('subscribe', Subscribe_view, basename= 'suscribe')
 router.register('dotd', DOTD_view, basename= 'DOTD')
 router.register('query', Query_view, basename= 'query')
-<<<<<<< HEAD
 router.register('coupon', CouponView, basename= 'coupon')
-=======
 router.register('carousel', Carousel_View, basename= 'carousel')
->>>>>>> main
 
 urlpatterns = [
     path('admin/', admin.site.urls),
