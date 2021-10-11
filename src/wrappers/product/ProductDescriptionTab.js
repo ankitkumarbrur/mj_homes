@@ -26,7 +26,6 @@ const ProductDescriptionTab = ({
   const [rating, setRating] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
       const formData = new FormData();
       formData.append("reviewStar", rating);

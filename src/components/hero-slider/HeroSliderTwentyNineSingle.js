@@ -25,7 +25,7 @@ const HeroSliderTwentyNineSingle = ({ data, sliderClass }) => {
               <div className="slider-btn-green btn-hover">
                 <Link
                   className="animated"
-                  to={process.env.PUBLIC_URL + data.url}
+                  to={process.env.PUBLIC_URL + "/shop-grid-standard"}
                 >
                   Shop Now
                 </Link>

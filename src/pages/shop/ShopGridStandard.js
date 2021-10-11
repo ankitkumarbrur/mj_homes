@@ -15,7 +15,7 @@ import { getProducts } from "../../helpers/product";
 // import { useGLTF } from "@react-three/drei";
 // import { useHistory } from "react-router-dom";
 
-const ShopGridStandard = ({ location, products, cb }) => {
+const ShopGridStandard = ({ location, products, searchData }) => {
   // let history = useHistory();
   // console.log(history);
 
@@ -31,10 +31,11 @@ const ShopGridStandard = ({ location, products, cb }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState([]);
   const [sortedProducts, setSortedProducts] = useState([]);
-  const [loading, setLoading] = useState(cb == undefined ? false : true);
-  const [data, setData] = useState(cb);
+  const [loading, setLoading] = useState(
+    searchData == undefined ? false : true
+  );
+  const [data, setData] = useState([]);
   const { addToast } = useToasts();
-
   const pageLimit = 15;
   const { pathname } = location;
 
@@ -54,12 +55,13 @@ const ShopGridStandard = ({ location, products, cb }) => {
 
   useEffect(() => {
     if (loading) {
-      Promise.resolve(cb)
+      Promise.resolve(searchData)
         .then((res) => {
           setLoading(false);
-          setData(res.data);
+          setData(res);
+          console.log(res);
           // UNCOMMENT THIS AFTER CORRECTION IN API
-          // products = data;
+          // products = res;
         })
         .catch((err) => {
           addToast("Unable to complete search request, try again", {
@@ -124,7 +126,7 @@ const ShopGridStandard = ({ location, products, cb }) => {
               <div className="col-lg-3 order-2 order-lg-1">
                 {/* shop sidebar */}
                 <ShopSidebar
-                  products={products}
+                  products={data.length !== 0 ? data : products}
                   getSortParams={getSortParams}
                   sideSpaceClass="mr-30"
                 />
@@ -134,12 +136,19 @@ const ShopGridStandard = ({ location, products, cb }) => {
                 <ShopTopbar
                   getLayout={getLayout}
                   getFilterSortParams={getFilterSortParams}
-                  productCount={products.length}
-                  sortedProductCount={currentData.length}
+                  productCount={
+                    data.length !== 0 ? data.length : products.length
+                  }
+                  sortedProductCount={
+                    data.length !== 0 ? data.length : currentData.length
+                  }
                 />
 
                 {/* shop page content default */}
-                <ShopProducts layout={layout} products={currentData} />
+                <ShopProducts
+                  layout={layout}
+                  products={data.length !== 0 ? data : currentData}
+                />
 
                 {/* shop product pagination */}
                 <div className="pro-pagination-style text-center mt-30">
@@ -173,7 +182,7 @@ const mapStateToProps = (state, props) => {
   if (searchText !== null) {
     return {
       products: state.productData.products,
-      cb: searchProducts(searchText)
+      searchData: searchProducts(searchText),
     };
   } else if (props.location.state && props.location.state.type) {
     return {
@@ -184,17 +193,16 @@ const mapStateToProps = (state, props) => {
         props.limit
       )
         ? getProducts(
-          state.productData.products,
-          props.subcategory,
-          props.location.state.type,
-          props.limit
-        )
-        : state.productData.products
+            state.productData.products,
+            props.subcategory,
+            props.location.state.type,
+            props.limit
+          )
+        : state.productData.products,
     };
-  }
-  else {
+  } else {
     return {
-      products: state.productData.products
+      products: state.productData.products,
     };
   }
 };
