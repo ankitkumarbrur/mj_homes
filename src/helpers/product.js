@@ -2,17 +2,19 @@ import axios from "axios";
 
 //get searched products
 export const searchProducts = async (searchText) => {
-  const BASE_URL = "http://localhost:8000";
+  const BASE_URL = "https://api.luxurymjhomes.com/";
 
-  const formData = new FormData();
-  formData.append("searchText", searchText);
-  const config = {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  };
-
-  return await axios.post(`${BASE_URL}/api/search/`, formData, config);
+  // const formData = new FormData();
+  // formData.append("searchText", searchText);
+  // const config = {
+  //   headers: {
+  //     "Content-Type": "multipart/form-data",
+  //   },
+  // };
+  const { data } = await axios.get(`${BASE_URL}product/`, {
+    params: { q: searchText },
+  });
+  return data;
 };
 
 // get products
@@ -141,16 +143,12 @@ export const getSortedProducts = (products, sortType, sortValue) => {
       }
       if (sortValue == "priceHighToLow") {
         return sortProducts.sort((a, b) => {
-          return (
-            b.variation[0].discounted_price - a.variation[0].discounted_price
-          );
+          return b.variation[0].price - a.variation[0].price;
         });
       }
       if (sortValue == "priceLowToHigh") {
         return sortProducts.sort((a, b) => {
-          return (
-            a.variation[0].discounted_price - b.variation[0].discounted_price
-          );
+          return a.variation[0].price - b.variation[0].price;
         });
       }
     }

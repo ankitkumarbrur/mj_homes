@@ -20,14 +20,12 @@ const ProductSticky = ({ location, product }) => {
   // console.log(nodes);
   const { pathname } = location;
   const match = useRouteMatch();
+
   return (
     <Fragment>
       <MetaTags>
         <title>MJ Homes | Product Page</title>
-        <meta
-          name="description"
-          content="Product page of MJ HOMES"
-        />
+        <meta name="description" content="Product page of MJ HOMES" />
       </MetaTags>
 
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
@@ -87,7 +85,9 @@ ProductSticky.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   //FIX TO RELOADING ISSUE
-  const itemId = ownProps.match.params.id || window.href.substring(window.href.lastIndexOf('/') + 1);
+  const itemId =
+    ownProps.match.params.id ||
+    window.href.substring(window.href.lastIndexOf("/") + 1);
   // console.log(state);
   return {
     product: state.productData.products.filter(
