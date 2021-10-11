@@ -1,6 +1,7 @@
 import axios from "axios";
 import { fetchCart } from "./cartActions";
 import { fetchWishlist, deleteAllFromWishlist } from "./wishlistActions";
+import { DELETE_ALL_FROM_WISHLIST } from "./wishlistActions";
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_FAIL = " USER_LOGIN_FAIL";
@@ -65,7 +66,7 @@ export const login = (email, password, addToast) => async (dispatch) => {
 	}
 };
 
-export const logout = (addToast) => (dispatch) => {
+export const logout = (addToast) => async (dispatch, getState) => {
 
 	try {
 		const config = {
@@ -81,10 +82,20 @@ export const logout = (addToast) => (dispatch) => {
 		// 	{ withCredentials: true, }
 		// );
 
+		const {
+			wishlistData
+		} = getState();
+
+
+		// await dispatch(deleteAllFromWishlist(wishlistData));
+		dispatch({ type: DELETE_ALL_FROM_WISHLIST });
+		localStorage.removeItem("wishlistDataStorage");
 		localStorage.removeItem("userLogin");
 		localStorage.removeItem("userInfo");
 		localStorage.removeItem("userName");
 		localStorage.removeItem("userEmail");
+
+
 
 		addToast("Logged Out", {
 			appearance: "success",
