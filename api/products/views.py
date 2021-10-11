@@ -35,12 +35,13 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
         objs = Product.objects.filter(active = False)
         query = request.GET.get('q', None)
         if query:
-            objs = product_objects.filter(Q(keyword__icontains = query))
+            objs = objs.filter(Q(keyword__icontains = query))
 
         queryset = self.filter_queryset(objs)
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
 class Review_view(QuerysetMixin, ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     MODEL = Review
     serializer_class = ReviewSerializer

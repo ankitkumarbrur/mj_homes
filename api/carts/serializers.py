@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cart, WishList
+from .models import *
 from products.models import ProductVariation, Product
 from products.serializers import VariationSerializer, ProductSerializer
 from django.core.exceptions import ValidationError
@@ -90,3 +90,8 @@ class WishlistSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         return instance
+
+class CouponSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Coupon
+        fields = '__all__'

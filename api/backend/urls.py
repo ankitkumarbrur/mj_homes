@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 
 from orders.views import OrderView
-from carts.views import CartView, WishListView
+from carts.views import CartView, WishListView, CouponView
 from users.views import Address_view, User_view, Subscribe_view, Query_view
 from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view, Sale_view
 
@@ -53,6 +53,7 @@ router.register('image', Image_view, basename= 'image')
 router.register('subscribe', Subscribe_view, basename= 'suscribe')
 router.register('sale', Sale_view, basename= 'sale')
 router.register('query', Query_view, basename= 'query')
+router.register('coupon', CouponView, basename= 'coupon')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
