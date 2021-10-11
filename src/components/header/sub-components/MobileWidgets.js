@@ -19,16 +19,44 @@ const MobileWidgets = () => {
       </div>
       {/*Off Canvas Widget Social Start*/}
       <div className="off-canvas-widget-social">
-        <a href="//twitter.com" title="Twitter">
-          <i className="fa fa-twitter"></i>
+        <a
+          href="https://www.youtube.com/channel/UC_3wnfw_UhUKJFcOnriYZPQ"
+          title="Youtube"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa fa-youtube"></i>
         </a>
-        <a href="//instagram.com" title="Instagram">
+        <a
+          href="https://www.instagram.com/luxurymjhomes/"
+          title="Instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fa fa-instagram"></i>
         </a>
-        <a href="//facebook.com" title="Facebook">
+        <a
+          href="https://www.facebook.com/luxurymjhomes"
+          title="Facebook"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fa fa-facebook"></i>
         </a>
-        <a href="//pinterest.com" title="Pinterest">
+        <a
+          href="https://www.linkedin.com/in/mj-homes-756020205/"
+          title="Linkedin"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fa fa-linkedin"></i>
+        </a>
+        <a
+          href="https://in.pinterest.com/buildmjhomes/_saved/"
+          title="Pinterest"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fa fa-pinterest"></i>
         </a>
       </div>

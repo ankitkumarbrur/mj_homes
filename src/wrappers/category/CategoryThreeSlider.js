@@ -13,7 +13,7 @@ const CategoryThreeSlider = ({ spaceTopClass, spaceBottomClass }) => {
     >
       <div className="container">
         <SectionTitle
-          titleText="CATEGORY"
+          titleText="Rooms"
           positionClass="text-center"
           spaceClass="mb-35"
         />

@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import {
   ContactShadows,
@@ -6,27 +6,8 @@ import {
   useGLTF,
   OrbitControls,
 } from "@react-three/drei";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-import axios from "axios";
-
-
-
-function Loading() {
-  return (
-    <mesh visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
-      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-      <meshStandardMaterial
-        attach="material"
-        color="white"
-        transparent
-        opacity={0.6}
-        roughness={1}
-        metalness={0}
-      />
-    </mesh>
-  );
-}
 function addGroups(node) {
   return (
     <>
@@ -69,84 +50,56 @@ function addGroups(node) {
   );
 }
 
-function Model(props) {
-  const loader = new GLTFLoader()
+function Model({nodes}) {
   const ref = useRef();
-  // UNCOMMENT THIS AND DELETE HARD CODED LINE
-  // useFrame((state) => {
-  //   const t = state.clock.getElapsedTime();
-  //   ref.current.rotation.x = Math.cos(t / 4) / 8;
-  //   ref.current.rotation.y = Math.sin(t / 4) / 8;
-  //   ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
-  // });
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    ref.current.rotation.x = Math.cos(t / 4) / 8;
+    ref.current.rotation.y = Math.sin(t / 4) / 8;
+    ref.current.position.y = (1 + Math.sin(t / 1.5)) / 10;
+  });
+  
+  return (
+    <scene dispose={null}>
+      <group ref={ref}> { addGroups(nodes.scene.children) } </group>
+    </scene>
+  );
+  
+}
 
-  // async function downloadEmployeeData() {
-  //   console.log("downloading data")
-  //     try {
-  //       const config = {
-  //         headers: {
-  //           "Access-Control-Allow-Origin": "*",
-  //         },
-  //       };
-  //       // const { data2 } = await axios.get("http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-14115e6d-30c8-4c50-97c5-8725e3f7e370.jpg")
-  //       const { data } = await axios.get("http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb")
-  //       console.log(data)
-  //       const {nodes} = useGLTF(data)
-  //       // const { data3 } = await axios.get("https://api.luxurymjhomes.com/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb")
-  //       // console.log("yes")
-  //       // console.log(data.response)
-  //     } catch(error) {
-  //       console.log(error)
-  //     }
-  //     // then(response => {
-  //     //   response.blob().then(blob => {
-  //     //       let url = window.URL.createObjectURL(blob);
-  //     //       let a = document.createElement('a');
-  //     //       a.href = url;
-  //     //       a.download = 'employees.json';
-  //     //       a.click();
-  //   }
-    // downloadEmployeeData();
-    loader.load(
-      // resource URL
-      "https://api.luxurymjhomes.com/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb",
-      // called when the resource is loaded
-      function ( gltf ) {
-        console.log(gltf)
-      },
-      // called while loading is progressing
-      function ( xhr ) {
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-      },
-      // called when loading has errors
-      function ( error ) {
-        console.log( 'An error happened' );
-      }
-    );
-    loader.load(
-      // resource URL
-      "http://localhost:8000/media/products/premium-divan-sangwan/premium-divan-sangwan-d5dbf262-172c-4834-b153-deb998cfa15b.glb",
-      // called when the resource is loaded
-      function ( gltf ) {
-        console.log(gltf)
-      },
-      // called while loading is progressing
-      function ( xhr ) {
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-      },
-      // called when loading has errors
-      function ( error ) {
-        console.log( 'An error happened' );
-      }
-    );
-    return (
-      <scene dispose={null}>
-        {/* <group ref={ref}>{addGroups(nodes.Scene.children)}</group> */}
-      </scene>
-    );
-  }
+function Loading() {
+  return (
+    <mesh loading = {true} visible position={[0, 0, 0]} rotation={[0, 0, 0]}>
+      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
+      <meshStandardMaterial
+        attach="material"
+        color="white"
+        transparent
+        opacity={0.6}
+        roughness={1}
+        metalness={0}
+      />
+    </mesh>
+  );
+}
 
 export default function ThreeD(props) {
+  const [content, setContent] = useState(<Loading />)
+
+  useEffect(()=>{
+    const loader = new GLTFLoader();
+    loader.load(props.url, function (nodes) {
+      console.log(nodes)
+      setContent(<Model nodes = {nodes}/>);
+    },
+      function (xhr) {
+        // console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+      },
+      function (error) {
+        console.log('Error: Unable to load 3d Model, try refreshing page');
+      })
+  }, [])
+
   return (
     <>
       <Canvas
@@ -164,21 +117,17 @@ export default function ThreeD(props) {
           position={[10, 15, 10]}
           castShadow
         />
-
-        <Suspense fallback={<Loading />}>
-          <Model name={props.name} />
-          {/* <Environment preset="city" /> */}
-          <ContactShadows
-            rotation-x={Math.PI / 2}
-            position={[0, -0.8, 0]}
-            opacity={1}
-            width={20}
-            height={20}
-            blur={1.5}
-            far={0.8}
-          />
-        </Suspense>
-
+        {content}
+        <Environment preset="city" />
+        <ContactShadows
+          rotation-x={Math.PI / 2}
+          position={[0, -0.8, 0]}
+          opacity={1}
+          width={20}
+          height={20}
+          blur={1.5}
+          far={0.8}
+        />
         <OrbitControls enableZoom={true} enablePan={false} />
       </Canvas>
     </>

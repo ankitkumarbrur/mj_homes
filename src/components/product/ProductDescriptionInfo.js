@@ -32,6 +32,9 @@ const ProductDescriptionInfo = ({
   // const [productStock, setProductStock] = useState(
   //   product.variation ? product.variation[0].size[0].stock : product.stock
   // );
+  const [variationId, setVariationId] = useState(
+    product.variation ? product.variation[0].id : ""
+  );
   const [productStock, setProductStock] = useState(1);
   const [quantityCount, setQuantityCount] = useState(1);
 
@@ -45,7 +48,7 @@ const ProductDescriptionInfo = ({
     <div className="product-details-content ml-70">
       <h2>{product.name}</h2>
       <div className="product-details-price">
-        {discountedPrice !== null ? (
+        {discountedPrice !== undefined || null ? (
           <Fragment>
             <div>
               {product.variation &&
@@ -109,6 +112,7 @@ const ProductDescriptionInfo = ({
                       onChange={() => {
                         setSelectedProductColor(single.color);
                         setSelectedProductMaterial(single.material[0]);
+                        setVariationId(single.id);
                         // setProductStock(single.size[0].stock);
                         setQuantityCount(1);
                       }}
@@ -209,7 +213,8 @@ const ProductDescriptionInfo = ({
                     addToast,
                     quantityCount,
                     selectedProductColor,
-                    selectedProductMaterial
+                    selectedProductMaterial,
+                    variationId
                   )
                 }
                 disabled={productCartQty >= productStock}
@@ -317,7 +322,8 @@ const mapDispatchToProps = (dispatch) => {
       addToast,
       quantityCount,
       selectedProductColor,
-      selectedProductSize
+      selectedProductSize,
+      variationId
     ) => {
       dispatch(
         addToCart(
@@ -325,7 +331,8 @@ const mapDispatchToProps = (dispatch) => {
           addToast,
           quantityCount,
           selectedProductColor,
-          selectedProductSize
+          selectedProductSize,
+          variationId
         )
       );
     },

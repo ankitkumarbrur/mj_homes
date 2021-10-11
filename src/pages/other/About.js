@@ -20,7 +20,7 @@ const About = ({ location }) => {
         <title>MJ Homes | About us</title>
         <meta
           name="description"
-          content="About page of flone react minimalist eCommerce template."
+          content="About page of MJHOMES react minimalist eCommerce template."
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
@@ -48,7 +48,7 @@ const About = ({ location }) => {
         /> */}
 
         {/* team member */}
-        <TeamMemberOne spaceTopClass="pt-95" spaceBottomClass="pb-70" />
+        {/* <TeamMemberOne spaceTopClass="pt-95" spaceBottomClass="pb-70" /> */}
 
         {/* brand logo slider */}
         {/* <BrandLogoSliderOne spaceBottomClass="pb-70" /> */}

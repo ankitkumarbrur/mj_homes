@@ -41,8 +41,8 @@ const Home = () => {
         <CountDownThree
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
-          dateTime="December 30, 2021 12:12:00"
-          countDownImage="/assets/img/banner/deal-5.png"
+          dateTime="10/11/2021"
+          countDownImage="https://images.pexels.com/photos/7018389/pexels-photo-7018389.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
         />
         {/* <LayoutOne
 				headerContainerClass="container-fluid"
@@ -62,7 +62,7 @@ const Home = () => {
         <CategoryThreeSlider spaceBottomClass="pb-70" />
 
         {/* tab product */}
-        <TabProduct spaceBottomClass="pb-60" category="fashion" />
+        <TabProduct spaceBottomClass="pb-60" />
 
         <VideoPopupTwo spaceBottomClass="pb-60" />
 

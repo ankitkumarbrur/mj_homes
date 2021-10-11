@@ -2,9 +2,9 @@ from rest_framework import viewsets
 from mixins.CustomMixins import QuerysetMixin, ViewsetActionPermissionMixin
 from authentication.permissions import *
 
-from .serializers import ProductSerializer, ReviewSerializer, VariationSerializer, ImageSerializer, SaleSerializer
+from .serializers import *
 
-from .models import Product, Review, ProductVariation, Image, Sale
+from .models import *
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q
@@ -83,7 +83,3 @@ class Image_view(viewsets.ModelViewSet):
         # 'partial_update' : (permission_classes),
         # 'destroy' : (permission_classes)
     # }
-
-class Sale_view(viewsets.ModelViewSet):
-    queryset = Sale.objects.all()
-    serializer_class = SaleSerializer

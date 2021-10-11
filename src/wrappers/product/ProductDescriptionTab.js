@@ -10,8 +10,6 @@ import AddReviewRating from "../../components/product/sub-components/AddReviewRa
 import axios from "axios";
 
 const BASE_URL = "https://api.luxurymjhomes.com/";
-const ACCESS_TOKEN =
-  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eeyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjMyODU2MjE2LCJqdGkiOiI2N2FkMDQ5NjhmYzY0NWEyYWZjYjNmYWE5ODdlNGVhYiIsInVzZXJfaWQiOjJ9.2Rhul0Mb-IbCcHnYUte39LVaN7TOFM1RnOsu8BbbElA";
 
 const ProductDescriptionTab = ({
   spaceBottomClass,
@@ -21,6 +19,7 @@ const ProductDescriptionTab = ({
   productMaterial,
   productManufacturer,
   productReview,
+  productID,
 }) => {
   const { addToast } = useToasts();
   const [message, setMessage] = useState("");
@@ -32,12 +31,12 @@ const ProductDescriptionTab = ({
       const formData = new FormData();
       formData.append("reviewStar", rating);
       formData.append("reviewText", message);
-      formData.append("product", "d5dbf262-172c-4834-b153-deb998cfa15b");
+      formData.append("product", productID);
 
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `JWT ${ACCESS_TOKEN}`,
+          Authorization: `JWT ${localStorage.getItem("userInfo")}`,
         },
       };
       const { data } = await axios.post(`${BASE_URL}review/`, formData, config);

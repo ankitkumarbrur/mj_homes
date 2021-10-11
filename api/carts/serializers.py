@@ -84,6 +84,8 @@ class WishlistSerializer(serializers.ModelSerializer):
             if len(product) == 0:
                 wishlist = WishList.objects.create( **validated_data)
                 return wishlist
+            else:
+                raise serializers.ValidationError({"error": "Product already in wishlist"})    
 
         except ValidationError:
             raise serializers.ValidationError({"detail": "input is not valid"})

@@ -1,5 +1,6 @@
 import axios from "axios";
-
+import { fetchCart } from "./cartActions";
+import { fetchWishlist, deleteAllFromWishlist } from "./wishlistActions";
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_FAIL = " USER_LOGIN_FAIL";
@@ -8,7 +9,7 @@ export const USER_REGISTER_REQUEST = "USER_REGISTER_REQUEST";
 export const USER_REGISTER_SUCCESS = "USER_REGISTER_SUCCESS";
 export const USER_REGISTER_FAIL = "USER_REGISTER_FAIL";
 
-const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
+const BASE_URL = "https://api.luxurymjhomes.com/";
 
 export const login = (email, password, addToast) => async (dispatch) => {
 	try {
@@ -34,6 +35,8 @@ export const login = (email, password, addToast) => async (dispatch) => {
 			type: USER_LOGIN_SUCCESS,
 			payload: data.access,
 		});
+
+
 		addToast("Logged In", {
 			appearance: "success",
 			autoDismiss: true
@@ -41,6 +44,11 @@ export const login = (email, password, addToast) => async (dispatch) => {
 		localStorage.setItem("userName", data.name)
 		localStorage.setItem("userEmail", data.email)
 		localStorage.setItem("userInfo", data.access);
+
+		// await fetchCart(addToast)
+		dispatch(fetchWishlist(addToast))
+
+
 
 	} catch (error) {
 		addToast("Wrong Credentials!", {
@@ -82,6 +90,8 @@ export const logout = (addToast) => (dispatch) => {
 			appearance: "success",
 			autoDismiss: true
 		});
+		console.log("logout")
+		// deleteAllFromWishlist(addToast)
 
 		dispatch({ type: USER_LOGOUT });
 	} catch (error) {
@@ -114,7 +124,6 @@ export const register = (firstname, lastname, pass, email, addToast) => async (d
 		const formData = new FormData();
 		formData.append("email", email);
 		formData.append("password", pass);
-
 		formData.append("first_name", firstname + " " + lastname);
 
 		const config = {

@@ -21,11 +21,14 @@ const ProductGridListSingle = ({
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
 
-  const discountedPrice = getDiscountPrice(product.price, product.discount);
-  const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
-  const finalDiscountedPrice = +(
-    discountedPrice * currency.currencyRate
-  ).toFixed(2);
+  const discountedPrice = product.variation[0].discounted_price;
+  const finalProductPrice = product.variation[0].price;
+
+  // const discountedPrice = getDiscountPrice(product.price, product.discount);
+  // const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
+  // const finalDiscountedPrice = +(
+  //   discountedPrice * currency.currencyRate
+  // ).toFixed(2);
   return (
     <Fragment>
       <div
@@ -141,18 +144,18 @@ const ProductGridListSingle = ({
               ""
             )}
             <div className="product-price">
-              {/* {discountedPrice !== null ? (
+              {discountedPrice !== undefined || null ? (
                 <Fragment>
-                  <span>{currency.currencySymbol + finalDiscountedPrice}</span>{" "}
+                  <span>{currency.currencySymbol + discountedPrice}</span>{" "}
                   <span className="old">
                     {currency.currencySymbol + finalProductPrice}
                   </span>
                 </Fragment>
               ) : (
                 <span>{currency.currencySymbol + finalProductPrice} </span>
-              )} */}
+              )}
 
-              <Fragment>
+              {/* <Fragment>
                 <span>
                   {currency.currencySymbol +
                     product.variation[0].discounted_price}
@@ -160,7 +163,7 @@ const ProductGridListSingle = ({
                 <span className="old">
                   {currency.currencySymbol + product.variation[0].price}
                 </span>
-              </Fragment>
+              </Fragment> */}
             </div>
           </div>
         </div>
@@ -334,7 +337,7 @@ const ProductGridListSingle = ({
         currency={currency}
         discountedprice={discountedPrice}
         finalproductprice={finalProductPrice}
-        finaldiscountedprice={finalDiscountedPrice}
+        finaldiscountedprice={discountedPrice}
         cartitem={cartItem}
         wishlistitem={wishlistItem}
         compareitem={compareItem}

@@ -14,11 +14,11 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
           <ul>
             {cartData.map((single, key) => {
               const discountedPrice = getDiscountPrice(
-                single.price,
-                single.discount
+                single.variation.price,
+                single.variation.discount
               );
               const finalProductPrice = (
-                single.price * currency.currencyRate
+                single.variation.price * currency.currencyRate
               ).toFixed(2);
               const finalDiscountedPrice = (
                 discountedPrice * currency.currencyRate
@@ -28,13 +28,14 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                 ? (cartTotalPrice += finalDiscountedPrice * single.quantity)
                 : (cartTotalPrice += finalProductPrice * single.quantity);
 
+
               return (
                 <li className="single-shopping-cart" key={key}>
                   <div className="shopping-cart-img">
-                    <Link to={process.env.PUBLIC_URL + "/product/" + single.id}>
+                    <Link to={process.env.PUBLIC_URL + "/product/" + single.product}>
                       <img
                         alt=""
-                        src={process.env.PUBLIC_URL + single.image[0]}
+                        src={"https://api.luxurymjhomes.com" + single.variation.image}
                         className="img-fluid"
                       />
                     </Link>
@@ -42,7 +43,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                   <div className="shopping-cart-title">
                     <h4>
                       <Link
-                        to={process.env.PUBLIC_URL + "/product/" + single.id}
+                        to={process.env.PUBLIC_URL + "/product/" + single.product}
                       >
                         {" "}
                         {single.name}{" "}
@@ -55,7 +56,7 @@ const MenuCart = ({ cartData, currency, deleteFromCart }) => {
                         : currency.currencySymbol + finalProductPrice}
                     </span>
                     {single.selectedProductColor &&
-                    single.selectedProductSize ? (
+                      single.selectedProductSize ? (
                       <div className="cart-item-variation">
                         <span>Color: {single.selectedProductColor}</span>
                         <span>Material: {single.selectedProductSize}</span>

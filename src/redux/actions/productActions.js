@@ -19,7 +19,6 @@ export const fetchProducts = (products) => {
     const BASE_URL = "https://api.luxurymjhomes.com/";
     Axios.get(`${BASE_URL}product/`).then((res) => {
       dispatch(fetchProductsSuccess(res.data));
-      console.log(res.data);
     });
   };
 };

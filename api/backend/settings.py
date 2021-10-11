@@ -61,7 +61,8 @@ INSTALLED_APPS = [
     'products',
     'carts',
     'orders',
-    'users'
+    'users',
+    'homepage'
 ]
 
 MIDDLEWARE = [
@@ -181,9 +182,9 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:3001',
     'https://ankitbrur.pythonanywhere.com',
+    'https://api.luxurymjhomes.com',
     'https://luxurymjhomes.com',
-    'https://www.luxurymjhomes.com',
-    'https://api.luxurymjhomes.com'
+    'https://www.luxurymjhomes.com'
 ]
 
 # CSRF_TRUSTED_ORIGINS = [

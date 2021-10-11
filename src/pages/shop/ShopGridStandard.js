@@ -11,6 +11,7 @@ import ShopSidebar from "../../wrappers/product/ShopSidebar";
 import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 import { useToasts } from "react-toast-notifications";
+import { getProducts } from "../../helpers/product";
 // import { useGLTF } from "@react-three/drei";
 // import { useHistory } from "react-router-dom";
 
@@ -91,8 +92,8 @@ const ShopGridStandard = ({ location, products, cb }) => {
   //loader screen
   if (loading) {
     return (
-      <div className="flone-preloader-wrapper">
-        <div className="flone-preloader">
+      <div className="MJHOMES-preloader-wrapper">
+        <div className="MJHOMES-preloader">
           <span></span>
           <span></span>
         </div>
@@ -172,11 +173,28 @@ const mapStateToProps = (state, props) => {
   if (searchText !== null) {
     return {
       products: state.productData.products,
-      cb: searchProducts(searchText),
+      cb: searchProducts(searchText)
     };
-  } else {
+  } else if (props.location.state && props.location.state.type) {
     return {
-      products: state.productData.products,
+      products: getProducts(
+        state.productData.products,
+        props.subcategory,
+        props.location.state.type,
+        props.limit
+      )
+        ? getProducts(
+          state.productData.products,
+          props.subcategory,
+          props.location.state.type,
+          props.limit
+        )
+        : state.productData.products
+    };
+  }
+  else {
+    return {
+      products: state.productData.products
     };
   }
 };
