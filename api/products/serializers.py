@@ -57,12 +57,13 @@ class VariationSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super(VariationSerializer, self).to_representation(instance)
         discount = Product.objects.get(id = data['product']).discount
+
         discounted_price = data['price']
         if discount != 0:
-            discounted_price = (discount/100) * data['price'] + data['price']
+            discounted_price = data['price'] - (discount/100) * data['price'] 
             data['discounted_price'] = discounted_price
 
-        data['gstPrice'] = discounted_price * 0.18 + discounted_price
+        data['gstPrice'] = discounted_price + discounted_price * 0.18
         data['material'] = [data['material']]
         return data
 
