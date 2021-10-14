@@ -32,7 +32,7 @@ class Product_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
                 Image.objects.create(product = obj, image = img)
 
     def list(self, request, *args, **kwargs):
-        objs = Product.objects.filter(active = False)
+        objs = Product.objects.filter(active = True)
         query = request.GET.get('q', None)
         if query:
             objs = objs.filter(Q(keyword__icontains = query))
