@@ -24,6 +24,8 @@ const TermsAndConditions = lazy(() =>
   import("./pages/other/TermsAndConditions")
 );
 const Contact = lazy(() => import("./pages/other/Contact"));
+const B2B = lazy(() => import("./pages/other/B2B"));
+const Customize = lazy(() => import("./pages/other/Customize"));
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
 
@@ -93,6 +95,14 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/about"}
                   component={About}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/B2B"}
+                  component={B2B}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/Customize"}
+                  component={Customize}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/return-policy"}

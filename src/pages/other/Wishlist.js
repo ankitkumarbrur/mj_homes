@@ -62,7 +62,7 @@ const Wishlist = ({
 													<tr>
 														<th>Image</th>
 														<th>Product Name</th>
-														<th>Unit Price</th>
+														{/* <th>Unit Price</th> */}
 														<th>Add To Cart</th>
 														<th>action</th>
 													</tr>
@@ -100,15 +100,13 @@ const Wishlist = ({
 																					.env
 																					.PUBLIC_URL +
 																				"/product/" +
-																				wishlistItem.id
+																				wishlistItem.product
 																			}
 																		>
 																			<img
 																				className="img-fluid"
 																				src={
-																					process
-																						.env
-																						.PUBLIC_URL +
+
 																					wishlistItem
 																						.image[0]
 																				}
@@ -124,7 +122,7 @@ const Wishlist = ({
 																					.env
 																					.PUBLIC_URL +
 																				"/product/" +
-																				wishlistItem.id
+																				wishlistItem.product
 																			}
 																		>
 																			{
@@ -133,7 +131,7 @@ const Wishlist = ({
 																		</Link>
 																	</td>
 
-																	<td className="product-price-cart">
+																	{/* <td className="product-price-cart">
 																		{discountedPrice !==
 																			null ? (
 																			<Fragment>
@@ -152,7 +150,7 @@ const Wishlist = ({
 																					finalProductPrice}
 																			</span>
 																		)}
-																	</td>
+																	</td> */}
 
 																	<td className="product-wishlist-cart">
 																		{wishlistItem.affiliateLink ? (
@@ -269,7 +267,8 @@ const Wishlist = ({
 												<button
 													onClick={() =>
 														deleteAllFromWishlist(
-															addToast,
+															wishlistItems,
+															addToast
 														)
 													}
 												>
@@ -280,7 +279,7 @@ const Wishlist = ({
 									</div>
 								</div>
 							</Fragment>
-						) : (
+						) : (localStorage.getItem("userInfo") ? (
 							<div className="row">
 								<div className="col-lg-12">
 									<div className="item-empty-area text-center">
@@ -297,6 +296,20 @@ const Wishlist = ({
 											>
 												Add Items
 											</Link>
+										</div>
+									</div>
+								</div>
+							</div>
+						) :
+							<div className="myaccount-area pb-80 pt-100" style={{ textAlign: "center" }}>
+								<div className="container">
+									<div className="row">
+										<div className="ml-auto mr-auto col-lg-9" >
+											<h1 style={{ color: "#dc3545" }}>Log In to use WishList</h1>
+											<div className="myaccount-wrapper" style={{ textAlign: "center" }} >
+
+												<Link to="/login-register" ><button className="LogOut-btn" >Log In</button></Link >
+											</div>
 										</div>
 									</div>
 								</div>
@@ -338,8 +351,8 @@ const mapDispatchToProps = (dispatch) => {
 		deleteFromWishlist: (item, addToast, quantityCount) => {
 			dispatch(deleteFromWishlist(item, addToast, quantityCount));
 		},
-		deleteAllFromWishlist: (addToast) => {
-			dispatch(deleteAllFromWishlist(addToast));
+		deleteAllFromWishlist: (wishlistItems, addToast) => {
+			dispatch(deleteAllFromWishlist(wishlistItems, addToast));
 		},
 	};
 };

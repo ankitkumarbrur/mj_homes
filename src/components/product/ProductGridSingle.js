@@ -21,8 +21,8 @@ const ProductGridSingle = ({
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
 
-  const discountedPrice = product.variation[0].discounted_price;
-  const finalProductPrice = product.variation[0].price;
+  const discountedPrice = product.variation[0].discounted_price //? product.variation[0].discounted_price ? product.variation[0].discounted_price : null : null;
+  const finalProductPrice = product.variation[0].price //? product.variation[0].price ? product.variation[0].price : null : null;
   // const discountedPrice = getDiscountPrice(product.price, product.discount);
   // const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
   // const finalDiscountedPrice = +(
@@ -32,9 +32,8 @@ const ProductGridSingle = ({
   return (
     <Fragment>
       <div
-        className={`col-xl-3 col-md-6 col-lg-4 col-sm-6 ${
-          sliderClassName ? sliderClassName : ""
-        }`}
+        className={`col-xl-3 col-md-6 col-lg-4 col-sm-6 ${sliderClassName ? sliderClassName : ""
+          }`}
       >
         <div
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}

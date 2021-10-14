@@ -87,14 +87,10 @@ const MobileNavMenu = ({ strings }) => {
           </ul>
         </li>
         <li>
-          <a target="_blank" href="https://forms.gle/cRAF28CvNyf4j9ED6">
-            B2B
-          </a>
+          <Link to={process.env.PUBLIC_URL + "/B2B"}>B2B</Link>
         </li>
         <li>
-          <a target="_blank" href="https://forms.gle/wr3SCy3VKwgzUFPa9">
-            Customize
-          </a>
+          <Link to={process.env.PUBLIC_URL + "/Customize"}>Customize</Link>
         </li>
         <li>
           <Link target="_blank" to={process.env.PUBLIC_URL + "/about"}>

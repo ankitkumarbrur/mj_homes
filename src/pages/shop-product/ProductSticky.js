@@ -20,7 +20,7 @@ const ProductSticky = ({ location, product }) => {
   // console.log(nodes);
   const { pathname } = location;
   const match = useRouteMatch();
-
+  if (product === (null || undefined)) return <></>
   return (
     <Fragment>
       <MetaTags>

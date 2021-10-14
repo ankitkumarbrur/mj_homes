@@ -89,42 +89,44 @@ export const deleteFromWishlist = (item, addToast) => async (dispatch) => {
     };
 
     const { data } = await axios.delete(`${BASE_URL}wishlist/${item.id}/`, config);
+    if (addToast) {
+      addToast("Removed From Wishlist", {
+        appearance: "success",
+        autoDismiss: true,
+      });
+    }
 
-    addToast("Removed From Wishlist", {
-      appearance: "success",
-      autoDismiss: true,
-    });
 
     dispatch({ type: DELETE_FROM_WISHLIST, payload: item });
 
   } catch (error) {
     console.log(error)
-    addToast("Failed to Remove From Wishlist", {
-      appearance: "error",
-      autoDismiss: true,
-    });
+    if (addToast) {
+      addToast("Failed to Remove From Wishlist", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
+
   }
 
 
 };
 
 //delete all from wishlist
-export const deleteAllFromWishlist = (addToast) => (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Authorization: `JWT ${localStorage.getItem("userInfo")}`,
-    },
-  };
+export const deleteAllFromWishlist = (wishlistItems, addToast) => (dispatch) => {
 
+  wishlistItems.map((item) => {
+    dispatch(deleteFromWishlist(item));
+  })
   console.log("Deleting")
-  // return (dispatch) => {
-  // if (addToast) {
-  addToast("Removed All From Wishlist", {
-    appearance: "error",
-    autoDismiss: true,
-  });
-  // }
+
+  if (addToast) {
+    addToast("Removed All From Wishlist", {
+      appearance: "error",
+      autoDismiss: true,
+    });
+  }
   dispatch({ type: DELETE_ALL_FROM_WISHLIST });
-  // };
+
 };
