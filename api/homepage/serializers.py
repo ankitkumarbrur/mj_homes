@@ -8,6 +8,11 @@ class CarouselSerializer(serializers.ModelSerializer):
         model = Carousel
         fields = '__all__'
 
+class PincodeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pincode
+        fields = '__all__'
+
 class DOTDSerializer(serializers.ModelSerializer):
     class Meta:
         model = DOTD
