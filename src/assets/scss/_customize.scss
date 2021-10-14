@@ -1,0 +1,61 @@
+.container {
+  .heading-img {
+    img {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  .step-by-step {
+    width: 90%;
+    @media #{$md-layout, $sm-layout, $xs-layout} {
+      width: 80%;
+    }
+    margin: 0 auto;
+    background-color: rgb(255, 159, 0);
+    padding: 20px;
+    h2 {
+      padding-bottom: 20px;
+      font-size: 35px;
+    }
+    &-process {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      &-img {
+        display: flex;
+        flex-direction: column;
+        width: 220px;
+        img {
+          padding: 0px 25px;
+          background-color: white;
+          transition: all 0.3s linear;
+          &:hover {
+            transform: translateY(-10px);
+          }
+        }
+        h3 {
+          color: white;
+          padding: 15px 0px;
+        }
+      }
+    }
+  }
+
+  .reliability {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 80px;
+    h1 {
+      margin-bottom: 25px;
+    }
+    &-img {
+      float: none;
+      margin: 0 auto;
+      width: 65%;
+    }
+  }
+}

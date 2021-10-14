@@ -4,7 +4,9 @@ import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import LocationMap from "../../components/contact/LocationMap";
+import customizeData from "../../data/helpers-page/customize-data.json";
+import FeatureIconFour from "../../wrappers/feature-icon/FeatureIconFour";
+
 import axios from "axios";
 import { useToasts } from "react-toast-notifications";
 
@@ -17,18 +19,15 @@ const Contact = ({ location }) => {
   const initialState = "";
   const [name, setname] = useState(initialState);
   const [email, setemail] = useState(initialState);
-  const [city, setcity] = useState(initialState)
-  const [state, setstate] = useState(initialState)
-  const [message, setmessage] = useState(initialState)
-  const [phone, setphone] = useState(initialState)
-
+  const [city, setcity] = useState(initialState);
+  const [state, setstate] = useState(initialState);
+  const [message, setmessage] = useState(initialState);
+  const [phone, setphone] = useState(initialState);
 
   const submitHandler = async (e) => {
-
     e.preventDefault();
 
     try {
-
       const formData = new FormData();
       formData.append("name", name);
       formData.append("city", city);
@@ -43,55 +42,91 @@ const Contact = ({ location }) => {
         },
       };
 
-      const { data } = await axios.post(
-        `${BASE_URL}query/`,
-        formData,
-        config
-      );
+      const { data } = await axios.post(`${BASE_URL}query/`, formData, config);
 
       addToast("We will get back to you within 48 hours.", {
         appearance: "success",
-        autoDismiss: true
+        autoDismiss: true,
       });
 
-      setname(initialState)
-      setcity(initialState)
-      setemail(initialState)
-      setphone(initialState)
-      setmessage(initialState)
-      setstate(initialState)
-
+      setname(initialState);
+      setcity(initialState);
+      setemail(initialState);
+      setphone(initialState);
+      setmessage(initialState);
+      setstate(initialState);
     } catch (error) {
       addToast("Failed to Submit Query.", {
         appearance: "error",
-        autoDismiss: true
+        autoDismiss: true,
       });
     }
-
-  }
-
+  };
 
   return (
     <Fragment>
       <MetaTags>
-        <title>MJ Homes | Contact</title>
-        <meta
-          name="description"
-          content="Contact of MJHOMES react minimalist eCommerce template."
-        />
+        <title>MJ Homes | Customize</title>
+        <meta name="description" content="Contact of MJ HOMES." />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-        Contact
+        Customize
       </BreadcrumbsItem>
       <LayoutOne>
         {/* breadcrumb */}
         <Breadcrumb />
         <div className="contact-area pt-100 pb-100">
           <div className="container">
-            <div className="contact-map mb-10">
-              <LocationMap latitude="28.69325227676948" longitude="76.93092949317882" />
+            <div className="welcome-content text-center">
+              <h5>MJ Homes</h5>
+              <h1>Customize</h1>
             </div>
+
+            <div className="heading-img mb-60">
+              <img src="/assets/img/customize/customize.jpeg" alt="" />
+            </div>
+
+            <div className="step-by-step text-center">
+              <h2>How Does It Work?</h2>
+              <div className="step-by-step-process">
+                {customizeData &&
+                  customizeData.map((single) => {
+                    return (
+                      <div className="step-by-step-process-img" key={single.id}>
+                        <img
+                          src={process.env.PUBLIC_URL + single.titleImage}
+                          alt=""
+                        />
+                        <h3>{single.title}</h3>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+
+            <div className="reliability text-center welcome-content ">
+              <h1>Our Reliability</h1>
+              <img
+                className="reliability-img"
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/img/customize/reliability.jpeg"
+                }
+                alt=""
+              />
+            </div>
+            <div className="welcome-content text-center">
+              <h1>Customize the way you want</h1>
+              <FeatureIconFour
+                bgImg="/assets/img/bg/shape.png"
+                containerClass="container-fluid"
+                gutterClass="padding-10-row-col"
+                spaceTopClass="pt-40"
+                spaceBottomClass="pb-40"
+              />
+            </div>
+
             <div className="custom-row-2">
               <div className="col-lg-4 col-md-5">
                 <div className="contact-info-wrap">
@@ -125,7 +160,7 @@ const Contact = ({ location }) => {
                       <i className="fa fa-map-marker" />
                     </div>
                     <div className="contact-info-dec">
-                      <p>Ward no 21,  </p>
+                      <p>Ward no 21, </p>
                       <p>Railway Station Rd, Basant Vihar</p>
                       <p>Bahadurgarh, Haryana 124507</p>
                     </div>
@@ -190,55 +225,35 @@ const Contact = ({ location }) => {
                   <form className="contact-form-style">
                     <div className="row">
                       <div className="col-lg-6">
-                        <input name="name" placeholder="Name*" type="text"
-                          onChange={(
-                            e,
-                          ) =>
-                            setname(
-                              e
-                                .target
-                                .value,
-                            )
-                          }
+                        <input
+                          name="name"
+                          placeholder="Name*"
+                          type="text"
+                          onChange={(e) => setname(e.target.value)}
                         />
                       </div>
                       <div className="col-lg-6">
-                        <input name="email" placeholder="Email*" type="email"
-                          onChange={(
-                            e,
-                          ) =>
-                            setemail(
-                              e
-                                .target
-                                .value,
-                            )
-                          }
+                        <input
+                          name="email"
+                          placeholder="Email*"
+                          type="email"
+                          onChange={(e) => setemail(e.target.value)}
                         />
                       </div>
                       <div className="col-lg-6">
-                        <input name="city" placeholder="City*" type="text"
-                          onChange={(
-                            e,
-                          ) =>
-                            setcity(
-                              e
-                                .target
-                                .value,
-                            )
-                          }
+                        <input
+                          name="city"
+                          placeholder="City*"
+                          type="text"
+                          onChange={(e) => setcity(e.target.value)}
                         />
                       </div>
                       <div className="col-lg-6">
-                        <input name="state" placeholder="State*" type="text"
-                          onChange={(
-                            e,
-                          ) =>
-                            setstate(
-                              e
-                                .target
-                                .value,
-                            )
-                          }
+                        <input
+                          name="state"
+                          placeholder="State*"
+                          type="text"
+                          onChange={(e) => setstate(e.target.value)}
                         />
                       </div>
                       <div className="col-lg-12">
@@ -246,42 +261,24 @@ const Contact = ({ location }) => {
                           name="contact"
                           placeholder="Contact*"
                           type="text"
-                          onChange={(
-                            e,
-                          ) =>
-                            setphone(
-                              e
-                                .target
-                                .value,
-                            )
-                          }
+                          onChange={(e) => setphone(e.target.value)}
                         />
                       </div>
-                      {/* <div className="col-lg-12">
-                        <input
-                          name="subject"
-                          placeholder="Subject*"
-                          type="text"
-                        />
-                      </div> */}
+
                       <div className="col-lg-12">
                         <textarea
                           name="message"
                           placeholder="Your Message*"
                           defaultValue={""}
-                          onChange={(
-                            e,
-                          ) =>
-                            setmessage(
-                              e
-                                .target
-                                .value,
-                            )
-                          }
+                          onChange={(e) => setmessage(e.target.value)}
                         />
-                        <button className="submit" type="submit" onClick={(e) => {
-                          submitHandler(e)
-                        }}>
+                        <button
+                          className="submit"
+                          type="submit"
+                          onClick={(e) => {
+                            submitHandler(e);
+                          }}
+                        >
                           SEND
                         </button>
                       </div>
