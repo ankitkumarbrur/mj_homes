@@ -10,7 +10,6 @@ import AddReviewRating from "../../components/product/sub-components/AddReviewRa
 import axios from "axios";
 
 const BASE_URL = "https://api.luxurymjhomes.com/";
-const userInfo = localStorage.getItem("userInfo");
 
 const ProductDescriptionTab = ({
   spaceBottomClass,
@@ -26,6 +25,8 @@ const ProductDescriptionTab = ({
   const [message, setMessage] = useState("");
   const [rating, setRating] = useState(null);
 
+  const userInfo = localStorage.getItem("userInfo");
+  console.log(userInfo);
   const handleSubmit = async (e) => {
     try {
       const formData = new FormData();
@@ -36,7 +37,7 @@ const ProductDescriptionTab = ({
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `JWT ${userInfo}`,
+          Authorization: `JWT ${localStorage.getItem("userInfo")}`,
         },
       };
       const { data } = await axios.post(`${BASE_URL}review/`, formData, config);
@@ -378,7 +379,7 @@ const ProductDescriptionTab = ({
                   </div>
 
                   {/* ADD A REVIEW */}
-                  {userInfo && (
+                  {userInfo !== null ? (
                     <div className="col-lg-5">
                       <div className="ratting-form-wrapper pl-50">
                         <h3>Add a Review</h3>
@@ -409,6 +410,8 @@ const ProductDescriptionTab = ({
                         </div>
                       </div>
                     </div>
+                  ) : (
+                    ""
                   )}
                 </div>
               </Tab.Pane>
