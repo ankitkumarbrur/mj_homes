@@ -81,4 +81,4 @@ class Query(models.Model):
     message = models.TextField(null = False)
 
     def __str__(self):
-        return (self.item_name)
+        return (self.name)
