@@ -46,6 +46,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.first_name
 
+      
+class Pincode(models.Model):
+	pin = models.IntegerField(primary_key = True, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
+
+	def __str__(self):
+		return ("%d"%(self.pin))
+
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, null = False, blank = False)
 
@@ -53,11 +60,12 @@ class Address(models.Model):
     city = models.CharField(max_length = 100, null = False, blank = False)
     state = models.CharField(max_length = 100, null = False, blank = False)
     district = models.CharField(max_length = 100, null = False, blank = False)
-    pin = models.IntegerField(default = 0, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
+    pin = models.ForeignKey(Pincode, on_delete = models.CASCADE)
+
     phone = models.CharField(default = '+91 ----------', max_length=20)
 
     def __str__(self):
-        return (self.item_name)
+        return ( "%s - %d"%(self.user.first_name, self.id))
 
 class Subscribe(models.Model):
     email = models.EmailField(_('email address'), unique = True)

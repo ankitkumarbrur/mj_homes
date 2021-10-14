@@ -1,5 +1,7 @@
 from django.db import models
 from products.models import Product
+from django.core.validators import MaxValueValidator, MinValueValidator
+
 
 [
   {

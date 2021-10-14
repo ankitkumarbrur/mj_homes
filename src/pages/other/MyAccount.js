@@ -12,7 +12,7 @@ import { useToasts } from "react-toast-notifications";
 
 
 
-const BASE_URL = "https://ankitbrur.pythonanywhere.com/";
+const BASE_URL = "https://api.luxurymjhomes.com/";
 
 const MyAccount = ({ location }) => {
 

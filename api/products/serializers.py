@@ -44,11 +44,6 @@ class ImageSerializer(serializers.ModelSerializer):
         data = super(ImageSerializer, self).to_representation(instance)
         return data
 
-class RoomSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Room
-        fields = '__all__'
-
 class VariationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductVariation    
@@ -84,9 +79,7 @@ class ProductSerializer(serializers.ModelSerializer):
             totalRating += r.get('reviewStar', 0)
 
         if data['discount'] == 0: data.pop('discount')
-        
         data['rating'] = totalRating/len(data['review']) if len(data['review']) else 0
-        data['room'] = [data['room']]
         data['image'] = [img['image'] for img in data['image']]
         data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data
