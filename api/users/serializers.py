@@ -85,6 +85,5 @@ class PincodeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def to_representation(self, instance):
-        data = super(AddressSerializer, self).to_representation(instance)
-        arr = [d.get("pin", None) for d in data]
-        return arr
+        data = super(PincodeSerializer, self).to_representation(instance)
+        return data.get('pin', None)
