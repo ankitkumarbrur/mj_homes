@@ -10,6 +10,7 @@ import AddReviewRating from "../../components/product/sub-components/AddReviewRa
 import axios from "axios";
 
 const BASE_URL = "https://api.luxurymjhomes.com/";
+const userInfo = localStorage.getItem("userInfo");
 
 const ProductDescriptionTab = ({
   spaceBottomClass,
@@ -35,7 +36,7 @@ const ProductDescriptionTab = ({
       const config = {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `JWT ${localStorage.getItem("userInfo")}`,
+          Authorization: `JWT ${userInfo}`,
         },
       };
       const { data } = await axios.post(`${BASE_URL}review/`, formData, config);
@@ -377,58 +378,38 @@ const ProductDescriptionTab = ({
                   </div>
 
                   {/* ADD A REVIEW */}
-                  <div className="col-lg-5">
-                    <div className="ratting-form-wrapper pl-50">
-                      <h3>Add a Review</h3>
-                      <div className="ratting-form">
-                        <form action="#" onSubmit={handleSubmit}>
-                          <div className="star-box">
-                            <span>Your rating:</span>
-                            <AddReviewRating
-                              rating={rating}
-                              setRating={setRating}
-                            />
-                          </div>
-                          <div className="row">
-                            {/* <div className="col-md-6">
-                              <div className="rating-form-style mb-10">
-                                <input
-                                  placeholder="Name"
-                                  type="text"
-                                  value={user}
-                                  required
-                                  onChange={(e) => setUser(e.target.value)}
-                                />
-                              </div>
-                            </div> */}
-                            {/* <div className="col-md-6">
-                              <div className="rating-form-style mb-10">
-                                <input
-                                  placeholder="Email"
-                                  type="email"
-                                  value={email}
-                                  required
-                                  onChange={(e) => setEmail(e.target.value)}
-                                />
-                              </div>
-                            </div> */}
-                            <div className="col-md-12">
-                              <div className="rating-form-style form-submit">
-                                <textarea
-                                  name="Your Review"
-                                  placeholder="Message..."
-                                  value={message}
-                                  required
-                                  onChange={(e) => setMessage(e.target.value)}
-                                />
-                                <input type="submit" defaultValue="Submit" />
+                  {userInfo && (
+                    <div className="col-lg-5">
+                      <div className="ratting-form-wrapper pl-50">
+                        <h3>Add a Review</h3>
+                        <div className="ratting-form">
+                          <form action="#" onSubmit={handleSubmit}>
+                            <div className="star-box">
+                              <span>Your rating:</span>
+                              <AddReviewRating
+                                rating={rating}
+                                setRating={setRating}
+                              />
+                            </div>
+                            <div className="row">
+                              <div className="col-md-12">
+                                <div className="rating-form-style form-submit">
+                                  <textarea
+                                    name="Your Review"
+                                    placeholder="Message..."
+                                    value={message}
+                                    required
+                                    onChange={(e) => setMessage(e.target.value)}
+                                  />
+                                  <input type="submit" defaultValue="Submit" />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </form>
+                          </form>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </Tab.Pane>
             </Tab.Content>

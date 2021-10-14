@@ -57,7 +57,7 @@ class Address(models.Model):
     phone = models.CharField(default = '+91 ----------', max_length=20)
 
     def __str__(self):
-        return (self.item_name)
+        return ( "%s - %d"%(self.user.first_name, self.id))
 
 class Subscribe(models.Model):
     email = models.EmailField(_('email address'), unique = True)

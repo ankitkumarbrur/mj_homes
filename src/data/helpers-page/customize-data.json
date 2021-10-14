@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "titleImage": "/assets/img/customize/step1.jpeg",
+    "title": "Step 1"
+  },
+  {
+    "id": 2,
+    "titleImage": "/assets/img/customize/step2.jpeg",
+    "title": "Step 2"
+  },
+  {
+    "id": 3,
+    "titleImage": "/assets/img/customize/step3.jpeg",
+    "title": "Step 3"
+  },
+  {
+    "id": 3,
+    "titleImage": "/assets/img/customize/step4.jpeg",
+    "title": "Step 4"
+  }
+]
