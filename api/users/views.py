@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .models import User, Address
-from .serializers import UserSerializer, AddressSerializer, SubscribeSerializer, QuerySerializer
+from .models import *
+from .serializers import *
 from rest_framework.permissions import AllowAny
 
 from authentication.permissions import IsOwnerOrAdmin, IsAdmin, IsAuthenticated
@@ -78,6 +78,21 @@ class Query_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
     action_based_permission_classes = {
         # 'list' : (permission_classes,),
         'create' : (AllowAny,),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
+
+
+class Pincode_view(ViewsetActionPermissionMixin, viewsets.ModelViewSet):
+    queryset = Pincode.objects.all()
+    serializer_class = PincodeSerializer
+    permission_classes = (IsAdmin,)
+
+    action_based_permission_classes = {
+        'list' : (AllowAny,),
+        # 'create': (permission_classes),
         # 'retrieve': (permission_classes),
         # 'update' : (permission_classes),
         # 'partial_update' : (permission_classes),

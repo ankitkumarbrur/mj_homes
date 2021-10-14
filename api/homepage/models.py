@@ -41,9 +41,3 @@ class DOTD(models.Model):
 
     def __str__(self):
         return (self.product.name)
-      
-class Pincode(models.Model):
-	pin = models.IntegerField(primary_key = True, validators=[MaxValueValidator(999999), MinValueValidator(000000)])
-
-	def __str__(self):
-		return ("%d"%(self.pin))

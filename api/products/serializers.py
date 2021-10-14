@@ -79,9 +79,7 @@ class ProductSerializer(serializers.ModelSerializer):
             totalRating += r.get('reviewStar', 0)
 
         if data['discount'] == 0: data.pop('discount')
-        
         data['rating'] = totalRating/len(data['review']) if len(data['review']) else 0
-        data['room'] = [data['room']]
         data['image'] = [img['image'] for img in data['image']]
         data['subcategory'] = list( i.strip() for i in str(data['subcategory']).split(',')) if data['subcategory'] else list()
         return data

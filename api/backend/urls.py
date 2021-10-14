@@ -21,9 +21,9 @@ from rest_framework.routers import DefaultRouter
 
 from orders.views import OrderView
 from carts.views import CartView, WishListView, CouponView
-from users.views import Address_view, User_view, Subscribe_view, Query_view
+from users.views import Address_view, User_view, Subscribe_view, Query_view, Pincode_view
 from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view
-from homepage.views import Carousel_View, DOTD_view, Pincode_view
+from homepage.views import Carousel_View, DOTD_view
 
 """
 Router HTTP Request mapping to methods
