@@ -83,3 +83,7 @@ class PincodeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pincode
         fields = '__all__'
+
+    def to_representation(self, instance):
+        data = super(PincodeSerializer, self).to_representation(instance)
+        return data.get('pin', None)

@@ -58,7 +58,7 @@ class VariationSerializer(serializers.ModelSerializer):
             discounted_price = data['price'] - (discount/100) * data['price'] 
             data['discounted_price'] = discounted_price
 
-        data['gstPrice'] = discounted_price + discounted_price * 0.18
+        data['gstPrice'] =  round((discounted_price + discounted_price * 0.18), 2)
         data['material'] = [data['material']]
         return data
 
