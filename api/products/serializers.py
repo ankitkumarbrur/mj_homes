@@ -44,11 +44,6 @@ class ImageSerializer(serializers.ModelSerializer):
         data = super(ImageSerializer, self).to_representation(instance)
         return data
 
-class RoomSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Room
-        fields = '__all__'
-
 class VariationSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductVariation    
