@@ -152,13 +152,19 @@
 
   overflow: hidden;
 
-  padding: 30px 10px 24px;
+  padding: 24px 10px 15px;
   .support-icon-2 {
     position: absolute;
     right: 0;
     bottom: 0;
   }
   .support-content-3 {
+    display: flex;
+    flex-direction: column;
+    img {
+      width: 350px;
+      height: 120px;
+    }
     p {
       font-size: 16px;
 
@@ -175,14 +181,11 @@
       }
     }
 
-    &.support-content-3-white {
-      p {
-        color: #fff;
-      }
-    }
-  }
-  &:hover .support-icon-2 img {
-    animation: 500ms ease-in-out 0s normal none 1 running tada;
+    // &.support-content-3-white {
+    //   p {
+    //     color: #fff;
+    //   }
+    // }
   }
 }
 
@@ -210,8 +213,6 @@
     }
   }
 }
-
-
 
 .support-wrap-4-border {
   padding: 50px 0 20px;
@@ -371,7 +372,6 @@
     }
   }
 }
-
 
 .support-wrap-7 {
   display: flex;
