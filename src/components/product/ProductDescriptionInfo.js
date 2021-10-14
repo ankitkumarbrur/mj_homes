@@ -38,7 +38,7 @@ const ProductDescriptionInfo = ({
   const [variationId, setVariationId] = useState(
     product.variation ? product.variation[0].id : ""
   );
-  const [productStock, setProductStock] = useState(1);
+  const [productStock, setProductStock] = useState(10);
   const [quantityCount, setQuantityCount] = useState(1);
 
   //Product Details To be Displayed on this page
@@ -96,6 +96,7 @@ const ProductDescriptionInfo = ({
                       Price With GST :
                       <span className="price">
                         {currency.currencySymbol + single.gstPrice}
+
                       </span>
                     </div>
                   </div>
@@ -125,35 +126,40 @@ const ProductDescriptionInfo = ({
               {product.variation.map((single, key) => {
                 return (
                   <label
+                    for={single.id}
                     className={`pro-details-color-content--single ${single.color.toLowerCase()}`}
                     key={key}
+                    style={{ marginRight: "5vw" }}
                   >
+
                     <input
                       id={single.id}
                       type="radio"
                       value={single.color.toLowerCase()}
                       name="product-color"
                       checked={
-                        single.color === selectedProductColor ? "checked" : ""
+                        (single.color === selectedProductColor && single.material[0] === selectedProductMaterial) ? "checked" : ""
                       }
                       onChange={() => {
                         setSelectedProductColor(single.color);
                         setSelectedProductMaterial(single.material[0]);
                         setVariationId(single.id);
                         // setProductStock(single.size[0].stock);
-                        setQuantityCount(1);
+                        setQuantityCount(quantityCount);
                       }}
 
                     />
-                    <label for={single.id}>17 years or younger</label><br />
-                    {/* <span className="checkmark"></span> */}
-                    {/* {single.material[0].toUpperCase()} */}
+                    <span className="checkmark"></span>
+                    <div style={{ paddingLeft: "2vh", paddingRight: "2vh", position: "absolute", width: "fit-content", top: "-6px" }}>
+                      {single.material[0].toUpperCase()}
+                    </div>
+
                   </label>
                 );
               })}
             </div>
           </div>
-          <div className="pro-details-size">
+          {/* <div className="pro-details-size">
             <span>Material</span>
             <div className="pro-details-size-content">
               {product.variation &&
@@ -170,7 +176,7 @@ const ProductDescriptionInfo = ({
                             type="radio"
                             value={singleMaterial.material}
                             checked={
-                              singleMaterial === selectedProductMaterial
+                              (single.color === selectedProductColor && single.material[0] === selectedProductMaterial)
                                 ? "checked"
                                 : ""
                             }
@@ -187,7 +193,7 @@ const ProductDescriptionInfo = ({
                   );
                 })}
             </div>
-          </div>
+          </div> */}
         </div>
       ) : (
         ""
