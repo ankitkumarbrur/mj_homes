@@ -4,4 +4,3 @@ from .models import *
 
 admin.site.register(Carousel)
 admin.site.register(DOTD)
-admin.site.register(Pincode)
