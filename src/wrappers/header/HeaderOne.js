@@ -78,7 +78,7 @@ const HeaderOne = ({
                 </div>
               </div>
             </div>
-            <div className="col-xl-1 col-lg-1 col-md-5 col-2">
+            <div className="col-xl-1 col-lg-1 col-md-5 col-1">
               {/* header logo */}
               <Logo imageUrl="/assets/img/logo/logo.png" logoClass="logo" />
             </div>
