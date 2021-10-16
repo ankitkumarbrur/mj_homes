@@ -55,19 +55,19 @@ const ProductSticky = ({ location, product }) => {
           productManufacturer={product.manufacturer}
           productReview={product.review}
         />
-
+        {/* Products in the first category */}
         {/* frequently bought together product slider */}
         <FrequentlyBoughtTogether
           spaceBottomClass="pb-95"
           category={product.subcategory ? product.subcategory[0] : ""}
         />
-        {/* {console.log(product.category[0])} */}
+        {/* Bestseller in the first sub category */}
         {/* related product slider */}
         <RelatedProductSlider
           spaceBottomClass="pb-95"
-          tag={product.tag ? product.tag[0] : ""}
+          category={product.subcategory ? product.subcategory[0] : ""}
         />
-
+        {/* Bestsellers*/}
         {/* other people bought product slider */}
         <OtherPeopleBought
           spaceBottomClass="pb-95"

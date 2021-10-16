@@ -3,14 +3,14 @@ import React from "react";
 import Swiper from "react-id-swiper";
 import SectionTitle from "../../components/section-title/SectionTitle";
 import ProductGrid from "./ProductGrid";
-import { getProductsByTag } from "../../helpers/product";
+import { getProducts } from "../../helpers/product";
 import ProductGridFour from "./ProductGridFour";
 import { useSelector } from "react-redux";
 
-const RelatedProductSlider = ({ spaceBottomClass, tag }) => {
+const RelatedProductSlider = ({ spaceBottomClass, category }) => {
   const { productData } = useSelector((state) => state);
 
-  const data = getProductsByTag(productData.products, tag, null, 4);
+  const data = getProducts(productData.products, category, "bestSeller", 4);
 
   const settings = {
     loop: false,
@@ -34,9 +34,8 @@ const RelatedProductSlider = ({ spaceBottomClass, tag }) => {
 
   return (
     <div
-      className={`related-product-area ${
-        spaceBottomClass ? spaceBottomClass : ""
-      }`}
+      className={`related-product-area ${spaceBottomClass ? spaceBottomClass : ""
+        }`}
     >
       <div className="container">
         <SectionTitle
