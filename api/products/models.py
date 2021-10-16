@@ -3,6 +3,10 @@ from users.models import User
 from django.utils.text import slugify
 import uuid
 
+from PIL import Image as Img
+import io as StringIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
 # Create your models here.
 class ProductQuerySet(models.query.QuerySet):
 	def active(self):
@@ -22,11 +26,11 @@ def model_upload(instance, filename):
 	return "products/%s/%s" %(slug, new_filename)
 
 def image_upload(instance, filename):
+
     slug = slugify(instance.product.name)
     file_extension = filename.split(".")[-1]
     new_filename = "%s-%s.%s" %(slug, instance.id, file_extension)
     return "products/%s/%s" %(slug, new_filename)
-
 
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -72,8 +76,20 @@ class Image(models.Model):
     product = models.ForeignKey(Product, related_name="image", on_delete = models.CASCADE, null = False, blank = False)
     image = models.ImageField(upload_to = image_upload)
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s - %s" %(self.product.name, self.id)
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            image_f = Img.open(StringIO.BytesIO(self.image.read()))
+
+            output = StringIO.BytesIO()
+            image_f.save(output, format='WEBP', quality=75)
+            output.seek(0)
+
+            self.image = InMemoryUploadedFile(output,'ImageField', "%s.webp" %self.image.name, 'image/webp', output.getbuffer().nbytes, None)
+
+        super(Image, self).save(*args, **kwargs)
 
 class Review(models.Model):
     product = models.ForeignKey(Product, related_name="review", on_delete = models.CASCADE, null = False, blank = False)
