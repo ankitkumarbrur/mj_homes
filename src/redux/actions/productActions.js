@@ -1,10 +1,16 @@
 import Axios from "axios";
 
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
+export const SELECT_PRODUCT_SUCCESS = "SELECT_PRODUCT_SUCCESS";
 
 const fetchProductsSuccess = (products) => ({
   type: FETCH_PRODUCTS_SUCCESS,
   payload: products,
+});
+
+const selectProductSuccess = ({ size, weight, material }) => ({
+  type: SELECT_PRODUCT_SUCCESS,
+  payload: { size, weight, material }
 });
 
 // fetch products
@@ -21,4 +27,14 @@ export const fetchProducts = (products) => {
       dispatch(fetchProductsSuccess(res.data));
     });
   };
+};
+
+// Selected product
+export const selectProduct = (size, weight, material) => {
+
+  return (dispatch) => {
+
+    dispatch(selectProductSuccess({ size, weight, material }));
+  };
+  ;
 };

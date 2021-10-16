@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import { getProductCartQuantity } from "../../helpers/product";
 import { addToCart } from "../../redux/actions/cartActions";
 import { addToWishlist } from "../../redux/actions/wishlistActions";
@@ -9,6 +9,7 @@ import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
 import PinCode from "./sub-components/Pincode";
 import ProductGridFour from "../../wrappers/product/ProductGridFour";
+import { selectProduct } from "../../redux/actions/productActions";
 
 const ProductDescriptionInfo = ({
   product,
@@ -23,6 +24,7 @@ const ProductDescriptionInfo = ({
   addToCart,
   addToWishlist,
 }) => {
+  const dispatch = useDispatch()
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
@@ -133,7 +135,7 @@ const ProductDescriptionInfo = ({
                       name="product-color"
                       checked={
                         single.color === selectedProductColor &&
-                        single.material[0] === selectedProductMaterial
+                          single.material[0] === selectedProductMaterial
                           ? "checked"
                           : ""
                       }
@@ -143,6 +145,7 @@ const ProductDescriptionInfo = ({
                         setVariationId(single.id);
                         // setProductStock(single.size[0].stock);
                         setQuantityCount(quantityCount);
+                        dispatch(selectProduct(single.size, single.weight, single.material));
                       }}
                     />
                     <span className="checkmark"></span>
@@ -307,7 +310,7 @@ const ProductDescriptionInfo = ({
             {product.subcategory.map((single, key) => {
               return (
                 <li key={key}>
-                  <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+                  <Link to={process.env.PUBLIC_URL + `/shop-grid-standard?q=${single}`}>
                     {single}
                   </Link>
                 </li>
@@ -337,6 +340,7 @@ const ProductDescriptionInfo = ({
         ""
       )} */}
     </div>
+
   );
 };
 

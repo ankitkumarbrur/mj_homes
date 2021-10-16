@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-
+import { connect } from "react-redux";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 
@@ -329,4 +329,11 @@ ProductDescriptionTab.propTypes = {
   productReview: PropTypes.array,
 };
 
-export default ProductDescriptionTab;
+const mapStateToProps = (state, props) => {
+  return {
+    productSize: state.productData.selectedProduct.size ? state.productData.selectedProduct.size : props.productSize,
+    productWeight: state.productData.selectedProduct.weight ? state.productData.selectedProduct.weight : props.productWeight,
+    productMaterial: state.productData.selectedProduct.material ? state.productData.selectedProduct.material : props.productMaterial,
+  };
+};
+export default connect(mapStateToProps)(ProductDescriptionTab);

@@ -13,7 +13,6 @@ import BannerFifteen from "../../wrappers/banner/BannerFifteen";
 import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
-
 import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
 
 const Home = () => {
