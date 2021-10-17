@@ -70,8 +70,8 @@ const Cart = ({
                         <tbody>
                           {cartItems.map((cartItem, key) => {
                             const discountedPrice = getDiscountPrice(
-                              cartItem.price,
-                              cartItem.discount
+                              cartItem.price ? cartItem.price : cartItem.variation.price,
+                              cartItem.discount ? cartItem.discount : cartItem.variation.discount
                             );
                             const finalProductPrice = (
                               cartItem.variation.price * currency.currencyRate
@@ -97,7 +97,7 @@ const Cart = ({
                                         .env
                                         .PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.product
                                     }
                                   >
                                     <img
@@ -119,11 +119,11 @@ const Cart = ({
                                         .env
                                         .PUBLIC_URL +
                                       "/product/" +
-                                      cartItem.id
+                                      cartItem.product
                                     }
                                   >
                                     {
-                                      cartItem.name
+                                      cartItem.name ? cartItem.name : cartItem.variation.name
                                     }
                                   </Link>
                                   {cartItem.selectedProductColor &&
@@ -143,7 +143,20 @@ const Cart = ({
                                       </span>
                                     </div>
                                   ) : (
-                                    ""
+                                    <div className="cart-item-variation">
+                                      <span>
+                                        Color:{" "}
+                                        {
+                                          cartItem.variation.color
+                                        }
+                                      </span>
+                                      <span>
+                                        Size:{" "}
+                                        {
+                                          cartItem.variation.size
+                                        }
+                                      </span>
+                                    </div>
                                   )}
                                 </td>
 
@@ -261,7 +274,7 @@ const Cart = ({
                         </Link>
                       </div>
                       <div className="cart-clear">
-                        <button onClick={() => deleteAllFromCart(addToast)}>
+                        <button onClick={() => deleteAllFromCart(cartItems, addToast)}>
                           Clear Shopping Cart
                         </button>
                       </div>
@@ -270,7 +283,7 @@ const Cart = ({
                 </div>
 
                 <div className="row">
-                  <div className="col-lg-4 col-md-6">
+                  {/* <div className="col-lg-4 col-md-6">
                     <div className="cart-tax">
                       <div className="title-wrap">
                         <h4 className="cart-bottom-title section-bg-gray">
@@ -312,7 +325,7 @@ const Cart = ({
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="col-lg-4 col-md-6">
                     <div className="discount-code-wrapper">

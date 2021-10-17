@@ -69,7 +69,7 @@ export const addToWishlist = (item, addToast) => async (dispatch) => {
     // else if (error.response.data.Error) message = error.response.data.Error;
     // else if (error.response.data.Message) message = error.response.data.Message;
 
-    addToast("Failed To Add", {
+    addToast("Login first !", {
       appearance: "error",
       autoDismiss: true,
     });

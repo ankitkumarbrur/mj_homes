@@ -7,7 +7,7 @@ export const FETCH_CART_DATA = "FETCH_CART_DATA";
 const BASE_URL = "https://api.luxurymjhomes.com/";
 
 //Fetch Cart
-export const fetchCart = async (addToast, dispatch) => {
+export const fetchCart = (addToast) => async (dispatch) => {
   try {
     const config = {
       headers: {
@@ -17,16 +17,20 @@ export const fetchCart = async (addToast, dispatch) => {
     };
 
     const { data } = await axios.get(`${BASE_URL}cart/`, config)
+    console.log(data)
+    data.map((item) => {
+      dispatch({ type: ADD_TO_CART, payload: item });
+    })
 
     addToast("Fetched Cart", {
       appearance: "success",
       autoDismiss: true
     });
-    console.log(data)
-    dispatch({
-      type: FETCH_CART_DATA,
-      payload: data,
-    })
+
+    // dispatch({
+    //   type: FETCH_CART_DATA,
+    //   payload: data,
+    // })
 
 
   } catch (error) {
@@ -47,58 +51,60 @@ export const addToCart = (
   selectedProductColor,
   selectedProductSize,
   variationId
-) => {
+) => async (dispatch) => {
 
-  return async (dispatch) => {
-    try {
-      const formData = new FormData();
-      formData.append("product", variationId);
-      formData.append("quantity", quantityCount);
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${localStorage.getItem("userInfo")}`,
-        },
-      };
+  // return async (dispatch) => {
+  try {
+    const formData = new FormData();
+    formData.append("product", variationId);
+    formData.append("quantity", quantityCount);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("userInfo")}`,
+      },
+    };
 
-      const { data } = await axios.post(
-        `${BASE_URL}cart/`,
-        formData,
-        config
-      );
-      console.log(data)
-      // if (addToast) {
-      //   addToast("Added To Cart", {
-      //     appearance: "success",
-      //     autoDismiss: true,
-      //   });
-      // }
-      console.log("ADDED")
-      dispatch({
-        type: ADD_TO_CART,
-        payload: {
-          ...data,
-          selectedProductColor: selectedProductColor
-            ? selectedProductColor
-            : data.variation.color
-              ? data.variation.color
-              : null,
-          selectedProductSize: selectedProductSize
-            ? selectedProductSize
-            : data.variation.color
-              ? data.variation.color
-              : null,
-        },
+    const { data } = await axios.post(
+      `${BASE_URL}cart/`,
+      formData,
+      config
+    );
+
+    if (addToast) {
+      addToast("Added To Cart", {
+        appearance: "success",
+        autoDismiss: true,
       });
     }
-    catch (error) {
-      console.log("Failed")
-      // if (addToast) {
-      //   addToast(error.message, { appearance: "fail", autoDismiss: true });
-      // }
-    }
 
-  };
+    dispatch({
+      type: ADD_TO_CART,
+      payload: {
+        ...data,
+        selectedProductColor: selectedProductColor
+          ? selectedProductColor
+          : data.variation.color
+            ? data.variation.color
+            : null,
+        selectedProductSize: selectedProductSize
+          ? selectedProductSize
+          : data.variation.color
+            ? data.variation.color
+            : null,
+      },
+    });
+  }
+  catch (error) {
+    if (addToast) {
+      addToast("Login first !", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    }
+  }
+
+  // };
 };
 
 //decrease from cart
@@ -114,20 +120,49 @@ export const decreaseQuantity = (item, addToast) => {
   };
 };
 //delete from cart
-export const deleteFromCart = (item, addToast) => {
-  return (dispatch) => {
+export const deleteFromCart = (item, addToast) => async (dispatch) => {
+
+
+  try {
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `JWT ${localStorage.getItem("userInfo")}`,
+      },
+    };
+
+    const { data } = await axios.delete(`${BASE_URL}cart/${item.id}/`, config);
     if (addToast) {
       addToast("Removed From Cart", {
+        appearance: "success",
+        autoDismiss: true,
+      });
+    }
+
+
+    dispatch({ type: DELETE_FROM_CART, payload: item });
+
+  } catch (error) {
+    console.log(error)
+    if (addToast) {
+      addToast("Failed to Remove From Cart", {
         appearance: "error",
         autoDismiss: true,
       });
     }
-    dispatch({ type: DELETE_FROM_CART, payload: item });
-  };
+
+  }
+
+
+
 };
 //delete all from cart
-export const deleteAllFromCart = (addToast) => {
+export const deleteAllFromCart = (cartItems, addToast) => {
   return (dispatch) => {
+    cartItems.map((item) => {
+      dispatch(deleteFromCart(item));
+    })
     if (addToast) {
       addToast("Removed All From Cart", {
         appearance: "error",

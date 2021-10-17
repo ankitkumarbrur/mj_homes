@@ -22,7 +22,7 @@ const IconGroup = ({
       <div className="same-style exp-head header-search d-none d-lg-block">
         <button
           className="control"
-          // onClick={(e) => searchHandle(e)}
+        // onClick={(e) => searchHandle(e)}
         >
           <div className="btn-material"></div>
           <i className="pe-7s-search" />
@@ -38,7 +38,7 @@ const IconGroup = ({
         <div className="account-dropdown">
           <ul>
             <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
+              <Link to={process.env.PUBLIC_URL + "/login-register"}>{localStorage.getItem("userInfo") != undefined ? "Logout" : "Login"}</Link>
             </li>
             <li>
               <Link to={process.env.PUBLIC_URL + "/login-register"}>

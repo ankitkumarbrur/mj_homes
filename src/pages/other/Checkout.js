@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MetaTags from "react-meta-tags";
 import { connect } from "react-redux";
@@ -7,10 +7,54 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import axios from "axios";
+import Card from "react-bootstrap/Card";
+import Accordion from "react-bootstrap/Accordion";
+
+const BASE_URL = "https://api.luxurymjhomes.com/";
 
 const Checkout = ({ location, cartItems, currency }) => {
+	const [address, setaddress] = useState({});
+	const [selected, setselected] = useState();
 	const { pathname } = location;
 	let cartTotalPrice = 0;
+
+	const fetch_address = async () => {
+
+		try {
+			// const formData = new FormData();
+			// formData.append("email", email);
+			// formData.append("password", pass);
+
+			// formData.append("first_name", firstname + " " + lastname);
+
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: `Bearer ${localStorage.getItem("userInfo")}`,
+				},
+			};
+
+			const { data } = await axios.get(
+				`${BASE_URL}address/`,
+				config
+			);
+
+			setaddress(data)
+			setselected(data[0].id)
+
+		}
+		catch (error) {
+			console.log(error);
+
+		}
+
+	}
+	useEffect(() => {
+		fetch_address();
+
+	}, [])
+
 
 	return (
 		<Fragment>
@@ -35,112 +79,102 @@ const Checkout = ({ location, cartItems, currency }) => {
 						{cartItems && cartItems.length >= 1 ? (
 							<div className="row">
 								<div className="col-lg-7">
-									<div className="billing-info-wrap">
-										<h3>Billing Details</h3>
-										<div className="row">
-											<div className="col-lg-6 col-md-6">
-												<div className="billing-info mb-20">
-													<label>First Name</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-6 col-md-6">
-												<div className="billing-info mb-20">
-													<label>Last Name</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-12">
-												<div className="billing-info mb-20">
-													<label>Company Name</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-12">
-												<div className="billing-select mb-20">
-													<label>Country</label>
-													<select>
-														<option>
-															Select a country
-														</option>
-														<option>
-															Azerbaijan
-														</option>
-														<option>Bahamas</option>
-														<option>Bahrain</option>
-														<option>
-															Bangladesh
-														</option>
-														<option>
-															Barbados
-														</option>
-													</select>
-												</div>
-											</div>
-											<div className="col-lg-12">
-												<div className="billing-info mb-20">
-													<label>
-														Street Address
-													</label>
-													<input
-														className="billing-address"
-														placeholder="House number and street name"
-														type="text"
-													/>
-													<input
-														placeholder="Apartment, suite, unit etc."
-														type="text"
-													/>
-												</div>
-											</div>
-											<div className="col-lg-12">
-												<div className="billing-info mb-20">
-													<label>Town / City</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-6 col-md-6">
-												<div className="billing-info mb-20">
-													<label>
-														State / County
-													</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-6 col-md-6">
-												<div className="billing-info mb-20">
-													<label>
-														Postcode / ZIP
-													</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-6 col-md-6">
-												<div className="billing-info mb-20">
-													<label>Phone</label>
-													<input type="text" />
-												</div>
-											</div>
-											<div className="col-lg-6 col-md-6">
-												<div className="billing-info mb-20">
-													<label>Email Address</label>
-													<input type="text" />
-												</div>
-											</div>
-										</div>
+									<Accordion defaultActiveKey="0">
+										<Card className="single-my-account mb-20">
+											<Card.Header className="panel-heading">
+												<Accordion.Toggle
+													variant="link"
+													eventKey="0"
+												>
+													<h3 className="panel-title">
+														{/* <span>1 .</span> Edit */}
+														Select Address{" "}
+													</h3>
+												</Accordion.Toggle>
+											</Card.Header>
+											<Accordion.Collapse eventKey="0">
+												<Card.Body>
+													<div className="myaccount-info-wrapper">
+														<div className="billing-back-btn" style={{ display: "block", textAlign: "Center", marginBottom: "4vh", marginTop: "-2vh" }}>
+															<div className="billing-btn" style={{ textAlign: "Center" }}>
+																<Link to="/my-account" >
+																	<button type="submit">
+																		Handle Addresses
+																	</button>
+																</Link>
+															</div>
+														</div>
+														<div className="entries-wrapper">
 
-										<div className="additional-info-wrap">
-											<h4>Additional information</h4>
-											<div className="additional-info">
-												<label>Order notes</label>
-												<textarea
-													placeholder="Notes about your order, e.g. special notes for delivery. "
-													name="message"
-													defaultValue={""}
-												/>
-											</div>
-										</div>
-									</div>
+
+															{
+																Object.entries(address).map((add) => {
+																	add = add[1]
+
+																	return (
+																		<div className="row">
+																			<div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+																				<div className="entries-info text-center">
+
+
+																					<>
+																						<p>
+																							Street : {add["street"]}
+																						</p>
+																						<p>
+																							City : {add.city}
+																						</p>
+																						<p>
+																							District : {add.district}
+																						</p>
+																						<p>
+																							State : {add.state}
+																						</p>
+																						<p>
+																							Pin : {add.pin}
+																						</p>
+																						<p>
+																							Phone : {add.phone}
+																						</p>
+																					</>
+
+
+
+
+																				</div>
+																			</div>
+																			<div className="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+																				<div className="entries-edit-delete text-center">
+																					{
+																						add.id == selected ? (
+																							<button className="edit" style={{ backgroundColor: "#ff9f00" }}>
+																								{/* <button className="edit" onClick={() => seteditaddress(!editaddress)}> */}
+																								Selected
+																							</button>
+																						) :
+																							(
+																								<button className="edit" onClick={() => setselected(add.id)}>
+																									{/* <button className="edit" onClick={() => seteditaddress(!editaddress)}> */}
+																									Select
+																								</button>
+
+																							)
+																					}
+
+																				</div>
+																			</div>
+																		</div>
+
+																	)
+																})
+															}
+
+														</div>
+													</div>
+												</Card.Body>
+											</Accordion.Collapse>
+										</Card>
+									</Accordion>
 								</div>
 
 								<div className="col-lg-5">
@@ -160,13 +194,13 @@ const Checkout = ({ location, cartItems, currency }) => {
 															(cartItem, key) => {
 																const discountedPrice =
 																	getDiscountPrice(
-																		cartItem.price,
-																		cartItem.discount,
+																		cartItem.price ? cartItem.price : cartItem.variation.price,
+																		cartItem.discount ? cartItem.discount : cartItem.variation.discount,
 																	);
 																const finalProductPrice =
 																	(
-																		cartItem.price *
-																		currency.currencyRate
+																		cartItem.price ? cartItem.price : cartItem.variation.price *
+																			currency.currencyRate
 																	).toFixed(
 																		2,
 																	);
@@ -194,7 +228,7 @@ const Checkout = ({ location, cartItems, currency }) => {
 																	>
 																		<span className="order-middle-left">
 																			{
-																				cartItem.name
+																				cartItem.name ? cartItem.name : cartItem.variation.name
 																			}{" "}
 																			X{" "}
 																			{
@@ -283,7 +317,7 @@ const Checkout = ({ location, cartItems, currency }) => {
 					</div>
 				</div>
 			</LayoutOne>
-		</Fragment>
+		</Fragment >
 	);
 };
 
