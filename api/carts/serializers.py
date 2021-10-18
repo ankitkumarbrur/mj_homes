@@ -34,13 +34,17 @@ class CartSerializer(serializers.ModelSerializer):
             validated_data['user'] = self.context['request'].user
             product = Cart.objects.filter(user = validated_data['user'], product = validated_data['product'])
 
+            quantity = validated_data.get('quantity', 1)
+
+            if quantity <= 0:
+                raise serializers.ValidationError({"detail": "Quantity can't be negative or zero"})
+
             if len(product):
+                product[0].quantity += quantity
+                product[0].save()
                 return product[0]
             else:
-                validated_data['quantity'] = validated_data.get('quantity', 1)
-
-                if validated_data['quantity'] <= 0:
-                    raise serializers.ValidationError({"detail": "Quantity can't be negative or zero"})
+                validated_data['quantity'] = quantity
 
                 cart = Cart.objects.create( **validated_data)
                 return cart

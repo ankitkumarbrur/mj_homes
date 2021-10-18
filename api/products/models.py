@@ -79,6 +79,8 @@ class Image(models.Model):
     def __str__(self):
         return "%s - %s" %(self.product.name, self.id)
 
+
+    # convert jpg to webp
     def save(self, *args, **kwargs):
         if self.image:
             image_f = Img.open(StringIO.BytesIO(self.image.read()))
