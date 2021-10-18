@@ -7,7 +7,9 @@ import {
   FETCH_CART_DATA,
 } from "../actions/cartActions";
 
-const initState = [];
+//Initial Manipulation for getting data for wishlist from locastorage
+const obj = (localStorage.getItem("cartDataStorage"));
+const initState = JSON.parse(obj) != null ? JSON.parse(obj) : [];
 
 const cartReducer = (state = initState, action) => {
   const cartItems = state,
@@ -18,6 +20,7 @@ const cartReducer = (state = initState, action) => {
   // }
   if (action.type == FETCH_CART_DATA) {
     console.log("REDUX : ", action.payload)
+    localStorage.setItem("cartDataStorage", JSON.stringify(action.payload));
     return action.payload;
   }
   if (action.type == ADD_TO_CART) {
@@ -25,6 +28,14 @@ const cartReducer = (state = initState, action) => {
     if (product.variation == undefined) {
       const cartItem = cartItems.filter((item) => item.id == product.id)[0];
       if (cartItem == undefined) {
+        localStorage.setItem("cartDataStorage", JSON.stringify([
+          ...cartItems,
+          {
+            ...product,
+            quantity: product.quantity ? product.quantity : 1,
+            cartItemId: uuid(),
+          },
+        ]));
         return [
           ...cartItems,
           {
@@ -34,7 +45,7 @@ const cartReducer = (state = initState, action) => {
           },
         ];
       } else {
-        return cartItems.map((item) =>
+        const result = cartItems.map((item) =>
           item.cartItemId == cartItem.cartItemId
             ? {
               ...item,
@@ -44,6 +55,8 @@ const cartReducer = (state = initState, action) => {
             }
             : item
         );
+        localStorage.setItem("cartDataStorage", JSON.stringify(result));
+        return result;
       }
       // for variant products
     } else {
@@ -58,7 +71,7 @@ const cartReducer = (state = initState, action) => {
       )[0];
 
       if (cartItem == undefined) {
-        return [
+        const result = [
           ...cartItems,
           {
             ...product,
@@ -66,12 +79,14 @@ const cartReducer = (state = initState, action) => {
             cartItemId: uuid(),
           },
         ];
+        localStorage.setItem("cartDataStorage", JSON.stringify(result));
+        return result;
       } else if (
         cartItem !== undefined &&
         (cartItem.selectedProductColor !== product.selectedProductColor ||
           cartItem.selectedProductSize !== product.selectedProductSize)
       ) {
-        return [
+        const result = [
           ...cartItems,
           {
             ...product,
@@ -79,8 +94,10 @@ const cartReducer = (state = initState, action) => {
             cartItemId: uuid(),
           },
         ];
+        localStorage.setItem("cartDataStorage", JSON.stringify(result));
+        return result;
       } else {
-        return cartItems.map((item) =>
+        const result = cartItems.map((item) =>
           item.cartItemId == cartItem.cartItemId
             ? {
               ...item,
@@ -92,6 +109,8 @@ const cartReducer = (state = initState, action) => {
             }
             : item
         );
+        localStorage.setItem("cartDataStorage", JSON.stringify(result));
+        return result;
       }
     }
   }
@@ -117,7 +136,20 @@ const cartReducer = (state = initState, action) => {
       cartItems.filter(
         (cartItem) => cartItem.cartItemId !== product.cartItemId
       );
-    return remainingItems(cartItems, product);
+
+    var newCartList = [];
+    cartItems.filter(cartItem => {
+
+      if (cartItem.cartItemId !== product.cartItemId) {
+        newCartList.push(cartItem);
+        return true;
+      }
+      else return false;
+
+    });
+    localStorage.setItem("cartDataStorage", JSON.stringify(newCartList));
+    console.log(newCartList)
+    return newCartList;
   }
 
   if (action.type == DELETE_ALL_FROM_CART) {

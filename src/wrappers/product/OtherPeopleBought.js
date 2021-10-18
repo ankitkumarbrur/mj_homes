@@ -9,7 +9,7 @@ import { getProducts } from "../../helpers/product";
 const OtherPeopleBought = ({ spaceBottomClass, category }) => {
   const { productData } = useSelector((state) => state);
 
-  const data = getProducts(productData.products, category, "bestSeller", 4);
+  const data = getProducts(productData.products, null, "bestSeller", 4);
 
   const settings = {
     loop: false,
@@ -33,9 +33,8 @@ const OtherPeopleBought = ({ spaceBottomClass, category }) => {
 
   return (
     <div
-      className={`related-product-area ${
-        spaceBottomClass ? spaceBottomClass : ""
-      }`}
+      className={`related-product-area ${spaceBottomClass ? spaceBottomClass : ""
+        }`}
     >
       <div className="container">
         <SectionTitle

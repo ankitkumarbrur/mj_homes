@@ -6,7 +6,7 @@ const initState = {
 };
 
 const productReducer = (state = initState, action) => {
-  console.log("FIRE REACHED ", state, action)
+
   if (action.type == FETCH_PRODUCTS_SUCCESS) {
     return {
       ...state,

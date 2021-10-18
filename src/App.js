@@ -6,6 +6,8 @@ import { ToastProvider } from "react-toast-notifications";
 import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
+import ReactGA from 'react-ga';
+import RouteChangeTracker from "./RouteChangeTracker";
 
 // home pages
 const Home = lazy(() => import("./pages/home/Home"));
@@ -36,6 +38,8 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
+const TRACKING_ID = "UA-188159088-1";
+ReactGA.initialize(TRACKING_ID);
 const App = (props) => {
   useEffect(() => {
     props.dispatch(
@@ -150,6 +154,7 @@ const App = (props) => {
                 />
                 <Route exact component={NotFound} />
               </Switch>
+              <RouteChangeTracker />
             </Suspense>
           </ScrollToTop>
         </Router>

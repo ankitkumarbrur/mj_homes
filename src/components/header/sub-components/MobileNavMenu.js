@@ -59,30 +59,30 @@ const MobileNavMenu = ({ strings }) => {
           <Link>Rooms</Link>
           <ul className="sub-menu">
             <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard?q=livingroom"}>
                 Living Room
               </Link>
             </li>
             <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard?q=drawingroom"}>
                 Drawing Room
               </Link>
             </li>
             <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard?q=diningroom"}>
                 Dining Room
               </Link>
             </li>
             <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard"}>
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard?q=kitchen"}>
                 Kitchen
               </Link>
             </li>
             <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/product/1"}>Bedroom</Link>
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard?q=bedroom"}>Bedroom</Link>
             </li>
             <li className="menu-item-has-children">
-              <Link to={process.env.PUBLIC_URL + "/product/1"}>Outdoor</Link>
+              <Link to={process.env.PUBLIC_URL + "/shop-grid-standard?q=outdoor"}>Outdoor</Link>
             </li>
           </ul>
         </li>

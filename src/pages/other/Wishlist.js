@@ -91,6 +91,7 @@ const Wishlist = ({
 																		item.id ==
 																		wishlistItem.id,
 																)[0];
+
 															return (
 																<tr key={key}>
 																	<td className="product-thumbnail">
@@ -106,7 +107,7 @@ const Wishlist = ({
 																			<img
 																				className="img-fluid"
 																				src={
-
+																					"https://api.luxurymjhomes.com" +
 																					wishlistItem
 																						.image[0]
 																				}
@@ -165,13 +166,9 @@ const Wishlist = ({
 																				Buy
 																				now{" "}
 																			</a>
-																		) : wishlistItem.variation &&
-																			wishlistItem
-																				.variation
-																				.length >=
-																			1 ? (
+																		) : wishlistItem ? (
 																			<Link
-																				to={`${process.env.PUBLIC_URL}/product/${wishlistItem.id}`}
+																				to={`${process.env.PUBLIC_URL}/product/${wishlistItem.product}`}
 																			>
 																				Select
 																				option
