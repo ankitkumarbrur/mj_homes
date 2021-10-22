@@ -68,6 +68,19 @@ class ProductVariation(models.Model):
     weight = models.FloatField(null = True)
     image = models.ImageField(upload_to = image_upload, null = True, blank = True)
 
+    # convert jpg to webp
+    def save(self, *args, **kwargs):
+        if self.image:
+            image_f = Img.open(StringIO.BytesIO(self.image.read()))
+
+            output = StringIO.BytesIO()
+            image_f.save(output, format='WEBP', quality=75)
+            output.seek(0)
+
+            self.image = InMemoryUploadedFile(output,'ImageField', "%s.webp" %self.image.name, 'image/webp', output.getbuffer().nbytes, None)
+
+        super(Image, self).save(*args, **kwargs)
+
     def __str__(self):
         return  "%s - %s" %(self.product.name, self.id)
 
