@@ -1,6 +1,9 @@
 from django.db import models
 from products.models import Product
+from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
+import uuid
+
 
 from PIL import Image as Img
 import io as StringIO
@@ -12,6 +15,7 @@ def image_upload(instance, filename):
 
 # Create your models here.
 class Carousel(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length = 100)
     subtitle = models.CharField(max_length = 100)
     image = models.ImageField(upload_to = image_upload)
@@ -25,9 +29,9 @@ class Carousel(models.Model):
             image_f.save(output, format='WEBP', quality=75)
             output.seek(0)
 
-            self.image = InMemoryUploadedFile(output,'ImageField', "%s.webp" %self.image.name, 'image/webp', output.getbuffer().nbytes, None)
+            self.image = InMemoryUploadedFile(output,'ImageField', "carousel/%s.webp" % self.image.name, 'image/webp', output.getbuffer().nbytes, None)
 
-        super(Image, self).save(*args, **kwargs)
+        super(Carousel, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

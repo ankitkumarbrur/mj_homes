@@ -79,7 +79,7 @@ class ProductVariation(models.Model):
 
             self.image = InMemoryUploadedFile(output,'ImageField', "%s.webp" %self.image.name, 'image/webp', output.getbuffer().nbytes, None)
 
-        super(Image, self).save(*args, **kwargs)
+        super(ProductVariation, self).save(*args, **kwargs)
 
     def __str__(self):
         return  "%s - %s" %(self.product.name, self.id)
