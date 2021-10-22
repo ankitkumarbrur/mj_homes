@@ -45,7 +45,7 @@ class Product(models.Model):
     description = models.CharField(max_length = 5000)
 
     subcategory = models.CharField(max_length = 100, null = True)
-    keyword = models.TextField(null = True)
+    keyword = models.TextField(null = True, blank = True)
     manufacturer = models.CharField(max_length = 100)
 
     discount = models.IntegerField(default = 0)
@@ -53,6 +53,11 @@ class Product(models.Model):
     model3d =  models.FileField(upload_to = model_upload, null = True, blank = True)
 
     addedDate = models.DateField(auto_now_add = True)
+
+    information = models.TextField(null = True, blank = True)
+    shipsin = models.CharField(null = True, blank = True, max_length = 100)
+    deliveryCondition = models.CharField(null = True, blank = True, max_length = 100)
+    finish = models.CharField(null = True, blank = True, max_length = 100)
 
     def __str__(self):
         return (self.name)
@@ -65,7 +70,7 @@ class ProductVariation(models.Model):
     material = models.CharField(max_length = 100)
     price = models.FloatField(null = False, blank = False)
     size = models.CharField(max_length = 100, null = True)
-    weight = models.FloatField(null = True)
+    weight = models.CharField(max_length = 100, null = True, blank = True)
     image = models.ImageField(upload_to = image_upload, null = True, blank = True)
 
     # convert jpg to webp
