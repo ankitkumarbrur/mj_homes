@@ -52,7 +52,7 @@ const SubscribeEmail = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button className="subs-btn" type="submit">
+          <button className="subs-btn" type="submit" style={{ color: "#ff9f00", border: "1px solid #ff9f00", padding: "0.5rem" }}>
             SUBSCRIBE
           </button>
         </div>

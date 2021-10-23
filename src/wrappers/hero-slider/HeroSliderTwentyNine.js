@@ -1,27 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Swiper from "react-id-swiper";
 
-import sliderData from "../../data/hero-sliders/hero-slider-twenty-nine.json";
+import sliderData from '../../data/hero-sliders/hero-slider-twenty-nine';
 import HeroSliderTwentyNineSingle from "../../components/hero-slider/HeroSliderTwentyNineSingle.js";
 import axios from "axios";
 
-const BASE_URL = "https://api.luxurymjhomes.com/";
+
 const HeroSliderTwentyNine = () => {
-  // const [sliderData, setSliderData] = useState([]);
-
-  // const fetchCarousel = async () => {
-  //   try {
-  //     const { data } = await axios.get(`${BASE_URL}carousel/`);
-  //     setSliderData(data);
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchCarousel();
-  // }, []);
+  let sliderData = JSON.parse(localStorage.getItem("sliderData"))
 
   const params = {
     effect: "fade",

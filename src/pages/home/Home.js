@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import LayoutOne from "../../layouts/LayoutOne";
 import LayoutSeven from "../../layouts/LayoutSeven";
@@ -14,8 +14,15 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
+import axios from "axios";
+
+const BASE_URL = "https://api.luxurymjhomes.com/";
+
+
 
 const Home = () => {
+
+
   return (
     <Fragment>
       <MetaTags>

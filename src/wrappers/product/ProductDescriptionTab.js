@@ -15,6 +15,12 @@ const ProductDescriptionTab = ({
   productManufacturer,
   productReview,
   productID,
+  shipsin,
+  deliveryCondition,
+  finish,
+  information,
+  rating,
+
 }) => {
   return (
     <div className={`description-review-area ${spaceBottomClass}`}>
@@ -55,7 +61,7 @@ const ProductDescriptionTab = ({
             </Nav>
             <Tab.Content className="description-review-bottom">
               <Tab.Pane eventKey="additionalInfo">
-                <div className="product-anotherInfo-wrapper">
+                <div className="product-anotherInfo-wrapper" style={{ display: "flex", justifyContent: "space-around" }}>
                   <ul>
                     <li>
                       <span>Manufacturer</span>
@@ -63,10 +69,14 @@ const ProductDescriptionTab = ({
                     </li>
                     <li>
                       <span>Weight</span>
+                      &nbsp;
+                      &nbsp;
                       {productWeight}
                     </li>
                     <li>
                       <span>Dimensions</span>
+                      &nbsp;
+                      &nbsp;
                       {productSize}
                     </li>
                     <li>
@@ -81,6 +91,8 @@ const ProductDescriptionTab = ({
                           </i>
                         );
                       })} */}
+                      &nbsp;
+                      &nbsp;
                       {productMaterial.map((single, i) => [
                         i > 0 && ", ",
                         <i
@@ -91,6 +103,49 @@ const ProductDescriptionTab = ({
                         </i>,
                       ])}
                     </li>
+                    <li>
+                      <span>SKU</span>
+                      &nbsp;
+                      &nbsp;
+                      {productID.toUpperCase()}
+                    </li>
+                  </ul>
+                  <ul>
+                    <li>
+                      <span>Ships In</span>
+                      {shipsin ? shipsin : "7 Days"}
+                    </li>
+
+                    <li>
+                      <span>Finish</span>
+                      &nbsp;
+                      {finish ? finish : ""}
+                    </li>
+                    {information != "" ? (
+                      <li>
+                        <span>Information</span>
+
+                        &nbsp;
+                        {information}
+                        { }
+                      </li>
+                    ) : ""}
+
+                    <li>
+                      <span>Ratings & Reviews</span>
+                      &nbsp;
+                      {rating}
+                      <div style={{ display: "inline-block", width: "fit-content" }}>&#11088;</div> &nbsp;{productReview.length}
+                      &nbsp;
+                      Reviews
+                    </li>
+
+
+                    <li>
+                      <span>Delivery Condition</span>
+                      {deliveryCondition ? deliveryCondition : "Expert-Assembly"}
+                    </li>
+
                   </ul>
                 </div>
               </Tab.Pane>
@@ -315,7 +370,7 @@ const ProductDescriptionTab = ({
           </Tab.Container>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

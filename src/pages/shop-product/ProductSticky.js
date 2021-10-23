@@ -54,6 +54,12 @@ const ProductSticky = ({ location, product }) => {
           productMaterial={product.variation[0].material}
           productManufacturer={product.manufacturer}
           productReview={product.review}
+          shipsin={product.shipsin}
+          deliveryCondition={product.deliveryCondition}
+          finish={product.finish}
+          information={product.information ? product.information : ""}
+          rating={product.rating ? product.rating : ""}
+
         />
         {/* Products in the first category */}
         {/* frequently bought together product slider */}

@@ -11,12 +11,11 @@ const FooterNewsletter = ({
 }) => {
   return (
     <div
-      className={`footer-widget ${spaceBottomClass ? spaceBottomClass : ""} ${
-        sideMenu ? "ml-ntv5" : spaceLeftClass ? spaceLeftClass : ""
-      } ${widgetColorClass ? widgetColorClass : ""}`}
+      className={`footer-widget ${spaceBottomClass ? spaceBottomClass : ""} ${sideMenu ? "ml-ntv5" : spaceLeftClass ? spaceLeftClass : ""
+        } ${widgetColorClass ? widgetColorClass : ""}`}
     >
       <div className="footer-title">
-        <h3>SUBSCRIBE</h3>
+        <h3 style={{ color: "white" }}>SUBSCRIBE</h3>
       </div>
       <div className={`subscribe-style ${colorClass ? colorClass : ""}`}>
         <p>Get E-mail updates about our latest shop and special offers.</p>

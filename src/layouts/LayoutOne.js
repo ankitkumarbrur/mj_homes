@@ -20,9 +20,9 @@ const LayoutOne = ({
 			/>
 			{children}
 			<FooterOne
-				backgroundColorClass="bg-gray"
-				spaceTopClass="pt-100"
-				spaceBottomClass="pb-70"
+				backgroundColorClass="bg-black"
+				spaceTopClass="pt-40"
+				spaceBottomClass="pb-0"
 			/>
 		</Fragment>
 	);

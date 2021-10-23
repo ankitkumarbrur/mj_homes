@@ -36,20 +36,16 @@ const FooterOne = ({
 
   return (
     <footer
-      className={`footer-area ${
-        backgroundColorClass ? backgroundColorClass : ""
-      } ${spaceTopClass ? spaceTopClass : ""} ${
-        spaceBottomClass ? spaceBottomClass : ""
-      } ${extraFooterClass ? extraFooterClass : ""} ${
-        spaceLeftClass ? spaceLeftClass : ""
-      } ${spaceRightClass ? spaceRightClass : ""}`}
+      className={`footer-area ${backgroundColorClass ? backgroundColorClass : ""
+        } ${spaceTopClass ? spaceTopClass : ""} ${spaceBottomClass ? spaceBottomClass : ""
+        } ${extraFooterClass ? extraFooterClass : ""} ${spaceLeftClass ? spaceLeftClass : ""
+        } ${spaceRightClass ? spaceRightClass : ""}`}
     >
       <div className={`${containerClass ? containerClass : "container"}`}>
         <div className="row">
           <div
-            className={`${
-              sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
-            }`}
+            className={`${sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+              }`}
           >
             {/* footer copyright */}
             <FooterCopyright
@@ -84,19 +80,17 @@ const FooterOne = ({
             </div>
           </div> */}
           <div
-            className={`${
-              sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
-            }`}
+            className={`${sideMenu ? "col-xl-2 col-sm-4" : "col-lg-2 col-sm-4"
+              }`}
           >
             <div
-              className={`${
-                sideMenu
-                  ? "footer-widget mb-30 ml-95"
-                  : "footer-widget mb-30 ml-50"
-              }`}
+              className={`${sideMenu
+                ? "footer-widget mb-30 ml-95"
+                : "footer-widget mb-30 ml-50"
+                }`}
             >
               <div className="footer-title">
-                <h3>USEFUL LINKS</h3>
+                <h3 style={{ color: "white" }}>USEFUL LINKS</h3>
               </div>
               <div className="footer-list">
                 <ul>
@@ -109,17 +103,17 @@ const FooterOne = ({
                     </Link>
                   </li> */}
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/return-policy"}>
+                    <Link to={process.env.PUBLIC_URL + "/return-policy"} style={{ color: "white" }}>
                       Refund Policy
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/privacy-policy"}>
+                    <Link to={process.env.PUBLIC_URL + "/privacy-policy"} style={{ color: "white" }}>
                       Privacy and Policy
                     </Link>
                   </li>
                   <li>
-                    <Link to={process.env.PUBLIC_URL + "/terms-and-conditions"}>
+                    <Link to={process.env.PUBLIC_URL + "/terms-and-conditions"} style={{ color: "white" }}>
                       Terms and Conditions
                     </Link>
                   </li>
@@ -131,27 +125,26 @@ const FooterOne = ({
             </div>
           </div>
           <div
-            className={`${
-              sideMenu ? "col-xl-3 col-sm-4" : "col-lg-2 col-sm-6"
-            }`}
+            className={`${sideMenu ? "col-xl-3 col-sm-4" : "col-lg-2 col-sm-6"
+              }`}
           >
             <div
-              className={`${
-                sideMenu
-                  ? "footer-widget mb-30 ml-145"
-                  : "footer-widget mb-30 ml-75"
-              }`}
+              className={`${sideMenu
+                ? "footer-widget mb-30 ml-145"
+                : "footer-widget mb-30 ml-75"
+                }`}
             >
               <div className="footer-title">
-                <h3>FOLLOW US</h3>
+                <h3 style={{ color: "white" }}>FOLLOW US</h3>
               </div>
-              <div className="footer-list">
+              <div className="footer-list" >
                 <ul>
                   <li>
                     <a
                       href="https://www.youtube.com/channel/UC_3wnfw_UhUKJFcOnriYZPQ"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ color: "white" }}
                     >
                       Youtube
                     </a>
@@ -161,6 +154,7 @@ const FooterOne = ({
                       href="https://www.facebook.com/luxurymjhomes"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ color: "white" }}
                     >
                       Facebook
                     </a>
@@ -170,6 +164,7 @@ const FooterOne = ({
                       href="https://www.instagram.com/luxurymjhomes/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ color: "white" }}
                     >
                       Instagram
                     </a>
@@ -179,6 +174,7 @@ const FooterOne = ({
                       href="https://www.linkedin.com/in/mj-homes-756020205/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ color: "white" }}
                     >
                       LinkedIn
                     </a>
@@ -188,6 +184,7 @@ const FooterOne = ({
                       href="https://in.pinterest.com/buildmjhomes/_saved/"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ color: "white" }}
                     >
                       Pinterest
                     </a>
@@ -197,9 +194,8 @@ const FooterOne = ({
             </div>
           </div>
           <div
-            className={`${
-              sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
-            }`}
+            className={`${sideMenu ? "col-xl-3 col-sm-8" : "col-lg-4 col-sm-6"
+              }`}
           >
             {/* footer newsletter */}
             <FooterNewsletter

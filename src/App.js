@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, Suspense, lazy } from "react";
+import React, { useEffect, Suspense, lazy, useState } from "react";
 import ScrollToTop from "./helpers/scroll-top";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 import ReactGA from 'react-ga';
 import RouteChangeTracker from "./RouteChangeTracker";
+import axios from "axios";
 
 // home pages
 const Home = lazy(() => import("./pages/home/Home"));
@@ -39,7 +40,9 @@ const Checkout = lazy(() => import("./pages/other/Checkout"));
 const NotFound = lazy(() => import("./pages/other/NotFound"));
 
 const TRACKING_ID = "UA-188159088-1";
+const BASE_URL = "https://api.luxurymjhomes.com/";
 ReactGA.initialize(TRACKING_ID);
+
 const App = (props) => {
   useEffect(() => {
     props.dispatch(
@@ -52,7 +55,21 @@ const App = (props) => {
       })
     );
   });
+  const [sliderData, setSliderData] = useState([]);
 
+  const fetchCarousel = async () => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}carousel/`);
+      localStorage.setItem("sliderData", JSON.stringify(data));
+      console.log(JSON.stringify(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCarousel();
+  }, []);
   return (
     <ToastProvider placement="bottom-left">
       <BreadcrumbsProvider>
