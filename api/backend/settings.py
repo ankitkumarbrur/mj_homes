@@ -14,20 +14,6 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
-
-# from django.contrib.staticfiles import handlers
-
-# # extend StaticFilesHandler to add "Access-Control-Allow-Origin" to every response
-# class CORSStaticFilesHandler(handlers.StaticFilesHandler):
-#     def serve(self, request):
-#         response = super().serve(request)
-#         response['Access-Control-Allow-Origin'] = '*'
-#         print("serve static files")
-#         return response
-
-# # monkeypatch handlers to use our class instead of the original StaticFilesHandler
-# handlers.StaticFilesHandler = CORSStaticFilesHandler
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -62,7 +48,8 @@ INSTALLED_APPS = [
     'carts',
     'orders',
     'users',
-    'homepage'
+    'homepage',
+    'emailService'
 ]
 
 MIDDLEWARE = [
@@ -227,3 +214,13 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+
+
+# EMAIL SETTINGS
+EMAIL_HOST = "webmail.luxurymjhomes.com"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "admin@luxurymjhomes.com"
+EMAIL_HOST_PASSWORD = "Manav@123"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
