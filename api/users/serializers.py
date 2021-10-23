@@ -3,7 +3,6 @@ from django.db.utils import IntegrityError
 from .models import *
 from rest_framework import serializers
 
-
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
     first_name = serializers.CharField(required=True)
