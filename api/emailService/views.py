@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 # Create your views here.
 
 class reset_password_view(APIView):
-    secret = "secret"
+    secret = "secret11"
 
     def post(self, request):     
         if request.data.get("email", None):
@@ -21,13 +21,13 @@ class reset_password_view(APIView):
             if user :
                 payload = {
                     "id" : user.id,
-                    'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes = 60),
+                    'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes = 15),
                     'iat' : datetime.datetime.utcnow()
                 }
                 token = jwt.encode(payload, self.secret, algorithm = "HS256")
 
                 send_mail("Reset Password",
-                "click on the following url to reset your password: luxurymjhomes.com/" + token,
+                "Click on the following url to reset your password: https://luxurymjhomes.com/" + token + "\nThis link is valid for only 15 minutes.",
                 "admin@luxurymjhomes.com",[request.data.get("email")])
 
                 return Response({"success":"200", "token" : token})
@@ -40,10 +40,19 @@ class reset_password_view(APIView):
         if request.data.get("token", None):
 
             if request.data.get("password", None):
-                payload = jwt.decode(request.data.get("token"), self.secret, algorithms = ["HS256"])
+                try:
+                    payload = jwt.decode(request.data.get("token"), self.secret, algorithms = ["HS256"])
+                except jwt.exceptions.ExpiredSignatureError:
+                    return Response({"status": 403, "message": "link has been expired"})
+                except jwt.exceptions.InvalidSignatureError:
+                    return Response({"status": 403, "message": "invalid signature"})
+                except jwt.exceptions.InvalidTokenError:
+                    return Response({"status": 403, "message": "invalid link"})
+
                 user = User.objects.filter(id = payload["id"])[0]
 
-                serializer = UserSerializer(user, data = request.data, partial = True)
+                data = {"password" : request.data.get("password")}
+                serializer = UserSerializer(user, data = data, partial = True)
                 serializer.is_valid(raise_exception = True)
                 serializer.save()
 
@@ -52,3 +61,28 @@ class reset_password_view(APIView):
                 return Response({"message": "no password provided"})
         else:
             return Response({"status": 403, "message": "invaild link"})
+
+class activate_user(APIView):
+    secret = "secret22"
+    def post(self, request):     
+        if request.data.get("token", None):
+            try:
+                payload = jwt.decode(request.data.get("token"), self.secret, algorithms = ["HS256"])
+            except jwt.exceptions.ExpiredSignatureError:
+                    return Response({"status": 403, "message": "link has been expired"})
+            except jwt.exceptions.InvalidSignatureError:
+                return Response({"status": 403, "message": "invalid signature"})
+            except jwt.exceptions.InvalidTokenError:
+                return Response({"status": 403, "message": "invalid link"})
+
+            user = User.objects.filter(id = payload["id"])[0]
+            data = {"is_active" : True}
+            
+            serializer = UserSerializer(user, data = data, partial = True)
+            serializer.is_valid(raise_exception = True)
+            serializer.save()
+
+            return Response({"status": 200})
+        else:
+            return Response({"status": 403, "message": "invaild link"})
+        
