@@ -78,7 +78,7 @@ class ProductSerializer(serializers.ModelSerializer):
         for r in data['review']:
             totalRating += r.get('reviewStar', 0)
 
-        if len(data['information']) == 0: data.pop('information')
+        if (not bool(data['information'])): data.pop('information')
 
         if data['discount'] == 0: data.pop('discount')
         data['rating'] = totalRating/len(data['review']) if len(data['review']) else 0
