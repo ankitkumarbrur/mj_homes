@@ -16,9 +16,10 @@ class reset_password_view(APIView):
     def post(self, request):     
         if request.data.get("email", None):
 
-            user = User.objects.filter(email = request.data.get("email"))[0]
+            user = User.objects.filter(email = request.data.get("email"))
 
-            if user :
+            if len(user) :
+                user = user[0]
                 payload = {
                     "id" : user.id,
                     'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes = 15),
