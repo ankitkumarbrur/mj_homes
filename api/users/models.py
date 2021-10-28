@@ -4,6 +4,11 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from django.db.models.signals import post_save
+import jwt, datetime
+from django.core.mail import send_mail
+
+
 # Create your models here.
 class AccountManager(BaseUserManager):
 
@@ -82,3 +87,20 @@ class Query(models.Model):
 
     def __str__(self):
         return (self.name)
+
+
+def activate_user(sender, instance, **kwargs):
+    payload = {
+        "id" : instance.id,
+        'exp' : datetime.datetime.utcnow() + datetime.timedelta(weeks = 999),
+        'iat' : datetime.datetime.utcnow()
+    }
+
+    token = jwt.encode(payload, "secret22", algorithm = "HS256")
+
+    send_mail("Activate account",
+    "Click on the following url to activate your account: https://luxurymjhomes.com/" + token,
+    "admin@luxurymjhomes.com",[instance.email])
+
+post_save.connect(activate_user, sender=User)
+
