@@ -38,6 +38,7 @@ const Compare = lazy(() => import("./pages/other/Compare"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const NotFound = lazy(() => import("./pages/other/NotFound"));
+const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
 
 const TRACKING_ID = "UA-188159088-1";
 const BASE_URL = "https://api.luxurymjhomes.com/";
@@ -164,6 +165,10 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/checkout"}
                   component={Checkout}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/resetPassword/:id"}
+                  component={ResetPassword}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/not-found"}
