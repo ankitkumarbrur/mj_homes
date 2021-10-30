@@ -213,12 +213,14 @@ const FooterOne = ({
         <i className="fa fa-angle-double-up"></i>
       </button>
       <button className="whats-app">
-        <a href="https://web.whatsapp.com/" target="_blank">
+        <a href="https://wa.me/7027540171" target="_blank">
           <i className="fa fa-whatsapp"></i>
         </a>
       </button>
       <button className="phone">
-        <i className="fa fa-phone"></i>
+        <a href="tel://7027540171">
+          <i className="fa fa-phone"></i>
+        </a>
       </button>
     </footer>
   );

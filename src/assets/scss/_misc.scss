@@ -12,3 +12,15 @@ div.lg-img-wrap {
 .footer-widget .subscribe-style .subscribe-form input {
     color : white;
 }
+
+// Product Page : Product Color Radio Button Size 
+.product-details-content .pro-details-size-color .pro-details-color-wrap .pro-details-color-content--single {
+    height : 1.8rem;
+    width : 1.8rem;
+}
+.product-details-content .pro-details-size-color .pro-details-color-wrap .pro-details-color-content--single .checkmark:after {
+    width: 2rem;
+    height: 2rem;
+    top: -6px;
+    left: -3px;
+}

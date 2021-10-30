@@ -155,8 +155,8 @@ const ProductDescriptionInfo = ({
                         paddingRight: "2vh",
                         position: "absolute",
                         width: "fit-content",
-                        top: "-6px",
-                        marginLeft: "5px",
+                        top: "1px",
+                        marginLeft: "20px",
                       }}
                     >
                       {single.material[0].toUpperCase()}

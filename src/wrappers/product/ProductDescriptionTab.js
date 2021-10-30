@@ -126,7 +126,8 @@ const ProductDescriptionTab = ({
                         <span>Information</span>
 
                         &nbsp;
-                        {information}
+                        {/* {information} */}
+                        <div dangerouslySetInnerHTML={{ __html: information }} style={{ display: "inline-flex" }}></div>
                         { }
                       </li>
                     ) : ""}
