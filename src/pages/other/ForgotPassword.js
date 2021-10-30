@@ -12,12 +12,12 @@ import { useToasts } from "react-toast-notifications";
 import axios from "axios";
 import { useRouteMatch } from "react-router-dom";
 
-const ResetPassword = ({ location }) => {
+const ForgotPassword = ({ location }) => {
     const BASE_URL = "https://api.luxurymjhomes.com/";
     const match = useRouteMatch();
     const { pathname } = location;
-    const [password, setPassword] = useState("");
-    const [passwordConfirm, setPasswordConfirm] = useState("");
+    const [email, setEmail] = useState("");
+
 
     const dispatch = useDispatch();
     const { addToast } = useToasts();
@@ -25,11 +25,10 @@ const ResetPassword = ({ location }) => {
     const { userInfo, error, loading } = useSelector((state) => state.userLogin);
 
 
-    const resetPassword = async (password) => {
+    const ForgotPassword = async (email) => {
         try {
-            const formData = new FormData();
-            formData.append("password", password);
-            formData.append("token", match.params.id);
+            // const formData = new FormData();
+            // formData.append("password", password);
 
             const config = {
                 headers: {
@@ -37,15 +36,14 @@ const ResetPassword = ({ location }) => {
                 },
             };
 
-            const { data } = await axios.patch(
+            const { data } = await axios.post(
                 `${BASE_URL}resetPassword/`,
                 {
-                    "password": password,
-                    "token": match.params.id,
+                    "email": email,
                 },
                 config
             );
-            addToast("Success", {
+            addToast("Please check your mail for reset link", {
                 appearance: "success",
                 autoDismiss: true
             });
@@ -61,29 +59,16 @@ const ResetPassword = ({ location }) => {
 
     const resetHandler = (e) => {
         e.preventDefault();
-        if (passwordConfirm != "" && password != "" && password == passwordConfirm) {
-            resetPassword(password);
+        if (email != "") {
+            ForgotPassword(email);
+        } else {
+            addToast("Email Can't be blank.", {
+                appearance: "error",
+                autoDismiss: true
+            });
         }
     };
 
-
-
-    // useEffect(() => {
-    //     if (
-    //         !loading &&
-    //         localStorage.getItem("userInfo") !== null &&
-    //         localStorage.getItem("userInfo") !== undefined
-    //     ) {
-    //         console.log("Logged In");
-    //         console.log(userInfo);
-    //     }
-    //     // fetch_data();
-    //     if (userInfo && data) {
-    //         // fetchData();
-    //         setdata(false);
-    //     }
-    //     console.log("RE RENDERED");
-    // }, [userInfo, loading]);
 
     if (loading) {
         return (
@@ -107,7 +92,7 @@ const ResetPassword = ({ location }) => {
             </MetaTags>
             <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
             <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-                Reset Password
+                Forgot Password
             </BreadcrumbsItem>
             <LayoutOne headerTop="visible">
                 {/* breadcrumb */}
@@ -121,7 +106,7 @@ const ResetPassword = ({ location }) => {
                                         <Nav variant="pills" className="login-register-tab-list">
                                             <Nav.Item>
                                                 <Nav.Link eventKey="login">
-                                                    <h4>Reset Password</h4>
+                                                    <h4>Forgot Password</h4>
                                                 </Nav.Link>
                                             </Nav.Item>
                                         </Nav>
@@ -131,20 +116,15 @@ const ResetPassword = ({ location }) => {
                                                     <div className="login-register-form">
                                                         <form onSubmit={resetHandler}>
                                                             <input
-                                                                type="password"
-                                                                name="user-password"
-                                                                placeholder="Password"
-                                                                onChange={(e) => setPassword(e.target.value)}
+                                                                name="user-email"
+                                                                placeholder="Email"
+                                                                type="email"
+                                                                onChange={(e) => setEmail(e.target.value)}
                                                             />
-                                                            <input
-                                                                type="password"
-                                                                name="user-password"
-                                                                placeholder="Confirm Password"
-                                                                onChange={(e) => setPasswordConfirm(e.target.value)}
-                                                            />
+
                                                             <div className="button-box">
                                                                 <button type="submit" >
-                                                                    <span>Confirm</span>
+                                                                    <span>Reset</span>
                                                                 </button>
                                                             </div>
                                                         </form>
@@ -164,8 +144,8 @@ const ResetPassword = ({ location }) => {
     );
 };
 
-ResetPassword.propTypes = {
+ForgotPassword.propTypes = {
     location: PropTypes.object,
 };
 
-export default ResetPassword;
+export default ForgotPassword;

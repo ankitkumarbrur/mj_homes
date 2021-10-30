@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
-import { Link, Redirect } from "react-router-dom";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
@@ -10,14 +9,14 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useSelector, useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, Redirect, useHistory } from "react-router-dom";
 
-const ResetPassword = ({ location }) => {
+const ActivateAccount = ({ location }) => {
     const BASE_URL = "https://api.luxurymjhomes.com/";
     const match = useRouteMatch();
     const { pathname } = location;
-    const [password, setPassword] = useState("");
-    const [passwordConfirm, setPasswordConfirm] = useState("");
+    const [email, setEmail] = useState("");
+    const history = useHistory();
 
     const dispatch = useDispatch();
     const { addToast } = useToasts();
@@ -25,11 +24,10 @@ const ResetPassword = ({ location }) => {
     const { userInfo, error, loading } = useSelector((state) => state.userLogin);
 
 
-    const resetPassword = async (password) => {
+    const ActivateAccount = async () => {
         try {
-            const formData = new FormData();
-            formData.append("password", password);
-            formData.append("token", match.params.id);
+            // const formData = new FormData();
+            // formData.append("password", password);
 
             const config = {
                 headers: {
@@ -37,20 +35,20 @@ const ResetPassword = ({ location }) => {
                 },
             };
 
-            const { data } = await axios.patch(
-                `${BASE_URL}resetPassword/`,
+            const { data } = await axios.post(
+                `${BASE_URL}activateAccount/`,
                 {
-                    "password": password,
                     "token": match.params.id,
                 },
                 config
             );
-            addToast("Success", {
+            addToast("Account Activated", {
                 appearance: "success",
                 autoDismiss: true
             });
+            history.push('/login-register');
         } catch (error) {
-            addToast("Failed", {
+            addToast("Failed to Activate Account", {
                 appearance: "error",
                 autoDismiss: true
             });
@@ -61,29 +59,11 @@ const ResetPassword = ({ location }) => {
 
     const resetHandler = (e) => {
         e.preventDefault();
-        if (passwordConfirm != "" && password != "" && password == passwordConfirm) {
-            resetPassword(password);
-        }
+
+        ActivateAccount();
+
     };
 
-
-
-    // useEffect(() => {
-    //     if (
-    //         !loading &&
-    //         localStorage.getItem("userInfo") !== null &&
-    //         localStorage.getItem("userInfo") !== undefined
-    //     ) {
-    //         console.log("Logged In");
-    //         console.log(userInfo);
-    //     }
-    //     // fetch_data();
-    //     if (userInfo && data) {
-    //         // fetchData();
-    //         setdata(false);
-    //     }
-    //     console.log("RE RENDERED");
-    // }, [userInfo, loading]);
 
     if (loading) {
         return (
@@ -99,7 +79,7 @@ const ResetPassword = ({ location }) => {
     return (
         <Fragment>
             <MetaTags>
-                <title>MJHOMES | Login</title>
+                <title>MJHOMES | Activate Account</title>
                 <meta
                     name="description"
                     content="Compare page of MJHOMES react minimalist eCommerce template."
@@ -107,7 +87,7 @@ const ResetPassword = ({ location }) => {
             </MetaTags>
             <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
             <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-                Reset Password
+                Activate Account
             </BreadcrumbsItem>
             <LayoutOne headerTop="visible">
                 {/* breadcrumb */}
@@ -121,28 +101,29 @@ const ResetPassword = ({ location }) => {
                                         <Nav variant="pills" className="login-register-tab-list">
                                             <Nav.Item>
                                                 <Nav.Link eventKey="login">
-                                                    <h4>Reset Password</h4>
+                                                    <h4>Activate Account</h4>
                                                 </Nav.Link>
                                             </Nav.Item>
                                         </Nav>
                                         <Tab.Content>
                                             <Tab.Pane eventKey="login">
-                                                <div className="login-form-container">
+                                                <div className="login-form-container" style={{ padding: "2rem" }}>
                                                     <div className="login-register-form">
                                                         <form onSubmit={resetHandler}>
-                                                            <input
-                                                                type="password"
-                                                                name="user-password"
-                                                                placeholder="Password"
-                                                                onChange={(e) => setPassword(e.target.value)}
-                                                            />
-                                                            <input
-                                                                type="password"
-                                                                name="user-password"
-                                                                placeholder="Confirm Password"
-                                                                onChange={(e) => setPasswordConfirm(e.target.value)}
-                                                            />
-                                                            <div className="button-box">
+                                                            {/* <input
+                                                                name="user-email"
+                                                                placeholder="Email"
+                                                                type="email"
+                                                                onChange={(e) => setEmail(e.target.value)}
+                                                            /> */}
+
+                                                            <div className="button-box" style={{ textAlign: "center" }}>
+                                                                <span style={{ fontSize: "1rem", marginBottom: "2rem", color: "grey" }}>
+                                                                    Click Below to Activate your Account
+                                                                </span>
+                                                                <br />
+                                                                &nbsp;
+                                                                <br />
                                                                 <button type="submit" >
                                                                     <span>Confirm</span>
                                                                 </button>
@@ -164,8 +145,8 @@ const ResetPassword = ({ location }) => {
     );
 };
 
-ResetPassword.propTypes = {
+ActivateAccount.propTypes = {
     location: PropTypes.object,
 };
 
-export default ResetPassword;
+export default ActivateAccount;
