@@ -43,3 +43,48 @@ class DOTD(models.Model):
 
     def __str__(self):
         return (self.product.name)
+
+
+
+def homeConvertToWebp(image):
+    image_f = Img.open(StringIO.BytesIO(image.read()))
+
+    output = StringIO.BytesIO()
+    image_f.save(output, format='WEBP', quality=75)
+    output.seek(0)
+
+    return InMemoryUploadedFile(output,'ImageField', "home/%s.webp" % image.name, 'image/webp', output.getbuffer().nbytes, None)
+
+class HomepageData(models.Model):
+    nameHelper = 0
+    def home_image_upload(instance, filename):
+        new_filename = "%s-%d.%s" %(instance.id, HomepageData.nameHelper, filename.split(".")[-1])
+        HomepageData.nameHelper += 1
+        return "home/%s" %(new_filename)
+        
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    livingRoom = models.ImageField(upload_to = home_image_upload)
+    drawingRoom = models.ImageField(upload_to = home_image_upload)
+    diningRoom = models.ImageField(upload_to = home_image_upload)
+    kitchen = models.ImageField(upload_to = home_image_upload)
+    bedRoom = models.ImageField(upload_to = home_image_upload)
+    outdoor = models.ImageField(upload_to = home_image_upload)
+
+    leftImage = models.ImageField(upload_to = home_image_upload)
+    rightImage = models.ImageField(upload_to = home_image_upload)
+
+    videoLink = models.TextField()
+
+    def save(self, *args, **kwargs):
+        if self.livingRoom: self.livingRoom = homeConvertToWebp(self.livingRoom)
+        if self.drawingRoom: self.drawingRoom = homeConvertToWebp(self.drawingRoom)
+        if self.diningRoom: self.diningRoom = homeConvertToWebp(self.diningRoom)
+        if self.kitchen: self.kitchen = homeConvertToWebp(self.kitchen)
+        if self.bedRoom: self.bedRoom = homeConvertToWebp(self.bedRoom)
+        if self.outdoor: self.outdoor = homeConvertToWebp(self.outdoor)
+
+        if self.leftImage: self.leftImage = homeConvertToWebp(self.leftImage)
+        if self.rightImage: self.rightImage = homeConvertToWebp(self.rightImage)
+        
+
+        super(HomepageData, self).save(*args, **kwargs)

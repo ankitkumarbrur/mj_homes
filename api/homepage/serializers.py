@@ -8,6 +8,11 @@ class CarouselSerializer(serializers.ModelSerializer):
         model = Carousel
         fields = '__all__'
 
+class HomepageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = HomepageData
+        fields = '__all__'
+
 class DOTDSerializer(serializers.ModelSerializer):
     class Meta:
         model = DOTD

@@ -27,7 +27,8 @@ class AccountManager(BaseUserManager):
             raise ValueError(_("You must provide an email"))
 
         email = self.normalize_email(email)
-        user = self.model(email = email, first_name = first_name, **kwargs)
+        username = email
+        user = self.model(email = email, user_name = username, first_name = first_name, **kwargs)
 
         user.set_password(password)
         user.save()

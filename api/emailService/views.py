@@ -17,7 +17,6 @@ class reset_password_view(APIView):
         if request.data.get("email", None):
 
             user = User.objects.filter(email = request.data.get("email"))
-
             if len(user) :
                 user = user[0]
                 payload = {
