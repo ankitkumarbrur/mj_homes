@@ -17,7 +17,6 @@ class reset_password_view(APIView):
         if request.data.get("email", None):
 
             user = User.objects.filter(email = request.data.get("email"))
-
             if len(user) :
                 user = user[0]
                 payload = {
@@ -28,7 +27,7 @@ class reset_password_view(APIView):
                 token = jwt.encode(payload, self.secret, algorithm = "HS256")
 
                 send_mail("Reset Password",
-                "Click on the following url to reset your password: https://luxurymjhomes.com/" + token + "\nThis link is valid for only 15 minutes.",
+                "Click on the following url to reset your password: https://luxurymjhomes.com/resetPassword/" + token + "\nThis link is valid for only 15 minutes.",
                 "admin@luxurymjhomes.com",[request.data.get("email")])
 
                 return Response({"success":"200", "token" : token})
@@ -77,13 +76,11 @@ class activate_user(APIView):
                 return Response({"status": 403, "message": "invalid link"})
 
             user = User.objects.filter(id = payload["id"])[0]
-            data = {"is_active" : True}
-            
-            serializer = UserSerializer(user, data = data, partial = True)
-            serializer.is_valid(raise_exception = True)
-            serializer.save()
 
-            return Response({"status": 200})
+            user.is_active = True            
+            user.save()
+
+            return Response({"message":"Activated Successfully", "status": 200})
         else:
             return Response({"status": 403, "message": "invaild link"})
         

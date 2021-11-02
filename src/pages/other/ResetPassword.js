@@ -13,7 +13,7 @@ import axios from "axios";
 import { useRouteMatch } from "react-router-dom";
 
 const ResetPassword = ({ location }) => {
-    const BASE_URL = "https://api.luxurymjhomes.com/";
+    const BASE_URL = "http://localhost:8000/";
     const match = useRouteMatch();
     const { pathname } = location;
     const [password, setPassword] = useState("");

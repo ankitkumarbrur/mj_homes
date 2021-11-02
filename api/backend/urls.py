@@ -23,7 +23,7 @@ from orders.views import OrderView
 from carts.views import CartView, WishListView, CouponView
 from users.views import Address_view, User_view, Subscribe_view, Query_view, Pincode_view
 from products.views import Review_view, Product_view, Review_view, Variation_view, Image_view
-from homepage.views import Carousel_View, DOTD_view
+from homepage.views import Carousel_View, DOTD_view, Homepage_view, Blog_view
 
 """
 Router HTTP Request mapping to methods
@@ -52,6 +52,8 @@ router.register('variation', Variation_view, basename= 'variation')
 router.register('image', Image_view, basename= 'image')
 router.register('subscribe', Subscribe_view, basename= 'suscribe')
 router.register('dotd', DOTD_view, basename= 'DOTD')
+router.register('homepage', Homepage_view, basename= 'homepage')
+router.register('blog', Blog_view, basename= 'blog')
 router.register('query', Query_view, basename= 'query')
 router.register('coupon', CouponView, basename= 'coupon')
 router.register('carousel', Carousel_View, basename= 'carousel')

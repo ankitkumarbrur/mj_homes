@@ -4,3 +4,5 @@ from .models import *
 
 admin.site.register(Carousel)
 admin.site.register(DOTD)
+admin.site.register(HomepageData)
+admin.site.register(Blog)

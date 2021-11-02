@@ -26,7 +26,32 @@ class DOTD_view(ViewsetActionPermissionMixin, ModelViewSet):
     queryset = DOTD.objects.all()
     serializer_class = DOTDSerializer
     permission_classes = (IsAdmin,)
-    http_method_names = ['get', 'patch', 'head', 'options', 'trace']
+
+    action_based_permission_classes = {
+        'list' : (AllowAny,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
+class Homepage_view(ViewsetActionPermissionMixin, ModelViewSet):
+    queryset = HomepageData.objects.all()
+    serializer_class = HomepageSerializer
+    permission_classes = (IsAdmin,)
+
+    action_based_permission_classes = {
+        'list' : (AllowAny,),
+        # 'create': (permission_classes),
+        # 'retrieve': (permission_classes),
+        # 'update' : (permission_classes),
+        # 'partial_update' : (permission_classes),
+        # 'destroy' : (permission_classes)
+    }
+class Blog_view(ViewsetActionPermissionMixin, ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+    permission_classes = (IsAdmin,)
 
     action_based_permission_classes = {
         'list' : (AllowAny,),
