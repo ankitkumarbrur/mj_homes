@@ -118,8 +118,8 @@ const ProductDescriptionInfo = ({
       {product.variation ? (
         <div className="pro-details-size-color">
           <div className="pro-details-color-wrap">
-            <span>Color</span>
-            <div className="pro-details-color-content">
+            <span>Variations</span>
+            <div className="pro-details-color-content" style={{ display: "flex", flexDirection: "column" }}>
               {product.variation.map((single, key) => {
                 return (
                   <label

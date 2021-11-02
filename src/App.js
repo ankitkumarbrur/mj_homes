@@ -58,13 +58,16 @@ const App = (props) => {
       })
     );
   });
-  const [sliderData, setSliderData] = useState([]);
+
 
   const fetchCarousel = async () => {
     try {
       const { data } = await axios.get(`${BASE_URL}carousel/`);
       localStorage.setItem("sliderData", JSON.stringify(data));
-      console.log(JSON.stringify(data));
+      const res = await axios.get(`${BASE_URL}homepage/`);
+      localStorage.setItem("homepage", JSON.stringify(res.data[0]));
+      const response = await axios.get(`${BASE_URL}blog/`);
+      localStorage.setItem("blog", JSON.stringify(response.data));
     } catch (error) {
       console.log(error);
     }

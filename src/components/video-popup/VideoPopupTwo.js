@@ -11,7 +11,7 @@ const VideoPopupTwo = ({ spaceBottomClass }) => {
       <div
         className="video-popup-2__left bg-img"
         style={{
-          backgroundImage: `url(${"https://images.unsplash.com/photo-1616627988031-f912e383aebb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8ZnVybml0dXJlc3xlbnwwfDB8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"})`,
+          backgroundImage: `url(${JSON.parse(localStorage.getItem("homepage")).leftImage})`,
         }}
       >
         <div className="video-popup-2__content">
@@ -30,7 +30,7 @@ const VideoPopupTwo = ({ spaceBottomClass }) => {
         <ModalVideo
           channel="youtube"
           isOpen={modalStatus}
-          videoId="M6xmcvkf6Cw"
+          videoId={JSON.parse(localStorage.getItem("homepage")).videoLink}
           onClose={() => isOpen(false)}
         />
         <div className="video-popup-2__button">
@@ -45,7 +45,7 @@ const VideoPopupTwo = ({ spaceBottomClass }) => {
       <div
         className="video-popup-2__right bg-img"
         style={{
-          backgroundImage: `url(${"https://media.istockphoto.com/photos/loft-interior-with-leather-sofa-and-furnitures-picture-id1299845842?b=1&k=20&m=1299845842&s=170667a&w=0&h=Qsz0EmzJJB1MugGIQTtJyNUFaVBdFFuXPJ8RKLNikQw="})`,
+          backgroundImage: `url(${JSON.parse(localStorage.getItem("homepage")).rightImage})`,
         }}
       ></div>
     </div>

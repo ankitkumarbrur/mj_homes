@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CategoryThreeSingle = ({ data, sliderClass }) => {
+const CategoryThreeSingle = ({ data, sliderClass, img }) => {
   return (
     <div
       className={`collection-product mt-20 ${sliderClass ? sliderClass : ""}`}
     >
       <div className="collection-img">
         <Link to={process.env.PUBLIC_URL + data.link}>
-          <img src={process.env.PUBLIC_URL + data.image} width="280" height="270" alt="" />
+          <img src={process.env.PUBLIC_URL + img} width="280" height="270" alt="" />
         </Link>
       </div>
       <div className="collection-content text-center">

@@ -3,13 +3,12 @@ import React from "react";
 import categoryData from "../../data/category/category-two.json";
 import CategoryThreeSingle from "../../components/category/CategoryThreeSingle.js";
 import SectionTitle from "../../components/section-title/SectionTitle";
-
+const homepage = (JSON.parse(localStorage.getItem("homepage")))
 const CategoryThreeSlider = ({ spaceTopClass, spaceBottomClass }) => {
   return (
     <div
-      className={`collections-area ${spaceTopClass ? spaceTopClass : ""}  ${
-        spaceBottomClass ? spaceBottomClass : ""
-      }`}
+      className={`collections-area ${spaceTopClass ? spaceTopClass : ""}  ${spaceBottomClass ? spaceBottomClass : ""
+        }`}
     >
       <div className="container">
         <SectionTitle
@@ -18,9 +17,19 @@ const CategoryThreeSlider = ({ spaceTopClass, spaceBottomClass }) => {
           spaceClass="mb-35"
         />
         <div className="collection-wrap">
-          {categoryData &&
+          {
+
+            categoryData &&
             categoryData.map((single, key) => {
-              return <CategoryThreeSingle data={single} key={key} />;
+              let img;
+              if (key == 0) img = homepage.livingRoom
+              if (key == 1) img = homepage.drawingRoom
+              if (key == 2) img = homepage.diningRoom
+              if (key == 3) img = homepage.kitchen
+              if (key == 4) img = homepage.bedRoom
+              if (key == 5) img = homepage.outdoor
+
+              return <CategoryThreeSingle data={single} key={key} img={img} />;
             })}
         </div>
       </div>
