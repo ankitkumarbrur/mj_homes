@@ -88,3 +88,25 @@ class HomepageData(models.Model):
         
 
         super(HomepageData, self).save(*args, **kwargs)
+class Blog(models.Model):
+    def blog_image_upload(instance, filename):
+        new_filename = "%s.%s" %(instance.id, filename.split(".")[-1])
+        return "blog/%s" %(new_filename)
+        
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    image = models.ImageField(upload_to = blog_image_upload)
+    heading = models.TextField()
+    link = models.TextField()
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            image_f = Img.open(StringIO.BytesIO(self.image.read()))
+
+            output = StringIO.BytesIO()
+            image_f.save(output, format='WEBP', quality=75)
+            output.seek(0)
+
+            self.image = InMemoryUploadedFile(output,'ImageField', "blog/%s.webp" % self.image.name, 'image/webp', output.getbuffer().nbytes, None)
+
+        super(Blog, self).save(*args, **kwargs)

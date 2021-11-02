@@ -42,7 +42,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length = 150)
     start_date = models.DateTimeField(default = timezone.now)
     is_staff = models.BooleanField(default = False)
-    is_active = models.BooleanField(default = True)
+    is_active = models.BooleanField(default = False)
     
     objects = AccountManager()
 
@@ -91,17 +91,18 @@ class Query(models.Model):
 
 
 def activate_user(sender, instance, **kwargs):
-    payload = {
-        "id" : instance.id,
-        'exp' : datetime.datetime.utcnow() + datetime.timedelta(weeks = 999),
-        'iat' : datetime.datetime.utcnow()
-    }
+    if not instance.is_active:
+        payload = {
+            "id" : instance.id,
+            'exp' : datetime.datetime.utcnow() + datetime.timedelta(weeks = 999),
+            'iat' : datetime.datetime.utcnow()
+        }
 
-    token = jwt.encode(payload, "secret22", algorithm = "HS256")
+        token = jwt.encode(payload, "secret22", algorithm = "HS256")
 
-    send_mail("Activate account",
-    "Click on the following url to activate your account: https://luxurymjhomes.com/" + token,
-    "admin@luxurymjhomes.com",[instance.email])
+        send_mail("Activate account",
+        "Click on the following url to activate your account: https://luxurymjhomes.com/activateAccount/" + token,
+        "admin@luxurymjhomes.com",[instance.email])
 
 post_save.connect(activate_user, sender=User)
 

@@ -13,6 +13,11 @@ class HomepageSerializer(serializers.ModelSerializer):
         model = HomepageData
         fields = '__all__'
 
+class BlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = '__all__'
+
 class DOTDSerializer(serializers.ModelSerializer):
     class Meta:
         model = DOTD

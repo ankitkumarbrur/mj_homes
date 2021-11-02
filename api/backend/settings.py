@@ -182,7 +182,6 @@ CORS_ALLOWED_ORIGINS = [
 # Authentication Model
 AUTH_USER_MODEL = 'users.User'
 
-
 #JWT Configuration
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes = 120), #TODO: 15min
