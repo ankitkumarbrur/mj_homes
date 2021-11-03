@@ -3,6 +3,7 @@ import { DELETE_ALL_FROM_CART, fetchCart } from "./cartActions";
 import { fetchWishlist, deleteAllFromWishlist } from "./wishlistActions";
 import { DELETE_ALL_FROM_WISHLIST } from "./wishlistActions";
 
+
 export const USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST";
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_LOGIN_FAIL = " USER_LOGIN_FAIL";
@@ -128,7 +129,8 @@ export const logout = (addToast) => async (dispatch, getState) => {
 //     dispatch({ type: USER_LIST_RESET });
 // };
 
-export const register = (firstname, lastname, pass, email, addToast) => async (dispatch) => {
+export const register = (firstname, lastname, pass, email, addToast, history) => async (dispatch) => {
+
 	try {
 		dispatch({
 			type: USER_REGISTER_REQUEST,
@@ -151,10 +153,14 @@ export const register = (firstname, lastname, pass, email, addToast) => async (d
 			config
 		);
 
-		addToast(data.message, {
+
+
+		addToast("Check your mail for Account Activation.", {
 			appearance: "success",
 			autoDismiss: true
 		});
+
+		return "Success";
 
 
 	} catch (error) {

@@ -10,16 +10,16 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useSelector, useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
-import { useRouteMatch } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 
 const ResetPassword = ({ location }) => {
-    const BASE_URL = "http://localhost:8000/";
+    const BASE_URL = "https://api.luxurymjhomes.com/";
     const match = useRouteMatch();
     const { pathname } = location;
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
 
-    const dispatch = useDispatch();
+    const history = useHistory();
     const { addToast } = useToasts();
 
     const { userInfo, error, loading } = useSelector((state) => state.userLogin);
@@ -27,13 +27,10 @@ const ResetPassword = ({ location }) => {
 
     const resetPassword = async (password) => {
         try {
-            const formData = new FormData();
-            formData.append("password", password);
-            formData.append("token", match.params.id);
 
             const config = {
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
             };
 
@@ -49,6 +46,7 @@ const ResetPassword = ({ location }) => {
                 appearance: "success",
                 autoDismiss: true
             });
+            history.push('/login-register');
         } catch (error) {
             addToast("Failed", {
                 appearance: "error",
@@ -67,23 +65,6 @@ const ResetPassword = ({ location }) => {
     };
 
 
-
-    // useEffect(() => {
-    //     if (
-    //         !loading &&
-    //         localStorage.getItem("userInfo") !== null &&
-    //         localStorage.getItem("userInfo") !== undefined
-    //     ) {
-    //         console.log("Logged In");
-    //         console.log(userInfo);
-    //     }
-    //     // fetch_data();
-    //     if (userInfo && data) {
-    //         // fetchData();
-    //         setdata(false);
-    //     }
-    //     console.log("RE RENDERED");
-    // }, [userInfo, loading]);
 
     if (loading) {
         return (

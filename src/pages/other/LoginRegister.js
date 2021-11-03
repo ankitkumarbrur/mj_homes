@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
@@ -14,6 +14,7 @@ import { useToasts } from "react-toast-notifications";
 import axios from "axios";
 
 const LoginRegister = ({ location }) => {
+  const history = useHistory();
   const { pathname } = location;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,34 +33,6 @@ const LoginRegister = ({ location }) => {
   const { userInfo, error, loading } = useSelector((state) => state.userLogin);
   const { products } = useSelector((state) => state.productData);
 
-  // const fetchData = async () => {
-
-  // const formData = new FormData();
-  // formData.append("userId", userInfo.id);
-
-  // const config = {
-  //   headers: {
-  //     "Content-Type": "multipart/form-data",
-  //   },
-  // };
-  // const { data } = await axios.post(
-  //   `${BASE_URL}/api/order/getCartProducts/`,
-  //   formData,
-  //   config
-  // );
-
-  // // console.log(data.cartList);
-  // // console.log(products);
-  // (data.cartList).forEach((product) => {
-  //   const cartItem = products.filter(item => item.id == product.productId)[0];
-  //   console.log(cartItem);
-  //   // const items = products.filter(item => item.id == product.productId);
-  //   // console.log(cartItem.id, items.length);
-  //   dispatch(addToCart(cartItem, addToast, 1, null, null));
-
-  // })
-
-  // }
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -83,7 +56,11 @@ const LoginRegister = ({ location }) => {
       passConfirm != "" &&
       email != ""
     ) {
-      dispatch(register(firstname, lastname, pass, email, addToast));
+      dispatch(register(firstname, lastname, pass, email, addToast, history)).then((res) => {
+
+        window.location.reload(false);
+
+      })
     }
   };
 
@@ -101,7 +78,7 @@ const LoginRegister = ({ location }) => {
       // fetchData();
       setdata(false);
     }
-    console.log("RE RENDERED");
+
   }, [userInfo, loading]);
 
   if (loading) {

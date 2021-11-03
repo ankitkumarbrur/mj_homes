@@ -9,7 +9,7 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import { useSelector, useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
-import { useRouteMatch, Redirect, useHistory } from "react-router-dom";
+import { useRouteMatch, useHistory } from "react-router-dom";
 
 const ActivateAccount = ({ location }) => {
     const BASE_URL = "https://api.luxurymjhomes.com/";
@@ -26,8 +26,6 @@ const ActivateAccount = ({ location }) => {
 
     const ActivateAccount = async () => {
         try {
-            // const formData = new FormData();
-            // formData.append("password", password);
 
             const config = {
                 headers: {
