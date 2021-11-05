@@ -7,7 +7,7 @@ import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
 
 
 
-const productImageGallerySticky = ({ product }) => {
+const productImageGallerySticky = ({ product, selectedVariation }) => {
 
   return (
     <div className="product-large-image-wrapper product-large-image-wrapper--sticky">
@@ -28,6 +28,53 @@ const productImageGallerySticky = ({ product }) => {
           {product["model3d"] && (
             <div className="product-sticky-image__single-3d mb-10">
               <ThreeD url={product["model3d"]} />
+            </div>
+          )}
+
+          {(selectedVariation && selectedVariation != "") ? (
+
+            <div className="product-sticky-image__single mb-10" >
+              <div >
+                <LightgalleryItem
+                  group="any"
+                  src={selectedVariation}
+                  style={{ marginLeft: "5vw" }}
+                >
+                  <button>
+                    <i className="pe-7s-expand1"></i>
+                  </button>
+                </LightgalleryItem>
+
+                <img
+                  src={selectedVariation}
+                  alt=""
+                  className="img-fluid"
+
+                />
+
+              </div>
+            </div>
+          ) : (
+            <div className="product-sticky-image__single mb-10" >
+              <div >
+                <LightgalleryItem
+                  group="any"
+                  src={product.variation[0].image}
+                  style={{ marginLeft: "5vw" }}
+                >
+                  <button>
+                    <i className="pe-7s-expand1"></i>
+                  </button>
+                </LightgalleryItem>
+
+                <img
+                  src={product.variation[0].image}
+                  alt=""
+                  className="img-fluid"
+
+                />
+
+              </div>
             </div>
           )}
 
@@ -58,8 +105,8 @@ const productImageGallerySticky = ({ product }) => {
               );
             })}
         </div>
-      </LightgalleryProvider>
-    </div>
+      </LightgalleryProvider >
+    </div >
   );
 };
 

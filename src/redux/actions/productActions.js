@@ -2,6 +2,7 @@ import Axios from "axios";
 
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const SELECT_PRODUCT_SUCCESS = "SELECT_PRODUCT_SUCCESS";
+export const SELECT_VARIATION_SUCCESS = "SELECT_VARIATION_SUCCESS";
 
 const fetchProductsSuccess = (products) => ({
   type: FETCH_PRODUCTS_SUCCESS,
@@ -12,6 +13,13 @@ const selectProductSuccess = ({ size, weight, material }) => ({
   type: SELECT_PRODUCT_SUCCESS,
   payload: { size, weight, material }
 });
+
+const selectVariationSuccess = (image) => ({
+  type: SELECT_VARIATION_SUCCESS,
+  payload: image
+});
+
+
 
 // fetch products
 export const fetchProducts = (products) => {
@@ -36,5 +44,14 @@ export const selectProduct = (size, weight, material) => {
 
     dispatch(selectProductSuccess({ size, weight, material }));
   };
-  ;
 };
+
+//Select Product Variation for Displaying Variation specific Image
+export const selectVariation = (image) => {
+
+  return (dispatch) => {
+    dispatch(selectVariationSuccess(image));
+  };
+
+};
+

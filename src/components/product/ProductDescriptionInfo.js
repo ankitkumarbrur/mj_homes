@@ -9,7 +9,7 @@ import { addToCompare } from "../../redux/actions/compareActions";
 import Rating from "./sub-components/ProductRating";
 import PinCode from "./sub-components/Pincode";
 import ProductGridFour from "../../wrappers/product/ProductGridFour";
-import { selectProduct } from "../../redux/actions/productActions";
+import { selectProduct, selectVariation } from "../../redux/actions/productActions";
 
 const ProductDescriptionInfo = ({
   product,
@@ -146,6 +146,7 @@ const ProductDescriptionInfo = ({
                         // setProductStock(single.size[0].stock);
                         setQuantityCount(quantityCount);
                         dispatch(selectProduct(single.size, single.weight, single.material));
+                        dispatch(selectVariation(single.image));
                       }}
                     />
                     <span className="checkmark"></span>

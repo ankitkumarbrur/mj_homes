@@ -10,6 +10,8 @@ import FrequentlyBoughtTogether from "../../wrappers/product/FrequentlyBoughtTog
 import OtherPeopleBought from "../../wrappers/product/OtherPeopleBought";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescriptionSticky from "../../wrappers/product/ProductImageDescriptionSticky";
+import { useSelector } from "react-redux";
+
 // import { useGLTF } from "@react-three/drei";
 import { useHistory, useRouteMatch } from "react-router-dom";
 // const [id, setid] = useState();
@@ -20,6 +22,7 @@ const ProductSticky = ({ location, product }) => {
   // console.log(nodes);
   const { pathname } = location;
   const match = useRouteMatch();
+  const { selectedVariation } = useSelector(state => state.productData)
   if (product === (null || undefined)) return <></>
   return (
     <Fragment>
@@ -42,6 +45,7 @@ const ProductSticky = ({ location, product }) => {
           spaceTopClass="mt-100"
           spaceBottomClass="mb-100"
           product={product}
+          selectedVariation={selectedVariation}
         />
         {/*  */}
         {/* product description tab */}

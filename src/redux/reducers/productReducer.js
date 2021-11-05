@@ -1,8 +1,9 @@
-import { FETCH_PRODUCTS_SUCCESS, SELECT_PRODUCT_SUCCESS } from "../actions/productActions";
+import { FETCH_PRODUCTS_SUCCESS, SELECT_PRODUCT_SUCCESS, SELECT_VARIATION_SUCCESS } from "../actions/productActions";
 
 const initState = {
   products: [],
   selectedProduct: {},
+  selectedVariation: "",
 };
 
 const productReducer = (state = initState, action) => {
@@ -17,6 +18,12 @@ const productReducer = (state = initState, action) => {
     return {
       ...state,
       selectedProduct: action.payload
+    };
+  }
+  if (action.type == SELECT_VARIATION_SUCCESS) {
+    return {
+      ...state,
+      selectedVariation: action.payload
     };
   }
 

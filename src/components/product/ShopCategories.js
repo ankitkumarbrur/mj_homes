@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import { setActiveSort } from "../../helpers/product";
 
 const ShopCategories = ({ categories, getSortParams }) => {
+
+  const [multicategory, setmulticategory] = useState([]);
   return (
     <div className="sidebar-widget">
       <h4 className="pro-sidebar-title">Categories </h4>
@@ -13,7 +15,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
               <div className="sidebar-widget-list-left">
                 <button
                   onClick={e => {
-                    getSortParams("category", "");
+                    getSortParams("multicategory", []);
                     setActiveSort(e);
                   }}
                 >
@@ -27,8 +29,18 @@ const ShopCategories = ({ categories, getSortParams }) => {
                   <div className="sidebar-widget-list-left">
                     <button
                       onClick={e => {
-                        getSortParams("category", category);
+                        let new_arr = multicategory;
+                        if (e.currentTarget.classList == "active") {
+
+                          new_arr = new_arr.filter((ele) => ele != category);
+
+                        } else {
+                          new_arr.push(category);
+                        }
+                        // console.log(new_arr);
+                        getSortParams("multicategory", new_arr);
                         setActiveSort(e);
+                        setmulticategory(new_arr)
                       }}
                     >
                       {" "}

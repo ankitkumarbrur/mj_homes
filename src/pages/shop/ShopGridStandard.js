@@ -22,7 +22,7 @@ const ShopGridStandard = ({ location, products, searchData }) => {
   // const { nodes } = useGLTF("./shoe-draco.glb");
   // console.log(nodes);
 
-  const [layout, setLayout] = useState("grid three-column");
+  const [layout, setLayout] = useState("grid two-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
   const [filterSortType, setFilterSortType] = useState("");
@@ -46,6 +46,7 @@ const ShopGridStandard = ({ location, products, searchData }) => {
   const getSortParams = (sortType, sortValue) => {
     setSortType(sortType);
     setSortValue(sortValue);
+
   };
 
   const getFilterSortParams = (sortType, sortValue) => {
@@ -193,11 +194,11 @@ const mapStateToProps = (state, props) => {
         props.limit
       )
         ? getProducts(
-            state.productData.products,
-            props.subcategory,
-            props.location.state.type,
-            props.limit
-          )
+          state.productData.products,
+          props.subcategory,
+          props.location.state.type,
+          props.limit
+        )
         : state.productData.products,
     };
   } else {

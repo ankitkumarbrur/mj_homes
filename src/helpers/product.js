@@ -21,9 +21,9 @@ export const searchProducts = async (searchText) => {
 export const getProducts = (products, subcategory, type, limit) => {
   const finalProducts = subcategory
     ? products.filter(
-        (product) =>
-          product.subcategory.filter((single) => single == subcategory)[0]
-      )
+      (product) =>
+        product.subcategory.filter((single) => single == subcategory)[0]
+    )
     : products;
 
   if (type && type == "new") {
@@ -47,8 +47,8 @@ export const getProducts = (products, subcategory, type, limit) => {
 export const getProductsByTag = (products, tag, type, limit) => {
   const finalProducts = tag
     ? products.filter(
-        (product) => product.tag.filter((single) => single == tag)[0]
-      )
+      (product) => product.tag.filter((single) => single == tag)[0]
+    )
     : products;
 
   if (type && type == "new") {
@@ -104,8 +104,18 @@ export const getProductCartQuantity = (cartItems, product, color, size) => {
 
 //get products based on category
 export const getSortedProducts = (products, sortType, sortValue) => {
+  console.log(sortType, sortValue);
   if (products && sortType && sortValue) {
+    if (sortType == "multicategory") {
+
+      return products.filter((product) => {
+        return product.subcategory
+          ? product.subcategory.filter((single) => sortValue.includes(single))[0]
+          : false;
+      });
+    }
     if (sortType == "category") {
+
       return products.filter((product) => {
         return product.subcategory
           ? product.subcategory.filter((single) => single == sortValue)[0]
@@ -248,10 +258,17 @@ export const setActiveSort = (e) => {
   const filterButtons = document.querySelectorAll(
     ".sidebar-widget-list-left button, .sidebar-widget-tag button, .product-filter button"
   );
-  filterButtons.forEach((item) => {
-    item.classList.remove("active");
-  });
-  e.currentTarget.classList.add("active");
+  // filterButtons.forEach((item) => {
+  //   item.classList.remove("active");
+  // });
+  if (e.currentTarget.classList == "active") {
+    e.currentTarget.classList.remove("active")
+  } else {
+    e.currentTarget.classList.add("active");
+  }
+
+
+
 };
 
 export const setActiveLayout = (e) => {

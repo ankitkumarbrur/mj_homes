@@ -16,6 +16,7 @@ const ProductImageDescriptionSticky = ({
   cartItems,
   wishlistItems,
   compareItems,
+  selectedVariation,
 }) => {
   const wishlistItem = wishlistItems.filter(
     (wishlistItem) => wishlistItem.id == product.id
@@ -40,7 +41,7 @@ const ProductImageDescriptionSticky = ({
         <div className="row">
           <div className="col-lg-6 col-md-6">
             {/* product image gallery */}
-            <ProductImageGallerySticky product={product} />
+            <ProductImageGallerySticky product={product} selectedVariation={selectedVariation} />
           </div>
           <div className="col-lg-6 col-md-6">
             <Sticky
