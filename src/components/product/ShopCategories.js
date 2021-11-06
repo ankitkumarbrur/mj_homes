@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { setActiveSort } from "../../helpers/product";
+import { useDispatch } from "react-redux";
+import { reload } from "../../redux/actions/productActions";
 
 const ShopCategories = ({ categories, getSortParams }) => {
-
+  const dispatch = useDispatch();
   const [multicategory, setmulticategory] = useState([]);
   return (
     <div className="sidebar-widget">
@@ -41,6 +43,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
                         getSortParams("multicategory", new_arr);
                         setActiveSort(e);
                         setmulticategory(new_arr)
+                        dispatch(reload());
                       }}
                     >
                       {" "}

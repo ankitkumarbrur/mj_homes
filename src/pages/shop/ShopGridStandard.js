@@ -12,6 +12,7 @@ import ShopTopbar from "../../wrappers/product/ShopTopbar";
 import ShopProducts from "../../wrappers/product/ShopProducts";
 import { useToasts } from "react-toast-notifications";
 import { getProducts } from "../../helpers/product";
+import { useSelector } from "react-redux";
 // import { useGLTF } from "@react-three/drei";
 // import { useHistory } from "react-router-dom";
 
@@ -21,7 +22,7 @@ const ShopGridStandard = ({ location, products, searchData }) => {
 
   // const { nodes } = useGLTF("./shoe-draco.glb");
   // console.log(nodes);
-
+  const { reload } = useSelector(state => state.productData);
   const [layout, setLayout] = useState("grid two-column");
   const [sortType, setSortType] = useState("");
   const [sortValue, setSortValue] = useState("");
@@ -60,9 +61,6 @@ const ShopGridStandard = ({ location, products, searchData }) => {
         .then((res) => {
           setLoading(false);
           setData(res);
-          console.log(res);
-          // UNCOMMENT THIS AFTER CORRECTION IN API
-          // products = res;
         })
         .catch((err) => {
           addToast("Unable to complete search request, try again", {
@@ -90,6 +88,7 @@ const ShopGridStandard = ({ location, products, searchData }) => {
     filterSortType,
     filterSortValue,
     loading,
+    reload,
   ]);
 
   //loader screen

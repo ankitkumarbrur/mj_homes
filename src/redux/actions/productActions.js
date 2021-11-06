@@ -3,6 +3,7 @@ import Axios from "axios";
 export const FETCH_PRODUCTS_SUCCESS = "FETCH_PRODUCTS_SUCCESS";
 export const SELECT_PRODUCT_SUCCESS = "SELECT_PRODUCT_SUCCESS";
 export const SELECT_VARIATION_SUCCESS = "SELECT_VARIATION_SUCCESS";
+export const RELOAD_SHOP_SUCCESS = "RELOAD_SHOP_SUCCESS";
 
 const fetchProductsSuccess = (products) => ({
   type: FETCH_PRODUCTS_SUCCESS,
@@ -17,6 +18,11 @@ const selectProductSuccess = ({ size, weight, material }) => ({
 const selectVariationSuccess = (image) => ({
   type: SELECT_VARIATION_SUCCESS,
   payload: image
+});
+
+const forceReload = (change) => ({
+  type: RELOAD_SHOP_SUCCESS,
+  payload: change
 });
 
 
@@ -51,6 +57,14 @@ export const selectVariation = (image) => {
 
   return (dispatch) => {
     dispatch(selectVariationSuccess(image));
+  };
+
+};
+
+export const reload = () => {
+  let change = new Date();
+  return (dispatch) => {
+    dispatch(forceReload(change));
   };
 
 };

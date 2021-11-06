@@ -104,8 +104,17 @@ export const getProductCartQuantity = (cartItems, product, color, size) => {
 
 //get products based on category
 export const getSortedProducts = (products, sortType, sortValue) => {
-  console.log(sortType, sortValue);
+
   if (products && sortType && sortValue) {
+    if (sortType == "multicolor") {
+
+      return products.filter((product) => {
+        return product.variation
+          ? product.variation.filter((single) => sortValue.includes(single.color))[0]
+          : false;
+      });
+    }
+
     if (sortType == "multicategory") {
 
       return products.filter((product) => {
