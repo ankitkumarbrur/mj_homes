@@ -13,7 +13,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
       <div className="sidebar-widget-list mt-30">
         {categories ? (
           <ul>
-            <li>
+            {/* <li>
               <div className="sidebar-widget-list-left">
                 <button
                   onClick={e => {
@@ -24,7 +24,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
                   <span className="checkmark" /> All Categories
                 </button>
               </div>
-            </li>
+            </li> */}
             {categories.map((category, key) => {
               return (
                 <li key={key}>

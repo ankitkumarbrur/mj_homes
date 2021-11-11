@@ -14,7 +14,7 @@ const ShopColor = ({ colors, getSortParams }) => {
       <div className="sidebar-widget-list mt-20">
         {colors ? (
           <ul>
-            <li>
+            {/* <li>
               <div className="sidebar-widget-list-left">
                 <button
                   onClick={e => {
@@ -25,7 +25,7 @@ const ShopColor = ({ colors, getSortParams }) => {
                   <span className="checkmark" /> All Colors{" "}
                 </button>
               </div>
-            </li>
+            </li> */}
             {colors.map((color, key) => {
               return (
                 <li key={key}>

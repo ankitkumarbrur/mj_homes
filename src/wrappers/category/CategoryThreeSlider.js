@@ -3,8 +3,9 @@ import React from "react";
 import categoryData from "../../data/category/category-two.json";
 import CategoryThreeSingle from "../../components/category/CategoryThreeSingle.js";
 import SectionTitle from "../../components/section-title/SectionTitle";
-const homepage = (JSON.parse(localStorage.getItem("homepage")))
+
 const CategoryThreeSlider = ({ spaceTopClass, spaceBottomClass }) => {
+  const homepage = localStorage.getItem("homepage") ? (JSON.parse(localStorage.getItem("homepage"))) : []
   return (
     <div
       className={`collections-area ${spaceTopClass ? spaceTopClass : ""}  ${spaceBottomClass ? spaceBottomClass : ""

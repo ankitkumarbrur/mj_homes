@@ -4,14 +4,16 @@ import ModalVideo from "react-modal-video";
 
 const VideoPopupTwo = ({ spaceBottomClass }) => {
   const [modalStatus, isOpen] = useState(false);
+  if (localStorage.getItem("homepage") == null) return <></>
   return (
+
     <div
       className={`video-popup-2 ${spaceBottomClass ? spaceBottomClass : ""}`}
     >
       <div
         className="video-popup-2__left bg-img"
         style={{
-          backgroundImage: `url(${JSON.parse(localStorage.getItem("homepage")).leftImage})`,
+          backgroundImage: ` url(${JSON.parse(localStorage.getItem("homepage")).leftImage})`,
         }}
       >
         <div className="video-popup-2__content">

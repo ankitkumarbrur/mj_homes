@@ -42,6 +42,8 @@ const ResetPassword = lazy(() => import("./pages/other/ResetPassword"));
 const forgotPassword = lazy(() => import("./pages/other/ForgotPassword"));
 const activateAccount = lazy(() => import("./pages/other/ActivateAccount"));
 
+const accountPopUp = lazy(() => import("./pages/other/AccountPopUp"));
+
 const TRACKING_ID = "UA-188159088-1";
 const BASE_URL = "https://api.luxurymjhomes.com/";
 ReactGA.initialize(TRACKING_ID);
@@ -59,7 +61,7 @@ const App = (props) => {
     );
   });
 
-
+  const [refresh, setrefresh] = useState(0);
   const fetchCarousel = async () => {
     try {
       const { data } = await axios.get(`${BASE_URL}carousel/`);
@@ -68,6 +70,7 @@ const App = (props) => {
       localStorage.setItem("homepage", JSON.stringify(res.data[0]));
       const response = await axios.get(`${BASE_URL}blog/`);
       localStorage.setItem("blog", JSON.stringify(response.data));
+      setrefresh(refresh + 1)
     } catch (error) {
       console.log(error);
     }
@@ -76,6 +79,17 @@ const App = (props) => {
   useEffect(() => {
     fetchCarousel();
   }, []);
+
+  if (localStorage.getItem("homepage") == null) {
+    return (
+      <div className="MJHOMES-preloader-wrapper">
+        <div className="MJHOMES-preloader">
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    )
+  }
   return (
     <ToastProvider placement="bottom-left">
       <BreadcrumbsProvider>
@@ -182,6 +196,10 @@ const App = (props) => {
                 <Route
                   path={process.env.PUBLIC_URL + "/activateAccount/:id"}
                   component={activateAccount}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/test"}
+                  component={accountPopUp}
                 />
                 <Route
                   path={process.env.PUBLIC_URL + "/not-found"}
