@@ -73,6 +73,8 @@ class HomepageData(models.Model):
     leftImage = models.ImageField(upload_to = home_image_upload)
     rightImage = models.ImageField(upload_to = home_image_upload)
 
+    registerationImage = models.ImageField(upload_to = home_image_upload)
+
     videoLink = models.TextField()
 
     def save(self, *args, **kwargs):
@@ -85,6 +87,8 @@ class HomepageData(models.Model):
 
         if self.leftImage: self.leftImage = homeConvertToWebp(self.leftImage)
         if self.rightImage: self.rightImage = homeConvertToWebp(self.rightImage)
+
+        if self.registerationImage: self.registerationImage = homeConvertToWebp(self.registerationImage)
         
 
         super(HomepageData, self).save(*args, **kwargs)
