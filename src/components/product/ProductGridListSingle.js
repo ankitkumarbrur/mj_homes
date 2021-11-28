@@ -20,8 +20,8 @@ const ProductGridListSingle = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
-
-  const discountedPrice = product.variation[0].discounted_price;
+  console.log("ERROR", product)
+  const discountedPrice = (product && product.variation) ? (product.variation[0] && product.variation[0].hasOwnProperty('discounted_price') ? product.variation[0].discounted_price : undefined) : undefined
   const finalProductPrice = product.variation[0].price;
 
   // const discountedPrice = getDiscountPrice(product.price, product.discount);
@@ -32,9 +32,8 @@ const ProductGridListSingle = ({
   return (
     <Fragment>
       <div
-        className={`col-xl-4 col-sm-6 ${
-          sliderClassName ? sliderClassName : ""
-        }`}
+        className={`col-xl-4 col-sm-6 ${sliderClassName ? sliderClassName : ""
+          }`}
       >
         <div
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}

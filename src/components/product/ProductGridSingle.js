@@ -21,7 +21,7 @@ const ProductGridSingle = ({
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
 
-  const discountedPrice = product.variation[0].discounted_price //? product.variation[0].discounted_price ? product.variation[0].discounted_price : null : null;
+  const discountedPrice = (product && product.variation) ? (product.variation[0] && product.variation[0].hasOwnProperty('discounted_price') ? product.variation[0].discounted_price : undefined) : undefined//? product.variation[0].discounted_price ? product.variation[0].discounted_price : null : null;
   const finalProductPrice = product.variation[0].price //? product.variation[0].price ? product.variation[0].price : null : null;
   // const discountedPrice = getDiscountPrice(product.price, product.discount);
   // const finalProductPrice = +(product.price * currency.currencyRate).toFixed(2);
