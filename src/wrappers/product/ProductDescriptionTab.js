@@ -61,7 +61,7 @@ const ProductDescriptionTab = ({
             </Nav>
             <Tab.Content className="description-review-bottom">
               <Tab.Pane eventKey="additionalInfo">
-                <div className="product-anotherInfo-wrapper" style={{ display: "flex", justifyContent: "space-around" }}>
+                <div className="product-anotherInfo-wrapper" >
                   {/* <ul>
                     <li>
                       <span>Manufacturer</span>
@@ -139,30 +139,31 @@ const ProductDescriptionTab = ({
 
                   </ul> */}
 
-                  <Accordion>
+
+                  <Accordion flush>
                     <Accordion.Item eventKey="0">
-                      <Accordion.Header><span>Manufacturer</span></Accordion.Header>
+                      <Accordion.Header>Manufacturer</Accordion.Header>
                       <Accordion.Body>
                         {productManufacturer}
                       </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
-                      <Accordion.Header> <span>Weight</span></Accordion.Header>
+                      <Accordion.Header> Weight</Accordion.Header>
                       <Accordion.Body>
                         {productWeight}
                       </Accordion.Body>
                     </Accordion.Item>
 
                     <Accordion.Item eventKey="2">
-                      <Accordion.Header>   <span>Dimensions</span></Accordion.Header>
+                      <Accordion.Header>   Dimensions</Accordion.Header>
                       <Accordion.Body>
                         {productSize}
                       </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="3">
-                      <Accordion.Header> <span>Materials</span></Accordion.Header>
+                      <Accordion.Header> Materials</Accordion.Header>
                       <Accordion.Body>
-                        {/* {productMaterial.map((single, i) => [
+                        {productMaterial.map((single, i) => [
                           i > 0 && ", ",
                           <i
                             key={i}
@@ -170,50 +171,50 @@ const ProductDescriptionTab = ({
                           >
                             {single}
                           </i>,
-                        ])} */}
+                        ])}
                       </Accordion.Body>
                     </Accordion.Item>
 
                     <Accordion.Item eventKey="4">
-                      <Accordion.Header> <span>SKU</span></Accordion.Header>
+                      <Accordion.Header> SKU</Accordion.Header>
                       <Accordion.Body>
-                        {/* {productID.toUpperCase()} */}
+                        {productID.toUpperCase()}
                       </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="5">
-                      <Accordion.Header> <span>Ships In</span></Accordion.Header>
+                      <Accordion.Header> Ships In</Accordion.Header>
                       <Accordion.Body>
-                        {/* {shipsin ? shipsin : "7 Days"} */}
+                        {shipsin ? shipsin : "7 Days"}
                       </Accordion.Body>
                     </Accordion.Item>
 
                     <Accordion.Item eventKey="6">
-                      <Accordion.Header>   <span>Finish</span></Accordion.Header>
+                      <Accordion.Header>   Finish</Accordion.Header>
                       <Accordion.Body>
-                        {/* {finish ? finish : ""} */}
+                        {finish ? finish : ""}
                       </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="7">
-                      <Accordion.Header> <span>Information</span></Accordion.Header>
+                      <Accordion.Header> Information</Accordion.Header>
                       <Accordion.Body>
-                        {/* <div dangerouslySetInnerHTML={{ __html: information }} style={{ display: "inline-flex" }}></div> */}
+                        <div dangerouslySetInnerHTML={{ __html: information }} style={{ display: "inline-flex" }}></div>
                       </Accordion.Body>
                     </Accordion.Item>
 
 
                     <Accordion.Item eventKey="8">
-                      <Accordion.Header>   <span>Ratings & Reviews</span></Accordion.Header>
+                      <Accordion.Header>   Ratings & Reviews</Accordion.Header>
                       <Accordion.Body>
-                        {/* {rating}
+                        {rating}
                         <div style={{ display: "inline-block", width: "fit-content" }}>&#11088;</div> &nbsp;{productReview.length}
                         &nbsp;
-                        Reviews */}
+                        Reviews
                       </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="9">
-                      <Accordion.Header><span>Delivery Condition</span></Accordion.Header>
+                      <Accordion.Header>Delivery Condition</Accordion.Header>
                       <Accordion.Body>
-                        {/* {deliveryCondition?deliveryCondition: "Expert-Assembly"} */}
+                        {deliveryCondition ? deliveryCondition : "Expert-Assembly"}
                       </Accordion.Body>
                     </Accordion.Item>
                   </Accordion>

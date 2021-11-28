@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import Sticky from "react-sticky-el";
 import { getDiscountPrice } from "../../helpers/product";
 import ProductDescriptionInfo from "../../components/product/ProductDescriptionInfo";
 import ProductImageGallerySticky from "../../components/product/ProductImageGallerySticky";
-
+import ProductImageGalleryMobile from "../../components/product/ProductImageGalleryMobile";
 
 const ProductImageDescriptionSticky = ({
   spaceTopClass,
@@ -32,6 +32,21 @@ const ProductImageDescriptionSticky = ({
     discountedPrice * currency.currencyRate
   ).toFixed(2);
 
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+    return () => {
+      window.removeEventListener('resize', handleWindowSizeChange);
+    }
+  }, []);
+
+
+
   return (
     <div
       className={`shop-area ${spaceTopClass ? spaceTopClass : ""} ${spaceBottomClass ? spaceBottomClass : ""
@@ -41,7 +56,15 @@ const ProductImageDescriptionSticky = ({
         <div className="row">
           <div className="col-lg-6 col-md-6">
             {/* product image gallery */}
-            <ProductImageGallerySticky product={product} selectedVariation={selectedVariation} />
+            {
+              (width < 500) ? (
+                <ProductImageGalleryMobile product={product} selectedVariation={selectedVariation} />
+              ) : (
+                <ProductImageGallerySticky product={product} selectedVariation={selectedVariation} />
+              )
+
+            }
+
           </div>
           <div className="col-lg-6 col-md-6">
             <Sticky

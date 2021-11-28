@@ -24,3 +24,16 @@ div.lg-img-wrap {
     top: -5.5px;
     left: -2.5px;
 }
+
+.accordion-button:not(.collapsed){
+    color : $theme-color;
+    background-color: white;
+}
+
+.product-large-image-wrapper .product-sticky-image .product-sticky-image__single {
+  @media #{$xs-layout} {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+   
+}
