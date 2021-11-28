@@ -12,6 +12,7 @@ import { login, logout, register } from "../../redux/actions/userActions";
 import { addToCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
+import Alert from 'react-bootstrap/Alert'
 
 const LoginRegister = ({ location }) => {
   const history = useHistory();
@@ -26,6 +27,7 @@ const LoginRegister = ({ location }) => {
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [data, setdata] = useState(true);
+  const [show, setshow] = useState(false)
 
   const dispatch = useDispatch();
   const { addToast } = useToasts();
@@ -57,8 +59,10 @@ const LoginRegister = ({ location }) => {
       email != ""
     ) {
       dispatch(register(firstname, lastname, pass, email, addToast, history)).then((res) => {
+        setshow(true)
 
-        window.location.reload(false);
+        // window.location.reload(false);
+
 
       })
     }
@@ -126,6 +130,19 @@ const LoginRegister = ({ location }) => {
                         </Nav.Link>
                       </Nav.Item>
                     </Nav>
+                    {show ?
+                      (<Alert variant="success" onClose={() => setshow(false)} dismissible>
+                        <Alert.Heading>An activation link will be sent to your email account</Alert.Heading>
+                        <p>
+                          Kindly check your Spam folder.
+                        </p>
+                      </Alert>)
+                      :
+                      (
+                        ""
+                      )
+                    }
+
                     <Tab.Content>
                       <Tab.Pane eventKey="login">
                         {localStorage.getItem("userInfo") != null ? (
@@ -158,13 +175,13 @@ const LoginRegister = ({ location }) => {
                             </button>
                           </div>
                         ) : (
-                          <div className="login-form-container">
+                          <div className={"login-form-container login-form-shadow"} style={{ boxShadow: "0 0 6px rgba(0, 0, 0, 0.1)" }}>
                             <div className="login-register-form">
                               <form onSubmit={loginHandler}>
                                 <input
                                   type="text"
                                   name="user-name"
-                                  placeholder="Username"
+                                  placeholder="Email"
                                   onChange={(e) => setUsername(e.target.value)}
                                 />
                                 <input
@@ -191,7 +208,7 @@ const LoginRegister = ({ location }) => {
                         )}
                       </Tab.Pane>
                       <Tab.Pane eventKey="register">
-                        <div className="login-form-container">
+                        <div className="login-form-container" style={{ boxShadow: "0 0 6px rgba(0, 0, 0, 0.1)" }}>
                           <div className="login-register-form">
                             <form onSubmit={registerHandler}>
                               <input
@@ -255,7 +272,7 @@ const LoginRegister = ({ location }) => {
           </div>
         </div>
       </LayoutOne>
-    </Fragment>
+    </Fragment >
   );
 };
 

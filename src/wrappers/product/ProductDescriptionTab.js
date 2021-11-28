@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
-
+import Accordion from 'react-bootstrap/Accordion'
 import Review from "../../components/product/sub-components/review components/Review";
 
 const ProductDescriptionTab = ({
@@ -62,7 +62,7 @@ const ProductDescriptionTab = ({
             <Tab.Content className="description-review-bottom">
               <Tab.Pane eventKey="additionalInfo">
                 <div className="product-anotherInfo-wrapper" style={{ display: "flex", justifyContent: "space-around" }}>
-                  <ul>
+                  {/* <ul>
                     <li>
                       <span>Manufacturer</span>
                       {productManufacturer}
@@ -81,16 +81,6 @@ const ProductDescriptionTab = ({
                     </li>
                     <li>
                       <span>Materials</span>
-                      {/* {productMaterial.map((single, key) => {
-                        return (
-                          <i
-                            key={key}
-                            style={{ fontStyle: "normal", marginRight: "5px" }}
-                          >
-                            {single}
-                          </i>
-                        );
-                      })} */}
                       &nbsp;
                       &nbsp;
                       {productMaterial.map((single, i) => [
@@ -126,7 +116,7 @@ const ProductDescriptionTab = ({
                         <span>Information</span>
 
                         &nbsp;
-                        {/* {information} */}
+                     
                         <div dangerouslySetInnerHTML={{ __html: information }} style={{ display: "inline-flex" }}></div>
                         { }
                       </li>
@@ -147,7 +137,87 @@ const ProductDescriptionTab = ({
                       {deliveryCondition ? deliveryCondition : "Expert-Assembly"}
                     </li>
 
-                  </ul>
+                  </ul> */}
+
+                  <Accordion>
+                    <Accordion.Item eventKey="0">
+                      <Accordion.Header><span>Manufacturer</span></Accordion.Header>
+                      <Accordion.Body>
+                        {productManufacturer}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                      <Accordion.Header> <span>Weight</span></Accordion.Header>
+                      <Accordion.Body>
+                        {productWeight}
+                      </Accordion.Body>
+                    </Accordion.Item>
+
+                    <Accordion.Item eventKey="2">
+                      <Accordion.Header>   <span>Dimensions</span></Accordion.Header>
+                      <Accordion.Body>
+                        {productSize}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="3">
+                      <Accordion.Header> <span>Materials</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* {productMaterial.map((single, i) => [
+                          i > 0 && ", ",
+                          <i
+                            key={i}
+                            style={{ fontStyle: "normal", marginRight: "5px" }}
+                          >
+                            {single}
+                          </i>,
+                        ])} */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+
+                    <Accordion.Item eventKey="4">
+                      <Accordion.Header> <span>SKU</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* {productID.toUpperCase()} */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="5">
+                      <Accordion.Header> <span>Ships In</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* {shipsin ? shipsin : "7 Days"} */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+
+                    <Accordion.Item eventKey="6">
+                      <Accordion.Header>   <span>Finish</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* {finish ? finish : ""} */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="7">
+                      <Accordion.Header> <span>Information</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* <div dangerouslySetInnerHTML={{ __html: information }} style={{ display: "inline-flex" }}></div> */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+
+
+                    <Accordion.Item eventKey="8">
+                      <Accordion.Header>   <span>Ratings & Reviews</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* {rating}
+                        <div style={{ display: "inline-block", width: "fit-content" }}>&#11088;</div> &nbsp;{productReview.length}
+                        &nbsp;
+                        Reviews */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="9">
+                      <Accordion.Header><span>Delivery Condition</span></Accordion.Header>
+                      <Accordion.Body>
+                        {/* {deliveryCondition?deliveryCondition: "Expert-Assembly"} */}
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+
                 </div>
               </Tab.Pane>
               <Tab.Pane eventKey="careInstructions">

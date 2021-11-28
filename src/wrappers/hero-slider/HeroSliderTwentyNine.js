@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 const HeroSliderTwentyNine = () => {
-  let sliderData = localStorage.getItem("sliderData") ? JSON.parse(localStorage.getItem("sliderData")) : []
+  let sliderData = JSON.parse(localStorage.getItem("sliderData"))
 
   const params = {
     effect: "fade",

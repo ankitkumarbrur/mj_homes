@@ -12,10 +12,11 @@ import { login, logout, register } from "../../redux/actions/userActions";
 import { addToCart } from "../../redux/actions/cartActions";
 import { useToasts } from "react-toast-notifications";
 import axios from "axios";
+import Alert from 'react-bootstrap/Alert'
 
-const LoginRegister = ({ location }) => {
+const LoginRegisterComponent = () => {
     const history = useHistory();
-    const { pathname } = location;
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [firstname, setFirstname] = useState("");
@@ -26,6 +27,7 @@ const LoginRegister = ({ location }) => {
     const [email, setEmail] = useState("");
     const [address, setAddress] = useState("");
     const [data, setdata] = useState(true);
+    const [show, setshow] = useState(false)
 
     const dispatch = useDispatch();
     const { addToast } = useToasts();
@@ -57,8 +59,10 @@ const LoginRegister = ({ location }) => {
             email != ""
         ) {
             dispatch(register(firstname, lastname, pass, email, addToast, history)).then((res) => {
+                setshow(true)
 
-                window.location.reload(false);
+                // window.location.reload(false);
+
 
             })
         }
@@ -93,13 +97,11 @@ const LoginRegister = ({ location }) => {
     }
 
     return (
-        <div style={{ position: "absolute", height: "100%", width: "100%", display: "block", backgroundColor: "#8080800a" }}>
-            <div style={{ position: "relative", height: "20px", width: "20px", display: "block", backgroundColor: "black", top: "25%", left: "80vw" }}></div>
-            <div className="login-register-area" style={{ position: "relative", top: "25%" }}>
-
+        <Fragment>
+            <div className="login-register-area">
                 <div className="container">
                     <div className="row">
-                        <div style={{ marginLeft: "10vw" }}>
+                        <div >
                             <div className="login-register-wrapper">
                                 <Tab.Container defaultActiveKey="login">
                                     <Nav variant="pills" className="login-register-tab-list">
@@ -114,6 +116,19 @@ const LoginRegister = ({ location }) => {
                                             </Nav.Link>
                                         </Nav.Item>
                                     </Nav>
+                                    {show ?
+                                        (<Alert variant="success" onClose={() => setshow(false)} dismissible>
+                                            <Alert.Heading>An activation link will be sent to your email account</Alert.Heading>
+                                            <p>
+                                                Kindly check your Spam folder.
+                                            </p>
+                                        </Alert>)
+                                        :
+                                        (
+                                            ""
+                                        )
+                                    }
+
                                     <Tab.Content>
                                         <Tab.Pane eventKey="login">
                                             {localStorage.getItem("userInfo") != null ? (
@@ -146,13 +161,13 @@ const LoginRegister = ({ location }) => {
                                                     </button>
                                                 </div>
                                             ) : (
-                                                <div className="login-form-container">
-                                                    <div className="login-register-form">
+                                                <div className="login-form-container" >
+                                                    <div className="login-register-form" >
                                                         <form onSubmit={loginHandler}>
                                                             <input
                                                                 type="text"
                                                                 name="user-name"
-                                                                placeholder="Username"
+                                                                placeholder="Email"
                                                                 onChange={(e) => setUsername(e.target.value)}
                                                             />
                                                             <input
@@ -180,7 +195,7 @@ const LoginRegister = ({ location }) => {
                                         </Tab.Pane>
                                         <Tab.Pane eventKey="register">
                                             <div className="login-form-container">
-                                                <div className="login-register-form">
+                                                <div className="login-register-form" >
                                                     <form onSubmit={registerHandler}>
                                                         <input
                                                             type="text"
@@ -239,17 +254,16 @@ const LoginRegister = ({ location }) => {
                                 </Tab.Container>
                             </div>
                         </div>
-                        <img src="https://source.unsplash.com/random" style={{ maxHeight: "45vh", width: "32vw" }} ></img>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div >
 
+        </Fragment >
     );
 };
 
-LoginRegister.propTypes = {
+LoginRegisterComponent.propTypes = {
     location: PropTypes.object,
 };
 
-export default LoginRegister;
+export default LoginRegisterComponent;

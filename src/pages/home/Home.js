@@ -14,12 +14,21 @@ import CountDownThree from "../../wrappers/countdown/CountDownThree";
 import ImageSliderTwo from "../../wrappers/image-slider/ImageSliderTwo";
 import VideoPopupTwo from "../../components/video-popup/VideoPopupTwo";
 import CategoryThreeSlider from "../../wrappers/category/CategoryThreeSlider";
+import RegisterModal from "../../pages/other/RegisterModal";
+import axios from "axios";
+
 const BASE_URL = "https://api.luxurymjhomes.com/";
 
 
 
 const Home = () => {
 
+  const [modalShow, setModalShow] = useState(true);
+  const [showRegister, setshowRegister] = useState(false);
+
+  setTimeout(function () {
+    setshowRegister(true)
+  }, 5000);
 
   return (
     <Fragment>
@@ -35,6 +44,8 @@ const Home = () => {
         headerPaddingClass="header-padding-1"
         headerPositionClass="header-absolute"
       >
+
+
         {/* <LayoutSeven> */}
         {/* hero slider */}
         <HeroSliderTwentyNine />
@@ -60,6 +71,13 @@ const Home = () => {
 
         {/* featured icon */}
         {/* <FeatureIcon spaceTopClass="pt-100" spaceBottomClass="pb-60" /> */}
+        {
+          (showRegister) ?
+            <RegisterModal show={modalShow} onHide={() => setModalShow(false)} />
+            :
+            ""
+
+        }
         <FeatureIconSeven spaceBottomClass="pb-70" />
 
         {/* category grid */}

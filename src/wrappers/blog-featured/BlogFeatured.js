@@ -5,7 +5,7 @@ import BlogFeaturedSingle from "../../components/blog-featured/BlogFeaturedSingl
 import SectionTitle from "../../components/section-title/SectionTitle";
 
 const BlogFeatured = ({ spaceTopClass, spaceBottomClass }) => {
-  let blogFeaturedData = localStorage.getItem("blog") ? JSON.parse(localStorage.getItem("blog")) : []
+  let blogFeaturedData = JSON.parse(localStorage.getItem("blog"))
   return (
     <div
       className={`blog-area ${spaceTopClass ? spaceTopClass : ""} ${spaceBottomClass ? spaceBottomClass : ""

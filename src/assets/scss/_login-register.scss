@@ -47,7 +47,7 @@
   }
   .login-form-container {
     background: transparent none repeat scroll 0 0;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+    
     padding: 80px;
     text-align: left;
     @media #{$lg-layout} {
@@ -55,6 +55,9 @@
     }
     @media #{$xs-layout} {
       padding: 40px 15px;
+    }
+    .login-form-shadow {
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
     }
     .login-register-form {
       form {
@@ -145,4 +148,17 @@
               color: #fff;
             }
           
+}
+
+.register-form-modal {
+   flex-basis: 66.66% ;
+  @media #{$xs-layout} {
+    flex-basis: 100%;
+  }
+}
+
+.register-form-image {
+  @media #{$xs-layout} {
+    display: none;
+  }
 }

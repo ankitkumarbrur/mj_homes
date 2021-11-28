@@ -108,8 +108,6 @@ export const getSortedProducts = (products, sortType, sortValue) => {
   if (products && sortType && sortValue) {
     if (sortType == "multicolor") {
 
-      // if (sortValue.length == 0) return products;
-
       return products.filter((product) => {
         return product.variation
           ? product.variation.filter((single) => sortValue.includes(single.color))[0]
@@ -118,8 +116,6 @@ export const getSortedProducts = (products, sortType, sortValue) => {
     }
 
     if (sortType == "multicategory") {
-
-      // if (sortValue.length == 0) return products;
 
       return products.filter((product) => {
         return product.subcategory
