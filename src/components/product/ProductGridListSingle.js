@@ -20,7 +20,7 @@ const ProductGridListSingle = ({
 }) => {
   const [modalShow, setModalShow] = useState(false);
   const { addToast } = useToasts();
-  console.log("ERROR", product)
+
   const discountedPrice = (product && product.variation) ? (product.variation[0] && product.variation[0].hasOwnProperty('discounted_price') ? product.variation[0].discounted_price : undefined) : undefined
   const finalProductPrice = product.variation[0].price;
 
@@ -210,19 +210,20 @@ const ProductGridListSingle = ({
                   </Link>
                 </h3>
                 <div className="product-list-price">
-                  {/* {discountedPrice !== null ? (
+                  {discountedPrice !== undefined || null ? (
                     <Fragment>
                       <span>
-                        {currency.currencySymbol + finalDiscountedPrice}
+                        {currency.currencySymbol +
+                          product.variation[0].discounted_price}
                       </span>{" "}
                       <span className="old">
-                        {currency.currencySymbol + finalProductPrice}
+                        {currency.currencySymbol + product.variation[0].price}
                       </span>
                     </Fragment>
                   ) : (
-                    <span>{currency.currencySymbol + finalProductPrice} </span>
-                  )} */}
-                  <Fragment>
+                    <span>{currency.currencySymbol + product.variation[0].price} </span>
+                  )}
+                  {/* <Fragment>
                     <span>
                       {currency.currencySymbol +
                         product.variation[0].discounted_price}
@@ -230,7 +231,7 @@ const ProductGridListSingle = ({
                     <span className="old">
                       {currency.currencySymbol + product.variation[0].price}
                     </span>
-                  </Fragment>
+                  </Fragment> */}
                 </div>
                 {product.rating && product.rating > 0 ? (
                   <div className="rating-review">

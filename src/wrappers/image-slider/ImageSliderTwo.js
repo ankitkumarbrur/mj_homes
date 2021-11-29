@@ -35,7 +35,8 @@ const ImageSliderTwo = ({ product }) => {
     return array;
   };
 
-  const shuffleProducts = shuffleItems(product);
+  const shuffleProducts = shuffleItems(product).slice(0, 8);
+  console.log("PRODUCTS", shuffleProducts)
   return (
     <div className="image-slider-area">
       <div className="image-slider-active">
